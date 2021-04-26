@@ -34,7 +34,7 @@ cron.schedule("*/7 * * * *", async () => {
     console.log("Done Fetching Tweets!");
 });
 
-const PORT = process.env.port || 4000;
+const PORT = process.env.PORT || 4000;
 app.listen(PORT,"0.0.0.0" ,() => {
     console.log("🚀 Server Ready!");
 });
