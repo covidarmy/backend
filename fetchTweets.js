@@ -28,7 +28,7 @@ const fetchSearchResults = async (city, searchTerm) => {
         : `https://api.twitter.com/2/tweets/search/recent?query=`;
     const url =
         baseUrl +
-        `verified ${city} ${searchTerm} -"requirement" -"requirements" -"requires" -"require" -"required" -"needed" -"needs" -"need" -"seeking" -"seek" -"not verified" -"notverified" -"unverified" -"urgent" -"urgently" -"urgentlyrequired" -"urgently required" -"sending" -"send" -"help" -"dm" -"get" -"year" -"old" -"male" -"female" -"saturation" -is:retweet -is:reply -is:quote&max_results=${MAX_RESULTS}&tweet.fields=created_at,public_metrics&expansions=author_id`;
+        `verified ${city} ${searchTerm} -"any" -"requirement" -"requirements" -"requires" -"require" -"required" -"needed" -"needs" -"need" -"seeking" -"seek" -"not verified" -"notverified" -"unverified" -"urgent" -"urgently" -"urgentlyrequired" -"urgently required" -"sending" -"send" -"help" -"dm" -"get" -"year" -"old" -"male" -"female" -"saturation" -is:retweet -is:quote&max_results=${MAX_RESULTS}&tweet.fields=created_at,public_metrics&expansions=author_id`;
 
     console.log("Querying URL:", url);
 
