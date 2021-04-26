@@ -35,6 +35,6 @@ cron.schedule("*/7 * * * *", async () => {
 });
 
 const PORT = process.env.port || 4000;
-app.listen(PORT, () => {
+app.listen(PORT,"0.0.0.0" ,() => {
     console.log("🚀 Server Ready!");
 });
