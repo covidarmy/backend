@@ -1,12 +1,13 @@
 require("dotenv").config();
 const Tweet = require("./models/Tweet.schema");
 const Meta = require("./models/Meta.schema");
-const mongoose = require("mongoose");
 const Meta = require("../schemas/meta");
 const fetch = require("node-fetch");
 
 const DB_URL = process.env.MOONGO_URI;
 
+//Mongoose connection for testing...
+const mongoose = require("mongoose");
 mongoose
     .connect(DB_URL, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => {
@@ -26,6 +27,8 @@ const fetchSearchResults = async (city, searchTerm) => {
     const url =
         baseUrl +
         `verified ${city} ${searchTerm} -"requirement" -"requirements" -"requires" -"require" -"required" -"needed" -"needs" -"need" -"seeking" -"seek" -"not verified" -"notverified" -"unverified" -"urgent" -"urgently" -"urgentlyrequired" -"urgently required" -"sending" -"send" -"help" -"dm" -"get" -"year" -"old" -"male" -"female" -"saturation" -is:retweet -is:reply -is:quote&max_results=${MAX_RESULTS}&tweet.fields=created_at,public_metrics&expansions=author_id`;
+
+    console.log("Querying URL:", url);
 
     const response = await fetch(url, {
         method: "GET",
@@ -153,28 +156,11 @@ const scrape = async () => {
         try {
             let newTweets = 0;
             for (const tweet of toSave) {
-                // //Check if tweets with the same id exist in the db
-                // const docs = await Tweet.find({ id: tweet.id })
-                // //If not, create and return a new obj to be saved in the db
-                // if (!docs.length) {
-                //   const newTweet = new Tweet(tweet)
-                //   await newTweet.save()
-                // } else {
-                //   //Iterate through all found tweets
-                //   for (const tweetDoc of docs) {
-                //     //Update the existing doc's resource object to match the new tweet's resources
-                //     for (const res of Object.keys(tweet.resource)) {
-                //       if (!tweetDoc.resource.hasOwnProperty(res)) {
-                //         tweetDoc[res] = true
-                //         await tweetDoc.save()
-                //         console.log(
-                //           "Existing Tweet Found, Updating resources object to match"
-                //         )
-                //       }
-                //     }
-                //   }
-                // }
-                await Tweet.create([tweet]);
+                // await Tweet.create([tweet]);
+
+                await Tweet.findOneAndUpdate({ id: tweet.id }, tweet, {
+                    upsert: true,
+                });
                 newTweets++;
             }
             console.log(`Saved ${newTweets} Documents`);
