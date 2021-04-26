@@ -15,10 +15,14 @@ mongoose
 const fetchSearchResults = async (city, searchTerm) => {
     // Fetch sinceID from db
     let newestID = null;
-    const { sinceId } = await Meta.findOne({});
-    newestID = sinceId;
+    try {
+        const { sinceId } = await Meta.findOne({});
+        newestID = sinceId;
+    } catch (error) {
+        console.error("Error while retrieving since_id");
+    }
 
-    const MAX_RESULTS = 20;
+    const MAX_RESULTS = 100;
     const baseUrl = newestID
         ? `https://api.twitter.com/2/tweets/search/recent?since_id=${newestID}&query=`
         : `https://api.twitter.com/2/tweets/search/recent?query=`;
@@ -71,12 +75,16 @@ const fetchTweets = async () => {
     let totalCalls = 0;
 
     //Init Since ID in the DB if it doesnt already exist
-    const doc = await Meta.findOne({});
-    if (!doc) {
-        console.log("Doc not found, Initializing...");
+    try {
+        const doc = await Meta.findOne({});
+        if (!doc) {
+            console.log("Doc not found, Initializing...");
 
-        await new Meta({ sinceId: null }).save();
-        console.log("Since ID Initlized");
+            await new Meta({ sinceId: null }).save();
+            console.log("Since ID Initlized");
+        }
+    } catch (error) {
+        console.error("Error while retrieving since_id");
     }
 
     //Ref URL:
@@ -173,6 +181,8 @@ const fetchTweets = async () => {
     return;
 };
 
-// fetchTweets();
+for (let i = 0; i < 2; i++) {
+    fetchTweets();
+}
 
 module.exports = { fetchTweets };
