@@ -181,8 +181,8 @@ const fetchTweets = async () => {
     return;
 };
 
-for (let i = 0; i < 2; i++) {
-    fetchTweets();
-}
+// for (let i = 0; i < 2; i++) {
+//     fetchTweets();
+// }
 
 module.exports = { fetchTweets };
