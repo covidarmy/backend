@@ -129,7 +129,7 @@ const fetchTweets = async () => {
                 console.log(`Found ${json.data.length} Tweets`);
                 for (const tweet of json.data) {
                     const retweetCount = tweet.public_metrics.retweet_count;
-                    if (retweetCount >= 10) {
+                    if (retweetCount >= 0) {
                         const tweetResources = [];
                         for (const key of searchTerm) {
                             tweet.text = tweet.text
