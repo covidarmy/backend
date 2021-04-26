@@ -15,7 +15,6 @@ const app = express();
 //         console.log("✅ Databse Connected!");
 //     });
 
-Routes;
 const apiRoutes = require("./routes/apiRoutes");
 
 const { fetchTweets } = require("./fetchTweets");
