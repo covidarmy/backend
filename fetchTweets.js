@@ -1,12 +1,10 @@
 require("dotenv").config();
 const Tweet = require("./models/Tweet.schema");
 const Meta = require("./models/Meta.schema");
-const Meta = require("../schemas/meta");
 const fetch = require("node-fetch");
 
-const DB_URL = process.env.MOONGO_URI;
+const DB_URL = process.env.MONGO_URI;
 
-//Mongoose connection for testing...
 const mongoose = require("mongoose");
 mongoose
     .connect(DB_URL, { useNewUrlParser: true, useUnifiedTopology: true })
@@ -69,8 +67,7 @@ const buildTweetObject = (tweet, city, resource) => {
 /**
  * @returns {Promise<void>}
  */
-const scrape = async () => {
-    const db = await connectToDatabase();
+const fetchTweets = async () => {
     let totalCalls = 0;
 
     //Init Since ID in the DB if it doesnt already exist
@@ -117,6 +114,8 @@ const scrape = async () => {
         const response = await fetchSearchResults(city, validSearchTerm);
         const json = await response.json();
 
+        let foundTweets = 0;
+
         try {
             if (json.data) {
                 console.log(`Found ${json.data.length} Tweets`);
@@ -141,6 +140,7 @@ const scrape = async () => {
                         if (toSaveObject) {
                             if (Object.keys(toSaveObject.resource).length > 0) {
                                 toSave.push(toSaveObject);
+                                foundTweets++;
                             }
                         }
                     }
@@ -157,7 +157,6 @@ const scrape = async () => {
             let newTweets = 0;
             for (const tweet of toSave) {
                 // await Tweet.create([tweet]);
-
                 await Tweet.findOneAndUpdate({ id: tweet.id }, tweet, {
                     upsert: true,
                 });
@@ -169,9 +168,11 @@ const scrape = async () => {
         }
     }
 
-    //Purge Duplicate documents
+    await mongoose.disconnect();
 
     return;
 };
 
-module.exports = { scrape };
+// fetchTweets();
+
+module.exports = { fetchTweets };

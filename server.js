@@ -4,20 +4,21 @@ require("dotenv").config();
 const cron = require("node-cron");
 const express = require("express");
 const app = express();
-const mongoose = require("mongoose");
 
-const DB_URL = process.env.DB_URL || "mongodb://localhost:27017/covid_app";
+// const mongoose = require("mongoose");
 
-//Routes
+// const DB_URL = process.env.MONGO_URI;
+
+// mongoose
+//     .connect(DB_URL, { useNewUrlParser: true, useUnifiedTopology: true })
+//     .then(() => {
+//         console.log("✅ Databse Connected!");
+//     });
+
+Routes;
 const apiRoutes = require("./routes/apiRoutes");
 
-const fetchTweets = require("./fetchTweets");
-
-mongoose
-    .connect(DB_URL, { useNewUrlParser: true, useUnifiedTopology: true })
-    .then(() => {
-        console.log("✅ Databse Connected!");
-    });
+const { fetchTweets } = require("./fetchTweets");
 
 app.use(express.json());
 
@@ -28,9 +29,10 @@ app.use("/", async (req, res) => {
 app.use("/api", apiRoutes);
 
 // Schedule task to run every 5 minutes.
-cron.schedule("*/5 * * * *", function () {
-    console.log("Fetching Tweets");
-    fetchTweets();
+cron.schedule("*/7 * * * *", async () => {
+    console.log("Fetching Tweets...");
+    await fetchTweets();
+    console.log("Done Fetching Tweets!");
 });
 
 const PORT = process.env.port || 4000;
