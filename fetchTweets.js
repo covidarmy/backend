@@ -1,5 +1,6 @@
 require("dotenv").config();
-const TweetModel = require("../schemas/tweet");
+const Tweet = require("./models/Tweet.schema");
+const Meta = require("./models/Meta.schema");
 const mongoose = require("mongoose");
 const Meta = require("../schemas/meta");
 const fetch = require("node-fetch");
@@ -81,8 +82,8 @@ const scrape = async () => {
     //Ref URL:
     //https://api.twitter.com/2/tweets/search/recent?query=verified mumbai (bed OR beds OR icu OR oxygen OR ventilator OR ventilators OR fabiflu OR remdesivir OR favipiravir OR tocilizumab OR plasma OR tiffin) -"not verified" -"unverified" -"needed" -"required" -"urgent" -"urgentlyrequired" -"help"&max_results=10&tweet.fields=created_at
 
-    const cities = require("../../seeds/cities.json");
-    const resources = require("../../seeds/resources.json");
+    const cities = require("./data/cities.json");
+    const resources = require("./data/resources.json");
 
     for (const city in cities) {
         const toSave = [];
@@ -153,10 +154,10 @@ const scrape = async () => {
             let newTweets = 0;
             for (const tweet of toSave) {
                 // //Check if tweets with the same id exist in the db
-                // const docs = await TweetModel.find({ id: tweet.id })
+                // const docs = await Tweet.find({ id: tweet.id })
                 // //If not, create and return a new obj to be saved in the db
                 // if (!docs.length) {
-                //   const newTweet = new TweetModel(tweet)
+                //   const newTweet = new Tweet(tweet)
                 //   await newTweet.save()
                 // } else {
                 //   //Iterate through all found tweets
@@ -173,7 +174,7 @@ const scrape = async () => {
                 //     }
                 //   }
                 // }
-                await TweetModel.create([tweet]);
+                await Tweet.create([tweet]);
                 newTweets++;
             }
             console.log(`Saved ${newTweets} Documents`);
