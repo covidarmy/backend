@@ -3,14 +3,14 @@ const Tweet = require("./models/Tweet.schema");
 const Meta = require("./models/Meta.schema");
 const fetch = require("node-fetch");
 
-const DB_URL = process.env.MONGO_URI;
+// const DB_URL = process.env.MONGO_URI;
 
-const mongoose = require("mongoose");
-mongoose
-    .connect(DB_URL, { useNewUrlParser: true, useUnifiedTopology: true })
-    .then(() => {
-        console.log("✅ Databse Connected!");
-    });
+// const mongoose = require("mongoose");
+// mongoose
+//     .connect(DB_URL, { useNewUrlParser: true, useUnifiedTopology: true })
+//     .then(() => {
+//         console.log("✅ Databse Connected!");
+//     });
 
 const fetchSearchResults = async (city, searchTerm) => {
     // Fetch sinceID from db
@@ -22,13 +22,13 @@ const fetchSearchResults = async (city, searchTerm) => {
         console.error("Error while retrieving since_id");
     }
 
-    const MAX_RESULTS = 100;
+    const MAX_RESULTS = 20;
     const baseUrl = newestID
         ? `https://api.twitter.com/2/tweets/search/recent?since_id=${newestID}&query=`
         : `https://api.twitter.com/2/tweets/search/recent?query=`;
     const url =
         baseUrl +
-        `verified ${city} ${searchTerm} -"any" -"requirement" -"requirements" -"requires" -"require" -"required" -"needed" -"needs" -"need" -"seeking" -"seek" -"not verified" -"notverified" -"unverified" -"urgent" -"urgently" -"urgentlyrequired" -"urgently required" -"sending" -"send" -"help" -"dm" -"get" -"year" -"old" -"male" -"female" -"saturation" -is:retweet -is:quote&max_results=${MAX_RESULTS}&tweet.fields=created_at,public_metrics&expansions=author_id`;
+        `verified ${city} ${searchTerm} -"any" -"requirement" -"requirements" -"requires" -"require" -"required" -"request" -"requests" -"requesting" -"needed" -"needs" -"need" -"seeking" -"seek" -"not verified" -"notverified" -"looking" -"unverified" -"urgent" -"urgently" -"urgentlyrequired" -"urgently required" -"sending" -"send" -"help" -"dm" -"get" -"year" -"old" -"male" -"female" -"saturation" -is:retweet -is:quote&max_results=${MAX_RESULTS}&tweet.fields=created_at,public_metrics&expansions=author_id`;
 
     console.log("Querying URL:", url);
 
