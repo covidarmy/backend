@@ -12,5 +12,7 @@ router.get("/", async (req, res) => {
 });
 
 router.get("/tweets", tweetController.findAll);
+router.get("/tweets/:location", tweetController.findAll);
+router.get("/tweets/:location/:resource", tweetController.findAll);
 
 module.exports = router;
