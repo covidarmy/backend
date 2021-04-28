@@ -24,7 +24,7 @@ exports.findAll = async (req, res) => {
         if(resource){
             query.resource = { [resource]: true };
         }
-        res.send(await Tweet.find(query, null, { limit: limit, skip: offset }).exec());
+        res.send(await Tweet.find(query, null, { limit: limit, skip: offset, sort: { postedAt: -1 } }).exec());
     } catch (error) {
         res.send({ error: error.message });
     }
