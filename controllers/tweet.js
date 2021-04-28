@@ -10,28 +10,23 @@ exports.create = async (req, res) => {
 //Retrive all Tweets
 exports.findAll = async (req, res) => {
     try {
-        if (req.query.limit) {
-            if (req.query.param > 500) {
-                res.send("Error: query.limit Cannot be over 500");
-            }
-            if (req.query.sinceDate) {
-                const tweets = await Tweet.find(
-                    { createdAt: { $gt: req.query.sinceDate } },
-                    null,
-                    { limit: parseInt(req.query.limit) }
-                );
-                res.send(tweets);
-            } else {
-                const tweets = await Tweet.find({}, null, {
-                    limit: parseInt(req.query.limit),
-                });
-                res.send(tweets);
-            }
-        } else {
-            res.send("Error: query.limit has to be a Number < 500");
+        let { limit = 20, offset = 0 } = req.query;
+        const { location, resource } = req.params;
+
+        limit = Number(limit);
+        offset = Number(offset);
+
+        const query = {};
+
+        if(location){
+            query.location = { [location]: true };
         }
+        if(resource){
+            query.resource = { [resource]: true };
+        }
+        res.send(await Tweet.find(query, null, { limit: limit, skip: offset }).exec());
     } catch (error) {
-        res.send(error);
+        res.send({ error: error.message });
     }
 };
 
