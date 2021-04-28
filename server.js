@@ -5,6 +5,7 @@ const cron = require("node-cron");
 const express = require("express");
 const app = express();
 
+const morgan = require("morgan");
 const mongoose = require("mongoose");
 
 const DB_URL = process.env.MONGO_URI;
@@ -19,7 +20,13 @@ const apiRoutes = require("./routes/apiRoutes");
 
 const { fetchTweets } = require("./fetchTweets");
 
+app.use(morgan(process.env.NODE_ENV == "production" ? "common" : "dev"));
 app.use(express.json());
+
+app.use((req, res, next) => {
+    res.setHeader("Access-Control-Allow-Origin", "*");
+    next();
+});
 
 app.use("/api", apiRoutes);
 
