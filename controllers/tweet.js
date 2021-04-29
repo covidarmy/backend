@@ -11,10 +11,13 @@ exports.create = async (req, res) => {
 exports.findAll = async (req, res) => {
     try {
         let { limit = 20, offset = 0 } = req.query;
-        const { location, resource } = req.params;
+        let { location, resource } = req.params;
 
         limit = Number(limit);
         offset = Number(offset);
+
+        location = location[0].toUpperCase() + location.substring(1, location.length).toLowerCase();
+        resource = resource.toLowerCase();
 
         const query = {};
 
