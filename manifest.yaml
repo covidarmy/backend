@@ -28,7 +28,7 @@ spec:
         spec:
             containers:
                 - name: carmy-backend
-                  image: registry.digitalocean.com/covid-army/covid-army-backend:latest
+                  image: registry.digitalocean.com/covid-army/carmy-backend:latest
                   ports:
                       - containerPort: 4000
                         protocol: "TCP"
