@@ -5,8 +5,6 @@ const router = express.Router();
 
 module.exports = router;
 
-// TODO: Implement API Routes
-
 router.get("/", async (req, res) => {
     res.send("This is the API endpoint");
 });
