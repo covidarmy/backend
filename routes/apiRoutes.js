@@ -6,7 +6,7 @@ const router = express.Router();
 module.exports = router;
 
 router.get("/", async (req, res) => {
-    res.send("This is the API endpoint");
+  res.send("This is the API endpoint");
 });
 
 router.get("/tweets", tweetController.findAll);
