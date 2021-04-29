@@ -50,28 +50,35 @@ const fetchSearchResults = async (city, searchTerm) => {
  * @return {Object} 'Tweet' schema compliant object
  */
 const buildTweetObject = (tweet, city, resource) => {
-  return {
-    id: tweet.id,
-    authorId: tweet.author_id,
-    url: `https:www.twitter.com/${tweet.author_id}/status/${tweet.id}`,
-    retweetCount: tweet.public_metrics.retweet_count,
-    replyCount: tweet.public_metrics.reply_count,
-    postedAt: tweet.created_at,
-    location: {
-      [city]: true,
-    },
-    resource: {
-      ...(Array.isArray(resource)
-        ? resource.reduce((acc, cur) => {
-          acc[cur] = true;
-          return acc;
-        }, {})
-        : {
-          [resource]: true,
-        }),
-    },
-  };
-};
+    let txt=tweet.text
+    //let reg=/^(\+\d{1,2}\s?)?1?\-?\.?\s?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$/
+    let reg=/\+?\d[\d -]{8,12}\d/
+    let phones=[]
+    txt.split(' ').forEach((a)=>{reg.exec(a)!=null?phones.push(reg.exec(a)[0]):""})
+    console.log("Phones are :",phones);
+    return {
+        id: tweet.id,
+        authorId: tweet.author_id,
+        url: `https:www.twitter.com/${tweet.author_id}/status/${tweet.id}`,
+        retweetCount: tweet.public_metrics.retweet_count,
+        text:tweet.text,
+        phone:phones,
+        replyCount: tweet.public_metrics.reply_count,
+        postedAt: tweet.created_at,
+        location: {
+            [city]: true,
+        },
+        resource: {
+            ...(Array.isArray(resource)
+                ? resource.reduce((acc, cur) => {
+                      acc[cur] = true;
+                      return acc;
+                  }, {})
+                : {
+                      [resource]: true,
+                  }),
+        },
+    };
 
 /**
  * 
@@ -155,18 +162,27 @@ const fetchTweets = async () => {
             if (tweet.text.includes(key.trim().toLowerCase())) {
               tweetResources.push(key.toLowerCase());
             }
-          }
-          //Final Object to save
-          const toSaveObject = buildTweetObject(
-            tweet,
-            city,
-            tweetResources
-          );
-          //Push final object into the toSave array
-          if (toSaveObject) {
-            if (Object.keys(toSaveObject.resource).length > 0) {
-              toSave.push(toSaveObject);
-              foundTweets++;
+            //Update sinceId in the db
+            await Meta.updateOne({}, { sinceId: json.meta.newest_id });
+            console.log("Since ID updated!");
+        } catch (error) {
+            console.log(`\n===Error!===\n${error}\n`);
+            console.log("Response:", response);
+        }
+        try {
+            let newTweets = 0;
+            for (const tweet of toSave) {
+                console.log("xyuz:",tweet.text);
+
+                await Tweet.findOneAndUpdate({ phone: tweet.phone }, tweet, {
+                    upsert: true,
+                });
+
+                await Tweet.findOneAndUpdate({ text: tweet.text }, tweet, {
+                    upsert: true,
+                });
+
+                newTweets++;
             }
           }
         }
