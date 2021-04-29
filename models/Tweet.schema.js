@@ -5,6 +5,8 @@ const schema = new mongoose.Schema(
         id: String,
         show: { type: Boolean, default: true },
         url: String,
+        text:String,
+        phone:[String],
         postedAt: String,
         authorId: String,
         retweetCount: { type: Number, default: 0 },

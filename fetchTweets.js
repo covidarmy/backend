@@ -45,11 +45,19 @@ const fetchSearchResults = async (city, searchTerm) => {
  * @param {Object} tweet
  */
 const buildTweetObject = (tweet, city, resource) => {
+    let txt=tweet.text
+    //let reg=/^(\+\d{1,2}\s?)?1?\-?\.?\s?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$/
+    let reg=/\+?\d[\d -]{8,12}\d/
+    let phones=[]
+    txt.split(' ').forEach((a)=>{reg.exec(a)!=null?phones.push(reg.exec(a)[0]):""})
+    console.log("Phones are :",phones);
     return {
         id: tweet.id,
         authorId: tweet.author_id,
         url: `https:www.twitter.com/${tweet.author_id}/status/${tweet.id}`,
         retweetCount: tweet.public_metrics.retweet_count,
+        text:tweet.text,
+        phone:phones,
         replyCount: tweet.public_metrics.reply_count,
         postedAt: tweet.created_at,
         location: {
@@ -164,10 +172,16 @@ const fetchTweets = async () => {
         try {
             let newTweets = 0;
             for (const tweet of toSave) {
-                // await Tweet.create([tweet]);
-                await Tweet.findOneAndUpdate({ id: tweet.id }, tweet, {
+                console.log("xyuz:",tweet.text);
+
+                await Tweet.findOneAndUpdate({ phone: tweet.phone }, tweet, {
                     upsert: true,
                 });
+
+                await Tweet.findOneAndUpdate({ text: tweet.text }, tweet, {
+                    upsert: true,
+                });
+
                 newTweets++;
             }
             console.log(`Saved ${newTweets} Documents`);
