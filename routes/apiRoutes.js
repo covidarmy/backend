@@ -7,7 +7,7 @@ module.exports = router;
 
 /**
  * @swagger
- * /:
+ * /api/:
  *  get:
  *    description: Simple test endpoint
  *    responses:
@@ -20,55 +20,53 @@ router.get("/", async (req, res) => {
 
 /**
  * @swagger
- * /tweets:
+ * /api/tweets:
  *  get:
- *    description: Simple test endpoint
+ *    description: Retrive a list of 20 tweets irrespective of resource or location
  *    responses:
  *      '200':
- *        description: A successful response
+ *        description: List of 20 tweets
  */
 
 router.get("/tweets", tweetController.findAll);
 
 /**
  * @swagger
- * /tweets/:location:
- *  get:
- *    description: Simple test endpoint
- *    responses:
- *      '200':
- *        description: A successful response
+ * /api/tweets/{location}:
+ *   get:
+ *     summary: Retrieve a list tweets.
+ *     description: Retrieve a list of tweets based on location.
+ *     parameters:
+ *             - in: path
+ *               name: location
+ *               type: string
+ *               description: The name of the city to query.
+ *     responses:
+ *       200:
+ *         description: A list of 20 tweets.
+ *         
  */
-
 router.get("/tweets/:location", tweetController.findAll);
 
 /**
  * @swagger
- * /tweets:
+ * /api/tweets/{location}/{resource}:
  *   get:
  *     summary: Retrieve a list tweets.
- *     description: Retrieve a list of tweets.
+ *     description: Retrieve a list of tweets based on location and resource type.
+ *     parameters:
+ *             - in: path
+ *               name: location
+ *               type: string
+ *               description: The name of the city to query.
+ *             - in: path
+ *               name: resource
+ *               type: string
+ *               description: The name of the resource to query.
  *     responses:
  *       200:
- *         description: A list of tweets.
- *         content:
- *           application/json:
- *             schema:
- *               type: object
- *               properties:
- *                 data:
- *                   type: array
- *                   items:
- *                     type: object
- *                     properties:
- *                       id:
- *                         type: integer
- *                         description: The user ID.
- *                         example: 0
- *                       name:
- *                         type: string
- *                         description: The user's name.
- *                         example: Leanne Graham
+ *         description: A list of 20 tweets.
+ *         
  */
 router.get("/tweets/:location/:resource", tweetController.findAll);
 
