@@ -24,6 +24,9 @@ const apiRoutes = require("./routes/apiRoutes");
 //Import the fetchTweets script
 const { fetchTweets } = require("./fetchTweets");
 
+//Import the fetchTweets script
+const { deleteTweets } = require("./deleteTweets");
+
 //Express options
 app.use(morgan(process.env.NODE_ENV == "production" ? "common" : "dev"));
 app.use(express.json());
@@ -47,6 +50,16 @@ cron.schedule("*/5 * * * *", async () => {
   await fetchTweets();
   console.log("Done Fetching Tweets!");
 });
+
+
+//TODO
+//Schedule task to run every n minutes.
+// cron.schedule("*/5 * * * *", async () => {
+//   console.log("CLEANING UP DD...");
+//   await deleteTweets();
+//   console.log("Done Cleaning!");
+// });
+
 
 //Start Expres Server
 const PORT = process.env.PORT || 4000;
