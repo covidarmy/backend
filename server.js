@@ -41,7 +41,7 @@ app.use("/", async (req, res) => {
   res.send("Hello World!");
 });
 
-// Schedule task to run every 5 minutes.
+//Schedule task to run every 5 minutes.
 cron.schedule("*/5 * * * *", async () => {
   console.log("Fetching Tweets...");
   await fetchTweets();
