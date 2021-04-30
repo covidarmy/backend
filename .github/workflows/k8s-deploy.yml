@@ -1,0 +1,36 @@
+on:
+    push:
+        branches: [main]
+
+name: DO-k8s-deploy
+
+jobs:
+    deploy:
+        name: DO-k8s-deploy
+        runs-on: ubuntu-latest
+        environment: production
+
+        steps:
+            - name: Login to DockerHub
+              id: docker-login
+              uses: docker/login-action@v1
+              with:
+                  username: ${{ secrets.DOCKERHUB_USERNAME }}
+                  password: ${{ secrets.DOCKERHUB_PASS }}
+
+            - name: Build and Push
+              id: docker-build-push
+              uses: docker/build-push-action@v2
+              with:
+                  push: true
+                  tags: latest
+
+            - name: Setup kubectl
+              id: kubectl-setup
+              uses: matootie/dokube@v1.3.4
+              with:
+                  personalAccessToken: ${{ secrets.DIGITALOCEAN_TOKEN }}
+                  clusterName: carmy-cluster
+
+            - name: Restart kubernetes deployment
+              run: kubectl rollout restart deployment carmy-backend
