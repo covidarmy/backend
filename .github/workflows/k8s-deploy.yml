@@ -11,9 +11,6 @@ jobs:
         environment: production
 
         steps:
-            - name: Setup Docker Buildx
-              uses: docker/setup-qemu-action@v1
-
             - name: Login to DockerHub
               id: docker-login
               uses: docker/login-action@v1
@@ -23,7 +20,7 @@ jobs:
 
             - name: Build Image
               id: docker-build
-              run: docker build --file Dockerfile --tag covidarmy/covid-army-backend:latest .
+              run: docker build --tag covidarmy/covid-army-backend:latest .
 
             - name: Push to Docker Hub
               run: docker push covidarmy/covid-army-backend:latest
