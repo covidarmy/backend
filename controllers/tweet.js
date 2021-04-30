@@ -1,9 +1,11 @@
 const Tweet = require("../models/Tweet.schema");
 
-//Create a new Tweet
-exports.create = async (req, res) => {
-  res.send("Tweet Create");
-};
+var redis = require("redis");
+var redis_client = redis.createClient();
+
+redis_client.on("connect", function () {
+  console.log("Redis Connection Successful!!");
+});
 
 //Retrive all Tweets
 exports.findAll = async (req, res) => {
@@ -14,7 +16,9 @@ exports.findAll = async (req, res) => {
     limit = Number(limit);
     offset = Number(offset);
 
-    location = location[0].toUpperCase() + location.substring(1, location.length).toLowerCase();
+    location =
+      location[0].toUpperCase() +
+      location.substring(1, location.length).toLowerCase();
     resource = resource.toLowerCase();
 
     const query = {};
@@ -25,23 +29,50 @@ exports.findAll = async (req, res) => {
     if (resource) {
       query.resource = { [resource]: true };
     }
-    res.send(await Tweet.find(query, null, { limit: limit, skip: offset, sort: { postedAt: -1 } }).exec());
+
+    redis_client.get(JSON.stringify(query), async (err, data) => {
+      if (err) {
+        console.log(err);
+        res.status(500).send(err);
+      }
+      if (data != null) {
+        console.log("Data fetched from redis");
+        res.send(JSON.parse(data));
+      } else {
+        console.log("Data fetched from DB");
+        let update = await Tweet.find(query, null, {
+          limit: limit,
+          skip: offset,
+          sort: { postedAt: -1 },
+        }).exec();
+        redis_client.set(
+          JSON.stringify(query),
+          JSON.stringify(update),
+          redis_client.print
+        );
+        res.send(update);
+      }
+    });
   } catch (error) {
     res.send({ error: error.message });
   }
 };
 
-//Retrive a single tweet with ID
-exports.findOne = async (req, res) => {
-  res.send("Tweet findOne");
-};
+// //Retrive a single tweet with ID
+// exports.findOne = async (req, res) => {
+//   res.send("Tweet findOne");
+// };
 
-//Update a single tweet with ID
-exports.update = async (req, res) => {
-  res.send("Tweet Update");
-};
+// //Update a single tweet with ID
+// exports.update = async (req, res) => {
+//   res.send("Tweet Update");
+// };
 
-//Delete a single tweet with ID
-exports.delete = async (req, res) => {
-  res.send("Tweet Delete");
-};
+// //Delete a single tweet with ID
+// exports.delete = async (req, res) => {
+//   res.send("Tweet Delete");
+// };
+// //Create a new Tweet
+// exports.create = async (req, res) => {
+//   res.send("Tweet Create");
+// };
