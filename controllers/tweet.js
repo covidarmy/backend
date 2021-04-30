@@ -3,6 +3,8 @@ const Tweet = require("../models/Tweet.schema");
 var redis = require("redis");
 var redis_client = redis.createClient();
 
+const cache_dur= 60 * 5; //60 sec * 5
+
 redis_client.on("connect", function () {
   console.log("Redis Connection Successful!!");
 });
@@ -48,7 +50,8 @@ exports.findAll = async (req, res) => {
         redis_client.set(
           JSON.stringify(query),
           JSON.stringify(update),
-          redis_client.print
+          'EX',
+          cache_dur 
         );
         res.send(update);
       }
