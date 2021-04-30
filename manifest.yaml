@@ -28,7 +28,19 @@ spec:
         spec:
             containers:
                 - name: carmy-backend
-                  image: registry.digitalocean.com/covid-army/carmy-backend:latest
+                  #image: registry.digitalocean.com/covid-army-registry/carmy-backend:latest
+                  image: docker.io/covidarmy/covid-army-backend:latest
+                  env:
+                      - name: BEARER_TOKEN
+                        valueFrom:
+                            secretKeyRef:
+                                name: twitter-bearer-token
+                                key: BEARER_TOKEN
+                      - name: MONGO_URI
+                        valueFrom:
+                            secretKeyRef:
+                                name: mongodb-uri
+                                key: MONGO_URI
                   ports:
                       - containerPort: 4000
                         protocol: "TCP"
