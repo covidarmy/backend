@@ -23,7 +23,7 @@ jobs:
 
             - name: Build Image
               id: docker-build
-              run: docker build . --file Dockerfile --tag covidarmy/covid-army-backend:latest
+              run: docker build --file Dockerfile --tag covidarmy/covid-army-backend:latest .
 
             - name: Push to Docker Hub
               run: docker push covidarmy/covid-army-backend:latest
