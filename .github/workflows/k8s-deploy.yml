@@ -21,12 +21,12 @@ jobs:
                   username: ${{ secrets.DOCKERHUB_USERNAME }}
                   password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-            - name: Build and Push
-              id: docker-build-push
-              uses: docker/build-push-action@v2
-              with:
-                  push: true
-                  tags: latest
+            - name: Build Image
+              id: docker-build
+              run: docker build . --file Dockerfile --tag covidarmy/covid-army-backend:latest
+
+            - name: Push to Docker Hub
+              run: docker push covidarmy/covid-army-backend:latest
 
             - name: Setup kubectl
               id: kubectl-setup
