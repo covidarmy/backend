@@ -1,9 +1,16 @@
 const express = require("express");
-const Tweet = require("../models/Tweet.schema");
 const tweetController = require("../controllers/tweet");
 const router = express.Router();
+const cities = require("../data/cities.json");
+const resources = require("../data/resources.json");
 
-module.exports = router;
+router.get("/cities", async (req, res) => {
+  return res.status(200).send(cities);
+});
+
+router.get("/resources", async (req, res) => {
+  return res.status(200).send(resources);
+});
 
 /**
  * @swagger
@@ -44,7 +51,7 @@ router.get("/tweets", tweetController.findAll);
  *     responses:
  *       200:
  *         description: A list of 20 tweets.
- *         
+ *
  */
 router.get("/tweets/:location", tweetController.findAll);
 
@@ -66,7 +73,7 @@ router.get("/tweets/:location", tweetController.findAll);
  *     responses:
  *       200:
  *         description: A list of 20 tweets.
- *         
+ *
  */
 router.get("/tweets/:location/:resource", tweetController.findAll);
 
