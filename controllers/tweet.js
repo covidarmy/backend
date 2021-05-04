@@ -88,8 +88,8 @@ exports.findAll = async (req, res) => {
             // make sure that we don't give the same result on subsequent calls to the API by the same contact number
             return res.send(
                 await Tweet.findOne({}, null, {
-		    skip: Date.now() % await Tweet.count(),
-                    sort: { posterAt: -1 }
+                    skip: Date.now() % await Tweet.count(),
+                    sort: { postedAt: -1 }
                 }).exec()
             );
 	}
