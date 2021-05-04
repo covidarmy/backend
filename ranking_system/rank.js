@@ -1,4 +1,6 @@
 // WIP
+
+//Used nemeric values as enum keys to ensure compatiblity with WhatsApp bot requests
 const Votes = Object.freeze({
     1: "helpful",
     2: "busy",
