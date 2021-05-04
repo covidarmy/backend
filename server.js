@@ -47,6 +47,7 @@ app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
 //Import Routes
 const apiRoutes = require("./routes/apiRoutes");
+const meta = require("./routes/meta");
 
 //Import the fetchTweets script
 const { fetchTweets } = require("./fetchTweets");
@@ -66,6 +67,7 @@ app.use((req, res, next) => {
 
 //Express Routes
 app.use("/api", apiRoutes);
+app.use("/api", meta);
 
 // Routes
 app.use("/", async (req, res) => {
