@@ -17,6 +17,7 @@ mongoose
     });
 
 const apiRoutes = require("./routes/apiRoutes");
+const meta = require("./routes/meta");
 
 const { fetchTweets } = require("./fetchTweets");
 
@@ -29,6 +30,7 @@ app.use((req, res, next) => {
 });
 
 app.use("/api", apiRoutes);
+app.use("/api", meta);
 
 app.use("/", async (req, res) => {
     res.send("Hello World!");
