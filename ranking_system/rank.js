@@ -1,10 +1,10 @@
 // WIP
-
 const Votes = Object.freeze({
     1: "helpful",
-    2: "unresponsive",
-    3: "nostock",
-    4: "invalid",
+    2: "busy",
+    3: "noanswer",
+    4: "nostock",
+    5: "invalid",
 });
 
 const Statuses = Object.freeze({
@@ -14,24 +14,6 @@ const Statuses = Object.freeze({
     L_COOLDOWN: "L_COOLDOWN",
     BLACKLIST: "BLACKLIST",
 });
-
-//FOR TESTING ONLY
-const testTweet = {
-    id: "1234",
-    votes: [
-        Votes["1"],
-        Votes["1"],
-        Votes["1"],
-        Votes["1"],
-        Votes["1"],
-        Votes["1"],
-        Votes["2"],
-        Votes["2"],
-        Votes["2"],
-        Votes["2"],
-    ],
-    status: "ACTIVE",
-};
 
 const checkRecentOccurrences = (arr, numEl, value) => {
     //Get the last n number of elements from array
@@ -49,6 +31,7 @@ const rank = async (tweet) => {
         return tweet;
     }
 
+    //Check these again
     if (checkRecentOccurrences(votes, 4, Votes["2"])) {
         tweet.status = Statuses.M_COOLDOWN;
         tweet = await tweet.save();
@@ -66,6 +49,12 @@ const rank = async (tweet) => {
     }
 
     if (checkRecentOccurrences(votes, 5, Votes["4"])) {
+        tweet.status = Statuses.L_COOLDOWN;
+        tweet = await tweet.save();
+        return tweet;
+    }
+
+    if (checkRecentOccurrences(votes, 5, Votes["5"])) {
         tweet.status = Statuses.BLACKLIST;
         tweet = await tweet.save();
         return tweet;
@@ -74,8 +63,4 @@ const rank = async (tweet) => {
     return;
 };
 
-//FOR TESTING
-console.log(rank(testTweet));
-
-//TODO - UNCOMMENT THIS
-// module.exports = { rank };
+module.exports = { rank };

@@ -72,18 +72,12 @@ app.use("/", async (req, res) => {
     res.send("Hello World!");
 });
 
-/*
-==========
-        TODO : !!!!!!UN-COMMENT THIS!!!!!!
-==========
-*/
-
-// //Schedule task to run every 5 minutes.
-// cron.schedule("*/5 * * * *", async () => {
-//   console.log("Fetching Tweets...");
-//   await fetchTweets();
-//   console.log("Done Fetching Tweets!");
-// });
+//Schedule task to run every 5 minutes.
+cron.schedule("*/5 * * * *", async () => {
+    console.log("Fetching Tweets...");
+    await fetchTweets();
+    console.log("Done Fetching Tweets!");
+});
 
 //TODO
 //Schedule task to run every n minutes.
