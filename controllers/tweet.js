@@ -64,7 +64,7 @@ const Tweet = require("../models/Tweet.schema");
 //Retrive all Tweets
 exports.findAll = async (req, res) => {
     try {
-        let { limit = 20, offset = 0 } = req.query;
+        let { limit = 20, offset = 0, contact_number } = req.query;
         let { location, resource } = req.params;
 
         limit = Number(limit);
@@ -83,6 +83,16 @@ exports.findAll = async (req, res) => {
         if (resource) {
             query.resource = { [resource]: true };
         }
+
+        if(contact_number){
+            // make sure that we don't give the same result on subsequent calls to the API by the same contact number
+            return res.send(
+                await Tweet.findOne({}, null, {
+                    skip: Date.now() % await Tweet.count(),
+                    sort: { postedAt: -1 }
+                }).exec()
+            );
+	}
         res.send(
             await Tweet.find(query, null, {
                 limit: limit,
