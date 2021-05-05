@@ -22,10 +22,7 @@ const schema = new mongoose.Schema(
             ],
             default: "ACTIVE",
         },
-        votes: {
-            type: [String],
-            enum: ["1", "2", "3", "4"],
-        },
+        votes: [String],
         location: mongoose.Schema.Types.Mixed,
         resource: mongoose.Schema.Types.Mixed,
     },
