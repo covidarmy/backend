@@ -3,7 +3,7 @@ const Meta = require("./models/Meta.schema");
 const fetch = require("node-fetch");
 const { parse, resourceTypes, categories } = require("./parser");
 
-const MAX_RESULTS = 10;
+const MAX_RESULTS = 100;
 
 const fetchSearchResults = async (newestID, resource) => {
 
@@ -53,7 +53,8 @@ const fetchTweets = async () => {
     await Promise.all(Object.keys(resourceTypes).map(async resource => { 
 	const apiRes = await fetchSearchResults(newestID, resource);
         const tweets = apiRes.statuses.map(tweet => buildTweetObject(tweet));
-        console.log(tweets);
+      
+        // console.log(tweets);
         if(apiRes.search_metadata.max_id > max_id){
             max_id = apiRes.search_metadata.max_id;
 	}
