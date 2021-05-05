@@ -47,13 +47,13 @@ const buildTweetObject = (tweet) => {
 };
 
 const fetchTweets = async () => {
-    let newestID = (await Meta.findOne({})).sinceId;
+    let newestID = Number((await Meta.findOne({})).sinceId);
     let max_id = newestID;
 
     await Promise.all(Object.keys(resourceTypes).map(async resource => { 
 	const apiRes = await fetchSearchResults(newestID, resource);
         const tweets = apiRes.statuses.map(tweet => buildTweetObject(tweet));
-      
+ 
         // console.log(tweets);
         if(apiRes.search_metadata.max_id > max_id){
             max_id = apiRes.search_metadata.max_id;
@@ -82,7 +82,7 @@ const fetchTweets = async () => {
         await Promise.all(promises);
     }));
 
-    await Meta.updateOne({}, { sinceId: max_id });
+    await Meta.updateOne({}, { sinceId: String(max_id) });
 };
  
 module.exports = { fetchTweets };
