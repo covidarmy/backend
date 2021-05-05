@@ -5,11 +5,11 @@ const cities = require("../data/cities.json");
 const resources = require("../data/resources.json");
 
 router.get("/cities", async (req, res) => {
-  return res.status(200).send(cities);
+    return res.status(200).send(cities);
 });
 
 router.get("/resources", async (req, res) => {
-  return res.status(200).send(resources);
+    return res.status(200).send(resources);
 });
 
 /**
@@ -22,7 +22,7 @@ router.get("/resources", async (req, res) => {
  *        description: A successful response
  */
 router.get("/", async (req, res) => {
-  res.send("This is the API endpoint");
+    res.send("This is the API endpoint");
 });
 
 /**
@@ -79,7 +79,7 @@ router.get("/tweets/:location/:resource", tweetController.findAll);
 
 /**
  * @swagger
- * /api/tweets/{location}/{resource}:
+ * /api/tweets/{tweetID}/votes:
  *   put:
  *     summary: Add a vote to a tweet.
  *     description: Add a vote to a tweet based on tweet ID.
@@ -88,6 +88,10 @@ router.get("/tweets/:location/:resource", tweetController.findAll);
  *               name: tweetID
  *               type: string
  *               description: ID of the tweet to vote.
+ *             - in: query
+ *               name: vote
+ *               type: String
+ *               description: A number ranging from 1-5 corresponding with a vote string
  *
  */
 router.put("/tweets/:tweetID/votes", tweetController.updateVote);
