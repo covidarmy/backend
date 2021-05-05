@@ -97,38 +97,39 @@ exports.findAll = async (req, res) => {
 
 const Votes = Object.freeze({
     HELPFUL: "1",
-    UNRESPONSIVE: "2",
-    NOSTOCK: "3",
-    INVALID: "4",
+    BUSY: "2",
+    NOANSWER: "3",
+    NOSTOCK: "4",
+    INVALID: "5",
 });
 
 exports.updateVote = async (req, res) => {
-	try {
-		const { tweetID } = req.params;
-		const { vote } = req.query;
-		
-		if(Object.values(Votes).indexOf(vote) == -1){
-			return res.status(400).send({ error: "Invalid vote" });
-		}
-		const tweet = await Tweet.findOne({ id: tweetID }).exec();
+    try {
+        const { tweetID } = req.params;
+        const { vote } = req.query;
 
-		if(!tweet){
-			return res.status(400).send({ error: "Invalid tweet id" });
-		}
-		if(!tweet.votes){
-			tweet.votes = [];
-		}
-		if(tweet.votes.length == 10){
-			tweet.votes.shift();
-		}
-		tweet.votes.push(vote);
-		await Tweet.findOneAndUpdate({ id: tweetID }, tweet);
+        if (Object.values(Votes).indexOf(vote) == -1) {
+            return res.status(400).send({ error: "Invalid vote" });
+        }
+        const tweet = await Tweet.findOne({ id: tweetID }).exec();
 
-		res.send({ ok: true });
-	} catch(error) {
-		console.error(error);
-		res.status(500).send({ error: error.message });
-	}
+        if (!tweet) {
+            return res.status(400).send({ error: "Invalid tweet id" });
+        }
+        if (!tweet.votes) {
+            tweet.votes = [];
+        }
+        if (tweet.votes.length == 10) {
+            tweet.votes.shift();
+        }
+        tweet.votes.push(vote);
+        await Tweet.findOneAndUpdate({ id: tweetID }, tweet);
+
+        res.send({ ok: true });
+    } catch (error) {
+        console.error(error);
+        res.status(500).send({ error: error.message });
+    }
 };
 
 // //Retrive a single tweet with ID
