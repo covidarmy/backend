@@ -47,7 +47,7 @@ const buildTweetObject = (tweet) => {
 };
 
 const fetchTweets = async () => {
-    let newestID = (await Meta.findOne({})).sinceID;
+    let newestID = (await Meta.findOne({})).sinceId;
     let max_id = newestID;
 
     await Promise.all(Object.keys(resourceTypes).map(async resource => { 
