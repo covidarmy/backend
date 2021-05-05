@@ -1,203 +1,81 @@
-require("dotenv").config();
 const Tweet = require("./models/Tweet.schema");
 const Meta = require("./models/Meta.schema");
 const fetch = require("node-fetch");
+const { parse, resourceTypes, categories } = require("./parser");
 
-/**
- * Fetches results from the twitter API given a query and a city
- * @param {String} city City to fetch tweets for
- * @param {String} searchTerm search query for the Twitter API
- * @return {Object} response Response from the Twitter API
- */
-const fetchSearchResults = async (city, searchTerm) => {
-    // Load sinceID from db
-    let newestID = null;
-    try {
-        const { sinceId } = await Meta.findOne({});
-        newestID = sinceId;
-    } catch (error) {
-        console.error("Error while retrieving since_id");
-    }
+const MAX_RESULTS = 100;
 
-    //Initilize MAX_RESULTS and baseUrl constants
-    const MAX_RESULTS = 20;
-    const baseUrl = newestID
-        ? `https://api.twitter.com/2/tweets/search/recent?since_id=${newestID}&query=`
-        : `https://api.twitter.com/2/tweets/search/recent?query=`;
-    const url =
-        baseUrl +
-        `verified ${city} ${searchTerm} -"any" -"requirement" -"requirements" -"requires" -"require" -"required" -"request" -"requests" -"requesting" -"needed" -"needs" -"need" -"seeking" -"seek" -"not verified" -"notverified" -"looking" -"unverified" -"urgent" -"urgently" -"urgently required" -"sending" -"send" -"help" -"dm" -"get" -"year" -"old" -"male" -"female" -"saturation" -is:reply -is:retweet -is:quote&max_results=${MAX_RESULTS}&tweet.fields=created_at,public_metrics&expansions=author_id`;
+const fetchSearchResults = async (newestID, resource) => {
 
-    console.log("Querying URL:", url);
+    const url = `https://api.twitter.com/1.1/search/tweets.json?${newestID ? `since_id=${newestID}&` : ""}q=(verified) (${resourceTypes[resource].join(" OR ")}) -"request" -"requests" -"requesting" -"needed" -"needs" -"need" -"seeking" -"seek" -"not verified" -"looking" -"unverified" -"urgent" -"urgently" -"urgently required" -"send" -"help" -"get" -"old" -"male" -"female" -"saturation" -is:retweet -is:quote&count=${MAX_RESULTS}&tweet_mode=extended&include_entities=false&expansions=author_id`;
 
-    //Request the Twitter API
     const response = await fetch(url, {
         method: "GET",
         headers: {
             Authorization: "Bearer " + process.env.BEARER_TOKEN,
         },
-    });
+    }).then(res => res.json());
 
-    //Retun the response
     return response;
 };
 
-/**
- * Build a 'Tweet' schema compliant object given a POJO
- * @param {Object} tweet POJO representing a tweet object
- * @param {String} city City name
- * @param {String/Array<String>} Resource name
- * @return {Object} 'Tweet' schema compliant object
- */
-const buildTweetObject = (tweet, city, resource) => {
-    let txt = tweet.text;
-    let reg=/(?!([0]?[1-9]|[1|2][0-9]|[3][0|1])[./-]([0]?[1-9]|[1][0-2])[./-]([0-9]{4}|[0-9]{2}))(\+?\d[\d -]{8,12}\d)/
-    //let reg = /\+?\d[\d -]{8,12}\d/;
-    let phones = [];
-    txt.split(" ").forEach((a) => {
-        reg.exec(a) != null ? phones.push(reg.exec(a)[0]) : "";
-    });
+const buildTweetObject = (tweet) => {
+    const data = parse(tweet.full_text || tweet.text);
+
     return {
-        id: tweet.id,
-        authorId: tweet.author_id,
-        url: `https:www.twitter.com/${tweet.author_id}/status/${tweet.id}`,
-        retweetCount: tweet.public_metrics.retweet_count,
-        text: tweet.text,
-        phone: phones,
-        replyCount: tweet.public_metrics.reply_count,
-        postedAt: tweet.created_at,
-        location: {
-            [city]: true,
-        },
-        resource: {
-            ...(Array.isArray(resource)
-                ? resource.reduce((acc, cur) => {
-                      acc[cur] = true;
-                      return acc;
-                  }, {})
-                : {
-                      [resource]: true,
-                  }),
-        },
-    };
+        category             : data.categories[0],
+        resource_type        : data.resource_types[0],
+        state                : (data.locations[0] && data.locations[0].state) || null,
+        district             : (data.locations[0] && data.locations[0].city) || null,
+        city                 : (data.locations[0] && data.locations[0].city) || null,
+        phone                : data.phone_numbers,
+        email                : data.emails,
+        verification_status  : data.verification_status,
+        last_verified_on     : data.verified_at,
+        created_by           : tweet.user.name,
+        created_on           : tweet.created_at,
+        tweet_object         : {
+            tweet_id             : tweet.id_str,
+            tweet_url            : `https://twitter.com/${tweet.user.screen_name}/status/${tweet.id_str}`,
+            author_id            : tweet.user.id_str,
+            text                 : tweet.full_text,
+            likes                : tweet.favorite_count,
+            retweets             : tweet.retweet_count,
+            author_followers     : tweet.user.followers_count
+        }
+    }
 };
 
-/**
- *
- * @returns {Promise<void>}
- */
 const fetchTweets = async () => {
-    let totalCalls = 0;
+    let newestID = (await Meta.findOne({})).sinceId;
+    let max_id = newestID;
 
-    //Init Since ID in the DB if it doesnt already exist
-    try {
-        const doc = await Meta.findOne({});
-        if (!doc) {
-            console.log("Doc not found, Initializing...");
+    await Promise.all(Object.keys(resourceTypes).map(async resource => { 
+	const apiRes = await fetchSearchResults(newestID, resource);
+        const tweets = apiRes.statuses.map(tweet => buildTweetObject(tweet));
 
-            await new Meta({ sinceId: null }).save();
-            console.log("Since ID Initlized");
-        }
-    } catch (error) {
-        console.error("Error while retrieving since_id");
-    }
+        if(apiRes.search_metadata.max_id > max_id){
+            max_id = apiRes.search_metadata.max_id;
+	}
+        let promises = [];
 
-    //Ref URL:
-    //https://api.twitter.com/2/tweets/search/recent?query=verified mumbai (bed OR beds OR icu OR oxygen OR ventilator OR ventilators OR fabiflu OR remdesivir OR favipiravir OR tocilizumab OR plasma OR tiffin) -"not verified" -"unverified" -"needed" -"required" -"urgent" -"urgentlyrequired" -"help"&max_results=10&tweet.fields=created_at
-
-    const cities = require("./data/cities.json");
-    const resources = require("./data/resources.json");
-
-    for (const city in cities) {
-        const toSave = [];
-        let searchTerm = [];
-
-        for (let resourceKey in resources) {
-            let _searchTerm = resources[resourceKey];
-            if (_searchTerm.includes("(")) {
-                _searchTerm = _searchTerm.replace(/[()]/g, "");
-                if (_searchTerm.includes(" OR ")) {
-                    _searchTerm = resourceKey.split("OR").map((i) => i.trim());
-                }
+        for(let tweet of tweets){
+            if(!tweet.resource_type){ 
+                tweet.resource_type = resource;
+                tweet.category = categories[resource][0] || null;
             }
-            if (Array.isArray(_searchTerm)) {
-                _searchTerm.forEach((i) => {
-                    searchTerm.push(i);
-                });
-            } else {
-                searchTerm.push(_searchTerm);
+            // console.log(tweet);
+	    promises.push(Tweet.findOneAndUpdate(tweet.phone.length ? { phone: tweet.phone } : { tweet_object: { text: tweet.tweet_object.text } }, tweet, { upsert: true }));
+
+            if(promises.length == 20){
+                await Promise.all(promises);
+                promises = [];
             }
         }
+        await Promise.all(promises);
+    }));
 
-        totalCalls++;
-        console.log(`Fetching tweets for ${city}\nTotal calls: ${totalCalls}`);
-        const validSearchTerm = `(${searchTerm
-            .map((i) => i.toLowerCase())
-            .join(" OR ")})`;
-        const response = await fetchSearchResults(city, validSearchTerm);
-        const json = await response.json();
-
-        let foundTweets = 0;
-
-        try {
-            if (json.data) {
-                console.log(`Found ${json.data.length} Tweets`);
-                for (const tweet of json.data) {
-                    const retweetCount = tweet.public_metrics.retweet_count;
-                    if (retweetCount >= 0) {
-                        const tweetResources = [];
-                        for (const key of searchTerm) {
-                            tweet.text = tweet.text
-                                .replace(/#(S)/g, " ")
-                                .toLowerCase()
-                                .trim();
-                            if (tweet.text.includes(key.trim().toLowerCase())) {
-                                tweetResources.push(key.toLowerCase());
-                            }
-                        }
-                        const toSaveObject = buildTweetObject(
-                            tweet,
-                            city,
-                            tweetResources
-                        );
-                        if (toSaveObject) {
-                            if (Object.keys(toSaveObject.resource).length > 0) {
-                                toSave.push(toSaveObject);
-                                foundTweets++;
-                            }
-                        }
-                    }
-                }
-            }
-            //Update sinceId in the db
-            await Meta.updateOne({}, { sinceId: json.meta.newest_id });
-            console.log("Since ID updated!");
-        } catch (error) {
-            console.log(`\n===Error!===\n${error}\n`);
-            console.log("Response:", response);
-        }
-        try {
-            let newTweets = 0;
-            for (const tweet of toSave) {
-                await Tweet.findOneAndUpdate({ phone: tweet.phone }, tweet, {
-                    upsert: true,
-                });
-
-                await Tweet.findOneAndUpdate({ text: tweet.text }, tweet, {
-                    upsert: true,
-                });
-
-                newTweets++;
-            }
-            console.log(`Saved ${newTweets} Documents`);
-        } catch {
-            console.log("Error Saving the Documents");
-        }
-    }
-
-    await mongoose.disconnect();
-
-    return;
+    await Meta.updateOne({}, { sinceId: max_id });
 };
-
+ 
 module.exports = { fetchTweets };

@@ -61,7 +61,7 @@ const Tweet = require("../models/Tweet.schema");
 //   }
 // };
 
-//Retrive all Tweets
+// //Retrive all Tweets
 exports.findAll = async (req, res) => {
     try {
         let { limit = 20, offset = 0, contact_number } = req.query;
@@ -73,31 +73,24 @@ exports.findAll = async (req, res) => {
         location =
             location[0].toUpperCase() +
             location.substring(1, location.length).toLowerCase();
-        resource = resource.toLowerCase();
+        resource = resource.split(" ").map(a => a[0].toUpperCase() + a.substring(1, a.length).toLowerCase()).join(" ");
 
-        const query = {};
+        const query = { city: location, resource_type: resource };
 
-        if (location) {
-            query.location = { [location]: true };
-        }
-        if (resource) {
-            query.resource = { [resource]: true };
-        }
-
-        if (contact_number) {
+        if(contact_number){
             // make sure that we don't give the same result on subsequent calls to the API by the same contact number
             return res.send(
                 await Tweet.findOne(query, null, {
-                    skip: Date.now() % (await Tweet.find(query).count()),
-                    sort: { postedAt: -1 },
+                    skip: Date.now() % await Tweet.find(query).count(),
+                    sort: { created_on: -1 }
                 }).exec()
             );
-        }
+	}
         res.send(
             await Tweet.find(query, null, {
                 limit: limit,
                 skip: offset,
-                sort: { postedAt: -1 },
+                sort: { created_on: -1 },
             }).exec()
         );
     } catch (error) {
