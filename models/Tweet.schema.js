@@ -1,21 +1,29 @@
 const mongoose = require("mongoose");
 
 const schema = new mongoose.Schema(
-  {
-    id: String,
-    show: { type: Boolean, default: true },
-    url: String,
-    text: String,
-    phone: [String],
-    postedAt: String,
-    authorId: String,
-    retweetCount: { type: Number, default: 0 },
-    replyCount: { type: Number, default: 0 },
-    status: { type: Number, default: 0 },
-    location: mongoose.Schema.Types.Mixed,
-    resource: mongoose.Schema.Types.Mixed,
-  },
-  { timestamps: true }
+	{
+		category: String,
+		resource_type: String,
+		state: String,
+		district: String,
+		city: String,
+		phone: [String],
+		email: [String],
+		verification_status: String,
+		last_verified_on: String,
+		created_by: String,
+		created_on: String,
+		tweet_object: {
+			tweet_id: Number,
+			tweet_url: String,
+			author_id: Number,
+			text: String,
+			likes: Number,
+			retweets: Number,
+			author_followers: Number
+		}
+	},
+	{ timestamps: true }
 );
 
 module.exports = mongoose.models.Tweet ?? mongoose.model("Tweet", schema);
