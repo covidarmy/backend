@@ -7,7 +7,7 @@ const MAX_RESULTS = 100;
 
 const fetchSearchResults = async (newestID, resource) => {
 
-    const url = `https://api.twitter.com/1.1/search/tweets.json?${newestID ? `since_id=${newestID}&` : ""}q=(verified) (${resourceTypes[resource].join(" OR ")}) -"request" -"requests" -"requesting" -"needed" -"needs" -"need" -"seeking" -"seek" -"not verified" -"looking" -"unverified" -"urgent" -"urgently" -"urgently required" -"send" -"help" -"get" -"old" -"male" -"female" -"saturation" -is:retweet -is:quote&count=${MAX_RESULTS}&tweet_mode=extended&include_entities=false&expansions=author_id`; // need to refine this
+    const url = `https://api.twitter.com/1.1/search/tweets.json?${newestID ? `since_id=${newestID}&` : ""}q=(verified) (${resourceTypes[resource].join(" OR ")}) -"request" -"requests" -"requesting" -"needed" -"needs" -"need" -"seeking" -"seek" -"not verified" -"looking" -"unverified" -"urgent" -"urgently" -"urgently required" -"send" -"help" -"get" -"old" -"male" -"female" -"saturation" -is:retweet -is:quote&count=${MAX_RESULTS}&tweet_mode=extended&include_entities=false&expansions=author_id`;
 
     const response = await fetch(url, {
         method: "GET",
@@ -35,9 +35,9 @@ const buildTweetObject = (tweet) => {
         created_by           : tweet.user.name,
         created_on           : tweet.created_at,
         tweet_object         : {
-            tweet_id             : tweet.id,
-            tweet_url            : `https://twitter.com/${tweet.user.screen_name}/status/${tweet.id}`,
-            author_id            : tweet.user.id,
+            tweet_id             : tweet.id_str,
+            tweet_url            : `https://twitter.com/${tweet.user.screen_name}/status/${tweet.id_str}`,
+            author_id            : tweet.user.id_str,
             text                 : tweet.full_text,
             likes                : tweet.favorite_count,
             retweets             : tweet.retweet_count,
@@ -64,7 +64,7 @@ const fetchTweets = async () => {
                 tweet.resource_type = resource;
                 tweet.category = categories[resource][0] || null;
             }
-
+            // console.log(tweet);
 	    promises.push(Tweet.findOneAndUpdate(tweet.phone.length ? { phone: tweet.phone } : { tweet_object: { text: tweet.tweet_object.text } }, tweet, { upsert: true }));
 
             if(promises.length == 20){

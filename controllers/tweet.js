@@ -82,7 +82,7 @@ exports.findAll = async (req, res) => {
             return res.send(
                 await Tweet.findOne(query, null, {
                     skip: Date.now() % await Tweet.find(query).count(),
-                    sort: { postedAt: -1 }
+                    sort: { created_on: -1 }
                 }).exec()
             );
 	}
@@ -90,7 +90,7 @@ exports.findAll = async (req, res) => {
             await Tweet.find(query, null, {
                 limit: limit,
                 skip: offset,
-                sort: { postedAt: -1 },
+                sort: { created_on: -1 },
             }).exec()
         );
     } catch (error) {
