@@ -29,10 +29,23 @@ router.get("/", async (req, res) => {
  * @swagger
  * /api/tweets:
  *  get:
- *    description: Retrive a list of 20 tweets irrespective of resource or location
+ *    description: Retrive a list of 'limit' number of recent tweets, for all locations and resources
+ *    parameters:
+ *         - in: query
+ *           name: limit
+ *           type: integer
+ *           description: max number of tweets to return
+ *         - in: query
+ *           name: offset
+ *           type: integer
+ *           description: number of tweets to offset the results by
+ *         - in: query
+ *           name: contact_number
+ *           type: string
+ *           description: contact number of the user
  *    responses:
  *      '200':
- *        description: List of 20 tweets
+ *        description: A list of n number of resource objects
  */
 
 router.get("/tweets", tweetController.findAll);
@@ -48,9 +61,21 @@ router.get("/tweets", tweetController.findAll);
  *               name: location
  *               type: string
  *               description: The name of the city to query.
+ *             - in: query
+ *              name: limit
+ *              type: integer
+ *              description: max number of tweets to return
+ *             - in: query
+ *               name: offset
+ *              type: integer
+ *              description: number of tweets to offset the results by
+ *             - in: query
+ *              name: contact_number
+ *              type: string
+ *              description: contact number of the user
  *     responses:
  *       200:
- *         description: A list of 20 tweets.
+ *         description: A list of n number of resource objects.
  *
  */
 router.get("/tweets/:location", tweetController.findAll);
@@ -70,30 +95,59 @@ router.get("/tweets/:location", tweetController.findAll);
  *               name: resource
  *               type: string
  *               description: The name of the resource to query.
+ *             - in: query
+ *              name: limit
+ *              type: integer
+ *              description: max number of tweets to return
+ *             - in: query
+ *              name: offset
+ *              type: integer
+ *              description: number of tweets to offset the results by
+ *             - in: query
+ *               name: contact_number
+ *               type: string
+ *               description: contact number of the user
  *     responses:
  *       200:
- *         description: A list of 20 tweets.
+ *         description: A list of n number of resource objects
  *
  */
 router.get("/tweets/:location/:resource", tweetController.findAll);
 
 /**
  * @swagger
- * /api/tweets/{tweetID}/votes:
+ * /api/tweets/{docID}/votes:
  *   put:
  *     summary: Add a vote to a tweet.
  *     description: Add a vote to a tweet based on tweet ID.
  *     parameters:
  *             - in: path
- *               name: tweetID
+ *               name: docID
  *               type: string
- *               description: ID of the tweet to vote.
+ *               description: ID of the document to add a vote to.
  *             - in: query
  *               name: vote
- *               type: String
+ *               type: string
  *               description: A number ranging from 1-5 corresponding with a vote string
+ *     responses:
+ *       200:
+ *         description: A generic response object.
+ *         schema:
+ *           type: object
+ *           properties:
+ *             ok:
+ *               type: boolean
+ *       500:
+ *         description: An error object.
+ *         schema:
+ *           type: object
+ *           properties:
+ *             error:
+ *               type: string
+ *
+ *
  *
  */
-router.put("/tweets/:tweetID/votes", tweetController.updateVote);
+router.put("/tweets/:docID/votes", tweetController.updateVote);
 
 module.exports = router;

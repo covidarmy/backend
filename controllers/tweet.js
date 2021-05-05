@@ -84,15 +84,15 @@ exports.findAll = async (req, res) => {
             query.resource = { [resource]: true };
         }
 
-        if(contact_number){
+        if (contact_number) {
             // make sure that we don't give the same result on subsequent calls to the API by the same contact number
             return res.send(
                 await Tweet.findOne(query, null, {
-                    skip: Date.now() % await Tweet.find(query).count(),
-                    sort: { postedAt: -1 }
+                    skip: Date.now() % (await Tweet.find(query).count()),
+                    sort: { postedAt: -1 },
                 }).exec()
             );
-	}
+        }
         res.send(
             await Tweet.find(query, null, {
                 limit: limit,
@@ -115,13 +115,13 @@ const Votes = Object.freeze({
 
 exports.updateVote = async (req, res) => {
     try {
-        const { tweetID } = req.params;
+        const { docID } = req.params;
         const { vote } = req.query;
 
         if (Object.values(Votes).indexOf(vote) == -1) {
             return res.status(400).send({ error: "Invalid vote" });
         }
-        const tweet = await Tweet.findOne({ id: tweetID }).exec();
+        const tweet = await Tweet.findOne({ _id: docID }).exec();
 
         if (!tweet) {
             return res.status(400).send({ error: "Invalid tweet id" });
@@ -133,7 +133,7 @@ exports.updateVote = async (req, res) => {
             tweet.votes.shift();
         }
         tweet.votes.push(vote);
-        await Tweet.findOneAndUpdate({ id: tweetID }, tweet);
+        await Tweet.findOneAndUpdate({ _id: docID }, tweet);
 
         res.send({ ok: true });
     } catch (error) {
