@@ -12,7 +12,7 @@ const schema = new mongoose.Schema(
 		verification_status: String,
 		last_verified_on: String,
 		created_by: String,
-		created_on: String,
+		created_on: Number,
 		tweet_object: {
 			tweet_id: String,
 			tweet_url: String,

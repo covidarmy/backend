@@ -33,7 +33,7 @@ const buildTweetObject = (tweet) => {
         verification_status  : data.verification_status,
         last_verified_on     : data.verified_at,
         created_by           : tweet.user.name,
-        created_on           : tweet.created_at,
+        created_on           : new Date(tweet.created_at).getTime(),
         tweet_object         : {
             tweet_id             : tweet.id_str,
             tweet_url            : `https://twitter.com/${tweet.user.screen_name}/status/${tweet.id_str}`,
@@ -47,13 +47,14 @@ const buildTweetObject = (tweet) => {
 };
 
 const fetchTweets = async () => {
-    let newestID = (await Meta.findOne({})).sinceId;
+    let newestID = Number((await Meta.findOne({})).sinceId);
     let max_id = newestID;
 
     await Promise.all(Object.keys(resourceTypes).map(async resource => { 
 	const apiRes = await fetchSearchResults(newestID, resource);
         const tweets = apiRes.statuses.map(tweet => buildTweetObject(tweet));
-
+ 
+        // console.log(tweets);
         if(apiRes.search_metadata.max_id > max_id){
             max_id = apiRes.search_metadata.max_id;
 	}
@@ -65,17 +66,23 @@ const fetchTweets = async () => {
                 tweet.category = categories[resource][0] || null;
             }
             // console.log(tweet);
-	    promises.push(Tweet.findOneAndUpdate(tweet.phone.length ? { phone: tweet.phone } : { tweet_object: { text: tweet.tweet_object.text } }, tweet, { upsert: true }));
+	    promises.push(Tweet.findOneAndUpdate({ 
+                $or: [
+                    { phone: tweet.phone }, 
+                    { tweet_object: { text: tweet.tweet_object.text } }, 
+                    { tweet_object: { tweet_id: tweet.tweet_object.tweet_id } }
+                ] 
+            }, tweet, { upsert: true }));
 
             if(promises.length == 20){
-                await Promise.all(promises);
+                console.log(await Promise.all(promises));
                 promises = [];
             }
         }
         await Promise.all(promises);
     }));
 
-    await Meta.updateOne({}, { sinceId: max_id });
+    await Meta.updateOne({}, { sinceId: String(max_id) });
 };
  
 module.exports = { fetchTweets };
