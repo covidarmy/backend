@@ -77,4 +77,19 @@ router.get("/tweets/:location", tweetController.findAll);
  */
 router.get("/tweets/:location/:resource", tweetController.findAll);
 
+/**
+ * @swagger
+ * /api/tweets/{location}/{resource}:
+ *   put:
+ *     summary: Add a vote to a tweet.
+ *     description: Add a vote to a tweet based on tweet ID.
+ *     parameters:
+ *             - in: path
+ *               name: tweetID
+ *               type: string
+ *               description: ID of the tweet to vote.
+ *
+ */
+router.put("/tweets/:tweetID/votes", tweetController.updateVote);
+
 module.exports = router;
