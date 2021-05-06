@@ -73,8 +73,8 @@ app.use("/", async (req, res) => {
 });
 
 fetchTweets();
-//Schedule task to run every 5 minutes.
-cron.schedule("*/5 * * * *", async () => {
+//Schedule task to run every 2 minutes.
+cron.schedule("*/2 * * * *", async () => {
     console.log("Fetching Tweets...");
     await fetchTweets();
     console.log("Done Fetching Tweets!");
