@@ -70,12 +70,10 @@ exports.findAll = async (req, res) => {
         limit = Number(limit);
         offset = Number(offset);
 
-        location =
-            location[0].toUpperCase() +
-            location.substring(1, location.length).toLowerCase();
+        location = location.split(" ").map(a => a[0].toUpperCase() + a.substring(1, a.length).toLowerCase()).join(" ")
         resource = resource.split(" ").map(a => a[0].toUpperCase() + a.substring(1, a.length).toLowerCase()).join(" ");
 
-        const query = { city: location, resource_type: resource };
+        const query = { $or: [{ city: location }, {state: location }], resource_type: resource };
 
         if(contact_number){
             // make sure that we don't give the same result on subsequent calls to the API by the same contact number
