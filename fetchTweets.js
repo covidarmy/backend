@@ -25,7 +25,7 @@ const resourceQueries = {
 const fetchSearchResults = async (newestID, resource) => {
 
     const url = `https://api.twitter.com/1.1/search/tweets.json?${newestID ? `since_id=${newestID}&` : ""}q=verified ${resourceQueries[resource]} -"request" -"requests" -"requesting" -"needed" -"needs" -"need" -"seeking" -"seek" -"not verified" -"looking" -"unverified" -"urgent" -"urgently" -"urgently required" -"send" -"help" -"get" -"old" -"male" -"female" -"saturation" -filter:retweets -filter:quote&count=${MAX_RESULTS}&tweet_mode=extended&include_entities=false`;
-    console.log(url);
+
     const response = await fetch(url, {
         method: "GET",
         headers: {
@@ -69,8 +69,18 @@ const fetchTweets = async () => {
 
     await Promise.all(Object.keys(resourceTypes).map(async resource => { 
         const apiRes = await fetchSearchResults(newestID, resource);
-        console.log(apiRes.statuses);	
-        const tweets = apiRes.statuses.map(tweet => buildTweetObject(tweet));
+        //console.log(apiRes.statuses);
+        const tweets = apiRes.statuses
+            .filter(status => {
+                let v = status.user.followers_count > 30 && (Date.now() - new Date(status.user.created_at).getTime() > 1000*60*60*24*60);
+
+                if(!v){
+                    console.log("Tweet discarded:");
+                    console.log(status);
+                }
+                return v;
+            })
+            .map(tweet => buildTweetObject(tweet));
  
         // console.log(tweets);
         if(apiRes.search_metadata.max_id > max_id){
