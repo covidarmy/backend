@@ -72,7 +72,7 @@ const fetchTweets = async () => {
         //console.log(apiRes.statuses);
         const tweets = apiRes.statuses
             .filter(status => {
-                let v = status.user.followers_count > 30 && (Date.now() - new Date(status.user.created_at).getTime() > 1000*60*60*24*60);
+                let v = (status.user.followers_count > 30 && Date.now() - new Date(status.user.created_at).getTime() > 1000*60*60*24*60) || status.user.followers_count > 200;
 
                 if(!v){
                     console.log("Tweet discarded:");
