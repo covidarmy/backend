@@ -70,20 +70,35 @@ exports.findAll = async (req, res) => {
         limit = Number(limit);
         offset = Number(offset);
 
-        location = location.split(" ").map(a => a[0].toUpperCase() + a.substring(1, a.length).toLowerCase()).join(" ")
-        resource = resource.split(" ").map(a => a[0].toUpperCase() + a.substring(1, a.length).toLowerCase()).join(" ");
+        location = location
+            .split(" ")
+            .map(
+                (a) =>
+                    a[0].toUpperCase() + a.substring(1, a.length).toLowerCase()
+            )
+            .join(" ");
+        resource = resource
+            .split(" ")
+            .map(
+                (a) =>
+                    a[0].toUpperCase() + a.substring(1, a.length).toLowerCase()
+            )
+            .join(" ");
 
-        const query = { $or: [{ city: location }, {state: location }], resource_type: resource };
+        const query = {
+            $or: [{ city: location }, { state: location }],
+            resource_type: resource,
+        };
 
-        if(contact_number){
+        if (contact_number) {
             // make sure that we don't give the same result on subsequent calls to the API by the same contact number
             return res.send(
                 await Tweet.findOne(query, null, {
-                    skip: Date.now() % await Tweet.find(query).count(),
-                    sort: { created_on: -1 }
+                    skip: Date.now() % (await Tweet.find(query).count()),
+                    sort: { created_on: -1 },
                 }).exec()
             );
-	}
+        }
         res.send(
             await Tweet.find(query, null, {
                 limit: limit,
