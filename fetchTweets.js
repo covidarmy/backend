@@ -24,7 +24,7 @@ const resourceQueries = {
 
 const fetchSearchResults = async (newestID, resource) => {
 
-    const url = `https://api.twitter.com/1.1/search/tweets.json?${newestID ? `since_id=${newestID}&` : ""}q=verified ${resourceQueries[resource]} -"request" -"requests" -"requesting" -"needed" -"needs" -"need" -"seeking" -"seek" -"not verified" -"looking" -"unverified" -"urgent" -"urgently" -"urgently required" -"send" -"help" -"get" -"old" -"male" -"female" -"saturation" -filter:retweets&count=${MAX_RESULTS}&tweet_mode=extended&include_entities=false`;
+    const url = `https://api.twitter.com/1.1/search/tweets.json?${newestID ? `since_id=${newestID}&` : ""}q=verified ${resourceQueries[resource]} -"request" -"requests" -"requesting" -"needed" -"needs" -"need" -"seeking" -"seek" -"not verified" -"looking" -"unverified" -"urgent" -"urgently" -"urgently required" -"send" -"help" -"get" -"old" -"male" -"female" -"saturation" -filter:retweets -filter:quote&count=${MAX_RESULTS}&tweet_mode=extended&include_entities=false`;
     console.log(url);
     const response = await fetch(url, {
         method: "GET",
