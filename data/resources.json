@@ -1,16 +1,17 @@
 {
-    "Icu"                 : ["icu"],
-    "Ventilator"          : ["ventilator"],
-    "Oxygen Bed"          : ["oxygenbed"],
-    "Bed"                 : ["bed", "beds"],
-    "Remdesivir"          : ["remdesivir", "remdes", "remdesvir"],
-    "Favipiravir"         : ["favipiravir", "cipvir", "favipill", "favilow", "avigan", "araflu", "fevindo", "fluguard", "faviblu", "fapvir", "fabiflu", "faviflu"],
-    "Tocilizumab"         : ["tocilizumab", "tocilizuman", "itolizumab", "tocili", "toclizumab"],
-    "Plasma"              : ["plasma", "plasm"],
-    "Food"                : ["food", "meal", "meals", "tiffin"],
-    "Ambulance"           : ["ambulance", "ambulances"],
-    "Oxygen Concentrator" : ["concentrator", "concentrators", "bipap"],
-    "Oxygen Cylinder"     : ["cylinder", "oxygen"],
-    "Covid Test"          : ["rtpcr", "rt-pcr", "test"],
-    "Helpline"            : ["helpline", "war room", "war-room", "warroom"]
+	"Icu" : ["icu"],
+	"Ventilator" : ["ventilator"],
+	"Oxygen Bed" : ["oxygenbed"],
+	"Bed" : ["bed"],
+	"Remdesivir" : ["remdesivir" , "remdesvir"],
+	"Favipiravir" : ["favipiravir" , "fabiFlu"],
+	"Tocilizumab": ["tocilizumab" , "toclizumab"],
+	"Plasma": ["plasma"],
+	"Food": ["food", "meal", "tiffin"],
+	"Ambulance" : ["ambulance"],
+	"Oxygen Cylinder" : ["cylinder" , "oxygen" , "o2"],
+	"Oxygen Concentrator" : ["concentrator"],
+	"Covid Test" : ["covidtest"],
+	"Helpline" : ["helpline" , "warroom"]
 }
+
