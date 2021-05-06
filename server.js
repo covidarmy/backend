@@ -41,7 +41,6 @@ const swaggerOptions = {
 
 //setup Swagger for auto documentation
 const swaggerDocs = swaggerJsDoc(swaggerOptions);
-app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
 //Import Routes
 const apiRoutes = require("./routes/apiRoutes");
@@ -66,15 +65,11 @@ app.use((req, res, next) => {
 //Express Routes
 app.use("/api", apiRoutes);
 app.use("/api", meta);
-
-// Routes
-app.use("/", async (req, res) => {
-    res.send("Hello World!");
-});
+app.use("/", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
 fetchTweets();
-//Schedule task to run every 5 minutes.
-cron.schedule("*/5 * * * *", async () => {
+//Schedule task to run every minute.
+cron.schedule("*/1 * * * *", async () => {
     console.log("Fetching Tweets...");
     await fetchTweets();
     console.log("Done Fetching Tweets!");
