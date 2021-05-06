@@ -68,8 +68,8 @@ app.use("/api", meta);
 app.use("/", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
 fetchTweets();
-//Schedule task to run every 5 minutes.
-cron.schedule("*/5 * * * *", async () => {
+//Schedule task to run every minute.
+cron.schedule("*/1 * * * *", async () => {
     console.log("Fetching Tweets...");
     await fetchTweets();
     console.log("Done Fetching Tweets!");
