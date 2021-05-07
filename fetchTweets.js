@@ -44,7 +44,7 @@ const buildTweetObject = (tweet) => {
     state: (data.locations[0] && data.locations[0].state) || null,
     district: (data.locations[0] && data.locations[0].city) || null,
     city: (data.locations[0] && data.locations[0].city) || null,
-    phone: data.phone_numbers,
+    phone: data.phone_numbers[0] || null,
     email: data.emails,
     verification_status: data.verification_status,
     last_verified_on: data.verified_at,
@@ -81,38 +81,34 @@ const fetchTweets = async () => {
       })
       .map(tweet => buildTweetObject(tweet));
 
-      // console.log(tweets);
-      if (apiRes.search_metadata.max_id > max_id) {
-        max_id = apiRes.search_metadata.max_id;
+    // console.log(tweets);
+    if (apiRes.search_metadata.max_id > max_id) {
+      max_id = apiRes.search_metadata.max_id;
+    }
+    //let promises = [];
+
+    for (let tweet of tweets) {
+      if (!tweet.resource_type) {
+        tweet.resource_type = resource;
+        tweet.category = categories[resource][0] || null;
       }
-      //let promises = [];
+      // console.log(tweet);
+      const query = {
+        $or : [
+          { "tweet_object.text": tweet.tweet_object.text },
+          { phone: tweet.phone },
+        ],
+      };
 
-      for (let tweet of tweets) {
-        if (!tweet.resource_type) {
-          tweet.resource_type = resource;
-          tweet.category = categories[resource][0] || null;
-        }
-        // console.log(tweet);
-        let query = !(tweet.phone.length > 0)
-          ? { "tweet_object.text": tweet.tweet_object.text }
-          : {
-              $or: [
-                { "tweet_object.text": tweet.tweet_object.text },
-                { phone: { $all: tweet.phone } },
-              ],
-            };
-
-
-        var resp = await Tweet.findOneAndUpdate(query, tweet, { upsert: true });
+      const resp = await Tweet.findOneAndUpdate(query, tweet, { upsert: true });
         
         //     if(promises.length == 20){
         //         console.log(await Promise.all(promises));
         //         promises = [];
         //     }
-      }
-      //await Promise.all(promises);
-    })
-  );
+    }
+    //await Promise.all(promises);
+  }));
 
   await Meta.updateOne({}, { sinceId: String(max_id) });
 };
