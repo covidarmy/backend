@@ -64,10 +64,58 @@ const resources = require("../data/resources.json");
 //   }
 // };
 
+exports.cBotFindOne = async (req, res) => {
+    try {
+        let { contactNumber } = req.query;
+        let { location, resource } = req.params;
+
+        if (!contactNumber) {
+            res.status(400).send({ error: "contactNumber required" });
+        }
+
+        for (let state in cities) {
+            stateCities = cities[state];
+            for (cityName in stateCities) {
+                keywords = stateCities[cityName];
+                if (keywords.includes(location)) {
+                    location = Object.keys(stateCities).find(
+                        (key) => stateCities[key] == keywords
+                    );
+                }
+            }
+        }
+
+        for (let res in resources) {
+            keywords = resources[res];
+            if (keywords.includes(resource)) {
+                resource = Object.keys(resources).find(
+                    (key) => resources[key] === keywords
+                );
+            }
+        }
+
+        const query = {
+            $or: [{ city: location }, { state: location }],
+            phone: { $exists: true, $ne: [] },
+            resource_type: resource,
+        };
+
+        return res.send(
+            await Tweet.findOne(query, null, {
+                limit: 1,
+                skip: Date.now() % (await Tweet.find(query).countDocuments()),
+                sort: { created_on: -1 },
+            }).exec()
+        );
+    } catch (error) {
+        res.status(500).send({ error: error.message });
+    }
+};
+
 // //Retrive all Tweets
 exports.findAll = async (req, res) => {
     try {
-        let { limit = 20, offset = 0, contact_number } = req.query;
+        let { limit = 20, offset = 0 } = req.query;
         let { location, resource } = req.params;
 
         limit = Number(limit);
@@ -99,15 +147,6 @@ exports.findAll = async (req, res) => {
             resource_type: resource,
         };
 
-        if (contact_number) {
-            // make sure that we don't give the same result on subsequent calls to the API by the same contact number
-            return res.send(
-                await Tweet.findOne(query, null, {
-                    skip: Date.now() % (await Tweet.find(query).count()),
-                    sort: { created_on: -1 },
-                }).exec()
-            );
-        }
         res.send(
             await Tweet.find(query, null, {
                 limit: limit,

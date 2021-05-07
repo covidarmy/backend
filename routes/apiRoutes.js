@@ -37,6 +37,32 @@ router.get("/", async (req, res) => {
 
 /**
  * @swagger
+ * /api/bot/tweets/{location}/{resource}:
+ *     get:
+ *         summary: Retrieve a single tweet based on location and resource type.
+ *         description: Retrieve a single tweet based on location and resource type.
+ *         parameters:
+ *             - in: path
+ *               name: location
+ *               type: string
+ *               description: The name of the city to query.
+ *             - in: path
+ *               name: resource
+ *               type: string
+ *               description: The name of the resource to query.
+ *             - in: query
+ *               name: contactNumber
+ *               type: string
+ *               description: contact number of the user
+ *         responses:
+ *             200:
+ *                 description: A single tweet object
+ *
+ */
+router.get("/bot/tweets/:location/:resource", tweetController.cBotFindOne);
+
+/**
+ * @swagger
  * /api/tweets:
  *     get:
  *         summary: Retrieve a list tweets.
@@ -50,10 +76,6 @@ router.get("/", async (req, res) => {
  *               name: offset
  *               type: integer
  *               description: number of tweets to offset the results by
- *             - in: query
- *               name: contact_number
- *               type: string
- *               description: contact number of the user
  *         responses:
  *             200:
  *                 description: A list of n number of resource objects
@@ -80,10 +102,6 @@ router.get("/tweets", tweetController.findAll);
  *           name: offset
  *           type: integer
  *           description: number of tweets to offset the results by
- *         - in: query
- *           name: contact_number
- *           type: string
- *           description: contact number of the user
  *         responses:
  *             200:
  *                 description: A list of n number of resource objects.
@@ -114,10 +132,6 @@ router.get("/tweets/:location", tweetController.findAll);
  *               name: offset
  *               type: integer
  *               description: number of tweets to offset the results by
- *             - in: query
- *               name: contact_number
- *               type: string
- *               description: contact number of the user
  *         responses:
  *             200:
  *                 description: A list of n number of resource objects
