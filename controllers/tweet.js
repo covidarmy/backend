@@ -81,15 +81,6 @@ exports.findAll = async (req, res) => {
                     location = Object.keys(stateCities).find(
                         (key) => stateCities[key] == keywords
                     );
-                } else {
-                    location = location
-                        .split(" ")
-                        .map(
-                            (a) =>
-                                a[0].toUpperCase() +
-                                a.substring(1, a.length).toLowerCase()
-                        )
-                        .join(" ");
                 }
             }
         }
@@ -100,17 +91,9 @@ exports.findAll = async (req, res) => {
                 resource = Object.keys(resources).find(
                     (key) => resources[key] === keywords
                 );
-            } else {
-                resource = resource
-                    .split(" ")
-                    .map(
-                        (a) =>
-                            a[0].toUpperCase() +
-                            a.substring(1, a.length).toLowerCase()
-                    )
-                    .join(" ");
             }
         }
+
         const query = {
             $or: [{ city: location }, { state: location }],
             resource_type: resource,

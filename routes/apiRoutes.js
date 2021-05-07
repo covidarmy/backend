@@ -1,6 +1,7 @@
 const express = require("express");
 const tweetController = require("../controllers/tweet");
 const router = express.Router();
+
 const cities = require("../data/newCities.json");
 const topCities = require("../data/cities.json");
 const resources = require("../data/resources.json");
