@@ -3,9 +3,9 @@
     "Surat": true,
     "Hyderabad": true,
     "Indore": true,
-    "Bihar": true,
+    "Gaya": true,
     "Dehradun": true,
-    "Haryana": true,
+    "Rohtak": true,
     "Gurgaon": true,
     "Kanpur": true,
     "Lucknow": true,
@@ -22,7 +22,7 @@
     "Nagpur": true,
     "Patna": true,
     "Bangalore": true,
-    "Jharkhand": true,
+    "Dhanbad": true,
     "Kolkata": true,
     "Nashik": true,
     "Bhopal": true,
@@ -33,6 +33,6 @@
     "Delhi": true,
     "Varanasi": true,
     "Agra": true,
-    "Andhra Pradesh": true,
+    "Kurnool": true,
     "Visakhapatnam": true
 }
