@@ -69,7 +69,7 @@ const fetchTweets = async () => {
 
     const tweets = apiRes.statuses
       .filter(status => {
-        // save tweet only if the followers count of the author is more than 30 and has 2 months old or the author has more than 200 followers
+        // save tweets only if the followers count of the author is more than 30 and the account is at least 2 months old or the author has more than 200 followers
         const followers = status.user.followers_count;
         const accountAge = Date.now() - new Date(status.created_at).getTime();
 
