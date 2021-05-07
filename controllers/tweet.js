@@ -66,7 +66,7 @@ const resources = require("../data/resources.json");
 
 exports.cBotFindOne = async (req, res) => {
     try {
-        let { contactNumber } = req.query;
+        let { contactNumber, offset = 0 } = req.query;
         let { location, resource } = req.params;
 
         if (!contactNumber) {
@@ -103,7 +103,7 @@ exports.cBotFindOne = async (req, res) => {
         return res.send(
             await Tweet.findOne(query, null, {
                 limit: 1,
-                skip: Date.now() % (await Tweet.find(query).countDocuments()),
+                skip: offset,
                 sort: { created_on: -1 },
             }).exec()
         );
