@@ -12,34 +12,34 @@ exports.findAll = async (req, res) => {
         limit = Number(limit);
         offset = Number(offset);
 
-		const query = {}
+        const query = {}
 
-		if(location){
-			for (let state in cities) {
-				const stateCities = cities[state];
+        if(location){
+            for (let state in cities) {
+                const stateCities = cities[state];
 
-				for (cityName in stateCities) {
-					const keywords = stateCities[cityName];
-					
-					if (keywords.includes(location)) {
-						location = Object.keys(stateCities).find((key) => stateCities[key] == keywords);
-						query.$or = [{ city: location }, { state: location }];
-					}
-				}
-			}
-		}
+                for (cityName in stateCities) {
+                    const keywords = stateCities[cityName];
 
-		if(resource) {
-			for (let res in resources) {
-				const keywords = resources[res];
+                    if (keywords.includes(location)) {
+                        location = Object.keys(stateCities).find((key) => stateCities[key] == keywords);
+                        query.$or = [{ city: location }, { state: location }];
+                    }
+                }
+            }
+        }
 
-				if (keywords.includes(resource)) {
-					query.resource_type = Object.keys(resources).find((key) => resources[key] === keywords);
-				}
-			}
-		}
+        if(resource) {
+            for (let res in resources) {
+                const keywords = resources[res];
 
-		// do something with session_id here
+                if (keywords.includes(resource)) {
+                    query.resource_type = Object.keys(resources).find((key) => resources[key] === keywords);
+                }
+            }
+        }
+
+        // do something with session_id here
 
         res.send(
             await Contact.find(query, null, {
@@ -71,7 +71,7 @@ exports.postFeedback = async (req, res) => {
         const contact = await Contact.findOne({ contact_no }).exec();
 
         if (!contact) {
-            return res.status(400).send({ error: "Invalid tweet id" });
+            return res.status(400).send({ error: "Invalid contact number" });
         }
         if (!contact.feedback) {
             contact.feedback = [];
