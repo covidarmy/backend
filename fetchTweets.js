@@ -50,13 +50,15 @@ const buildTweetObject = (tweet) => {
     last_verified_on: data.verified_at,
     created_by: tweet.user.name,
     created_on: new Date(tweet.created_at).getTime(),
-    tweet_id: tweet.id_str,
-    tweet_url: `https://twitter.com/${tweet.user.screen_name}/status/${tweet.id_str}`,
-    author_id: tweet.user.id_str,
-    text: tweet.full_text,
-    likes: tweet.favorite_count,
-    retweets: tweet.retweet_count,
-    author_followers: tweet.user.followers_count,
+    tweet_object: {
+      tweet_id: tweet.id_str,
+      tweet_url: `https://twitter.com/${tweet.user.screen_name}/status/${tweet.id_str}`,
+      author_id: tweet.user.id_str,
+      text: tweet.full_text,
+      likes: tweet.favorite_count,
+      retweets: tweet.retweet_count,
+      author_followers: tweet.user.followers_count,
+    },
   };
 };
 
@@ -64,25 +66,22 @@ const fetchTweets = async () => {
   let newestID = Number((await Meta.findOne({})).sinceId);
   let max_id = newestID;
 
-  await Promise.all(Object.keys(resourceTypes).map(async resource => {
+  await Promise.all(Object.keys(resourceTypes).map(async resource => { 
     const apiRes = await fetchSearchResults(newestID, resource);
-
+    //console.log(apiRes.statuses);
     const tweets = apiRes.statuses
       .filter(status => {
-        // save tweets only if the followers count of the author is more than 30 and the account is at least 2 months old or the author has more than 200 followers
-        const followers = status.user.followers_count;
-        const accountAge = Date.now() - new Date(status.created_at).getTime();
+        let v = (status.user.followers_count > 30 && Date.now() - new Date(status.user.created_at).getTime() > 1000*60*60*24*60) || status.user.followers_count > 200;
 
-        const isValid = (followers > 30 && accountAge > 1000*60*60*24*60) || followers > 200;
-
-        if(!isValid){
+        if(!v){
             console.log("Tweet discarded:");
             console.log(status);
         }
-        return isValid;
+        return v;
       })
       .map(tweet => buildTweetObject(tweet));
 
+      // console.log(tweets);
       if (apiRes.search_metadata.max_id > max_id) {
         max_id = apiRes.search_metadata.max_id;
       }
@@ -95,10 +94,10 @@ const fetchTweets = async () => {
         }
         // console.log(tweet);
         let query = !(tweet.phone.length > 0)
-          ? { text: tweet.text }
+          ? { "tweet_object.text": tweet.tweet_object.text }
           : {
               $or: [
-                { text: tweet.text },
+                { "tweet_object.text": tweet.tweet_object.text },
                 { phone: { $all: tweet.phone } },
               ],
             };
