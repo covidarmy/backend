@@ -1,11 +1,20 @@
 const express = require("express");
 const tweetController = require("../controllers/tweet");
 const router = express.Router();
-const cities = require("../data/cities.json");
+
+const cities = require("../data/newCities.json");
+const topCities = require("../data/cities.json");
 const resources = require("../data/resources.json");
 
 router.get("/cities", async (req, res) => {
-    return res.status(200).send(cities);
+    let resCities = [];
+
+    for (let state in cities) {
+        for (cityName in cities[state]) {
+            resCities.push({ name: cityName, top: cityName in topCities });
+        }
+    }
+    return res.status(200).send(resCities);
 });
 
 router.get("/resources", async (req, res) => {

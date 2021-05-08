@@ -1,5 +1,8 @@
 const Tweet = require("../models/Tweet.schema");
 
+const cities = require("../data/newCities.json");
+const resources = require("../data/resources.json");
+
 // var redis = require("redis");
 // var redis_client = redis.createClient();
 
@@ -70,20 +73,26 @@ exports.findAll = async (req, res) => {
         limit = Number(limit);
         offset = Number(offset);
 
-        location = location
-            .split(" ")
-            .map(
-                (a) =>
-                    a[0].toUpperCase() + a.substring(1, a.length).toLowerCase()
-            )
-            .join(" ");
-        resource = resource
-            .split(" ")
-            .map(
-                (a) =>
-                    a[0].toUpperCase() + a.substring(1, a.length).toLowerCase()
-            )
-            .join(" ");
+        for (let state in cities) {
+            stateCities = cities[state];
+            for (cityName in stateCities) {
+                keywords = stateCities[cityName];
+                if (keywords.includes(location)) {
+                    location = Object.keys(stateCities).find(
+                        (key) => stateCities[key] == keywords
+                    );
+                }
+            }
+        }
+
+        for (let res in resources) {
+            keywords = resources[res];
+            if (keywords.includes(resource)) {
+                resource = Object.keys(resources).find(
+                    (key) => resources[key] === keywords
+                );
+            }
+        }
 
         const query = {
             $or: [{ city: location }, { state: location }],

@@ -67,13 +67,15 @@ app.use("/api", apiRoutes);
 app.use("/api", meta);
 app.use("/", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
-fetchTweets();
-//Schedule task to run every minute.
-cron.schedule("*/1 * * * *", async () => {
-    console.log("Fetching Tweets...");
-    await fetchTweets();
-    console.log("Done Fetching Tweets!");
-});
+if (process.env.NODE_ENV === "production") {
+    fetchTweets();
+    //Schedule task to run every minute.
+    cron.schedule("*/1 * * * *", async () => {
+        console.log("Fetching Tweets...");
+        await fetchTweets();
+        console.log("Done Fetching Tweets!");
+    });
+}
 
 //TODO
 //Schedule task to run every n minutes.
