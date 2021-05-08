@@ -19,7 +19,7 @@ const router = express.Router();
  *         description: get a complete list of all available cities
  *         responses:
  *             '200':
- *                 description: An array of city objects containg the hindi and english name and a top boolean indicator
+ *                 description: An array of city objects containing the Hindi and English name and a top boolean indicator
  *                 schema:
  *                     type: object
  *                     properties:
