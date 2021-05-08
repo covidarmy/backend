@@ -5,8 +5,7 @@ const Meta = require("./models/Meta.schema");
 const fetch = require("node-fetch");
 const { parseTweet, parseContacts, resourceTypes, categories } = require("./parser");
 
-// const MAX_RESULTS = 100;
-const MAX_RESULTS = 5;
+const MAX_RESULTS = 100;
 
 const resourceQueries = {
     "Bed" : "(bed OR beds)",
@@ -109,8 +108,7 @@ const buildContactObjects = (tweet) => {
 };
 
 const fetchTweets = async () => {
-    // let newestID = Number((await Meta.findOne({})).sinceId);
-    let newestID = 0;
+    let newestID = Number((await Meta.findOne({})).sinceId);
     let max_id = newestID;
 
     const resources = Object.keys(resourceTypes);
@@ -137,8 +135,8 @@ const fetchTweets = async () => {
             if(isValid){
                 validTweets.push(status);
             } else {
-                // console.log("Tweet discarded:");
-                // console.log(status);
+                console.log("Tweet discarded:");
+                console.log(status);
             }
         }
 
@@ -159,9 +157,7 @@ const fetchTweets = async () => {
     
     const tweets = (await Promise.all(tweetsPromises)).flat();
 
-    console.log(tweets);
-
-    // await Meta.updateOne({}, { sinceId: String(max_id) });
+    await Meta.updateOne({}, { sinceId: String(max_id) });
     return tweets;
 };
 
@@ -180,7 +176,7 @@ const saveTweets = async (tweets) => {
         promises.push(Tweet.findOneAndUpdate(query, tweet, { upsert: true }));
 
         // Send requests to the database in batches of 20
-        // Directly using await instead of this will make this function 20 times slower
+        // Directly using await instead of this makes the function 20 times slower
 
         if(promises.length == 20){
             await Promise.all(promises);
@@ -214,7 +210,7 @@ const saveContacts = async (contacts) => {
         promises.push(Contact.findOneAndUpdate({ contact_no: contact.contact_no }, contact, { upsert: true }));
 
         // Send requests to the database in batches of 20
-        // Directly using await instead of this will make this function 20 times slower
+        // Directly using await instead of this makes the function 20 times slower
 
         if(promises.length == 20){
             console.log(await Promise.all(promises));
@@ -225,9 +221,7 @@ const saveContacts = async (contacts) => {
 }
 
 const fetchAndSaveTweets = async () => {
-    console.log("here");
     const tweets = await fetchTweets();
-    console.log("herere");
     const contacts = buildContacts(tweets);
 
     await Promise.all([saveTweets(tweets), saveContacts(contacts)]);
