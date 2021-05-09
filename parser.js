@@ -61,6 +61,8 @@ const findLocation = (text) => {
 const phoneRegex = /(?!([0]?[1-9]|[1|2][0-9]|[3][0|1])[./-]([0]?[1-9]|[1][0-2])[./-]([0-9]{4}|[0-9]{2}))(\+?\d[\d -]{8,12}\d)/g;
 const emailRegex = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/g;
 
+const parsePhoneNumbers = text => [...new Set((raw_text.match(phoneRegex) || []).concat(raw_text.replace(/\s+/g, "@").match(phoneRegex) || []))] || [];
+
 const parseTweet = (raw_text) => {
     const text = normalize(raw_text);
     const resourceTypes = findResourceType(text);
@@ -68,16 +70,16 @@ const parseTweet = (raw_text) => {
     return {
         categories: resourceTypes.map((r) => categories[r]).flat() || [],
         resource_types: resourceTypes || [],
-        phone_numbers: raw_text.match(phoneRegex) || [],
+        phone_numbers: parsePhoneNumbers(raw_text),
         emails: raw_text.match(emailRegex) || [],
         locations: findLocation(text) || null,
     };
 };
 
 const parseContacts = raw_text => {
-    const phones = raw_text.match(phoneRegex);
+    const phones = parsePhoneNumbers(raw_text);
 
-    if(!phones){
+    if(!phones || phones.length == 0){
         return [];
     }
     const contacts = [];
