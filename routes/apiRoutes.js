@@ -110,7 +110,7 @@ router.get("/tweets/:location/:resource", tweetController.findAll);
 /**
  * @swagger
  * /api/tweets/{docID}/votes:
- *     put:
+ *     post:
  *         summary: Add a vote to a tweet.
  *         description: Add a vote to a tweet based on tweet ID.
  *         parameters:
@@ -138,7 +138,7 @@ router.get("/tweets/:location/:resource", tweetController.findAll);
  *                     error:
  *                     type: string
  */
-router.put("/tweets/:docID/votes", tweetController.updateVote);
+router.post("/tweets/:docID/votes", tweetController.updateVote);
 
 /**
  * @swagger
@@ -233,7 +233,7 @@ router.get("/contacts/:location/:resource", contactController.findAll);
 /**
  * @swagger
  * /api/contacts/feedback:
- *     put:
+ *     post:
  *         summary: Submit feedback for a contact
  *         description: Submit feedback for a contact
  *         parameters:
