@@ -183,7 +183,7 @@ router.put("/tweets/:docID/votes", tweetController.updateVote);
  *                 description: A list of n number of resource objects.
  *
  */
- router.get("/contacts", contactController.findAll);
+router.get("/contacts", contactController.findAll);
 
 /**
  * @swagger
@@ -252,9 +252,9 @@ router.get("/contacts/:location/:resource", contactController.findAll);
 /**
  * @swagger
  * /api/contacts/feedback:
- *     post:
- *         summary: Post a feedback.
- *         description: Post a feedback on a contact number.
+ *     put:
+ *         summary: Submit feedback for a contact
+ *         description: Submit feedback for a contact
  *         parameters:
  *             - in: body
  *               name: contact_no
@@ -263,7 +263,29 @@ router.get("/contacts/:location/:resource", contactController.findAll);
  *             - in: body
  *               name: feedback_value
  *               type: string
- *               description: The feedback from the user
+ *               description: |
+ *                   A number ranging from 1-5 corresponding with a vote string:
+ *
+ *                   1 = Helpful
+ *                   2 = Busy
+ *                   3 = No Answer
+ *                   4 = Out Of Stock
+ *                   5 = Invalid
+ *         responses:
+ *             200:
+ *                 description: A generic response object.
+ *                 schema:
+ *                     type: object
+ *                     properties:
+ *                         ok:
+ *                         type: boolean
+ *             500:
+ *                 description: An error object.
+ *                 schema:
+ *                 type: object
+ *                 properties:
+ *                     error:
+ *                     type: string
  */
 router.post("/contacts/feedback", contactController.postFeedback);
 
