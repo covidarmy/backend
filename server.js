@@ -18,6 +18,7 @@ const DB_URL = process.env.MONGO_URI;
 mongoose
     .connect(DB_URL, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => {
+        fetchAndSaveTweets();
         console.log("✅ Databse Connected!");
     });
 
@@ -47,7 +48,7 @@ const apiRoutes = require("./routes/apiRoutes");
 const meta = require("./routes/meta");
 
 //Import the fetchTweets script
-const { fetchTweets } = require("./fetchTweets");
+const { fetchAndSaveTweets } = require("./fetchTweets");
 
 //Import the fetchTweets script
 const { deleteTweets } = require("./deleteTweets");
@@ -68,11 +69,10 @@ app.use("/api", meta);
 app.use("/", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
 if (process.env.NODE_ENV === "production") {
-    fetchTweets();
     //Schedule task to run every minute.
     cron.schedule("*/1 * * * *", async () => {
         console.log("Fetching Tweets...");
-        await fetchTweets();
+        await fetchAndSaveTweets();
         console.log("Done Fetching Tweets!");
     });
 }
