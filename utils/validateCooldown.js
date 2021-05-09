@@ -11,8 +11,8 @@ exports.validateCooldown = async (status, updatedAt) => {
             if (timeDiff >= 14_400_000) return false;
             return true;
         case "L_COOLDOWN":
-            //2 Days
-            if (timeDiff >= 172_800_000) return false;
+            //1 Day
+            if (timeDiff >= 86_400_000) return false;
             return true;
 
         default:
