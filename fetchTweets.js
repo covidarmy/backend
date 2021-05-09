@@ -62,20 +62,20 @@ const buildTweetObject = (tweet) => {
         created_by: tweet.user.name,
         created_on: new Date(tweet.created_at).getTime(),
 
-        tweet_id: tweet.id_str,
-        tweet_url: `https://twitter.com/${tweet.user.screen_name}/status/${tweet.id_str}`,
-        
-        text: tweet.full_text,
-        likes: tweet.favorite_count,
-        retweets: tweet.retweet_count,
-
-        author_id: tweet.user.id_str,
-        author_followers: tweet.user.followers_count,
+        tweet_object: {
+          tweet_id: tweet.id_str,
+          tweet_url: `https://twitter.com/${tweet.user.screen_name}/status/${tweet.id_str}`,
+          author_id: tweet.user.id_str,
+          text: tweet.full_text,
+          likes: tweet.favorite_count,
+          retweets: tweet.retweet_count,
+          author_followers: tweet.user.followers_count,
+        },
     };
 };
 
 const buildContactObjects = (tweet) => {
-    const data = parseContacts(tweet.text);
+    const data = parseContacts(tweet.tweet_object.text);
 
     return data.map(data => ({
         contact_no: data.phone,
@@ -94,7 +94,7 @@ const buildContactObjects = (tweet) => {
         quantity_available: null,
         price: null,
 
-        source_link: tweet.tweet_url,
+        source_link: tweet.tweet_object.tweet_url,
         created_by: tweet.created_by,
         created_on: new Date(tweet.created_on).getTime(),
 
@@ -168,9 +168,9 @@ const saveTweets = async (tweets) => {
         let query;
         
         if(tweet.phone.length > 0){
-            query = { $or: [{ text: tweet.text }, { phone: { $all: tweet.phone } }] };
+            query = { $or: [{ "tweet_object.text": tweet.tweet_object.text }, { phone: { $all: tweet.phone } }] };
         } else {
-            query = { text: tweet.text };
+            query = { "tweet_object.text": tweet.tweet_object.text };
         }
 
         promises.push(Tweet.findOneAndUpdate(query, tweet, { upsert: true }));

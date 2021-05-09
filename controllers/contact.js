@@ -12,7 +12,7 @@ exports.findAll = async (req, res) => {
         limit = Number(limit);
         offset = Number(offset);
 
-        const query = {}
+        const query = {};
 
         if(location){
             for (let state in cities) {
@@ -22,10 +22,13 @@ exports.findAll = async (req, res) => {
                     const keywords = stateCities[cityName];
 
                     if (keywords.includes(location)) {
-                        location = Object.keys(stateCities).find((key) => stateCities[key] == keywords);
-                        query.$or = [{ city: location }, { state: location }];
+                        query.$or = [{ city: cityName }, { state: cityName }];
                     }
                 }
+            }
+
+            if(!query.$or){
+                return res.status(400).send({ error: "Invalid location" });
             }
         }
 
@@ -34,8 +37,12 @@ exports.findAll = async (req, res) => {
                 const keywords = resources[res];
 
                 if (keywords.includes(resource)) {
-                    query.resource_type = Object.keys(resources).find((key) => resources[key] === keywords);
+                    query.resource_type = res;
                 }
+            }
+
+            if(!query.resource_type){
+                return res.status(400).send({ error: "Invalid resource" });
             }
         }
 
