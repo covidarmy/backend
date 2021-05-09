@@ -244,14 +244,15 @@ router.get("/contacts/:location/:resource", contactController.findAll);
  *             - in: body
  *               name: feedback_value
  *               type: string
+ *               enum: [HELPFUL, BUSY, NOANSWER, NOSTOCK, INVALID]
  *               description: |
- *                   A number ranging from 1-5 corresponding with a vote string:
+ *                   A vote string:
  *
- *                   1 = Helpful
- *                   2 = Busy
- *                   3 = No Answer
- *                   4 = Out Of Stock
- *                   5 = Invalid
+ *                   HELPFUL
+ *                   BUSY
+ *                   NOANSWER
+ *                   NOSTOCK
+ *                   INVALID
  *         responses:
  *             200:
  *                 description: A generic response object.
