@@ -2,20 +2,20 @@ const cities = require("./data/newCities.json");
 const resourceTypes = require("./data/resources.json");
 
 const categories = {
-    Bed: ["hospital"],
-    Icu: ["hospital"],
-    Ventilator: ["hospital"],
+    "Bed": ["hospital"],
+    "Home ICU": [],
+    "ICU Bed": ["hospital"],
     "Oxygen Bed": ["hospital"],
-    Remdesivir: ["medicine"],
-    Favipiravir: ["medicine"],
-    Tocilizumab: ["medicine"],
-    Plasma: [],
-    Food: [],
-    Ambulance: ["ambulance"],
+    "Remdesivir": ["medicine"],
+    "Favipiravir": ["medicine"],
+    "Tocilizumab": ["medicine"],
+    "Plasma": [],
+    "Food": [],
+    "Ambulance": ["ambulance"],
     "Oxygen Cylinder": ["oxygen", "medical device"],
     "Oxygen Concentrator": ["oxygen", "medical device"],
     "Covid Test": ["test"],
-    Helpline: ["helpline"],
+    "Helpline": ["helpline"],
 };
 
 const normalize = (text) => {
