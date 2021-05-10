@@ -1,6 +1,6 @@
 const Tweet = require("../models/Tweet.schema");
 
-const cities = require("../data/newCities.json");
+const cities = require("../data/allCities.json");
 const resources = require("../data/resources.json");
 
 // var redis = require("redis");

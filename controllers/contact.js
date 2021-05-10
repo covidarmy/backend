@@ -1,6 +1,6 @@
 const Contact = require("../models/Contact.schema");
 
-const cities = require("../data/newCities.json");
+const cities = require("../data/allCities.json");
 const resources = require("../data/resources.json");
 
 const { rank } = require("../ranking_system/rank");
