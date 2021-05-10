@@ -73,6 +73,7 @@ exports.findAll = async (req, res) => {
         limit = Number(limit);
         offset = Number(offset);
 
+        let foundLocation = false;
         for (let state in cities) {
             stateCities = cities[state];
             for (cityName in stateCities) {
@@ -81,17 +82,32 @@ exports.findAll = async (req, res) => {
                     location = Object.keys(stateCities).find(
                         (key) => stateCities[key] == keywords
                     );
+                    foundLocation = true;
                 }
             }
         }
 
+        if (!foundLocation) {
+            res.status(404).send({
+                error: `No tweets found for location: ${location}`,
+            });
+        }
+
+        let foundResource = false;
         for (let res in resources) {
             keywords = resources[res];
             if (keywords.includes(resource)) {
                 resource = Object.keys(resources).find(
                     (key) => resources[key] === keywords
                 );
+                foundResource = true;
             }
+        }
+
+        if (!foundResource) {
+            res.status(404).send({
+                error: `No tweets found for resource: ${resource}`,
+            });
         }
 
         const query = {
