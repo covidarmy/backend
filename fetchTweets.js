@@ -9,8 +9,8 @@ const MAX_RESULTS = 100;
 
 const resourceQueries = {
     "Bed" : "(bed OR beds)",
-    "Icu" : "icu",
-    "Ventilator" : "(ventilator OR ventilators)",
+    "Home ICU" : "(home icu OR home icus)",
+    "ICU Bed": "(icu OR ventilator OR ventilators)",
     "Oxygen Bed" : "(oxygen bed OR oxygen beds)",
     "Remdesivir" : "(remdesivir OR remdesvir)",
     "Favipiravir" : "(Favipiravir OR FabiFlu)",
