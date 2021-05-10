@@ -37,7 +37,7 @@ const swaggerOptions = {
         },
     },
     // ['.routes/*.js']
-    apis: ["routes/apiRoutes.js"],
+    apis: ["routes/apiRoutes.js", "routes/meta.js"],
 };
 
 //setup Swagger for auto documentation

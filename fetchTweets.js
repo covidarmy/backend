@@ -130,7 +130,7 @@ const fetchTweets = async () => {
             const followers = status.user.followers_count;
             const accountAge = Date.now() - new Date(status.created_at).getTime();
 
-            const isValid = (followers > 30 && accountAge > 1000*60*60*24*60) || followers > 200;
+            const isValid = (followers > 30 && accountAge > 1000*60*60*24*30) || followers > 200;
 
             if(isValid){
                 validTweets.push(status);

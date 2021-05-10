@@ -1,6 +1,6 @@
 const Tweet = require("../models/Tweet.schema");
 
-const cities = require("../data/newCities.json");
+const cities = require("../data/allCities.json");
 const resources = require("../data/resources.json");
 
 // var redis = require("redis");
@@ -73,31 +73,38 @@ exports.findAll = async (req, res) => {
         limit = Number(limit);
         offset = Number(offset);
 
-        for (let state in cities) {
-            stateCities = cities[state];
-            for (cityName in stateCities) {
-                keywords = stateCities[cityName];
-                if (keywords.includes(location)) {
-                    location = Object.keys(stateCities).find(
-                        (key) => stateCities[key] == keywords
-                    );
+        const query = {};
+
+        if (location) {
+            for (let state in cities) {
+                stateCities = cities[state];
+                for (cityName in stateCities) {
+                    keywords = stateCities[cityName];
+                    if (keywords.includes(location)) {
+                        query.$or = [{ city: cityName }, { state: cityName }];
+                    }
                 }
             }
-        }
-
-        for (let res in resources) {
-            keywords = resources[res];
-            if (keywords.includes(resource)) {
-                resource = Object.keys(resources).find(
-                    (key) => resources[key] === keywords
-                );
+            if (!query.$or) {
+                return res.status(404).send({
+                    error: `No tweets found for location: ${location}`,
+                });
             }
         }
 
-        const query = {
-            $or: [{ city: location }, { state: location }],
-            resource_type: resource,
-        };
+        if (resource) {
+            for (let res in resources) {
+                keywords = resources[res];
+                if (keywords.includes(resource)) {
+                    query.resource_type = res;
+                }
+            }
+            if (!query.resource_type) {
+                return res.status(404).send({
+                    error: `No tweets found for resource: ${resource}`,
+                });
+            }
+        }
 
         if (contact_number) {
             // make sure that we don't give the same result on subsequent calls to the API by the same contact number

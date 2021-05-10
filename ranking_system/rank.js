@@ -1,19 +1,16 @@
-// WIP
-
-//Used nemeric values as enum keys to ensure compatiblity with WhatsApp bot requests
 const Votes = Object.freeze({
-    1: "helpful",
-    2: "busy",
-    3: "noanswer",
-    4: "nostock",
-    5: "invalid",
+    HELPFUL: "HELPFUL",
+    BUSY: "BUSY",
+    NOANSWER: "NOANSWER",
+    NOSTOCK: "NOSTOCK",
+    INVALID: "INVALID",
 });
 
 const Statuses = Object.freeze({
     ACTIVE: "ACTIVE",
-    S_COOLDOWN: "S_COOLDOWN",
-    M_COOLDOWN: "M_COOLDOWN",
-    L_COOLDOWN: "L_COOLDOWN",
+    S_COOLDOWN: "S_COOLDOWN", //45 mins
+    M_COOLDOWN: "M_COOLDOWN", // 4 hours
+    L_COOLDOWN: "L_COOLDOWN", // 1 days
     BLACKLIST: "BLACKLIST",
 });
 
@@ -21,45 +18,40 @@ const checkRecentOccurrences = (arr, numEl, value) => {
     //Get the last n number of elements from array
     arr = arr.slice(Math.max(arr.length - numEl, 0));
     //Check if they all are equal to the specified value
-    return arr.every((val) => val === value);
+    return arr.every((val) => value.includes(val));
 };
 
-const rank = async (tweet) => {
-    const { votes } = tweet;
+const rank = async (contact) => {
+    const { feedback } = contact;
 
-    if (checkRecentOccurrences(votes, 5, Votes["1"])) {
-        tweet.status = Statuses.S_COOLDOWN;
-        tweet = await tweet.save();
-        return tweet;
+    if (checkRecentOccurrences(feedback, 5, [Votes.HELPFUL])) {
+        contact.status = Statuses.S_COOLDOWN;
+        contact = await contact.save();
+        return contact;
     }
 
-    //Check these again
-    if (checkRecentOccurrences(votes, 4, Votes["2"])) {
-        tweet.status = Statuses.M_COOLDOWN;
-        tweet = await tweet.save();
-        return tweet;
-    } else if (checkRecentOccurrences(votes, 3, Votes["2"])) {
-        tweet.status = Statuses.S_COOLDOWN;
-        tweet = await tweet.save();
-        return tweet;
+    if (checkRecentOccurrences(feedback, 5, [Votes.NOANSWER, Votes.BUSY])) {
+        contact.status = Statuses.M_COOLDOWN;
+        contact = await contact.save();
+        return contact;
     }
 
-    if (checkRecentOccurrences(votes, 5, Votes["3"])) {
-        tweet.status = Statuses.L_COOLDOWN;
-        tweet = await tweet.save();
-        return tweet;
+    if (checkRecentOccurrences(feedback, 3, [Votes.NOSTOCK])) {
+        contact.status = Statuses.M_COOLDOWN;
+        contact = await contact.save();
+        return contact;
     }
 
-    if (checkRecentOccurrences(votes, 5, Votes["4"])) {
-        tweet.status = Statuses.L_COOLDOWN;
-        tweet = await tweet.save();
-        return tweet;
+    if (checkRecentOccurrences(feedback, 2, [Votes.NOSTOCK])) {
+        contact.status = Statuses.S_COOLDOWN;
+        contact = await contact.save();
+        return contact;
     }
 
-    if (checkRecentOccurrences(votes, 5, Votes["5"])) {
-        tweet.status = Statuses.BLACKLIST;
-        tweet = await tweet.save();
-        return tweet;
+    if (checkRecentOccurrences(feedback, 5, [Votes.INVALID])) {
+        contact.status = Statuses.BLACKLIST;
+        contact = await contact.save();
+        return contact;
     }
 
     return;
