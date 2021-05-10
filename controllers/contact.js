@@ -31,7 +31,9 @@ exports.findAll = async (req, res) => {
             }
 
             if (!query.$or) {
-                return res.status(400).send({ error: "Invalid location" });
+                return res.status(404).send({
+                    error: `No contacts found for location: ${location}`,
+                });
             }
         }
 
@@ -45,7 +47,9 @@ exports.findAll = async (req, res) => {
             }
 
             if (!query.resource_type) {
-                return res.status(400).send({ error: "Invalid resource" });
+                return res.status(404).send({
+                    error: `No contacts found for resource: ${resource}`,
+                });
             }
         }
 
