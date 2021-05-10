@@ -6,8 +6,8 @@ const citiesRaw = require("fs")
     .split("\n")
     .map((row) => row.split(","));
 
-const cities = require("../data/newCities.json");
-const topCities = require("../data/cities.json");
+const cities = require("../data/allCities.json");
+const topCities = require("../data/topCities.json");
 const resources = require("../data/resources.json");
 
 const router = express.Router();

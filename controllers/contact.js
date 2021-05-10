@@ -1,6 +1,6 @@
 const Contact = require("../models/Contact.schema");
 
-const cities = require("../data/newCities.json");
+const cities = require("../data/allCities.json");
 const resources = require("../data/resources.json");
 
 const { rank } = require("../ranking_system/rank");
@@ -31,7 +31,9 @@ exports.findAll = async (req, res) => {
             }
 
             if (!query.$or) {
-                return res.status(400).send({ error: "Invalid location" });
+                return res.status(404).send({
+                    error: `No contacts found for location: ${location}`,
+                });
             }
         }
 
@@ -45,7 +47,9 @@ exports.findAll = async (req, res) => {
             }
 
             if (!query.resource_type) {
-                return res.status(400).send({ error: "Invalid resource" });
+                return res.status(404).send({
+                    error: `No contacts found for resource: ${resource}`,
+                });
             }
         }
 
@@ -55,30 +59,31 @@ exports.findAll = async (req, res) => {
         let foundValidDoc = false;
 
         while (!foundValidDoc) {
-            resContact = await Contact.findOne(query, null, {
+            resContact = await Contact.find(query, null, {
+                limit: limit,
                 skip: offset,
                 sort: { created_on: -1 },
             });
 
             //Check doc status
-            if (resContact.status == "ACTIVE") {
-                foundValidDoc = true;
-                break;
-            } else if (resContact.status == "BLACKLIST") {
-                offset++;
-                continue;
-            } else {
-                if (
-                    !validateCooldown(resContact.status, resContact.updatedAt)
-                ) {
-                    resContact.status = "ACTIVE";
-                    await resContact.save();
-
+            for (const doc of resContact) {
+                if (doc.status == "ACTIVE") {
                     foundValidDoc = true;
                     break;
-                } else {
+                } else if (doc.status == "BLACKLIST") {
                     offset++;
                     continue;
+                } else {
+                    if (!validateCooldown(doc.status, doc.updatedAt)) {
+                        doc.status = "ACTIVE";
+                        await doc.save();
+
+                        foundValidDoc = true;
+                        break;
+                    } else {
+                        offset++;
+                        continue;
+                    }
                 }
             }
         }

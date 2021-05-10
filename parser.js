@@ -1,4 +1,4 @@
-const cities = require("./data/newCities.json");
+const cities = require("./data/allCities.json");
 const resourceTypes = require("./data/resources.json");
 
 const categories = {
