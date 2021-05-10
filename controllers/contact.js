@@ -55,8 +55,7 @@ exports.findAll = async (req, res) => {
         let foundValidDoc = false;
 
         while (!foundValidDoc) {
-            resContact = await Contact.find(query, null, {
-                limit: limit,
+            resContact = await Contact.findOne(query, null, {
                 skip: offset,
                 sort: { created_on: -1 },
             });
