@@ -18,12 +18,6 @@ const categories = {
     Helpline: ["helpline"],
 };
 
-// const cities = {};
-
-// for(let state in citiesRaw){
-//     cities[state] = citiesRaw[state].map(city => ({ [city.replace(/\*/g, "")]: [city.toLowerCase().replace(/\*| /g, "")] }) ).reduce((obj, val) => ({ ...obj, ...val }), {});
-// }
-
 const normalize = (text) => {
     return text
         .toLowerCase()
@@ -64,51 +58,48 @@ const findLocation = (text) => {
     return Array.from(location) || [];
 };
 
-const findVerificationStatus = (text) => {
-    // needs work
-    if (text.search("notverified") !== -1) {
-        return "Not Verified";
-    }
-    if (text.search("unverified") !== -1) {
-        return "Not Verified";
-    }
-    if (text.search("verified") !== -1) {
-        return "Verified";
-    }
-    return "Unknown";
-};
+const phoneRegex = /(?!([0]?[1-9]|[1|2][0-9]|[3][0|1])[./-]([0]?[1-9]|[1][0-2])[./-]([0-9]{4}|[0-9]{2}))(\+?\d[\d -]{8,12}\d)/g;
+const emailRegex = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/g;
 
-const findVerificationTime = (text) => {
-    // needs work
-    const index = text.search(/verifiedat|verifiedon/);
+const parsePhoneNumbers = text => [...new Set((raw_text.match(phoneRegex) || []).concat(raw_text.replace(/\s+/g, "@").match(phoneRegex) || []))] || [];
 
-    if (index !== -1) {
-        const newText = text.substring(index + "verifiedat".length);
-
-        const time = newText.match(/([0-9]{1,2}:[0-9]{2}(am|pm))/) || [];
-        return time[0];
-    }
-};
-
-const parse = (raw_text) => {
+const parseTweet = (raw_text) => {
     const text = normalize(raw_text);
     const resourceTypes = findResourceType(text);
 
     return {
         categories: resourceTypes.map((r) => categories[r]).flat() || [],
         resource_types: resourceTypes || [],
-        verification_status: findVerificationStatus(text) || null,
-        phone_numbers:
-            raw_text.match(
-                /(?!([0]?[1-9]|[1|2][0-9]|[3][0|1])[./-]([0]?[1-9]|[1][0-2])[./-]([0-9]{4}|[0-9]{2}))(\+?\d[\d -]{8,12}\d)/g
-            ) || [],
-        emails:
-            raw_text.match(
-                /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/g
-            ) || [],
-        verified_at: findVerificationTime(text) || null,
+        phone_numbers: parsePhoneNumbers(raw_text),
+        emails: raw_text.match(emailRegex) || [],
         locations: findLocation(text) || null,
     };
 };
 
-module.exports = { resourceTypes, categories, parse, cities };
+const parseContacts = raw_text => {
+    const phones = parsePhoneNumbers(raw_text);
+
+    if(!phones || phones.length == 0){
+        return [];
+    }
+    const contacts = [];
+    const arr = raw_text.split(phones);
+
+    arr.pop();
+    
+    for(const [index, raw_text] of arr.entries()){
+        const text = normalize(raw_text);
+        const resourceTypes = findResourceType(text) || (contacts[index-1] || {}).resource_types || [];
+        
+        contacts.push({
+            categories: resourceTypes.map(r => categories[r]),
+            resource_types: resourceTypes,
+            phone: phones[index],
+            emails: raw_text.match(emailRegex) || [],
+            locations: findLocation(text)
+        });
+    }
+    return contacts;
+};
+
+module.exports = { resourceTypes, categories, parseTweet, parseContacts, cities };

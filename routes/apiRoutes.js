@@ -1,16 +1,7 @@
 const express = require("express");
 const tweetController = require("../controllers/tweet");
+const contactController = require("../controllers/contact");
 const router = express.Router();
-const cities = require("../data/cities.json");
-const resources = require("../data/resources.json");
-
-router.get("/cities", async (req, res) => {
-    return res.status(200).send(cities);
-});
-
-router.get("/resources", async (req, res) => {
-    return res.status(200).send(resources);
-});
 
 /**
  * @swagger
@@ -119,7 +110,7 @@ router.get("/tweets/:location/:resource", tweetController.findAll);
 /**
  * @swagger
  * /api/tweets/{docID}/votes:
- *     put:
+ *     post:
  *         summary: Add a vote to a tweet.
  *         description: Add a vote to a tweet based on tweet ID.
  *         parameters:
@@ -147,6 +138,137 @@ router.get("/tweets/:location/:resource", tweetController.findAll);
  *                     error:
  *                     type: string
  */
-router.put("/tweets/:docID/votes", tweetController.updateVote);
+router.post("/tweets/:docID/votes", tweetController.updateVote);
+
+/**
+ * @swagger
+ * /api/contacts:
+ *     get:
+ *         summary: Retrieve a list of contacts based on location.
+ *         description: Retrieve a list of contacts based on location.
+ *         parameters:
+ *         - in: query
+ *           name: limit
+ *           type: integer
+ *           description: max number of contacts to return
+ *         - in: query
+ *           name: offset
+ *           type: integer
+ *           description: number of contacts to offset the results by
+ *         - in: query
+ *           name: session_id
+ *           type: string
+ *           description: a uuid representing the user
+ *         responses:
+ *             200:
+ *                 description: A list of n number of resource objects.
+ *
+ */
+router.get("/contacts", contactController.findAll);
+
+/**
+ * @swagger
+ * /api/contacts/{location}:
+ *     get:
+ *         summary: Retrieve a list of contacts based on location.
+ *         description: Retrieve a list of contacts based on location.
+ *         parameters:
+ *         - in: path
+ *           name: location
+ *           type: string
+ *           description: The name of the city to query.
+ *         - in: query
+ *           name: limit
+ *           type: integer
+ *           description: max number of contacts to return
+ *         - in: query
+ *           name: offset
+ *           type: integer
+ *           description: number of contacts to offset the results by
+ *         - in: query
+ *           name: session_id
+ *           type: string
+ *           description: a uuid representing the user
+ *         responses:
+ *             200:
+ *                 description: A list of n number of resource objects.
+ *
+ */
+router.get("/contacts/:location", contactController.findAll);
+
+/**
+ * @swagger
+ * /api/contacts/{location}/{resource}:
+ *     get:
+ *         summary: Retrieve a list of contacts.
+ *         description: Retrieve a list of contacts based on location and resource type.
+ *         parameters:
+ *             - in: path
+ *               name: location
+ *               type: string
+ *               description: The name of the city to query.
+ *             - in: path
+ *               name: resource
+ *               type: string
+ *               description: The name of the resource to query.
+ *             - in: query
+ *               name: limit
+ *               type: integer
+ *               description: max number of contacts to return
+ *             - in: query
+ *               name: offset
+ *               type: integer
+ *               description: number of contacts to offset the results by
+ *             - in: query
+ *               name: session_id
+ *               type: string
+ *               description: a uuid representing the user
+ *         responses:
+ *             200:
+ *                 description: A list of n number of resource objects
+ *
+ */
+router.get("/contacts/:location/:resource", contactController.findAll);
+
+/**
+ * @swagger
+ * /api/contacts/feedback:
+ *     post:
+ *         summary: Submit feedback for a contact
+ *         description: Submit feedback for a contact
+ *         parameters:
+ *             - in: body
+ *               name: contact_no
+ *               type: string
+ *               description: The contact number for the feedback.
+ *             - in: body
+ *               name: feedback_value
+ *               type: string
+ *               enum: [HELPFUL, BUSY, NOANSWER, NOSTOCK, INVALID]
+ *               description: |
+ *                   A vote string:
+ *
+ *                   HELPFUL
+ *                   BUSY
+ *                   NOANSWER
+ *                   NOSTOCK
+ *                   INVALID
+ *         responses:
+ *             200:
+ *                 description: A generic response object.
+ *                 schema:
+ *                     type: object
+ *                     properties:
+ *                         ok:
+ *                         type: boolean
+ *             500:
+ *                 description: An error object.
+ *                 schema:
+ *                 type: object
+ *                 properties:
+ *                     error:
+ *                     type: string
+ */
+router.post("/contacts/feedback", contactController.postFeedback);
 
 module.exports = router;

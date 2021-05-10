@@ -18,6 +18,7 @@ const DB_URL = process.env.MONGO_URI;
 mongoose
     .connect(DB_URL, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => {
+        fetchAndSaveTweets();
         console.log("✅ Databse Connected!");
     });
 
@@ -36,7 +37,7 @@ const swaggerOptions = {
         },
     },
     // ['.routes/*.js']
-    apis: ["routes/apiRoutes.js"],
+    apis: ["routes/apiRoutes.js", "routes/meta.js"],
 };
 
 //setup Swagger for auto documentation
@@ -47,7 +48,7 @@ const apiRoutes = require("./routes/apiRoutes");
 const meta = require("./routes/meta");
 
 //Import the fetchTweets script
-const { fetchTweets } = require("./fetchTweets");
+const { fetchAndSaveTweets } = require("./fetchTweets");
 
 //Import the fetchTweets script
 const { deleteTweets } = require("./deleteTweets");
@@ -67,13 +68,14 @@ app.use("/api", apiRoutes);
 app.use("/api", meta);
 app.use("/", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
-fetchTweets();
-//Schedule task to run every minute.
-cron.schedule("*/1 * * * *", async () => {
-    console.log("Fetching Tweets...");
-    await fetchTweets();
-    console.log("Done Fetching Tweets!");
-});
+if (process.env.NODE_ENV === "production") {
+    //Schedule task to run every minute.
+    cron.schedule("*/1 * * * *", async () => {
+        console.log("Fetching Tweets...");
+        await fetchAndSaveTweets();
+        console.log("Done Fetching Tweets!");
+    });
+}
 
 //TODO
 //Schedule task to run every n minutes.
