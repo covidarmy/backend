@@ -80,7 +80,7 @@ if (process.env.NODE_ENV === "production") {
     cron.schedule("*/360 * * * *", async () => {
         console.log("Deleting fraud Tweets...");
         await deleteFraud();
-        console.log("Done eleting fraud Tweets!");
+        console.log("Done deleting fraud Tweets!");
     });
 }
 

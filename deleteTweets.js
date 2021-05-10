@@ -15,7 +15,7 @@ const deleteFraud = async () => {
   }
 
   let delSummary = await Tweet.deleteMany({ phone: { $in: arr } });
-  console.log(delSummary);
+  console.log("Routine fraud delete summary : ",delSummary);
 };
 
 module.exports = { deleteTweets, deleteFraud };
