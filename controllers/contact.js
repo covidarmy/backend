@@ -55,30 +55,31 @@ exports.findAll = async (req, res) => {
         let foundValidDoc = false;
 
         while (!foundValidDoc) {
-            resContact = await Contact.findOne(query, null, {
+            resContact = await Contact.find(query, null, {
+                limit: limit,
                 skip: offset,
                 sort: { created_on: -1 },
             });
 
             //Check doc status
-            if (resContact.status == "ACTIVE") {
-                foundValidDoc = true;
-                break;
-            } else if (resContact.status == "BLACKLIST") {
-                offset++;
-                continue;
-            } else {
-                if (
-                    !validateCooldown(resContact.status, resContact.updatedAt)
-                ) {
-                    resContact.status = "ACTIVE";
-                    await resContact.save();
-
+            for (const doc of resContact) {
+                if (doc.status == "ACTIVE") {
                     foundValidDoc = true;
                     break;
-                } else {
+                } else if (doc.status == "BLACKLIST") {
                     offset++;
                     continue;
+                } else {
+                    if (!validateCooldown(doc.status, doc.updatedAt)) {
+                        doc.status = "ACTIVE";
+                        await doc.save();
+
+                        foundValidDoc = true;
+                        break;
+                    } else {
+                        offset++;
+                        continue;
+                    }
                 }
             }
         }
