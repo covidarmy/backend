@@ -240,8 +240,8 @@ const fetchAndSaveTweets = async () => {
 
 async function isFraud(num){
     let strnum=String(num)
-    let numIsFraud =await Fraud.findOne({Title:"Fraud",Numbers:{$in:[strnum]} }).count();
-
+    let numIsFraud =await fraud.findOne({phone_no:strnum} ).count();
+    
     if(numIsFraud){
       console.log("Fraud")
       return 1;
