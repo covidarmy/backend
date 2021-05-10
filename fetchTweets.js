@@ -1,6 +1,8 @@
 const Tweet = require("./models/Tweet.schema");
 const Contact = require("./models/Contact.schema");
 const Meta = require("./models/Meta.schema");
+const Fraud = require("./models/Fraud.schema");
+
 
 const fetch = require("node-fetch");
 const { parseTweet, parseContacts, resourceTypes, categories } = require("./parser");
@@ -145,11 +147,19 @@ const fetchTweets = async () => {
         for(let tweetRaw of validTweets){
             const tweet = buildTweetObject(tweetRaw);
             
-            if (!tweet.resource_type) {
-                tweet.resource_type = resource;
-                tweet.category = categories[resource][0] || null;
+            //check for fraud numbers in fraud database
+            if(!isFraud(tweet.phone)){
+                if (!tweet.resource_type) {
+                    tweet.resource_type = resource;
+                    tweet.category = categories[resource][0] || null;
+                }
+                
+                finalTweets.push(tweet);
             }
-            finalTweets.push(tweet);
+            else
+            {
+                console.log("Fraud number.Skipping...");
+            }
         }
 
         return finalTweets;
@@ -226,5 +236,20 @@ const fetchAndSaveTweets = async () => {
 
     await Promise.all([saveTweets(tweets), saveContacts(contacts)]);
 };
+
+
+async function isFraud(num){
+    let strnum=String(num)
+    let numIsFraud =await Fraud.findOne({Title:"Fraud",Numbers:{$in:[strnum]} }).count();
+
+    if(numIsFraud){
+      console.log("Fraud")
+      return 1;
+    }
+    else{
+      console.log("Not Fraud")
+      return 0;
+    }
+  }
 
 module.exports = { fetchAndSaveTweets };
