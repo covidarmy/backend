@@ -76,8 +76,8 @@ if (process.env.NODE_ENV === "production") {
         console.log("Done Fetching Tweets!");
     });
     
-    //Schedule task to run every 6 hrs.
-    cron.schedule("*/360 * * * *", async () => {
+    //Schedule task to run every hr.
+    cron.schedule("*/60 * * * *", async () => {
         console.log("Deleting fraud Tweets...");
         await deleteFraud();
         console.log("Done deleting fraud Tweets!");
