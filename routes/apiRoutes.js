@@ -109,39 +109,6 @@ router.get("/tweets/:location/:resource", tweetController.findAll);
 
 /**
  * @swagger
- * /api/tweets/{docID}/votes:
- *     post:
- *         summary: Add a vote to a tweet.
- *         description: Add a vote to a tweet based on tweet ID.
- *         parameters:
- *             - in: path
- *               name: docID
- *               type: string
- *               description: ID of the document to add a vote to.
- *             - in: query
- *               name: vote
- *               type: string
- *               description: A number ranging from 1-5 corresponding with a vote string
- *         responses:
- *             200:
- *                 description: A generic response object.
- *                 schema:
- *                     type: object
- *                     properties:
- *                         ok:
- *                         type: boolean
- *             500:
- *                 description: An error object.
- *                 schema:
- *                 type: object
- *                 properties:
- *                     error:
- *                     type: string
- */
-router.post("/tweets/:docID/votes", tweetController.updateVote);
-
-/**
- * @swagger
  * /api/contacts:
  *     get:
  *         summary: Retrieve a list of contacts based on location.
