@@ -127,43 +127,6 @@ exports.findAll = async (req, res) => {
     }
 };
 
-const Votes = Object.freeze({
-    HELPFUL: "1",
-    BUSY: "2",
-    NOANSWER: "3",
-    NOSTOCK: "4",
-    INVALID: "5",
-});
-
-exports.updateVote = async (req, res) => {
-    try {
-        const { docID } = req.params;
-        const { vote } = req.query;
-
-        if (Object.values(Votes).indexOf(vote) == -1) {
-            return res.status(400).send({ error: "Invalid vote" });
-        }
-        const tweet = await Tweet.findOne({ _id: docID }).exec();
-
-        if (!tweet) {
-            return res.status(400).send({ error: "Invalid tweet id" });
-        }
-        if (!tweet.votes) {
-            tweet.votes = [];
-        }
-        if (tweet.votes.length == 10) {
-            tweet.votes.shift();
-        }
-        tweet.votes.push(vote);
-        await Tweet.findOneAndUpdate({ _id: docID }, tweet);
-
-        res.send({ ok: true });
-    } catch (error) {
-        console.error(error);
-        res.status(500).send({ error: error.message });
-    }
-};
-
 // //Retrive a single tweet with ID
 // exports.findOne = async (req, res) => {
 //   res.send("Tweet findOne");
