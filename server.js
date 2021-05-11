@@ -50,8 +50,8 @@ const meta = require("./routes/meta");
 //Import the fetchTweets script
 const { fetchAndSaveTweets } = require("./fetchTweets");
 
-//Import the fetchTweets script
-const { deleteTweets } = require("./deleteTweets");
+//Import the deleteTweets script
+const { deleteTweets, deleteFraud } = require("./deleteTweets");
 
 //Express options
 app.use(morgan(process.env.NODE_ENV == "production" ? "common" : "dev"));
@@ -74,6 +74,13 @@ if (process.env.NODE_ENV === "production") {
         console.log("Fetching Tweets...");
         await fetchAndSaveTweets();
         console.log("Done Fetching Tweets!");
+    });
+    
+    //Schedule task to run every hr.
+    cron.schedule("*/60 * * * *", async () => {
+        console.log("Deleting fraud Tweets...");
+        await deleteFraud();
+        console.log("Done deleting fraud Tweets!");
     });
 }
 

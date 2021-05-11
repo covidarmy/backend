@@ -271,4 +271,5 @@ router.get("/contacts/:location/:resource", contactController.findAll);
  */
 router.post("/contacts/feedback", contactController.postFeedback);
 
+
 module.exports = router;
