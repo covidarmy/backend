@@ -135,8 +135,7 @@ exports.postFeedback = async (req, res) => {
         contact.feedback.push(feedback_value);
         await Contact.findOneAndUpdate({ contact_no }, contact);
 
-        //Rank the contact entity
-        contact = await rank(contact);
+        await rank(contact);
 
         res.send({ ok: true });
     } catch (error) {
