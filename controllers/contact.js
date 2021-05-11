@@ -66,25 +66,30 @@ exports.findAll = async (req, res) => {
             });
 
             //Check doc status
-            for (const doc of resContact) {
-                if (doc.status == "ACTIVE") {
-                    foundValidDoc = true;
-                    break;
-                } else if (doc.status == "BLACKLIST") {
-                    offset++;
-                    continue;
-                } else {
-                    if (!validateCooldown(doc.status, doc.updatedAt)) {
-                        doc.status = "ACTIVE";
-                        await doc.save();
-
+            if (resContact.length > 0) {
+                for (const doc of resContact) {
+                    if (doc.status == "ACTIVE") {
                         foundValidDoc = true;
                         break;
-                    } else {
+                    } else if (doc.status == "BLACKLIST") {
                         offset++;
                         continue;
+                    } else {
+                        if (!validateCooldown(doc.status, doc.updatedAt)) {
+                            doc.status = "ACTIVE";
+                            await doc.save();
+
+                            foundValidDoc = true;
+                            break;
+                        } else {
+                            offset++;
+                            continue;
+                        }
                     }
                 }
+            } else {
+                foundValidDoc = true;
+                break;
             }
         }
 
@@ -122,17 +127,16 @@ exports.postFeedback = async (req, res) => {
         if (!contact.feedback) {
             contact.feedback = [];
         }
-        if (contact.feedback.length == 10) {
-            //Rank the contact entity
-            contact = await rank(contact);
-            //Clear the feedback array
-            contact.feedback.length = 0;
-            //Push the new value into the feedback array
-            contact.feedback.push(feedback_value);
-        } else {
-            contact.feedback.push(feedback_value);
-            await Contact.findOneAndUpdate({ contact_no }, contact);
+        if (contact.feedback.length == 100) {
+            //Shift the feedback array
+            contact.feedback.shift();
         }
+
+        contact.feedback.push(feedback_value);
+        await Contact.findOneAndUpdate({ contact_no }, contact);
+
+        //Rank the contact entity
+        contact = await rank(contact);
 
         res.send({ ok: true });
     } catch (error) {
