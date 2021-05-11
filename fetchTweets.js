@@ -72,6 +72,8 @@ const buildTweetObject = (tweet) => {
         created_by: tweet.user.name,
         created_on: new Date(tweet.created_at).getTime(),
 
+        manual_parsing_required: data.locations.length > 1 || data.resource_types.length > 1 || data.phone_numbers.length > 1,
+        
         tweet_object: {
             tweet_id: tweet.id_str,
             tweet_url: `https://twitter.com/${tweet.user.screen_name}/status/${tweet.id_str}`,
@@ -85,6 +87,9 @@ const buildTweetObject = (tweet) => {
 };
 
 const buildContactObjects = (tweet) => {
+    if(tweet.manual_parsing_required){
+        return [];
+    }
     const data = parseContacts(tweet.tweet_object.text);
 
     return data.map((data) => ({
