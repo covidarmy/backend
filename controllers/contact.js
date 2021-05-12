@@ -140,3 +140,17 @@ exports.postFeedback = async (req, res) => {
         res.status(500).send({ error: error.message });
     }
 };
+
+exports.postContact = async (req, res) => {
+    try {
+        const data = req.body;
+        data.created_on=new Date().getTime();
+        var new_contact = new Contact(data);
+        await new_contact.save()
+        
+        res.send({ ok: true });
+    } catch (error) {
+        console.error(error);
+        res.status(500).send({ error: error.message });
+    }
+};

@@ -271,4 +271,72 @@ router.get("/contacts/:location/:resource", contactController.findAll);
  */
 router.post("/contacts/feedback", contactController.postFeedback);
 
+/**
+ * @swagger
+ * /api/contacts/:
+ *     post:
+ *         summary: Submit a contact
+ *         description: Submit a contact entry
+ *         parameters:
+ *             - in: body
+ *               name: status
+ *               type: string
+ *             - in: body
+ *               name: contact_no
+ *               type: string
+ *             - in: body
+ *               name: email
+ *               type: string
+ *             - in: body
+ *               name: title
+ *               type: string
+ *             - in: body
+ *               name: resource_type
+ *               type: string
+ *             - in: body
+ *               name: address
+ *               type: string
+ *             - in: body
+ *               name: description
+ *               type: string
+ *             - in: body
+ *               name: city
+ *               type: string
+ *             - in: body
+ *               name: state
+ *               type: string
+ *             - in: body
+ *               name: pincode
+ *               type: string
+ *             - in: body
+ *               name: quantity_available
+ *               type: string
+ *             - in: body
+ *               name: price
+ *               type: string
+ *             - in: body
+ *               name: source_link
+ *               type: string
+ *             - in: body
+ *               name: created_by
+ *               type: string
+ *         responses:
+ *             200:
+ *                 description: A generic response object.
+ *                 schema:
+ *                     type: object
+ *                     properties:
+ *                         ok:
+ *                         type: boolean
+ *             500:
+ *                 description: An error object.
+ *                 schema:
+ *                 type: object
+ *                 properties:
+ *                     error:
+ *                     type: string
+ */
+ router.post("/contacts/", contactController.postContact);
+
+
 module.exports = router;
