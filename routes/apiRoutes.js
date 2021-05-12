@@ -246,47 +246,32 @@ router.post("/contacts/feedback", contactController.postFeedback);
  *         description: Submit a contact entry
  *         parameters:
  *             - in: body
- *               name: status
- *               type: string
- *             - in: body
- *               name: contact_no
- *               type: string
- *             - in: body
- *               name: email
- *               type: string
- *             - in: body
- *               name: title
- *               type: string
- *             - in: body
- *               name: resource_type
- *               type: string
- *             - in: body
- *               name: address
- *               type: string
- *             - in: body
- *               name: description
- *               type: string
- *             - in: body
- *               name: city
- *               type: string
- *             - in: body
- *               name: state
- *               type: string
- *             - in: body
- *               name: pincode
- *               type: string
- *             - in: body
- *               name: quantity_available
- *               type: string
- *             - in: body
- *               name: price
- *               type: string
- *             - in: body
- *               name: source_link
- *               type: string
- *             - in: body
- *               name: created_by
- *               type: string
+ *               name: data
+ *               schema:
+ *                  required:
+ *                      - contact_no
+ *                      - title
+ *                      - resource_type
+ *                      - city
+ *                      - state
+ *                  properties:
+ *                      status
+ *                      contact_no
+ *                      email
+ *                      title
+ *                      resource_type
+ *                      address
+ *                      description
+ *                      city
+ *                      state
+ *                      pincode
+ *                      quantity_available
+ *                      price
+ *                      source_link
+ *                      created_by
+ *                      
+ *  
+ *
  *         responses:
  *             200:
  *                 description: A generic response object.
