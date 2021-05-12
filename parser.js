@@ -1,21 +1,21 @@
 const cities = require("./data/allCities.json");
 const resourceTypes = require("./data/resources.json");
 
-const categories = {
-    "Bed": ["hospital"],
+const categoriesObj = {
+    Bed: ["hospital"],
     "Home ICU": [],
     "ICU Bed": ["hospital"],
     "Oxygen Bed": ["hospital"],
-    "Remdesivir": ["medicine"],
-    "Favipiravir": ["medicine"],
-    "Tocilizumab": ["medicine"],
-    "Plasma": [],
-    "Food": [],
-    "Ambulance": ["ambulance"],
+    Remdesivir: ["medicine"],
+    Favipiravir: ["medicine"],
+    Tocilizumab: ["medicine"],
+    Plasma: [],
+    Food: [],
+    Ambulance: ["ambulance"],
     "Oxygen Cylinder": ["oxygen", "medical device"],
     "Oxygen Concentrator": ["oxygen", "medical device"],
     "Covid Test": ["test"],
-    "Helpline": ["helpline"],
+    Helpline: ["helpline"],
 };
 
 const normalize = (text) => {
@@ -58,48 +58,77 @@ const findLocation = (text) => {
     return Array.from(location) || [];
 };
 
-const phoneRegex = /(?!([0]?[1-9]|[1|2][0-9]|[3][0|1])[./-]([0]?[1-9]|[1][0-2])[./-]([0-9]{4}|[0-9]{2}))(\+?\d[\d -]{8,12}\d)/g;
-const emailRegex = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/g;
+const phoneRegex =
+    /(?!([0]?[1-9]|[1|2][0-9]|[3][0|1])[./-]([0]?[1-9]|[1][0-2])[./-]([0-9]{4}|[0-9]{2}))(\+?\d[\d -]{8,12}\d)/g;
+const emailRegex =
+    /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/g;
 
-const parsePhoneNumbers = text => [...new Set((raw_text.match(phoneRegex) || []).concat(raw_text.replace(/\s+/g, "@").match(phoneRegex) || []))] || [];
+const parsePhoneNumbers = (text) =>
+    [
+        ...new Set(
+            (text.match(phoneRegex) || []).concat(
+                text.replace(/\s+/g, "@").match(phoneRegex) || []
+            )
+        ),
+    ] || [];
 
 const parseTweet = (raw_text) => {
-    const text = normalize(raw_text);
-    const resourceTypes = findResourceType(text);
 
-    return {
-        categories: resourceTypes.map((r) => categories[r]).flat() || [],
-        resource_types: resourceTypes || [],
-        phone_numbers: parsePhoneNumbers(raw_text),
-        emails: raw_text.match(emailRegex) || [],
-        locations: findLocation(text) || null,
+    const text = normalize(raw_text);
+    
+    const resourceTypes = findResourceType(text);
+    const categories = resourceTypes.map((r) => categoriesObj[r]).flat() || [];
+    const resource_types = resourceTypes || [];
+    const emails = raw_text.match(emailRegex) || [];
+    const locations = findLocation(text) || null;
+    const phone_numbers = parsePhoneNumbers(raw_text);
+
+    const obj = {
+        categories,
+        resource_types,
+        phone_numbers,
+        emails,
+        locations,
     };
+
+    //console.log(`Extracted Data object: ${obj ? obj : null}`);
+    return obj;
 };
 
-const parseContacts = raw_text => {
+const parseContacts = (raw_text) => {
     const phones = parsePhoneNumbers(raw_text);
 
-    if(!phones || phones.length == 0){
+    if (!phones || phones.length == 0) {
         return [];
     }
     const contacts = [];
     const arr = raw_text.split(phones);
 
     arr.pop();
-    
-    for(const [index, raw_text] of arr.entries()){
+
+    for (const [index, raw_text] of arr.entries()) {
         const text = normalize(raw_text);
-        const resourceTypes = findResourceType(text) || (contacts[index-1] || {}).resource_types || [];
-        
+        const resourceTypes =
+            findResourceType(text) ||
+            (contacts[index - 1] || {}).resource_types ||
+            [];
+
         contacts.push({
-            categories: resourceTypes.map(r => categories[r]),
+            categories: resourceTypes.map((r) => categoriesObj[r]),
             resource_types: resourceTypes,
             phone: phones[index],
             emails: raw_text.match(emailRegex) || [],
-            locations: findLocation(text)
+            locations: findLocation(text),
         });
     }
     return contacts;
 };
 
-module.exports = { resourceTypes, categories, parseTweet, parseContacts, cities };
+module.exports = {
+    resourceTypes,
+    categoriesObj,
+    parseTweet,
+    parseContacts,
+    cities,
+    parsePhoneNumbers
+};
