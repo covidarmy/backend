@@ -85,12 +85,14 @@ const parseTweet = (raw_text) => {
     console.log("Parse Tweet | categories", cat);
     const resource_types = resourceTypes || [];
     console.log("Parse Tweet | resource_types", resource_types);
-    const phone_numbers = parsePhoneNumbers(raw_text);
-    console.log("Parse Tweet | phone_numbers", phone_numbers);
+
     const emails = raw_text.match(emailRegex) || [];
     console.log("Parse Tweet | emails", emails);
     const locations = findLocation(text) || null;
     console.log("Parse Tweet | locations", locations);
+
+    const phone_numbers = parsePhoneNumbers(raw_text);
+    console.log("Parse Tweet | phone_numbers", phone_numbers);
 
     const obj = {
         cat,
