@@ -66,8 +66,8 @@ const emailRegex =
 const parsePhoneNumbers = (text) =>
     [
         ...new Set(
-            (raw_text.match(phoneRegex) || []).concat(
-                raw_text.replace(/\s+/g, "@").match(phoneRegex) || []
+            (text.match(phoneRegex) || []).concat(
+                text.replace(/\s+/g, "@").match(phoneRegex) || []
             )
         ),
     ] || [];
