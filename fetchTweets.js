@@ -165,6 +165,8 @@ const fetchTweets = async () => {
 
         const finalTweets = [];
 
+        console.log("Valid Tweets Length", validTweets.length);
+
         for (let tweetRaw of validTweets) {
             const tweet = buildTweetObject(tweetRaw);
 
