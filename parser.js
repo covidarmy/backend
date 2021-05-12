@@ -73,26 +73,15 @@ const parsePhoneNumbers = (text) =>
     ] || [];
 
 const parseTweet = (raw_text) => {
-    console.log("Prase Tweet | Raw Text", raw_text);
 
     const text = normalize(raw_text);
+    
     const resourceTypes = findResourceType(text);
-
-    console.log("Prase Tweet | Normalized Text", text);
-    console.log("Prase Tweet | Resource Types", resourceTypes);
-
     const categories = resourceTypes.map((r) => categoriesObj[r]).flat() || [];
-    console.log("Parse Tweet | categories", categories);
     const resource_types = resourceTypes || [];
-    console.log("Parse Tweet | resource_types", resource_types);
-
     const emails = raw_text.match(emailRegex) || [];
-    console.log("Parse Tweet | emails", emails);
     const locations = findLocation(text) || null;
-    console.log("Parse Tweet | locations", locations);
-
     const phone_numbers = parsePhoneNumbers(raw_text);
-    console.log("Parse Tweet | phone_numbers", phone_numbers);
 
     const obj = {
         categories,
@@ -102,8 +91,7 @@ const parseTweet = (raw_text) => {
         locations,
     };
 
-    console.log(`Extracted Data object: ${obj ? obj : null}`);
-
+    //console.log(`Extracted Data object: ${obj ? obj : null}`);
     return obj;
 };
 
@@ -126,7 +114,7 @@ const parseContacts = (raw_text) => {
             [];
 
         contacts.push({
-            categories: resourceTypes.map((r) => categories[r]),
+            categories: resourceTypes.map((r) => categoriesObj[r]),
             resource_types: resourceTypes,
             phone: phones[index],
             emails: raw_text.match(emailRegex) || [],
@@ -138,8 +126,9 @@ const parseContacts = (raw_text) => {
 
 module.exports = {
     resourceTypes,
-    categories,
+    categoriesObj,
     parseTweet,
     parseContacts,
     cities,
+    parsePhoneNumbers
 };
