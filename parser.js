@@ -1,7 +1,7 @@
 const cities = require("./data/allCities.json");
 const resourceTypes = require("./data/resources.json");
 
-const categories = {
+const categoriesObj = {
     Bed: ["hospital"],
     "Home ICU": [],
     "ICU Bed": ["hospital"],
@@ -81,8 +81,8 @@ const parseTweet = (raw_text) => {
     console.log("Prase Tweet | Normalized Text", text);
     console.log("Prase Tweet | Resource Types", resourceTypes);
 
-    const cat = resourceTypes.map((r) => categories[r]).flat() || [];
-    console.log("Parse Tweet | categories", cat);
+    const categories = resourceTypes.map((r) => categoriesObj[r]).flat() || [];
+    console.log("Parse Tweet | categories", categories);
     const resource_types = resourceTypes || [];
     console.log("Parse Tweet | resource_types", resource_types);
 
@@ -95,7 +95,7 @@ const parseTweet = (raw_text) => {
     console.log("Parse Tweet | phone_numbers", phone_numbers);
 
     const obj = {
-        cat,
+        categories,
         resource_types,
         phone_numbers,
         emails,
