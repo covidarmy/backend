@@ -55,6 +55,8 @@ const fetchSearchResults = async (newestID, resource) => {
 const buildTweetObject = (tweet) => {
     const data = parseTweet(tweet.full_text || tweet.text);
 
+    console.log("Tweet Data", data);
+
     return {
         category: data.categories[0],
         resource_type: data.resource_types[0],
