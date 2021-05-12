@@ -276,6 +276,8 @@ async function isFraud(num) {
     let strnum = String(num);
     let numIsFraud = await fraud.findOne({ phone_no: strnum }).count();
 
+    console.log("numIsFraud", numIsFraud);
+
     if (numIsFraud) {
         console.log("Fraud");
         return 1;
