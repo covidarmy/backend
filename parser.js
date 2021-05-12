@@ -81,20 +81,20 @@ const parseTweet = (raw_text) => {
     console.log("Prase Tweet | Normalized Text", text);
     console.log("Prase Tweet | Resource Types", resourceTypes);
 
-    const categories = resourceTypes.map((r) => categories[r]).flat() || [];
+    const cat = resourceTypes.map((r) => categories[r]).flat() || [];
     const resource_types = resourceTypes || [];
     const phone_numbers = parsePhoneNumbers(raw_text);
     const emails = raw_text.match(emailRegex) || [];
     const locations = findLocation(text) || null;
 
-    console.log("Parse Tweet | categories", categories);
+    console.log("Parse Tweet | categories", cat);
     console.log("Parse Tweet | resource_types", resource_types);
     console.log("Parse Tweet | phone_numbers", phone_numbers);
     console.log("Parse Tweet | emails", emails);
     console.log("Parse Tweet | locations", locations);
 
     const obj = {
-        categories,
+        cat,
         resource_types,
         phone_numbers,
         emails,
