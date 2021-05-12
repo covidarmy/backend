@@ -156,6 +156,7 @@ const fetchTweets = async () => {
 
             if (isValid) {
                 validTweets.push(status);
+                console.log("Tweet added queue");
             } else {
                 console.log("Tweet discarded:");
                 // console.log(status);
