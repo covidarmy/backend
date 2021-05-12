@@ -57,7 +57,7 @@ const buildTweetObject = (tweet) => {
 
     console.log("Tweet Data", data);
 
-    return {
+    const obj = {
         category: data.categories[0],
         resource_type: data.resource_types[0],
 
@@ -87,6 +87,10 @@ const buildTweetObject = (tweet) => {
         retweets: tweet.retweet_count,
         author_followers: tweet.user.followers_count,
     };
+
+    console.log("Final Tweet", obj);
+
+    return obj;
 };
 
 const buildContactObjects = (tweet) => {
