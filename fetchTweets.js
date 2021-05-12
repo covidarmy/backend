@@ -168,7 +168,10 @@ const fetchTweets = async () => {
         console.log("Valid Tweets Length", validTweets.length);
 
         for (let tweetRaw of validTweets) {
+            console.log("Raw Tweet", tweetRaw);
             const tweet = buildTweetObject(tweetRaw);
+
+            console.log("Tweet Object", tweet);
 
             //check for fraud numbers in fraud database
             if (!isFraud(tweet.phone)) {
