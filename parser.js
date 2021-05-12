@@ -89,7 +89,7 @@ const parseTweet = (raw_text) => {
         locations: findLocation(text) || null,
     };
 
-    console.log("Extracted Data object", obj);
+    console.log(`Extracted Data object: ${obj ? obj : null}`);
 
     return obj;
 };
