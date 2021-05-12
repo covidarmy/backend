@@ -180,7 +180,7 @@ const fetchTweets = async () => {
                 console.log("Fraud number. Skipping...");
             }
         }
-
+        console.log("Final Tweets length:", finalTweets.length);
         return finalTweets;
     });
 
