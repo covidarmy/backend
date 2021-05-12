@@ -81,13 +81,17 @@ const parseTweet = (raw_text) => {
     console.log("Prase Tweet | Normalized Text", text);
     console.log("Prase Tweet | Resource Types", resourceTypes);
 
-    return {
+    const obj = {
         categories: resourceTypes.map((r) => categories[r]).flat() || [],
         resource_types: resourceTypes || [],
         phone_numbers: parsePhoneNumbers(raw_text),
         emails: raw_text.match(emailRegex) || [],
         locations: findLocation(text) || null,
     };
+
+    console.log("Extracted Data object", obj);
+
+    return obj;
 };
 
 const parseContacts = (raw_text) => {
