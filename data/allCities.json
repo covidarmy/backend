@@ -300,7 +300,7 @@
         "Faridabad": ["faridabad"],
         "Fatehabad": ["fatehabad"],
         "Gohana": ["gohana"],
-        "Gurgaon": ["gurgaon"],
+        "Gurgaon": ["gurgaon", "gurugram"],
         "Hansi": ["hansi"],
         "Hisar": ["hisar"],
         "Jind": ["jind"],
@@ -412,6 +412,7 @@
         "Mudhol": ["mudhol"],
         "Mulbagal": ["mulbagal"],
         "Mundargi": ["mundargi"],
+        "Mysore": ["mysore", "mysuru"],
         "Nanjangud": ["nanjangud"],
         "Nargund": ["nargund"],
         "Navalgund": ["navalgund"],
@@ -461,7 +462,6 @@
         "Wadi": ["wadi"],
         "Yadgir": ["yadgir"]
     },
-    "Karnatka": { "Mysore": ["mysore"] },
     "Kerala": {
         "Adoor": ["adoor"],
         "Alappuzha": ["alappuzha"],
