@@ -68,8 +68,8 @@ const buildTweetObject = (tweet) => {
         phone: data.phone_numbers,
         email: data.emails,
 
-        verification_status: data.verification_status,
-        last_verified_on: data.verified_at,
+        verification_status: data.verification_status || null,
+        last_verified_on: data.verified_at || null,
 
         created_by: tweet.user.name,
         created_on: new Date(tweet.created_at).getTime(),
