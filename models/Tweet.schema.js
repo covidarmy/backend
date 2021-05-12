@@ -13,6 +13,7 @@ const schema = new mongoose.Schema(
 		last_verified_on: String,
 		created_by: String,
 		created_on: Number,
+		manual_parsing_required: Boolean,
 		tweet_object: {
 			tweet_id: String,
 			tweet_url: String,
