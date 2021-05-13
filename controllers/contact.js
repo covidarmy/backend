@@ -135,9 +135,7 @@ exports.postFeedback = async (req, res) => {
         contact.feedback.push(feedback_value);
         await Contact.findOneAndUpdate({ contact_no }, contact);
 
-        if (contact.feedback.length >= 5) {
-            await rank(contact);
-        }
+        await rank(contact);
 
         res.send({ ok: true });
     } catch (error) {
