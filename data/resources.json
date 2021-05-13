@@ -1,6 +1,6 @@
 {
     "Home ICU": ["homeicu"],
-    "ICU Bed": ["icu", "icubed", "ventilator"],
+    "ICU Bed": ["icu", "icubed"],
     "Oxygen Bed": ["oxygenbed"],
     "Bed": ["bed"],
     "Remdesivir": ["remdesivir", "remdesvir"],
