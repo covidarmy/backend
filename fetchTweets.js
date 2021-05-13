@@ -3,6 +3,7 @@ const Contact = require("./models/Contact.schema");
 const Meta = require("./models/Meta.schema");
 const Fraud = require("./models/Fraud.schema");
 
+const analytics=require("analytics")
 const fetch = require("node-fetch");
 const {
     parseTweet,
@@ -11,6 +12,7 @@ const {
     categoriesObj,
     parsePhoneNumbers
 } = require("./parser");
+const { default: analytics } = require("analytics");
 
 const MAX_RESULTS = 100;
 
