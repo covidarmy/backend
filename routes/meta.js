@@ -1,6 +1,8 @@
 const fs = require("fs");
 const express = require("express");
 
+const Contact = require("../models/Contact.schema");
+
 const citiesRaw = require("fs")
     .readFileSync("./data/cities.csv", "utf8")
     .split("\n")
@@ -72,23 +74,30 @@ router.get("/resources", async (req, res) => {
  *     description: Check if city name is valid
  *     responses:
  *         '200':
- *             description: A response object with `found` boolean field and name locale code
+ *             description: A response object with `found` boolean field, name locale code and number of contacts associated with the found city
  */
-router.get("/checkCity", (req, res) => {
-    let { city } = req.query;
+router.get("/checkCity", async (req, res) => {
+    try {
+        let { city } = req.query;
 
-    if (!city) {
-        return res.status(400).send({ error: "City not provided." });
-    }
-
-    city = city.toLowerCase();
-
-    for (const [en, hi] of citiesRaw) {
-        if (city == en.toLowerCase() || city == hi) {
-            return res.send({ found: true, name: en });
+        if (!city) {
+            return res.status(400).send({ error: "City not provided." });
         }
+
+        city = city.toLowerCase();
+
+        for (const [en, hi] of citiesRaw) {
+            if (city == en.toLowerCase() || city == hi) {
+                const totalContacts = await Contact.countDocuments({
+                    city: en,
+                });
+                return res.send({ found: true, name: en, totalContacts });
+            }
+        }
+        return res.send({ found: false });
+    } catch (error) {
+        res.status(500).send({ error: error.message });
     }
-    return res.send({ found: false });
 });
 
 module.exports = router;
