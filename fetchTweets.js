@@ -93,9 +93,6 @@ const buildTweetObject = (tweet) => {
 };
 
 const buildContactObjects = (tweet) => {
-    if (tweet.manual_parsing_required) {
-        return [];
-    }
     //console.log(Object.keys(tweet))
     const data = parseContacts(tweet.text);
 
