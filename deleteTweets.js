@@ -2,7 +2,9 @@ require("dotenv").config();
 const Tweet = require("./models/Tweet.schema");
 const fraud = require("./models/Fraud.schema");
 
-const analytics = require("./analytics");
+//const analytics = require("./analytics");
+const Mixpanel = require('mixpanel');
+var analytics = Mixpanel.init(process.env.ANALYTICS_KEY);
 
 const deleteTweets = async () => {};
 
