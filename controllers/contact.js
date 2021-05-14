@@ -4,7 +4,7 @@ const cities = require("../data/allCities.json");
 const resources = require("../data/resources.json");
 
 const { rank } = require("../ranking_system/rank");
-const { validateCooldown } = require("../utils/validateCooldown");
+const { isCooldownValid } = require("../utils/isCooldownValid");
 
 //for analytics
 const Mixpanel = require('mixpanel');
@@ -86,7 +86,7 @@ exports.findAll = async (req, res) => {
                         offset++;
                         continue;
                     } else {
-                        if (!validateCooldown(doc.status, doc.updatedAt)) {
+                        if (!isCooldownValid(doc.status, doc.updatedAt)) {
                             doc.status = "ACTIVE";
                             await doc.save();
 
@@ -148,8 +148,17 @@ exports.postFeedback = async (req, res) => {
             contact.feedback.shift();
         }
 
+        //Check and update thec contact status if required before updating the document
+        if (contact.status != "ACTIVE" || "BLACKLIST") {
+            if (!isCooldownValid(contact.status, contact.updatedAt)) {
+                contact.status = "ACTIVE";
+                await contact.save();
+            }
+        }
+
         contact.feedback.push(feedback_value);
-        await Contact.findOneAndUpdate({ contact_no }, contact);
+        contact.verification_status = String(feedback_value);
+        await contact.save();
 
         await rank(contact);
 

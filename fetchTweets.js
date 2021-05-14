@@ -13,7 +13,7 @@ const {
     parseContacts,
     resourceTypes,
     categoriesObj,
-    parsePhoneNumbers
+    parsePhoneNumbers,
 } = require("./parser");
 
 const MAX_RESULTS = 100;
@@ -21,7 +21,7 @@ const MAX_RESULTS = 100;
 const resourceQueries = {
     Bed: "(bed OR beds)",
     "Home ICU": "(home icu OR home icus)",
-    "ICU Bed": "(icu OR ventilator OR ventilators)",
+    "ICU Bed": "(icu OR OR icu bed OR icu beds)",
     "Oxygen Bed": "(oxygen bed OR oxygen beds)",
     Remdesivir: "(remdesivir OR remdesvir)",
     Favipiravir: "(Favipiravir OR FabiFlu)",
@@ -201,10 +201,11 @@ const fetchTweets = async () => {
 
             //console.log("Tweet Object", tweet);
             //console.log("buildTweetObject return value is not null", tweet.phone);
-            
+
             //Check for fraud numbers in fraud database
             let fraudFlag = await isFraud(tweet.phone); //isFraud is async, need an await, otherwise fraudFlag can be evaluated as true and number can be falsely considered false
             if (fraudFlag) {
+
                 fraudCount +=1;
                 total_no_of_fraud_tweets++;
                 //analytics.track("Fraud Number Detected",{number:tweet.phone})
@@ -258,13 +259,10 @@ const saveTweets = async (tweets) => {
 
         if (tweet.phone.length > 0) {
             query = {
-                $or: [
-                    { "text": tweet.text },
-                    { phone: { $all: tweet.phone } },
-                ],
+                $or: [{ text: tweet.text }, { phone: { $all: tweet.phone } }],
             };
         } else {
-            query = { "text": tweet.text };
+            query = { text: tweet.text };
         }
 
         promises.push(Tweet.findOneAndUpdate(query, tweet, { upsert: true }));
@@ -350,16 +348,19 @@ async function isFraud(phone_no_array) {
 
     //const phone_no_array_cleaned = phone_no_array.map((phone_no) => parsePhoneNumbers(phone_no));
     //console.log("Cleaned phone_array: ", phone_no_array_cleaned);
-    
-    
+
     //Finds at least one document that has a phone_no which matches at least one of the values in phone_no_array
-    var numIsFraud = await Fraud.findOne({ phone_no: {$in: phone_no_array}}).count();
+    var numIsFraud = await Fraud.findOne({
+        phone_no: { $in: phone_no_array },
+    }).count();
     // console.log("Numbers tested are: ", phone_no_array);
     // console.log("numIsFraud: ", numIsFraud );
 
-    if (numIsFraud != 0) { //numIsFraud
+    if (numIsFraud != 0) {
+        //numIsFraud
         return true;
-    } else { //not a fraud
+    } else {
+        //not a fraud
         return false;
     }
 }

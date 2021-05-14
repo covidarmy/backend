@@ -24,31 +24,46 @@ const checkRecentOccurrences = (arr, numEl, value) => {
 const rank = async (contact) => {
     const { feedback } = contact;
 
-    if (checkRecentOccurrences(feedback, 5, [Votes.HELPFUL])) {
+    if (
+        checkRecentOccurrences(feedback, 5, [Votes.HELPFUL]) &&
+        feedback.length >= 5
+    ) {
         contact.status = Statuses.S_COOLDOWN;
         contact = await contact.save();
         return contact;
     }
 
-    if (checkRecentOccurrences(feedback, 5, [Votes.NOANSWER, Votes.BUSY])) {
+    if (
+        checkRecentOccurrences(feedback, 5, [Votes.NOANSWER, Votes.BUSY]) &&
+        feedback.length >= 5
+    ) {
         contact.status = Statuses.M_COOLDOWN;
         contact = await contact.save();
         return contact;
     }
 
-    if (checkRecentOccurrences(feedback, 3, [Votes.NOSTOCK])) {
+    if (
+        checkRecentOccurrences(feedback, 3, [Votes.NOSTOCK]) &&
+        feedback.length >= 3
+    ) {
         contact.status = Statuses.M_COOLDOWN;
         contact = await contact.save();
         return contact;
     }
 
-    if (checkRecentOccurrences(feedback, 2, [Votes.NOSTOCK])) {
+    if (
+        checkRecentOccurrences(feedback, 2, [Votes.NOSTOCK]) &&
+        feedback.length >= 2
+    ) {
         contact.status = Statuses.S_COOLDOWN;
         contact = await contact.save();
         return contact;
     }
 
-    if (checkRecentOccurrences(feedback, 5, [Votes.INVALID])) {
+    if (
+        checkRecentOccurrences(feedback, 5, [Votes.INVALID]) &&
+        feedback.length >= 5
+    ) {
         contact.status = Statuses.BLACKLIST;
         contact = await contact.save();
         return contact;
