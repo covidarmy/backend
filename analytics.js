@@ -1,12 +1,6 @@
-const analyticsLib = require('analytics').default
-const googleAnalytics = require('@analytics/google-analytics').default
+const Mixpanel = require('mixpanel');
 
-const analytics = analyticsLib({
-  app: 'test-signal',
-  plugins: [
-    googleAnalytics({
-      trackingId: process.env.GA_KEY
-    })
-  ]
-})
-module.export=analytics;
+const analytics = Mixpanel.init(process.env.ANALYTICS_KEY);
+
+module.export = analytics;
+//exports.analytics = Mixpanel;

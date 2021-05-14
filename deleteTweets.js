@@ -2,10 +2,12 @@ require("dotenv").config();
 const Tweet = require("./models/Tweet.schema");
 const fraud = require("./models/Fraud.schema");
 
+const analytics = require("./analytics");
 
 const deleteTweets = async () => {};
 
 const deleteFraud = async () => {
+  
   let fraudNums = await fraud.find({});
 
   //make an array of all fraud numbers
@@ -15,7 +17,8 @@ const deleteFraud = async () => {
   }
 
   let delSummary = await Tweet.deleteMany({ phone: { $in: arr } });
-  console.log("Routine fraud delete summary : ",delSummary);
+  console.log("Routine fraud delete running\n Total deleted : ",delSummary.deletedCount);
+  analytics.track("Routine fraud delete triggered",delSummary.deletedCount);
 };
 
 module.exports = { deleteTweets, deleteFraud };

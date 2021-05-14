@@ -3,7 +3,11 @@ const Contact = require("./models/Contact.schema");
 const Meta = require("./models/Meta.schema");
 const Fraud = require("./models/Fraud.schema");
 
-const analytics=require("analytics")
+//const analytics = require("./analytics")
+const Mixpanel = require('mixpanel');
+
+var analytics = Mixpanel.init(process.env.ANALYTICS_KEY);
+
 const fetch = require("node-fetch");
 const {
     parseTweet,
@@ -12,7 +16,6 @@ const {
     categoriesObj,
     parsePhoneNumbers
 } = require("./parser");
-const { default: analytics } = require("analytics");
 
 const MAX_RESULTS = 100;
 
@@ -176,8 +179,15 @@ const fetchTweets = async () => {
         const finalTweets = [];
         var fraudCount = 0;
 
+        console.log("\nResource: ", resource);
         console.log("Discarded Tweets: ", discardedTweets.length);
         console.log("Valid Tweets Length", validTweets.length);
+
+        analytics.track("resource-wise tweet fetch summary", {
+            resource:resource,
+            discarded_tweet_count:discardedTweets.length,
+            valid_tweets_count:validTweets.length
+        });
 
         for (let tweetRaw of validTweets) {
             //console.log("Raw Tweet", tweetRaw);
@@ -190,6 +200,9 @@ const fetchTweets = async () => {
             let fraudFlag = await isFraud(tweet.phone); //isFraud is async, need an await, otherwise fraudFlag can be evaluated as true and number can be falsely considered false
             if (fraudFlag) {
                 fraudCount +=1;
+
+                analytics.track("Fraud Number Detected",{number:tweet.phone})
+                
                 console.log("Fraud number. Skipping...");
             } else {
                 if (!tweet.resource_type) {
@@ -202,11 +215,16 @@ const fetchTweets = async () => {
         }
         console.log("Fraud Tweets found:", fraudCount);
         console.log("Final Tweets length:", finalTweets.length);
+
+        // analytics.track("Tweet fraud filter Summary",{
+        //     fraud_tweets_found: fraudCount,
+        //     final_tweets_length: finalTweets.length
+        // });
         return finalTweets;
     });
 
     const tweets = (await Promise.all(tweetsPromises)).flat();
-
+    
     await Meta.updateOne({}, { sinceId: String(max_id) });
     return tweets;
 };
@@ -252,8 +270,8 @@ const buildContacts = (tweets) => {
 
         const contacts_ = buildContactObjects(tweet);
 
-        // console.log("Contacts:\n", contacts_);
-        // console.log("\n\n\n\n");
+        //  console.log("Contacts:\n", contacts_);
+        //  console.log("\n\n\n\n");
 
         contacts = contacts.concat(contacts_);
     }
@@ -284,12 +302,21 @@ const saveContacts = async (contacts) => {
     await Promise.all(promises);
 
     console.log(`Saved ${promises.length} contacts to DB`);
+    analytics.track("contacts object saved to db",{qty:promises.length})
 };
 
 const fetchAndSaveTweets = async () => {
     const tweets = await fetchTweets();
+    console.log("Total number of tweets fetched in routine fetch cycle:",tweets.length);
+        
     const contacts = buildContacts(tweets);
-
+    console.log("Total number of contacts built in routine fetch cycle:",contacts.length);
+    
+    analytics.track("routine fetch cycle",{
+        no_of_tweets_fetched:tweets.length,
+        no_of_contacts_built:contacts.length
+    });
+    
     await Promise.all([saveTweets(tweets), saveContacts(contacts)]);
 };
 
