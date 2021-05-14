@@ -1,0 +1,7340 @@
+{
+    "Andaman and Nicobar Islands": [
+        {
+            "name": "Port Blair",
+            "keywords": ["portblair"],
+            "top": false,
+            "hindiName": "पोर्ट ब्लेयर"
+        }
+    ],
+    "Andhra Pradesh": [
+        {
+            "name": "Adoni",
+            "keywords": ["adoni"],
+            "top": false,
+            "hindiName": "अदोनी"
+        },
+        {
+            "name": "Amalapuram",
+            "keywords": ["amalapuram"],
+            "top": false,
+            "hindiName": "अमलापुरम"
+        },
+        {
+            "name": "Anakapalle",
+            "keywords": ["anakapalle"],
+            "top": false,
+            "hindiName": "अनकापल्ली"
+        },
+        {
+            "name": "Anantapur",
+            "keywords": ["anantapur"],
+            "top": false,
+            "hindiName": "अनंतपुर"
+        },
+        {
+            "name": "Bapatla",
+            "keywords": ["bapatla"],
+            "top": false,
+            "hindiName": "बापतला"
+        },
+        {
+            "name": "Bheemunipatnam",
+            "keywords": ["bheemunipatnam"],
+            "top": false,
+            "hindiName": "Bheemunipatnam"
+        },
+        {
+            "name": "Bhimavaram",
+            "keywords": ["bhimavaram"],
+            "top": false,
+            "hindiName": "भीमावरम"
+        },
+        {
+            "name": "Bobbili",
+            "keywords": ["bobbili"],
+            "top": false,
+            "hindiName": "बोब्बिली"
+        },
+        {
+            "name": "Chilakaluripet",
+            "keywords": ["chilakaluripet"],
+            "top": false,
+            "hindiName": "Chilakaluripet"
+        },
+        {
+            "name": "Chirala",
+            "keywords": ["chirala"],
+            "top": false,
+            "hindiName": "चिराला"
+        },
+        {
+            "name": "Chittoor",
+            "keywords": ["chittoor"],
+            "top": false,
+            "hindiName": "चित्तूर"
+        },
+        {
+            "name": "Dharmavaram",
+            "keywords": ["dharmavaram"],
+            "top": false,
+            "hindiName": "धर्मावरम"
+        },
+        {
+            "name": "Eluru",
+            "keywords": ["eluru"],
+            "top": false,
+            "hindiName": "एलुरु"
+        },
+        {
+            "name": "Gooty",
+            "keywords": ["gooty"],
+            "top": false,
+            "hindiName": "गूटी"
+        },
+        {
+            "name": "Gudivada",
+            "keywords": ["gudivada"],
+            "top": false,
+            "hindiName": "गुडिवाडा"
+        },
+        {
+            "name": "Gudur",
+            "keywords": ["gudur"],
+            "top": false,
+            "hindiName": "गुडूर"
+        },
+        {
+            "name": "Guntakal",
+            "keywords": ["guntakal"],
+            "top": false,
+            "hindiName": "गुंतकल"
+        },
+        {
+            "name": "Guntur",
+            "keywords": ["guntur"],
+            "top": false,
+            "hindiName": "गुंटूर"
+        },
+        {
+            "name": "Hindupur",
+            "keywords": ["hindupur"],
+            "top": false,
+            "hindiName": "हिन्दुपुर"
+        },
+        {
+            "name": "Jaggaiahpet",
+            "keywords": ["jaggaiahpet"],
+            "top": false,
+            "hindiName": "Jaggaiahpet"
+        },
+        {
+            "name": "Jammalamadugu",
+            "keywords": ["jammalamadugu"],
+            "top": false,
+            "hindiName": "Jammalamadugu"
+        },
+        {
+            "name": "Kadapa",
+            "keywords": ["kadapa"],
+            "top": false,
+            "hindiName": "कडपा"
+        },
+        {
+            "name": "Kadiri",
+            "keywords": ["kadiri"],
+            "top": false,
+            "hindiName": "कादिरी"
+        },
+        {
+            "name": "Kakinada",
+            "keywords": ["kakinada"],
+            "top": false,
+            "hindiName": "काकीनाडा"
+        },
+        {
+            "name": "Kandukur",
+            "keywords": ["kandukur"],
+            "top": false,
+            "hindiName": "Kandukur"
+        },
+        {
+            "name": "Kavali",
+            "keywords": ["kavali"],
+            "top": false,
+            "hindiName": "कवाली"
+        },
+        {
+            "name": "Kovvur",
+            "keywords": ["kovvur"],
+            "top": false,
+            "hindiName": "कोव्वुर"
+        },
+        {
+            "name": "Kurnool",
+            "keywords": ["kurnool"],
+            "top": true,
+            "hindiName": "कुरनूल"
+        },
+        {
+            "name": "Macherla",
+            "keywords": ["macherla"],
+            "top": false,
+            "hindiName": "Macherla"
+        },
+        {
+            "name": "Machilipatnam",
+            "keywords": ["machilipatnam"],
+            "top": false,
+            "hindiName": "मछलीपट्टनम"
+        },
+        {
+            "name": "Madanapalle",
+            "keywords": ["madanapalle"],
+            "top": false,
+            "hindiName": "मदनपल्ली"
+        },
+        {
+            "name": "Mandapeta",
+            "keywords": ["mandapeta"],
+            "top": false,
+            "hindiName": "मंडपेटा"
+        },
+        {
+            "name": "Markapur",
+            "keywords": ["markapur"],
+            "top": false,
+            "hindiName": "मरकापुर"
+        },
+        {
+            "name": "Nagari",
+            "keywords": ["nagari"],
+            "top": false,
+            "hindiName": "नागरी"
+        },
+        {
+            "name": "Naidupet",
+            "keywords": ["naidupet"],
+            "top": false,
+            "hindiName": null
+        },
+        {
+            "name": "Nandyal",
+            "keywords": ["nandyal"],
+            "top": false,
+            "hindiName": "नांदयाल"
+        },
+        {
+            "name": "Narasapuram",
+            "keywords": ["narasapuram"],
+            "top": false,
+            "hindiName": null
+        },
+        {
+            "name": "Narasaraopet",
+            "keywords": ["narasaraopet"],
+            "top": false,
+            "hindiName": "Narasaraopet"
+        },
+        {
+            "name": "Narsipatnam",
+            "keywords": ["narsipatnam"],
+            "top": false,
+            "hindiName": "Narsipatnam"
+        },
+        {
+            "name": "Nellore",
+            "keywords": ["nellore"],
+            "top": false,
+            "hindiName": "नेल्लोर"
+        },
+        {
+            "name": "Nidadavole",
+            "keywords": ["nidadavole"],
+            "top": false,
+            "hindiName": "निदादावोले"
+        },
+        {
+            "name": "Nuzvid",
+            "keywords": ["nuzvid"],
+            "top": false,
+            "hindiName": "नुज्विद"
+        },
+        {
+            "name": "Ongole",
+            "keywords": ["ongole"],
+            "top": false,
+            "hindiName": "ओंगोल"
+        },
+        {
+            "name": "Palacole",
+            "keywords": ["palacole"],
+            "top": false,
+            "hindiName": "Palacole"
+        },
+        {
+            "name": "Palasa Kasibugga",
+            "keywords": ["palasakasibugga"],
+            "top": false,
+            "hindiName": "पलासा Kasibugga"
+        },
+        {
+            "name": "Parvathipuram",
+            "keywords": ["parvathipuram"],
+            "top": false,
+            "hindiName": "पार्वतीपुरम"
+        },
+        {
+            "name": "Pedana",
+            "keywords": ["pedana"],
+            "top": false,
+            "hindiName": "Pedana"
+        },
+        {
+            "name": "Peddapuram",
+            "keywords": ["peddapuram"],
+            "top": false,
+            "hindiName": "पेद्दापुरम"
+        },
+        {
+            "name": "Pithapuram",
+            "keywords": ["pithapuram"],
+            "top": false,
+            "hindiName": "पीथापुरम"
+        },
+        {
+            "name": "Ponnur",
+            "keywords": ["ponnur"],
+            "top": false,
+            "hindiName": "Ponnur"
+        },
+        {
+            "name": "Proddatur",
+            "keywords": ["proddatur"],
+            "top": false,
+            "hindiName": "प्रोद्दातुर"
+        },
+        {
+            "name": "Punganur",
+            "keywords": ["punganur"],
+            "top": false,
+            "hindiName": "पुंगनूर"
+        },
+        {
+            "name": "Puttur",
+            "keywords": ["puttur"],
+            "top": false,
+            "hindiName": "पुत्तूर"
+        },
+        {
+            "name": "Rajahmundry",
+            "keywords": ["rajahmundry"],
+            "top": false,
+            "hindiName": "राजमुंदरी"
+        },
+        {
+            "name": "Rajam",
+            "keywords": ["rajam"],
+            "top": false,
+            "hindiName": "Rajam"
+        },
+        {
+            "name": "Rajampet",
+            "keywords": ["rajampet"],
+            "top": false,
+            "hindiName": "राजमपेट"
+        },
+        {
+            "name": "Ramachandrapuram",
+            "keywords": ["ramachandrapuram"],
+            "top": false,
+            "hindiName": "रामचंद्रपुरम"
+        },
+        {
+            "name": "Rayachoti",
+            "keywords": ["rayachoti"],
+            "top": false,
+            "hindiName": "रायचोटी"
+        },
+        {
+            "name": "Rayadurg",
+            "keywords": ["rayadurg"],
+            "top": false,
+            "hindiName": "Rayadurg"
+        },
+        {
+            "name": "Renigunta",
+            "keywords": ["renigunta"],
+            "top": false,
+            "hindiName": "रेनीगुंटा"
+        },
+        {
+            "name": "Repalle",
+            "keywords": ["repalle"],
+            "top": false,
+            "hindiName": "रेपल्ले"
+        },
+        {
+            "name": "Salur",
+            "keywords": ["salur"],
+            "top": false,
+            "hindiName": "Salur"
+        },
+        {
+            "name": "Samalkot",
+            "keywords": ["samalkot"],
+            "top": false,
+            "hindiName": "समालकोट"
+        },
+        {
+            "name": "Sattenapalle",
+            "keywords": ["sattenapalle"],
+            "top": false,
+            "hindiName": "सत्तेनापल्ली"
+        },
+        {
+            "name": "Srikakulam",
+            "keywords": ["srikakulam"],
+            "top": false,
+            "hindiName": "श्रीकाकुलम"
+        },
+        {
+            "name": "Srikalahasti",
+            "keywords": ["srikalahasti"],
+            "top": false,
+            "hindiName": "श्रीकालाहस्ती"
+        },
+        {
+            "name": "Srisailam Project (Right Flank Colony) Township",
+            "keywords": ["srisailamproject(rightflankcolony)township"],
+            "top": false,
+            "hindiName": null
+        },
+        {
+            "name": "Sullurpeta",
+            "keywords": ["sullurpeta"],
+            "top": false,
+            "hindiName": null
+        },
+        {
+            "name": "Tadepalligudem",
+            "keywords": ["tadepalligudem"],
+            "top": false,
+            "hindiName": "ताडेपल्लीगुडेम"
+        },
+        {
+            "name": "Tadpatri",
+            "keywords": ["tadpatri"],
+            "top": false,
+            "hindiName": "Tadpatri"
+        },
+        {
+            "name": "Tanuku",
+            "keywords": ["tanuku"],
+            "top": false,
+            "hindiName": "टनुकु"
+        },
+        {
+            "name": "Tenali",
+            "keywords": ["tenali"],
+            "top": false,
+            "hindiName": "तेनाली"
+        },
+        {
+            "name": "Tirupati",
+            "keywords": ["tirupati"],
+            "top": false,
+            "hindiName": "तिरुपति"
+        },
+        {
+            "name": "Tiruvuru",
+            "keywords": ["tiruvuru"],
+            "top": false,
+            "hindiName": null
+        },
+        {
+            "name": "Tuni",
+            "keywords": ["tuni"],
+            "top": false,
+            "hindiName": "तुनि"
+        },
+        {
+            "name": "Uravakonda",
+            "keywords": ["uravakonda"],
+            "top": false,
+            "hindiName": "Uravakonda"
+        },
+        {
+            "name": "Venkatagiri",
+            "keywords": ["venkatagiri"],
+            "top": false,
+            "hindiName": "वेंकटगिरी"
+        },
+        {
+            "name": "Vijayawada",
+            "keywords": ["vijayawada"],
+            "top": false,
+            "hindiName": "विजयवाड़ा"
+        },
+        {
+            "name": "Vinukonda",
+            "keywords": ["vinukonda"],
+            "top": false,
+            "hindiName": "विनुकोंडा"
+        },
+        {
+            "name": "Visakhapatnam",
+            "keywords": ["visakhapatnam"],
+            "top": true,
+            "hindiName": "विशाखापत्तनम"
+        },
+        {
+            "name": "Vizianagaram",
+            "keywords": ["vizianagaram"],
+            "top": false,
+            "hindiName": "विजयनगरम"
+        },
+        {
+            "name": "Yemmiganur",
+            "keywords": ["yemmiganur"],
+            "top": false,
+            "hindiName": "Yemmiganur"
+        },
+        {
+            "name": "Yerraguntla",
+            "keywords": ["yerraguntla"],
+            "top": false,
+            "hindiName": "येरागुंटला"
+        }
+    ],
+    "Arunachal Pradesh": [
+        {
+            "name": "Naharlagun",
+            "keywords": ["naharlagun"],
+            "top": false,
+            "hindiName": "नाहरलगुन"
+        },
+        {
+            "name": "Pasighat",
+            "keywords": ["pasighat"],
+            "top": false,
+            "hindiName": "पासीघाट"
+        }
+    ],
+    "Assam": [
+        {
+            "name": "Barpeta",
+            "keywords": ["barpeta"],
+            "top": false,
+            "hindiName": "बारपेटा"
+        },
+        {
+            "name": "Bongaigaon City",
+            "keywords": ["bongaigaoncity"],
+            "top": false,
+            "hindiName": null
+        },
+        {
+            "name": "Dhubri",
+            "keywords": ["dhubri"],
+            "top": false,
+            "hindiName": "धुबरी"
+        },
+        {
+            "name": "Dibrugarh",
+            "keywords": ["dibrugarh"],
+            "top": false,
+            "hindiName": "डिब्रूगढ़"
+        },
+        {
+            "name": "Diphu",
+            "keywords": ["diphu"],
+            "top": false,
+            "hindiName": "दिफू"
+        },
+        {
+            "name": "Goalpara",
+            "keywords": ["goalpara"],
+            "top": false,
+            "hindiName": "गोलपाड़ा"
+        },
+        {
+            "name": "Guwahati",
+            "keywords": ["guwahati"],
+            "top": false,
+            "hindiName": "गुवाहाटी"
+        },
+        {
+            "name": "Jorhat",
+            "keywords": ["jorhat"],
+            "top": false,
+            "hindiName": "जोरहाट"
+        },
+        {
+            "name": "Karimganj",
+            "keywords": ["karimganj"],
+            "top": false,
+            "hindiName": "करीमगंज"
+        },
+        {
+            "name": "Lanka",
+            "keywords": ["lanka"],
+            "top": false,
+            "hindiName": "लंका"
+        },
+        {
+            "name": "Lumding",
+            "keywords": ["lumding"],
+            "top": false,
+            "hindiName": "लुमडिंग"
+        },
+        {
+            "name": "Mangaldoi",
+            "keywords": ["mangaldoi"],
+            "top": false,
+            "hindiName": "मंगलदोई"
+        },
+        {
+            "name": "Mankachar",
+            "keywords": ["mankachar"],
+            "top": false,
+            "hindiName": "Mankachar"
+        },
+        {
+            "name": "Margherita",
+            "keywords": ["margherita"],
+            "top": false,
+            "hindiName": "मार्गेरिटा"
+        },
+        {
+            "name": "Mariani",
+            "keywords": ["mariani"],
+            "top": false,
+            "hindiName": "मरिअनी"
+        },
+        {
+            "name": "Marigaon",
+            "keywords": ["marigaon"],
+            "top": false,
+            "hindiName": "Marigaon"
+        },
+        {
+            "name": "Nagaon",
+            "keywords": ["nagaon"],
+            "top": false,
+            "hindiName": "नगांव"
+        },
+        {
+            "name": "Nalbari",
+            "keywords": ["nalbari"],
+            "top": false,
+            "hindiName": "नलबाड़ी"
+        },
+        {
+            "name": "North Lakhimpur",
+            "keywords": ["northlakhimpur"],
+            "top": false,
+            "hindiName": "उत्तर लखीमपुर"
+        },
+        {
+            "name": "Rangia",
+            "keywords": ["rangia"],
+            "top": false,
+            "hindiName": "रंगिया"
+        },
+        {
+            "name": "Sibsagar",
+            "keywords": ["sibsagar"],
+            "top": false,
+            "hindiName": "शिवसागर"
+        },
+        {
+            "name": "Silapathar",
+            "keywords": ["silapathar"],
+            "top": false,
+            "hindiName": "Silapathar"
+        },
+        {
+            "name": "Silchar",
+            "keywords": ["silchar"],
+            "top": false,
+            "hindiName": "सिलचर"
+        },
+        {
+            "name": "Tezpur",
+            "keywords": ["tezpur"],
+            "top": false,
+            "hindiName": "तेजपुर"
+        },
+        {
+            "name": "Tinsukia",
+            "keywords": ["tinsukia"],
+            "top": false,
+            "hindiName": "तिनसुकिया"
+        }
+    ],
+    "Bihar": [
+        {
+            "name": "Araria",
+            "keywords": ["araria"],
+            "top": false,
+            "hindiName": "अररिया"
+        },
+        {
+            "name": "Arrah",
+            "keywords": ["arrah"],
+            "top": false,
+            "hindiName": "आरा"
+        },
+        {
+            "name": "Arwal",
+            "keywords": ["arwal"],
+            "top": false,
+            "hindiName": null
+        },
+        {
+            "name": "Asarganj",
+            "keywords": ["asarganj"],
+            "top": false,
+            "hindiName": "Asarganj"
+        },
+        {
+            "name": "Aurangabad",
+            "keywords": ["aurangabad"],
+            "top": false,
+            "hindiName": "औरंगाबाद"
+        },
+        {
+            "name": "Bagaha",
+            "keywords": ["bagaha"],
+            "top": false,
+            "hindiName": "बगहा"
+        },
+        {
+            "name": "Barh",
+            "keywords": ["barh"],
+            "top": false,
+            "hindiName": "बाढ़"
+        },
+        {
+            "name": "Begusarai",
+            "keywords": ["begusarai"],
+            "top": false,
+            "hindiName": "बेगूसराय"
+        },
+        {
+            "name": "Bettiah",
+            "keywords": ["bettiah"],
+            "top": false,
+            "hindiName": "बेतिया"
+        },
+        {
+            "name": "Bhabua",
+            "keywords": ["bhabua"],
+            "top": false,
+            "hindiName": "भभुआ"
+        },
+        {
+            "name": "Bhagalpur",
+            "keywords": ["bhagalpur"],
+            "top": false,
+            "hindiName": "भागलपुर"
+        },
+        {
+            "name": "Buxar",
+            "keywords": ["buxar"],
+            "top": false,
+            "hindiName": "बक्सर"
+        },
+        {
+            "name": "Chhapra",
+            "keywords": ["chhapra"],
+            "top": false,
+            "hindiName": "छपरा"
+        },
+        {
+            "name": "Darbhanga",
+            "keywords": ["darbhanga"],
+            "top": false,
+            "hindiName": "दरभंगा"
+        },
+        {
+            "name": "Dehri-on-Sone",
+            "keywords": ["dehri-on-sone", "dehrionsone"],
+            "top": false,
+            "hindiName": "डेहरी-ऑन-सोन"
+        },
+        {
+            "name": "Dumraon",
+            "keywords": ["dumraon"],
+            "top": false,
+            "hindiName": "दुमरांव"
+        },
+        {
+            "name": "Forbesganj",
+            "keywords": ["forbesganj"],
+            "top": false,
+            "hindiName": "फोर्बेस्गंज"
+        },
+        {
+            "name": "Gaya",
+            "keywords": ["gaya"],
+            "top": true,
+            "hindiName": "गया"
+        },
+        {
+            "name": "Gopalganj",
+            "keywords": ["gopalganj"],
+            "top": false,
+            "hindiName": "गोपालगंज"
+        },
+        {
+            "name": "Hajipur",
+            "keywords": ["hajipur"],
+            "top": false,
+            "hindiName": "हाजीपुर"
+        },
+        {
+            "name": "Jamalpur",
+            "keywords": ["jamalpur"],
+            "top": false,
+            "hindiName": "जमालपुर"
+        },
+        {
+            "name": "Jamui",
+            "keywords": ["jamui"],
+            "top": false,
+            "hindiName": "जमुई"
+        },
+        {
+            "name": "Jehanabad",
+            "keywords": ["jehanabad"],
+            "top": false,
+            "hindiName": "जहानाबाद"
+        },
+        {
+            "name": "Katihar",
+            "keywords": ["katihar"],
+            "top": false,
+            "hindiName": "कटिहार"
+        },
+        {
+            "name": "Kishanganj",
+            "keywords": ["kishanganj"],
+            "top": false,
+            "hindiName": "किशनगंज"
+        },
+        {
+            "name": "Lakhisarai",
+            "keywords": ["lakhisarai"],
+            "top": false,
+            "hindiName": "लखीसराय"
+        },
+        {
+            "name": "Lalganj",
+            "keywords": ["lalganj"],
+            "top": false,
+            "hindiName": "लालगंज"
+        },
+        {
+            "name": "Madhepura",
+            "keywords": ["madhepura"],
+            "top": false,
+            "hindiName": "मधेपुरा"
+        },
+        {
+            "name": "Madhubani",
+            "keywords": ["madhubani"],
+            "top": false,
+            "hindiName": "मधुबनी"
+        },
+        {
+            "name": "Maharajganj",
+            "keywords": ["maharajganj"],
+            "top": false,
+            "hindiName": "महाराजगंज"
+        },
+        {
+            "name": "Mahnar Bazar",
+            "keywords": ["mahnarbazar"],
+            "top": false,
+            "hindiName": "Mahnar बाजार"
+        },
+        {
+            "name": "Makhdumpur",
+            "keywords": ["makhdumpur"],
+            "top": false,
+            "hindiName": "मखदुमपुर"
+        },
+        {
+            "name": "Maner",
+            "keywords": ["maner"],
+            "top": false,
+            "hindiName": "मनेर"
+        },
+        {
+            "name": "Manihari",
+            "keywords": ["manihari"],
+            "top": false,
+            "hindiName": "मनिहारी"
+        },
+        {
+            "name": "Marhaura",
+            "keywords": ["marhaura"],
+            "top": false,
+            "hindiName": "Marhaura"
+        },
+        {
+            "name": "Masaurhi",
+            "keywords": ["masaurhi"],
+            "top": false,
+            "hindiName": "मसौर्ही"
+        },
+        {
+            "name": "Mirganj",
+            "keywords": ["mirganj"],
+            "top": false,
+            "hindiName": "Mirganj"
+        },
+        {
+            "name": "Mokameh",
+            "keywords": ["mokameh"],
+            "top": false,
+            "hindiName": "Mokameh"
+        },
+        {
+            "name": "Motihari",
+            "keywords": ["motihari"],
+            "top": false,
+            "hindiName": "मोतिहारी"
+        },
+        {
+            "name": "Motipur",
+            "keywords": ["motipur"],
+            "top": false,
+            "hindiName": "मोतीपुर"
+        },
+        {
+            "name": "Munger",
+            "keywords": ["munger"],
+            "top": false,
+            "hindiName": "मुंगेर"
+        },
+        {
+            "name": "Murliganj",
+            "keywords": ["murliganj"],
+            "top": false,
+            "hindiName": "मुरलीगंज"
+        },
+        {
+            "name": "Muzaffarpur",
+            "keywords": ["muzaffarpur"],
+            "top": false,
+            "hindiName": "मुजफ्फरपुर"
+        },
+        {
+            "name": "Narkatiaganj",
+            "keywords": ["narkatiaganj"],
+            "top": false,
+            "hindiName": "नरकटियागंज"
+        },
+        {
+            "name": "Naugachhia",
+            "keywords": ["naugachhia"],
+            "top": false,
+            "hindiName": "Naugachhia"
+        },
+        {
+            "name": "Nawada",
+            "keywords": ["nawada"],
+            "top": false,
+            "hindiName": "नवादा"
+        },
+        {
+            "name": "Nokha",
+            "keywords": ["nokha"],
+            "top": false,
+            "hindiName": "नोखा"
+        },
+        {
+            "name": "Patna",
+            "keywords": ["patna"],
+            "top": true,
+            "hindiName": "पटना"
+        },
+        {
+            "name": "Piro",
+            "keywords": ["piro"],
+            "top": false,
+            "hindiName": "पिरो"
+        },
+        {
+            "name": "Purnia",
+            "keywords": ["purnia"],
+            "top": false,
+            "hindiName": "पूर्णिया"
+        },
+        {
+            "name": "Rafiganj",
+            "keywords": ["rafiganj"],
+            "top": false,
+            "hindiName": "रफीगंज"
+        },
+        {
+            "name": "Rajgir",
+            "keywords": ["rajgir"],
+            "top": false,
+            "hindiName": "राजगीर"
+        },
+        {
+            "name": "Ramnagar",
+            "keywords": ["ramnagar"],
+            "top": false,
+            "hindiName": "रामनगर"
+        },
+        {
+            "name": "Raxaul Bazar",
+            "keywords": ["raxaulbazar"],
+            "top": false,
+            "hindiName": "रक्सौल बाजार"
+        },
+        {
+            "name": "Revelganj",
+            "keywords": ["revelganj"],
+            "top": false,
+            "hindiName": "Revelganj"
+        },
+        {
+            "name": "Rosera",
+            "keywords": ["rosera"],
+            "top": false,
+            "hindiName": "Rosera"
+        },
+        {
+            "name": "Saharsa",
+            "keywords": ["saharsa"],
+            "top": false,
+            "hindiName": "सहरसा"
+        },
+        {
+            "name": "Samastipur",
+            "keywords": ["samastipur"],
+            "top": false,
+            "hindiName": "समस्तीपुर"
+        },
+        {
+            "name": "Sasaram",
+            "keywords": ["sasaram"],
+            "top": false,
+            "hindiName": "सासाराम"
+        },
+        {
+            "name": "Sheikhpura",
+            "keywords": ["sheikhpura"],
+            "top": false,
+            "hindiName": "शेखपुरा"
+        },
+        {
+            "name": "Sheohar",
+            "keywords": ["sheohar"],
+            "top": false,
+            "hindiName": "शिवहर"
+        },
+        {
+            "name": "Sherghati",
+            "keywords": ["sherghati"],
+            "top": false,
+            "hindiName": "Sherghati"
+        },
+        {
+            "name": "Silao",
+            "keywords": ["silao"],
+            "top": false,
+            "hindiName": "सिलाओ"
+        },
+        {
+            "name": "Sitamarhi",
+            "keywords": ["sitamarhi"],
+            "top": false,
+            "hindiName": "सीतामढ़ी"
+        },
+        {
+            "name": "Siwan",
+            "keywords": ["siwan"],
+            "top": false,
+            "hindiName": "सिवान"
+        },
+        {
+            "name": "Sonepur",
+            "keywords": ["sonepur"],
+            "top": false,
+            "hindiName": "सोनेपुर"
+        },
+        {
+            "name": "Sugauli",
+            "keywords": ["sugauli"],
+            "top": false,
+            "hindiName": "सुगौली"
+        },
+        {
+            "name": "Sultanganj",
+            "keywords": ["sultanganj"],
+            "top": false,
+            "hindiName": "सुल्तानगंज"
+        },
+        {
+            "name": "Supaul",
+            "keywords": ["supaul"],
+            "top": false,
+            "hindiName": "सुपौल"
+        },
+        {
+            "name": "Warisaliganj",
+            "keywords": ["warisaliganj"],
+            "top": false,
+            "hindiName": "Warisaliganj"
+        }
+    ],
+    "Chandigarh": [
+        {
+            "name": "Chandigarh",
+            "keywords": ["chandigarh"],
+            "top": true,
+            "hindiName": "चंडीगढ़"
+        }
+    ],
+    "Chhattisgarh": [
+        {
+            "name": "Ambikapur",
+            "keywords": ["ambikapur"],
+            "top": false,
+            "hindiName": "अंबिकापुर"
+        },
+        {
+            "name": "Bhatapara",
+            "keywords": ["bhatapara"],
+            "top": false,
+            "hindiName": "भाटापारा"
+        },
+        {
+            "name": "Bhilai Nagar",
+            "keywords": ["bhilainagar"],
+            "top": false,
+            "hindiName": null
+        },
+        {
+            "name": "Bilaspur",
+            "keywords": ["bilaspur"],
+            "top": false,
+            "hindiName": "बिलासपुर"
+        },
+        {
+            "name": "Chirmiri",
+            "keywords": ["chirmiri"],
+            "top": false,
+            "hindiName": "चिरमिरी"
+        },
+        {
+            "name": "Dalli-Rajhara",
+            "keywords": ["dalli-rajhara", "dallirajhara"],
+            "top": false,
+            "hindiName": "डल्ली-राजहरा"
+        },
+        {
+            "name": "Dhamtari",
+            "keywords": ["dhamtari"],
+            "top": false,
+            "hindiName": "धमतरी"
+        },
+        {
+            "name": "Durg",
+            "keywords": ["durg"],
+            "top": false,
+            "hindiName": null
+        },
+        {
+            "name": "Jagdalpur",
+            "keywords": ["jagdalpur"],
+            "top": false,
+            "hindiName": "जगदलपुर"
+        },
+        {
+            "name": "Korba",
+            "keywords": ["korba"],
+            "top": false,
+            "hindiName": "कोरबा"
+        },
+        {
+            "name": "Mahasamund",
+            "keywords": ["mahasamund"],
+            "top": false,
+            "hindiName": "महासमुंद"
+        },
+        {
+            "name": "Manendragarh",
+            "keywords": ["manendragarh"],
+            "top": false,
+            "hindiName": null
+        },
+        {
+            "name": "Mungeli",
+            "keywords": ["mungeli"],
+            "top": false,
+            "hindiName": "मुंगेली"
+        },
+        {
+            "name": "Naila Janjgir",
+            "keywords": ["nailajanjgir"],
+            "top": false,
+            "hindiName": "Naila जांजगीर"
+        },
+        {
+            "name": "Raigarh",
+            "keywords": ["raigarh"],
+            "top": false,
+            "hindiName": "रायगढ़"
+        },
+        {
+            "name": "Raipur",
+            "keywords": ["raipur"],
+            "top": false,
+            "hindiName": "रायपुर"
+        },
+        {
+            "name": "Rajnandgaon",
+            "keywords": ["rajnandgaon"],
+            "top": false,
+            "hindiName": "राजनंदगांव"
+        },
+        {
+            "name": "Sakti",
+            "keywords": ["sakti"],
+            "top": false,
+            "hindiName": "Sakti"
+        },
+        {
+            "name": "Tilda Newra",
+            "keywords": ["tildanewra"],
+            "top": false,
+            "hindiName": "टिल्डा Newra"
+        }
+    ],
+    "Dadra and Nagar Haveli": [
+        {
+            "name": "Silvassa",
+            "keywords": ["silvassa"],
+            "top": false,
+            "hindiName": "सिल्वासा"
+        }
+    ],
+    "Delhi": [
+        {
+            "name": "Delhi",
+            "keywords": ["delhi"],
+            "top": true,
+            "hindiName": "दिल्ली"
+        },
+        {
+            "name": "New Delhi",
+            "keywords": ["newdelhi"],
+            "top": false,
+            "hindiName": null
+        }
+    ],
+    "Goa": [
+        {
+            "name": "Mapusa",
+            "keywords": ["mapusa"],
+            "top": false,
+            "hindiName": "मापुसा"
+        },
+        {
+            "name": "Margao",
+            "keywords": ["margao"],
+            "top": false,
+            "hindiName": "मार्गो"
+        },
+        {
+            "name": "Marmagao",
+            "keywords": ["marmagao"],
+            "top": false,
+            "hindiName": "मर्मागाओ"
+        },
+        {
+            "name": "Panaji",
+            "keywords": ["panaji"],
+            "top": false,
+            "hindiName": "पणजी"
+        }
+    ],
+    "Gujarat": [
+        {
+            "name": "Adalaj",
+            "keywords": ["adalaj"],
+            "top": false,
+            "hindiName": "Adalaj"
+        },
+        {
+            "name": "Ahmedabad",
+            "keywords": ["ahmedabad"],
+            "top": true,
+            "hindiName": "अहमदाबाद"
+        },
+        {
+            "name": "Amreli",
+            "keywords": ["amreli"],
+            "top": false,
+            "hindiName": "अमरेली"
+        },
+        {
+            "name": "Anand",
+            "keywords": ["anand"],
+            "top": false,
+            "hindiName": "आनंद"
+        },
+        {
+            "name": "Anjar",
+            "keywords": ["anjar"],
+            "top": false,
+            "hindiName": "अंजार"
+        },
+        {
+            "name": "Ankleshwar",
+            "keywords": ["ankleshwar"],
+            "top": false,
+            "hindiName": "अंकलेश्वर"
+        },
+        {
+            "name": "Bharuch",
+            "keywords": ["bharuch"],
+            "top": false,
+            "hindiName": "भरूच"
+        },
+        {
+            "name": "Bhavnagar",
+            "keywords": ["bhavnagar"],
+            "top": false,
+            "hindiName": "भावनगर"
+        },
+        {
+            "name": "Bhuj",
+            "keywords": ["bhuj"],
+            "top": false,
+            "hindiName": "भुज"
+        },
+        {
+            "name": "Chhapra",
+            "keywords": ["chhapra"],
+            "top": false,
+            "hindiName": "छपरा"
+        },
+        {
+            "name": "Deesa",
+            "keywords": ["deesa"],
+            "top": false,
+            "hindiName": "Deesa"
+        },
+        {
+            "name": "Dhoraji",
+            "keywords": ["dhoraji"],
+            "top": false,
+            "hindiName": null
+        },
+        {
+            "name": "Godhra",
+            "keywords": ["godhra"],
+            "top": false,
+            "hindiName": "गोधरा"
+        },
+        {
+            "name": "Jamnagar",
+            "keywords": ["jamnagar"],
+            "top": false,
+            "hindiName": "जामनगर"
+        },
+        {
+            "name": "Kadi",
+            "keywords": ["kadi"],
+            "top": false,
+            "hindiName": "कादी"
+        },
+        {
+            "name": "Kapadvanj",
+            "keywords": ["kapadvanj"],
+            "top": false,
+            "hindiName": "Kapadvanj"
+        },
+        {
+            "name": "Keshod",
+            "keywords": ["keshod"],
+            "top": false,
+            "hindiName": "केशोद"
+        },
+        {
+            "name": "Khambhat",
+            "keywords": ["khambhat"],
+            "top": false,
+            "hindiName": "खंभात"
+        },
+        {
+            "name": "Lathi",
+            "keywords": ["lathi"],
+            "top": false,
+            "hindiName": "लाठी"
+        },
+        {
+            "name": "Limbdi",
+            "keywords": ["limbdi"],
+            "top": false,
+            "hindiName": "लिम्बडी"
+        },
+        {
+            "name": "Lunawada",
+            "keywords": ["lunawada"],
+            "top": false,
+            "hindiName": "Lunawada"
+        },
+        {
+            "name": "Mahesana",
+            "keywords": ["mahesana"],
+            "top": false,
+            "hindiName": "महेसाणा"
+        },
+        {
+            "name": "Mahuva",
+            "keywords": ["mahuva"],
+            "top": false,
+            "hindiName": "महुवा"
+        },
+        {
+            "name": "Manavadar",
+            "keywords": ["manavadar"],
+            "top": false,
+            "hindiName": "Manavadar"
+        },
+        {
+            "name": "Mandvi",
+            "keywords": ["mandvi"],
+            "top": false,
+            "hindiName": "मांडवी"
+        },
+        {
+            "name": "Mangrol",
+            "keywords": ["mangrol"],
+            "top": false,
+            "hindiName": "मंगरोल"
+        },
+        {
+            "name": "Mansa",
+            "keywords": ["mansa"],
+            "top": false,
+            "hindiName": "Mansa"
+        },
+        {
+            "name": "Mahemdabad",
+            "keywords": ["mahemdabad"],
+            "top": false,
+            "hindiName": null
+        },
+        {
+            "name": "Modasa",
+            "keywords": ["modasa"],
+            "top": false,
+            "hindiName": "मोडासा"
+        },
+        {
+            "name": "Morvi",
+            "keywords": ["morvi"],
+            "top": false,
+            "hindiName": "मोरवी"
+        },
+        {
+            "name": "Nadiad",
+            "keywords": ["nadiad"],
+            "top": false,
+            "hindiName": "नाडियाड"
+        },
+        {
+            "name": "Navsari",
+            "keywords": ["navsari"],
+            "top": false,
+            "hindiName": "नवसारी"
+        },
+        {
+            "name": "Padra",
+            "keywords": ["padra"],
+            "top": false,
+            "hindiName": "Padra"
+        },
+        {
+            "name": "Palanpur",
+            "keywords": ["palanpur"],
+            "top": false,
+            "hindiName": "पालनपुर"
+        },
+        {
+            "name": "Palitana",
+            "keywords": ["palitana"],
+            "top": false,
+            "hindiName": "पालिताना"
+        },
+        {
+            "name": "Pardi",
+            "keywords": ["pardi"],
+            "top": false,
+            "hindiName": "पारदी"
+        },
+        {
+            "name": "Patan",
+            "keywords": ["patan"],
+            "top": false,
+            "hindiName": "पाटन"
+        },
+        {
+            "name": "Petlad",
+            "keywords": ["petlad"],
+            "top": false,
+            "hindiName": "Petlad"
+        },
+        {
+            "name": "Porbandar",
+            "keywords": ["porbandar"],
+            "top": false,
+            "hindiName": "पोरबंदर"
+        },
+        {
+            "name": "Radhanpur",
+            "keywords": ["radhanpur"],
+            "top": false,
+            "hindiName": "राधनपुर"
+        },
+        {
+            "name": "Rajkot",
+            "keywords": ["rajkot"],
+            "top": false,
+            "hindiName": "राजकोट"
+        },
+        {
+            "name": "Rajpipla",
+            "keywords": ["rajpipla"],
+            "top": false,
+            "hindiName": "राजपिपला"
+        },
+        {
+            "name": "Rajula",
+            "keywords": ["rajula"],
+            "top": false,
+            "hindiName": "राजुला"
+        },
+        {
+            "name": "Ranavav",
+            "keywords": ["ranavav"],
+            "top": false,
+            "hindiName": "Ranavav"
+        },
+        {
+            "name": "Rapar",
+            "keywords": ["rapar"],
+            "top": false,
+            "hindiName": "रपार"
+        },
+        {
+            "name": "Salaya",
+            "keywords": ["salaya"],
+            "top": false,
+            "hindiName": "सलाया"
+        },
+        {
+            "name": "Sanand",
+            "keywords": ["sanand"],
+            "top": false,
+            "hindiName": "साणंद"
+        },
+        {
+            "name": "Savarkundla",
+            "keywords": ["savarkundla"],
+            "top": false,
+            "hindiName": "सावरकुंडला"
+        },
+        {
+            "name": "Sidhpur",
+            "keywords": ["sidhpur"],
+            "top": false,
+            "hindiName": "सिद्धपुर"
+        },
+        {
+            "name": "Sihor",
+            "keywords": ["sihor"],
+            "top": false,
+            "hindiName": "सीहोर"
+        },
+        {
+            "name": "Songadh",
+            "keywords": ["songadh"],
+            "top": false,
+            "hindiName": "सोनगढ़"
+        },
+        {
+            "name": "Surat",
+            "keywords": ["surat"],
+            "top": true,
+            "hindiName": "सूरत"
+        },
+        {
+            "name": "Talaja",
+            "keywords": ["talaja"],
+            "top": false,
+            "hindiName": "Talaja"
+        },
+        {
+            "name": "Thangadh",
+            "keywords": ["thangadh"],
+            "top": false,
+            "hindiName": "Thangadh"
+        },
+        {
+            "name": "Tharad",
+            "keywords": ["tharad"],
+            "top": false,
+            "hindiName": "Tharad"
+        },
+        {
+            "name": "Umbergaon",
+            "keywords": ["umbergaon"],
+            "top": false,
+            "hindiName": "Umbergaon"
+        },
+        {
+            "name": "Umreth",
+            "keywords": ["umreth"],
+            "top": false,
+            "hindiName": "Umreth"
+        },
+        {
+            "name": "Una",
+            "keywords": ["una"],
+            "top": false,
+            "hindiName": "ऊना"
+        },
+        {
+            "name": "Unjha",
+            "keywords": ["unjha"],
+            "top": false,
+            "hindiName": "उंझा"
+        },
+        {
+            "name": "Upleta",
+            "keywords": ["upleta"],
+            "top": false,
+            "hindiName": "Upleta"
+        },
+        {
+            "name": "Vadnagar",
+            "keywords": ["vadnagar"],
+            "top": false,
+            "hindiName": "वडनगर"
+        },
+        {
+            "name": "Vadodara",
+            "keywords": ["vadodara"],
+            "top": false,
+            "hindiName": "वडोदरा"
+        },
+        {
+            "name": "Valsad",
+            "keywords": ["valsad"],
+            "top": false,
+            "hindiName": "वलसाड"
+        },
+        {
+            "name": "Vapi",
+            "keywords": ["vapi"],
+            "top": false,
+            "hindiName": "वापी"
+        },
+        {
+            "name": "Veraval",
+            "keywords": ["veraval"],
+            "top": false,
+            "hindiName": "वेरावल"
+        },
+        {
+            "name": "Vijapur",
+            "keywords": ["vijapur"],
+            "top": false,
+            "hindiName": "विजापुर"
+        },
+        {
+            "name": "Viramgam",
+            "keywords": ["viramgam"],
+            "top": false,
+            "hindiName": "वीरमगाम"
+        },
+        {
+            "name": "Visnagar",
+            "keywords": ["visnagar"],
+            "top": false,
+            "hindiName": "विसनगर"
+        },
+        {
+            "name": "Vyara",
+            "keywords": ["vyara"],
+            "top": false,
+            "hindiName": "व्यारा"
+        },
+        {
+            "name": "Wadhwan",
+            "keywords": ["wadhwan"],
+            "top": false,
+            "hindiName": "वधावन"
+        },
+        {
+            "name": "Wankaner",
+            "keywords": ["wankaner"],
+            "top": false,
+            "hindiName": "वांकानेर"
+        }
+    ],
+    "Haryana": [
+        {
+            "name": "Bahadurgarh",
+            "keywords": ["bahadurgarh"],
+            "top": false,
+            "hindiName": "बहादुरगढ़"
+        },
+        {
+            "name": "Bhiwani",
+            "keywords": ["bhiwani"],
+            "top": false,
+            "hindiName": "भिवानी"
+        },
+        {
+            "name": "Charkhi Dadri",
+            "keywords": ["charkhidadri"],
+            "top": false,
+            "hindiName": "चरखी दादरी"
+        },
+        {
+            "name": "Faridabad",
+            "keywords": ["faridabad"],
+            "top": true,
+            "hindiName": "फरीदाबाद"
+        },
+        {
+            "name": "Fatehabad",
+            "keywords": ["fatehabad"],
+            "top": false,
+            "hindiName": "फतेहाबाद"
+        },
+        {
+            "name": "Gohana",
+            "keywords": ["gohana"],
+            "top": false,
+            "hindiName": "गोहाना"
+        },
+        {
+            "name": "Gurgaon",
+            "keywords": ["gurgaon", "gurugram"],
+            "top": true,
+            "hindiName": "गुडगाँव"
+        },
+        {
+            "name": "Hansi",
+            "keywords": ["hansi"],
+            "top": false,
+            "hindiName": "हांसी"
+        },
+        {
+            "name": "Hisar",
+            "keywords": ["hisar"],
+            "top": false,
+            "hindiName": "हिसार"
+        },
+        {
+            "name": "Jind",
+            "keywords": ["jind"],
+            "top": false,
+            "hindiName": "जींद"
+        },
+        {
+            "name": "Kaithal",
+            "keywords": ["kaithal"],
+            "top": false,
+            "hindiName": "कैथल"
+        },
+        {
+            "name": "Karnal",
+            "keywords": ["karnal"],
+            "top": false,
+            "hindiName": "करनाल"
+        },
+        {
+            "name": "Ladwa",
+            "keywords": ["ladwa"],
+            "top": false,
+            "hindiName": "लाडवा"
+        },
+        {
+            "name": "Mahendragarh",
+            "keywords": ["mahendragarh"],
+            "top": false,
+            "hindiName": "महेंद्रगढ़"
+        },
+        {
+            "name": "Mandi Dabwali",
+            "keywords": ["mandidabwali"],
+            "top": false,
+            "hindiName": "मंडी डबवाली"
+        },
+        {
+            "name": "Narnaul",
+            "keywords": ["narnaul"],
+            "top": false,
+            "hindiName": "नारनौल"
+        },
+        {
+            "name": "Narwana",
+            "keywords": ["narwana"],
+            "top": false,
+            "hindiName": "नरवाना"
+        },
+        {
+            "name": "Palwal",
+            "keywords": ["palwal"],
+            "top": false,
+            "hindiName": "पलवल"
+        },
+        {
+            "name": "Panchkula",
+            "keywords": ["panchkula"],
+            "top": false,
+            "hindiName": "पंचकुला"
+        },
+        {
+            "name": "Panipat",
+            "keywords": ["panipat"],
+            "top": false,
+            "hindiName": "पानीपत"
+        },
+        {
+            "name": "Pehowa",
+            "keywords": ["pehowa"],
+            "top": false,
+            "hindiName": "पेहोवा"
+        },
+        {
+            "name": "Pinjore",
+            "keywords": ["pinjore"],
+            "top": false,
+            "hindiName": "पिंजौर"
+        },
+        {
+            "name": "Rania",
+            "keywords": ["rania"],
+            "top": false,
+            "hindiName": "रनिया"
+        },
+        {
+            "name": "Ratia",
+            "keywords": ["ratia"],
+            "top": false,
+            "hindiName": "रतिया"
+        },
+        {
+            "name": "Rewari",
+            "keywords": ["rewari"],
+            "top": false,
+            "hindiName": "रेवाड़ी"
+        },
+        {
+            "name": "Rohtak",
+            "keywords": ["rohtak"],
+            "top": true,
+            "hindiName": "रोहतक"
+        },
+        {
+            "name": "Safidon",
+            "keywords": ["safidon"],
+            "top": false,
+            "hindiName": "सफीदों"
+        },
+        {
+            "name": "Samalkha",
+            "keywords": ["samalkha"],
+            "top": false,
+            "hindiName": "समालखा"
+        },
+        {
+            "name": "Sarsod",
+            "keywords": ["sarsod"],
+            "top": false,
+            "hindiName": null
+        },
+        {
+            "name": "Shahbad",
+            "keywords": ["shahbad"],
+            "top": false,
+            "hindiName": "शाहबाद"
+        },
+        {
+            "name": "Sirsa",
+            "keywords": ["sirsa"],
+            "top": false,
+            "hindiName": "सिरसा"
+        },
+        {
+            "name": "Sohna",
+            "keywords": ["sohna"],
+            "top": false,
+            "hindiName": "सोहना"
+        },
+        {
+            "name": "Sonipat",
+            "keywords": ["sonipat"],
+            "top": false,
+            "hindiName": "सोनीपत"
+        },
+        {
+            "name": "Taraori",
+            "keywords": ["taraori"],
+            "top": false,
+            "hindiName": "Taraori"
+        },
+        {
+            "name": "Thanesar",
+            "keywords": ["thanesar"],
+            "top": false,
+            "hindiName": "थानेसर"
+        },
+        {
+            "name": "Tohana",
+            "keywords": ["tohana"],
+            "top": false,
+            "hindiName": "टोहाना"
+        },
+        {
+            "name": "Yamunanagar",
+            "keywords": ["yamunanagar"],
+            "top": false,
+            "hindiName": "यमुनानगर"
+        }
+    ],
+    "Himachal Pradesh": [
+        {
+            "name": "Mandi",
+            "keywords": ["mandi"],
+            "top": false,
+            "hindiName": "मंडी"
+        },
+        {
+            "name": "Nahan",
+            "keywords": ["nahan"],
+            "top": false,
+            "hindiName": "नाहन"
+        },
+        {
+            "name": "Palampur",
+            "keywords": ["palampur"],
+            "top": false,
+            "hindiName": null
+        },
+        {
+            "name": "Shimla",
+            "keywords": ["shimla"],
+            "top": false,
+            "hindiName": "शिमला"
+        },
+        {
+            "name": "Solan",
+            "keywords": ["solan"],
+            "top": false,
+            "hindiName": "एक प्रकार का हंस"
+        },
+        {
+            "name": "Sundarnagar",
+            "keywords": ["sundarnagar"],
+            "top": false,
+            "hindiName": "Sundarnagar"
+        }
+    ],
+    "Jammu and Kashmir": [
+        {
+            "name": "Anantnag",
+            "keywords": ["anantnag"],
+            "top": false,
+            "hindiName": "अनंतनाग"
+        },
+        {
+            "name": "Baramula",
+            "keywords": ["baramula"],
+            "top": false,
+            "hindiName": "बारामुला"
+        },
+        {
+            "name": "Jammu",
+            "keywords": ["jammu"],
+            "top": false,
+            "hindiName": "जम्मू"
+        },
+        {
+            "name": "Kathua",
+            "keywords": ["kathua"],
+            "top": false,
+            "hindiName": "कठुआ"
+        },
+        {
+            "name": "Punch",
+            "keywords": ["punch"],
+            "top": false,
+            "hindiName": "पंच"
+        },
+        {
+            "name": "Rajauri",
+            "keywords": ["rajauri"],
+            "top": false,
+            "hindiName": "राजौरी"
+        },
+        {
+            "name": "Sopore",
+            "keywords": ["sopore"],
+            "top": false,
+            "hindiName": "सोपोर"
+        },
+        {
+            "name": "Srinagar",
+            "keywords": ["srinagar"],
+            "top": false,
+            "hindiName": "श्रीनगर"
+        },
+        {
+            "name": "Udhampur",
+            "keywords": ["udhampur"],
+            "top": false,
+            "hindiName": "उधमपुर"
+        }
+    ],
+    "Jharkhand": [
+        {
+            "name": "Adityapur",
+            "keywords": ["adityapur"],
+            "top": false,
+            "hindiName": null
+        },
+        {
+            "name": "Bokaro Steel City",
+            "keywords": ["bokarosteelcity"],
+            "top": false,
+            "hindiName": "बोकारो स्टील सिटी"
+        },
+        {
+            "name": "Chaibasa",
+            "keywords": ["chaibasa"],
+            "top": false,
+            "hindiName": "चाईबासा"
+        },
+        {
+            "name": "Chatra",
+            "keywords": ["chatra"],
+            "top": false,
+            "hindiName": "चतरा"
+        },
+        {
+            "name": "Chirkunda",
+            "keywords": ["chirkunda"],
+            "top": false,
+            "hindiName": "Chirkunda"
+        },
+        {
+            "name": "Medininagar (Daltonganj)",
+            "keywords": ["medininagar(daltonganj)"],
+            "top": false,
+            "hindiName": null
+        },
+        {
+            "name": "Deoghar",
+            "keywords": ["deoghar"],
+            "top": false,
+            "hindiName": "देवघर"
+        },
+        {
+            "name": "Dhanbad",
+            "keywords": ["dhanbad"],
+            "top": true,
+            "hindiName": "धनबाद"
+        },
+        {
+            "name": "Dumka",
+            "keywords": ["dumka"],
+            "top": false,
+            "hindiName": "दुमका"
+        },
+        {
+            "name": "Giridih",
+            "keywords": ["giridih"],
+            "top": false,
+            "hindiName": "गिरिडीह"
+        },
+        {
+            "name": "Gumia",
+            "keywords": ["gumia"],
+            "top": false,
+            "hindiName": "Gumia"
+        },
+        {
+            "name": "Hazaribag",
+            "keywords": ["hazaribag"],
+            "top": false,
+            "hindiName": "हजारीबाग"
+        },
+        {
+            "name": "Jamshedpur",
+            "keywords": ["jamshedpur"],
+            "top": false,
+            "hindiName": "जमशेदपुर"
+        },
+        {
+            "name": "Jhumri Tilaiya",
+            "keywords": ["jhumritilaiya"],
+            "top": false,
+            "hindiName": "झुमरी तिलैया"
+        },
+        {
+            "name": "Lohardaga",
+            "keywords": ["lohardaga"],
+            "top": false,
+            "hindiName": "लोहरदगा"
+        },
+        {
+            "name": "Madhupur",
+            "keywords": ["madhupur"],
+            "top": false,
+            "hindiName": "मधुपुर"
+        },
+        {
+            "name": "Mihijam",
+            "keywords": ["mihijam"],
+            "top": false,
+            "hindiName": "Mihijam"
+        },
+        {
+            "name": "Musabani",
+            "keywords": ["musabani"],
+            "top": false,
+            "hindiName": "Musabani"
+        },
+        {
+            "name": "Pakaur",
+            "keywords": ["pakaur"],
+            "top": false,
+            "hindiName": "Pakaur"
+        },
+        {
+            "name": "Patratu",
+            "keywords": ["patratu"],
+            "top": false,
+            "hindiName": "पतरातू"
+        },
+        {
+            "name": "Phusro",
+            "keywords": ["phusro"],
+            "top": false,
+            "hindiName": "फुसरो"
+        },
+        {
+            "name": "Ramgarh",
+            "keywords": ["ramgarh"],
+            "top": false,
+            "hindiName": null
+        },
+        {
+            "name": "Ranchi",
+            "keywords": ["ranchi"],
+            "top": true,
+            "hindiName": "रांची"
+        },
+        {
+            "name": "Sahibganj",
+            "keywords": ["sahibganj"],
+            "top": false,
+            "hindiName": "साहिबगंज"
+        },
+        {
+            "name": "Saunda",
+            "keywords": ["saunda"],
+            "top": false,
+            "hindiName": "सौंदा"
+        },
+        {
+            "name": "Simdega",
+            "keywords": ["simdega"],
+            "top": false,
+            "hindiName": "सिमडेगा"
+        },
+        {
+            "name": "Tenu dam-cum-Kathhara",
+            "keywords": ["tenudam-cum-kathhara", "tenudamcumkathhara"],
+            "top": false,
+            "hindiName": null
+        }
+    ],
+    "Karnataka": [
+        {
+            "name": "Bangalore",
+            "keywords": ["bangalore", "bengaluru"],
+            "top": true,
+            "hindiName": "बैंगलोर"
+        },
+        {
+            "name": "Adyar",
+            "keywords": ["adyar"],
+            "top": false,
+            "hindiName": null
+        },
+        {
+            "name": "Afzalpur",
+            "keywords": ["afzalpur"],
+            "top": false,
+            "hindiName": null
+        },
+        {
+            "name": "Arsikere",
+            "keywords": ["arsikere"],
+            "top": false,
+            "hindiName": null
+        },
+        {
+            "name": "Athni",
+            "keywords": ["athni"],
+            "top": false,
+            "hindiName": null
+        },
+        {
+            "name": "Belagavi",
+            "keywords": ["belagavi"],
+            "top": false,
+            "hindiName": null
+        },
+        {
+            "name": "Ballari",
+            "keywords": ["ballari"],
+            "top": false,
+            "hindiName": null
+        },
+        {
+            "name": "Chikkamagaluru",
+            "keywords": ["chikkamagaluru"],
+            "top": false,
+            "hindiName": null
+        },
+        {
+            "name": "Davanagere",
+            "keywords": ["davanagere"],
+            "top": false,
+            "hindiName": "दावनगेरे"
+        },
+        {
+            "name": "Gokak",
+            "keywords": ["gokak"],
+            "top": false,
+            "hindiName": null
+        },
+        {
+            "name": "Hubli-Dharwad",
+            "keywords": ["hubli-dharwad", "hublidharwad"],
+            "top": false,
+            "hindiName": null
+        },
+        {
+            "name": "Karwar",
+            "keywords": ["karwar"],
+            "top": false,
+            "hindiName": "कारवार"
+        },
+        {
+            "name": "Kolar",
+            "keywords": ["kolar"],
+            "top": false,
+            "hindiName": "कोलार"
+        },
+        {
+            "name": "Lakshmeshwar",
+            "keywords": ["lakshmeshwar"],
+            "top": false,
+            "hindiName": "लक्ष्मेश्वर"
+        },
+        {
+            "name": "Lingsugur",
+            "keywords": ["lingsugur"],
+            "top": false,
+            "hindiName": "Lingsugur"
+        },
+        {
+            "name": "Maddur",
+            "keywords": ["maddur"],
+            "top": false,
+            "hindiName": "Maddur"
+        },
+        {
+            "name": "Madhugiri",
+            "keywords": ["madhugiri"],
+            "top": false,
+            "hindiName": "मधुगिरी"
+        },
+        {
+            "name": "Madikeri",
+            "keywords": ["madikeri"],
+            "top": false,
+            "hindiName": "Madikeri"
+        },
+        {
+            "name": "Magadi",
+            "keywords": ["magadi"],
+            "top": false,
+            "hindiName": "मगदी"
+        },
+        {
+            "name": "Mahalingapura",
+            "keywords": ["mahalingapura"],
+            "top": false,
+            "hindiName": null
+        },
+        {
+            "name": "Malavalli",
+            "keywords": ["malavalli"],
+            "top": false,
+            "hindiName": "Malavalli"
+        },
+        {
+            "name": "Malur",
+            "keywords": ["malur"],
+            "top": false,
+            "hindiName": "मलुर"
+        },
+        {
+            "name": "Mandya",
+            "keywords": ["mandya"],
+            "top": false,
+            "hindiName": "मंड्या"
+        },
+        {
+            "name": "Mangaluru",
+            "keywords": ["mangaluru"],
+            "top": false,
+            "hindiName": null
+        },
+        {
+            "name": "Manvi",
+            "keywords": ["manvi"],
+            "top": false,
+            "hindiName": "Manvi"
+        },
+        {
+            "name": "Mudalagi",
+            "keywords": ["mudalagi"],
+            "top": false,
+            "hindiName": null
+        },
+        {
+            "name": "Mudabidri",
+            "keywords": ["mudabidri"],
+            "top": false,
+            "hindiName": null
+        },
+        {
+            "name": "Muddebihal",
+            "keywords": ["muddebihal"],
+            "top": false,
+            "hindiName": "Muddebihal"
+        },
+        {
+            "name": "Mudhol",
+            "keywords": ["mudhol"],
+            "top": false,
+            "hindiName": "मुधोल"
+        },
+        {
+            "name": "Mulbagal",
+            "keywords": ["mulbagal"],
+            "top": false,
+            "hindiName": "मुल्बगल"
+        },
+        {
+            "name": "Mundargi",
+            "keywords": ["mundargi"],
+            "top": false,
+            "hindiName": "Mundargi"
+        },
+        {
+            "name": "Mysore",
+            "keywords": ["mysore", "mysuru"],
+            "top": false,
+            "hindiName": "मैसूर"
+        },
+        {
+            "name": "Nanjangud",
+            "keywords": ["nanjangud"],
+            "top": false,
+            "hindiName": "नंजनगुड"
+        },
+        {
+            "name": "Nargund",
+            "keywords": ["nargund"],
+            "top": false,
+            "hindiName": "Nargund"
+        },
+        {
+            "name": "Navalgund",
+            "keywords": ["navalgund"],
+            "top": false,
+            "hindiName": "Navalgund"
+        },
+        {
+            "name": "Nelamangala",
+            "keywords": ["nelamangala"],
+            "top": false,
+            "hindiName": "Nelamangala"
+        },
+        {
+            "name": "Pavagada",
+            "keywords": ["pavagada"],
+            "top": false,
+            "hindiName": "पवागडा"
+        },
+        {
+            "name": "Piriyapatna",
+            "keywords": ["piriyapatna"],
+            "top": false,
+            "hindiName": null
+        },
+        {
+            "name": "Puttur",
+            "keywords": ["puttur"],
+            "top": false,
+            "hindiName": "पुत्तूर"
+        },
+        {
+            "name": "Rabkavi Banhatti",
+            "keywords": ["rabkavibanhatti"],
+            "top": false,
+            "hindiName": "रबकवि Banhatti"
+        },
+        {
+            "name": "Raayachuru",
+            "keywords": ["raayachuru"],
+            "top": false,
+            "hindiName": null
+        },
+        {
+            "name": "Ranebennuru",
+            "keywords": ["ranebennuru"],
+            "top": false,
+            "hindiName": null
+        },
+        {
+            "name": "Ramanagaram",
+            "keywords": ["ramanagaram"],
+            "top": false,
+            "hindiName": "रामनगरम"
+        },
+        {
+            "name": "Ramdurg",
+            "keywords": ["ramdurg"],
+            "top": false,
+            "hindiName": "Ramdurg"
+        },
+        {
+            "name": "Ranibennur",
+            "keywords": ["ranibennur"],
+            "top": false,
+            "hindiName": "Ranibennur"
+        },
+        {
+            "name": "Robertson Pet",
+            "keywords": ["robertsonpet"],
+            "top": false,
+            "hindiName": "रॉबर्टसन पालतू पशु"
+        },
+        {
+            "name": "Ron",
+            "keywords": ["ron"],
+            "top": false,
+            "hindiName": "रॉन"
+        },
+        {
+            "name": "Sadalagi",
+            "keywords": ["sadalagi"],
+            "top": false,
+            "hindiName": null
+        },
+        {
+            "name": "Sagara",
+            "keywords": ["sagara"],
+            "top": false,
+            "hindiName": null
+        },
+        {
+            "name": "Sakaleshapura",
+            "keywords": ["sakaleshapura"],
+            "top": false,
+            "hindiName": null
+        },
+        {
+            "name": "Sindagi",
+            "keywords": ["sindagi"],
+            "top": false,
+            "hindiName": null
+        },
+        {
+            "name": "Sanduru",
+            "keywords": ["sanduru"],
+            "top": false,
+            "hindiName": null
+        },
+        {
+            "name": "Sankeshwara",
+            "keywords": ["sankeshwara"],
+            "top": false,
+            "hindiName": null
+        },
+        {
+            "name": "Saundatti-Yellamma",
+            "keywords": ["saundatti-yellamma", "saundattiyellamma"],
+            "top": false,
+            "hindiName": "सौंदत्ती-Yellamma"
+        },
+        {
+            "name": "Savanur",
+            "keywords": ["savanur"],
+            "top": false,
+            "hindiName": "सवनूर"
+        },
+        {
+            "name": "Sedam",
+            "keywords": ["sedam"],
+            "top": false,
+            "hindiName": "Sedam"
+        },
+        {
+            "name": "Shahabad",
+            "keywords": ["shahabad"],
+            "top": false,
+            "hindiName": "शाहाबाद"
+        },
+        {
+            "name": "Shahpur",
+            "keywords": ["shahpur"],
+            "top": false,
+            "hindiName": "शाहपुर"
+        },
+        {
+            "name": "Shiggaon",
+            "keywords": ["shiggaon"],
+            "top": false,
+            "hindiName": "Shiggaon"
+        },
+        {
+            "name": "Shikaripur",
+            "keywords": ["shikaripur"],
+            "top": false,
+            "hindiName": null
+        },
+        {
+            "name": "Shivamogga",
+            "keywords": ["shivamogga"],
+            "top": false,
+            "hindiName": null
+        },
+        {
+            "name": "Surapura",
+            "keywords": ["surapura"],
+            "top": false,
+            "hindiName": null
+        },
+        {
+            "name": "Shrirangapattana",
+            "keywords": ["shrirangapattana"],
+            "top": false,
+            "hindiName": "Shrirangapattana"
+        },
+        {
+            "name": "Sidlaghatta",
+            "keywords": ["sidlaghatta"],
+            "top": false,
+            "hindiName": "Sidlaghatta"
+        },
+        {
+            "name": "Sindhagi",
+            "keywords": ["sindhagi"],
+            "top": false,
+            "hindiName": null
+        },
+        {
+            "name": "Sindhnur",
+            "keywords": ["sindhnur"],
+            "top": false,
+            "hindiName": "Sindhnur"
+        },
+        {
+            "name": "Sira",
+            "keywords": ["sira"],
+            "top": false,
+            "hindiName": "सिरा"
+        },
+        {
+            "name": "Sirsi",
+            "keywords": ["sirsi"],
+            "top": false,
+            "hindiName": "सिरसी"
+        },
+        {
+            "name": "Siruguppa",
+            "keywords": ["siruguppa"],
+            "top": false,
+            "hindiName": "Siruguppa"
+        },
+        {
+            "name": "Srinivaspur",
+            "keywords": ["srinivaspur"],
+            "top": false,
+            "hindiName": "Srinivaspur"
+        },
+        {
+            "name": "Tarikere",
+            "keywords": ["tarikere"],
+            "top": false,
+            "hindiName": "तरिकेर"
+        },
+        {
+            "name": "Tekkalakote",
+            "keywords": ["tekkalakote"],
+            "top": false,
+            "hindiName": null
+        },
+        {
+            "name": "Terdal",
+            "keywords": ["terdal"],
+            "top": false,
+            "hindiName": "Terdal"
+        },
+        {
+            "name": "Talikota",
+            "keywords": ["talikota"],
+            "top": false,
+            "hindiName": "Talikota"
+        },
+        {
+            "name": "Tiptur",
+            "keywords": ["tiptur"],
+            "top": false,
+            "hindiName": "तिप्तूर"
+        },
+        {
+            "name": "Tumkur",
+            "keywords": ["tumkur"],
+            "top": false,
+            "hindiName": "तुमकुर"
+        },
+        {
+            "name": "Udupi",
+            "keywords": ["udupi"],
+            "top": false,
+            "hindiName": "उडुपी"
+        },
+        {
+            "name": "Vijayapura",
+            "keywords": ["vijayapura"],
+            "top": false,
+            "hindiName": "Vijayapura"
+        },
+        {
+            "name": "Wadi",
+            "keywords": ["wadi"],
+            "top": false,
+            "hindiName": "वाडी"
+        },
+        {
+            "name": "Yadgir",
+            "keywords": ["yadgir"],
+            "top": false,
+            "hindiName": "यादगीर"
+        }
+    ],
+    "Kerala": [
+        {
+            "name": "Adoor",
+            "keywords": ["adoor"],
+            "top": false,
+            "hindiName": "एक दरवाजा"
+        },
+        {
+            "name": "Alappuzha",
+            "keywords": ["alappuzha"],
+            "top": false,
+            "hindiName": "अलपुझा"
+        },
+        {
+            "name": "Attingal",
+            "keywords": ["attingal"],
+            "top": false,
+            "hindiName": "Attingal"
+        },
+        {
+            "name": "Chalakudy",
+            "keywords": ["chalakudy"],
+            "top": false,
+            "hindiName": "चलाकुडी"
+        },
+        {
+            "name": "Changanassery",
+            "keywords": ["changanassery"],
+            "top": false,
+            "hindiName": "चंगनशेरी"
+        },
+        {
+            "name": "Cherthala",
+            "keywords": ["cherthala"],
+            "top": false,
+            "hindiName": "Cherthala"
+        },
+        {
+            "name": "Chittur-Thathamangalam",
+            "keywords": ["chittur-thathamangalam", "chitturthathamangalam"],
+            "top": false,
+            "hindiName": "चित्तूर-Thathamangalam"
+        },
+        {
+            "name": "Guruvayoor",
+            "keywords": ["guruvayoor"],
+            "top": false,
+            "hindiName": "गुरुवायुर"
+        },
+        {
+            "name": "Kanhangad",
+            "keywords": ["kanhangad"],
+            "top": false,
+            "hindiName": "Kanhangad"
+        },
+        {
+            "name": "Kannur",
+            "keywords": ["kannur"],
+            "top": false,
+            "hindiName": "कन्नूर"
+        },
+        {
+            "name": "Kasaragod",
+            "keywords": ["kasaragod"],
+            "top": false,
+            "hindiName": "कासरगोड"
+        },
+        {
+            "name": "Kayamkulam",
+            "keywords": ["kayamkulam"],
+            "top": false,
+            "hindiName": "कायमकुलम"
+        },
+        {
+            "name": "Kochi",
+            "keywords": ["kochi"],
+            "top": false,
+            "hindiName": "कोच्चि"
+        },
+        {
+            "name": "Kodungallur",
+            "keywords": ["kodungallur"],
+            "top": false,
+            "hindiName": "कोडुन्गल्लुर"
+        },
+        {
+            "name": "Kollam",
+            "keywords": ["kollam"],
+            "top": false,
+            "hindiName": "कोल्लम"
+        },
+        {
+            "name": "Kottayam",
+            "keywords": ["kottayam"],
+            "top": false,
+            "hindiName": "कोट्टायम"
+        },
+        {
+            "name": "Kozhikode",
+            "keywords": ["kozhikode"],
+            "top": false,
+            "hindiName": "कोझिकोड"
+        },
+        {
+            "name": "Kunnamkulam",
+            "keywords": ["kunnamkulam"],
+            "top": false,
+            "hindiName": "कुन्नम्कुलम"
+        },
+        {
+            "name": "Malappuram",
+            "keywords": ["malappuram"],
+            "top": false,
+            "hindiName": "मलप्पुरम"
+        },
+        {
+            "name": "Mattannur",
+            "keywords": ["mattannur"],
+            "top": false,
+            "hindiName": "Mattannur"
+        },
+        {
+            "name": "Mavelikkara",
+            "keywords": ["mavelikkara"],
+            "top": false,
+            "hindiName": "मवेलिक्कारा"
+        },
+        {
+            "name": "Mavoor",
+            "keywords": ["mavoor"],
+            "top": false,
+            "hindiName": "Mavoor"
+        },
+        {
+            "name": "Muvattupuzha",
+            "keywords": ["muvattupuzha"],
+            "top": false,
+            "hindiName": "मुवात्तुपूजा"
+        },
+        {
+            "name": "Nedumangad",
+            "keywords": ["nedumangad"],
+            "top": false,
+            "hindiName": "नेदुमनगड"
+        },
+        {
+            "name": "Neyyattinkara",
+            "keywords": ["neyyattinkara"],
+            "top": false,
+            "hindiName": "Neyyattinkara"
+        },
+        {
+            "name": "Nilambur",
+            "keywords": ["nilambur"],
+            "top": false,
+            "hindiName": null
+        },
+        {
+            "name": "Ottappalam",
+            "keywords": ["ottappalam"],
+            "top": false,
+            "hindiName": "ओट्टापलम"
+        },
+        {
+            "name": "Palai",
+            "keywords": ["palai"],
+            "top": false,
+            "hindiName": "Palai"
+        },
+        {
+            "name": "Palakkad",
+            "keywords": ["palakkad"],
+            "top": false,
+            "hindiName": "पलक्कड़"
+        },
+        {
+            "name": "Panamattom",
+            "keywords": ["panamattom"],
+            "top": false,
+            "hindiName": null
+        },
+        {
+            "name": "Panniyannur",
+            "keywords": ["panniyannur"],
+            "top": false,
+            "hindiName": "Panniyannur"
+        },
+        {
+            "name": "Pappinisseri",
+            "keywords": ["pappinisseri"],
+            "top": false,
+            "hindiName": "Pappinisseri"
+        },
+        {
+            "name": "Paravoor",
+            "keywords": ["paravoor"],
+            "top": false,
+            "hindiName": "Paravoor"
+        },
+        {
+            "name": "Pathanamthitta",
+            "keywords": ["pathanamthitta"],
+            "top": false,
+            "hindiName": "पथानामथिट्टा"
+        },
+        {
+            "name": "Peringathur",
+            "keywords": ["peringathur"],
+            "top": false,
+            "hindiName": "Peringathur"
+        },
+        {
+            "name": "Perinthalmanna",
+            "keywords": ["perinthalmanna"],
+            "top": false,
+            "hindiName": "पेरिन्तल्मन्न"
+        },
+        {
+            "name": "Perumbavoor",
+            "keywords": ["perumbavoor"],
+            "top": false,
+            "hindiName": "Perumbavoor"
+        },
+        {
+            "name": "Ponnani",
+            "keywords": ["ponnani"],
+            "top": false,
+            "hindiName": "पोन्नानी"
+        },
+        {
+            "name": "Punalur",
+            "keywords": ["punalur"],
+            "top": false,
+            "hindiName": "Punalur"
+        },
+        {
+            "name": "Puthuppally",
+            "keywords": ["puthuppally"],
+            "top": false,
+            "hindiName": null
+        },
+        {
+            "name": "Koyilandy",
+            "keywords": ["koyilandy"],
+            "top": false,
+            "hindiName": null
+        },
+        {
+            "name": "Shoranur",
+            "keywords": ["shoranur"],
+            "top": false,
+            "hindiName": "शोरानूर"
+        },
+        {
+            "name": "Taliparamba",
+            "keywords": ["taliparamba"],
+            "top": false,
+            "hindiName": "Taliparamba"
+        },
+        {
+            "name": "Thiruvalla",
+            "keywords": ["thiruvalla"],
+            "top": false,
+            "hindiName": "तिरुवल्ला"
+        },
+        {
+            "name": "Thiruvananthapuram",
+            "keywords": ["thiruvananthapuram"],
+            "top": false,
+            "hindiName": "तिरुवनंतपुरम"
+        },
+        {
+            "name": "Thodupuzha",
+            "keywords": ["thodupuzha"],
+            "top": false,
+            "hindiName": "Thodupuzha"
+        },
+        {
+            "name": "Thrissur",
+            "keywords": ["thrissur"],
+            "top": false,
+            "hindiName": "त्रिशूर"
+        },
+        {
+            "name": "Tirur",
+            "keywords": ["tirur"],
+            "top": false,
+            "hindiName": "तिरूर"
+        },
+        {
+            "name": "Vaikom",
+            "keywords": ["vaikom"],
+            "top": false,
+            "hindiName": "वाईकॉम"
+        },
+        {
+            "name": "Varkala",
+            "keywords": ["varkala"],
+            "top": false,
+            "hindiName": "वर्कला"
+        },
+        {
+            "name": "Vatakara",
+            "keywords": ["vatakara"],
+            "top": false,
+            "hindiName": null
+        }
+    ],
+    "Madhya Pradesh": [
+        {
+            "name": "Alirajpur",
+            "keywords": ["alirajpur"],
+            "top": false,
+            "hindiName": null
+        },
+        {
+            "name": "Ashok Nagar",
+            "keywords": ["ashoknagar"],
+            "top": false,
+            "hindiName": "अशोक नगर"
+        },
+        {
+            "name": "Balaghat",
+            "keywords": ["balaghat"],
+            "top": false,
+            "hindiName": "बालाघाट"
+        },
+        {
+            "name": "Bhopal",
+            "keywords": ["bhopal"],
+            "top": true,
+            "hindiName": "भोपाल"
+        },
+        {
+            "name": "Ganjbasoda",
+            "keywords": ["ganjbasoda"],
+            "top": false,
+            "hindiName": null
+        },
+        {
+            "name": "Gwalior",
+            "keywords": ["gwalior"],
+            "top": false,
+            "hindiName": "ग्वालियर"
+        },
+        {
+            "name": "Indore",
+            "keywords": ["indore"],
+            "top": true,
+            "hindiName": "इंदौर"
+        },
+        {
+            "name": "Itarsi",
+            "keywords": ["itarsi"],
+            "top": false,
+            "hindiName": "इटारसी"
+        },
+        {
+            "name": "Jabalpur",
+            "keywords": ["jabalpur"],
+            "top": true,
+            "hindiName": "जबलपुर"
+        },
+        {
+            "name": "Lahar",
+            "keywords": ["lahar"],
+            "top": false,
+            "hindiName": "lahar"
+        },
+        {
+            "name": "Maharajpur",
+            "keywords": ["maharajpur"],
+            "top": false,
+            "hindiName": "महाराजपुर"
+        },
+        {
+            "name": "Mahidpur",
+            "keywords": ["mahidpur"],
+            "top": false,
+            "hindiName": "महिदपुर"
+        },
+        {
+            "name": "Maihar",
+            "keywords": ["maihar"],
+            "top": false,
+            "hindiName": "मैहर"
+        },
+        {
+            "name": "Malaj Khand",
+            "keywords": ["malajkhand"],
+            "top": false,
+            "hindiName": null
+        },
+        {
+            "name": "Manasa",
+            "keywords": ["manasa"],
+            "top": false,
+            "hindiName": "मनसा"
+        },
+        {
+            "name": "Manawar",
+            "keywords": ["manawar"],
+            "top": false,
+            "hindiName": "मनावर"
+        },
+        {
+            "name": "Mandideep",
+            "keywords": ["mandideep"],
+            "top": false,
+            "hindiName": "मंडीदीप"
+        },
+        {
+            "name": "Mandla",
+            "keywords": ["mandla"],
+            "top": false,
+            "hindiName": "मंडला"
+        },
+        {
+            "name": "Mandsaur",
+            "keywords": ["mandsaur"],
+            "top": false,
+            "hindiName": "मन्दसौर"
+        },
+        {
+            "name": "Mauganj",
+            "keywords": ["mauganj"],
+            "top": false,
+            "hindiName": "Mauganj"
+        },
+        {
+            "name": "Mhow Cantonment",
+            "keywords": ["mhowcantonment"],
+            "top": false,
+            "hindiName": "महू छावनी"
+        },
+        {
+            "name": "Mhowgaon",
+            "keywords": ["mhowgaon"],
+            "top": false,
+            "hindiName": "Mhowgaon"
+        },
+        {
+            "name": "Morena",
+            "keywords": ["morena"],
+            "top": false,
+            "hindiName": "मुरैना"
+        },
+        {
+            "name": "Multai",
+            "keywords": ["multai"],
+            "top": false,
+            "hindiName": "मुल्ताई"
+        },
+        {
+            "name": "Mundi",
+            "keywords": ["mundi"],
+            "top": false,
+            "hindiName": null
+        },
+        {
+            "name": "Murwara (Katni)",
+            "keywords": ["murwara(katni)"],
+            "top": false,
+            "hindiName": null
+        },
+        {
+            "name": "Nagda",
+            "keywords": ["nagda"],
+            "top": false,
+            "hindiName": "नागदा"
+        },
+        {
+            "name": "Nainpur",
+            "keywords": ["nainpur"],
+            "top": false,
+            "hindiName": "नैनपुर"
+        },
+        {
+            "name": "Narsinghgarh",
+            "keywords": ["narsinghgarh"],
+            "top": false,
+            "hindiName": "नरसिंहगढ़"
+        },
+        {
+            "name": "Neemuch",
+            "keywords": ["neemuch"],
+            "top": false,
+            "hindiName": "नीमच"
+        },
+        {
+            "name": "Nepanagar",
+            "keywords": ["nepanagar"],
+            "top": false,
+            "hindiName": "नेपानगर"
+        },
+        {
+            "name": "Niwari",
+            "keywords": ["niwari"],
+            "top": false,
+            "hindiName": "निवारी"
+        },
+        {
+            "name": "Nowgong",
+            "keywords": ["nowgong"],
+            "top": false,
+            "hindiName": "नौगांव"
+        },
+        {
+            "name": "Nowrozabad (Khodargama)",
+            "keywords": ["nowrozabad(khodargama)"],
+            "top": false,
+            "hindiName": null
+        },
+        {
+            "name": "Pachore",
+            "keywords": ["pachore"],
+            "top": false,
+            "hindiName": "Pachore"
+        },
+        {
+            "name": "Pali",
+            "keywords": ["pali"],
+            "top": false,
+            "hindiName": "पाली"
+        },
+        {
+            "name": "Panagar",
+            "keywords": ["panagar"],
+            "top": false,
+            "hindiName": "Panagar"
+        },
+        {
+            "name": "Pandhurna",
+            "keywords": ["pandhurna"],
+            "top": false,
+            "hindiName": "पंधुरना"
+        },
+        {
+            "name": "Panna",
+            "keywords": ["panna"],
+            "top": false,
+            "hindiName": "पन्ना"
+        },
+        {
+            "name": "Pasan",
+            "keywords": ["pasan"],
+            "top": false,
+            "hindiName": "Pasan"
+        },
+        {
+            "name": "Pipariya",
+            "keywords": ["pipariya"],
+            "top": false,
+            "hindiName": "पिपरिया"
+        },
+        {
+            "name": "Pithampur",
+            "keywords": ["pithampur"],
+            "top": false,
+            "hindiName": "पीथमपुर"
+        },
+        {
+            "name": "Porsa",
+            "keywords": ["porsa"],
+            "top": false,
+            "hindiName": "Porsa"
+        },
+        {
+            "name": "Prithvipur",
+            "keywords": ["prithvipur"],
+            "top": false,
+            "hindiName": "पृथ्वीपुर"
+        },
+        {
+            "name": "Raghogarh-Vijaypur",
+            "keywords": ["raghogarh-vijaypur", "raghogarhvijaypur"],
+            "top": false,
+            "hindiName": "राघोगढ़-विजयपुर"
+        },
+        {
+            "name": "Rahatgarh",
+            "keywords": ["rahatgarh"],
+            "top": false,
+            "hindiName": "राहतगढ़"
+        },
+        {
+            "name": "Raisen",
+            "keywords": ["raisen"],
+            "top": false,
+            "hindiName": "रायसेन"
+        },
+        {
+            "name": "Rajgarh",
+            "keywords": ["rajgarh"],
+            "top": false,
+            "hindiName": "राजगढ़"
+        },
+        {
+            "name": "Ratlam",
+            "keywords": ["ratlam"],
+            "top": false,
+            "hindiName": "रतलाम"
+        },
+        {
+            "name": "Rau",
+            "keywords": ["rau"],
+            "top": false,
+            "hindiName": "राव"
+        },
+        {
+            "name": "Rehli",
+            "keywords": ["rehli"],
+            "top": false,
+            "hindiName": "Rehli"
+        },
+        {
+            "name": "Rewa",
+            "keywords": ["rewa"],
+            "top": false,
+            "hindiName": "रीवा"
+        },
+        {
+            "name": "Sabalgarh",
+            "keywords": ["sabalgarh"],
+            "top": false,
+            "hindiName": "सबलगढ़"
+        },
+        {
+            "name": "Sagar",
+            "keywords": ["sagar"],
+            "top": false,
+            "hindiName": "सागर"
+        },
+        {
+            "name": "Sanawad",
+            "keywords": ["sanawad"],
+            "top": false,
+            "hindiName": "सनावद"
+        },
+        {
+            "name": "Sarangpur",
+            "keywords": ["sarangpur"],
+            "top": false,
+            "hindiName": "सारंगपुर"
+        },
+        {
+            "name": "Sarni",
+            "keywords": ["sarni"],
+            "top": false,
+            "hindiName": "सारनी"
+        },
+        {
+            "name": "Satna",
+            "keywords": ["satna"],
+            "top": false,
+            "hindiName": "सतना"
+        },
+        {
+            "name": "Sausar",
+            "keywords": ["sausar"],
+            "top": false,
+            "hindiName": "सौसर"
+        },
+        {
+            "name": "Sehore",
+            "keywords": ["sehore"],
+            "top": false,
+            "hindiName": "सीहोर"
+        },
+        {
+            "name": "Sendhwa",
+            "keywords": ["sendhwa"],
+            "top": false,
+            "hindiName": "सेंधवा"
+        },
+        {
+            "name": "Seoni",
+            "keywords": ["seoni"],
+            "top": false,
+            "hindiName": "सिवनी"
+        },
+        {
+            "name": "Seoni-Malwa",
+            "keywords": ["seoni-malwa", "seonimalwa"],
+            "top": false,
+            "hindiName": "सिवनी-मालवा"
+        },
+        {
+            "name": "Shahdol",
+            "keywords": ["shahdol"],
+            "top": false,
+            "hindiName": "शाहडोल"
+        },
+        {
+            "name": "Shajapur",
+            "keywords": ["shajapur"],
+            "top": false,
+            "hindiName": "शाजापुर"
+        },
+        {
+            "name": "Shamgarh",
+            "keywords": ["shamgarh"],
+            "top": false,
+            "hindiName": "शामगढ़"
+        },
+        {
+            "name": "Sheopur",
+            "keywords": ["sheopur"],
+            "top": false,
+            "hindiName": "श्योपुर"
+        },
+        {
+            "name": "Shivpuri",
+            "keywords": ["shivpuri"],
+            "top": false,
+            "hindiName": "शिवपुरी"
+        },
+        {
+            "name": "Shujalpur",
+            "keywords": ["shujalpur"],
+            "top": false,
+            "hindiName": "शुजालपुर"
+        },
+        {
+            "name": "Sidhi",
+            "keywords": ["sidhi"],
+            "top": false,
+            "hindiName": "सीधी"
+        },
+        {
+            "name": "Sihora",
+            "keywords": ["sihora"],
+            "top": false,
+            "hindiName": "सिहोरा"
+        },
+        {
+            "name": "Singrauli",
+            "keywords": ["singrauli"],
+            "top": false,
+            "hindiName": "सिंगरौली"
+        },
+        {
+            "name": "Sironj",
+            "keywords": ["sironj"],
+            "top": false,
+            "hindiName": "सिरोंज"
+        },
+        {
+            "name": "Sohagpur",
+            "keywords": ["sohagpur"],
+            "top": false,
+            "hindiName": "सोहागपुर"
+        },
+        {
+            "name": "Tarana",
+            "keywords": ["tarana"],
+            "top": false,
+            "hindiName": "तराना"
+        },
+        {
+            "name": "Tikamgarh",
+            "keywords": ["tikamgarh"],
+            "top": false,
+            "hindiName": "टीकमगढ़"
+        },
+        {
+            "name": "Ujjain",
+            "keywords": ["ujjain"],
+            "top": false,
+            "hindiName": "उज्जैन"
+        },
+        {
+            "name": "Umaria",
+            "keywords": ["umaria"],
+            "top": false,
+            "hindiName": "उमरिया"
+        },
+        {
+            "name": "Vidisha",
+            "keywords": ["vidisha"],
+            "top": false,
+            "hindiName": "विदिशा"
+        },
+        {
+            "name": "Vijaypur",
+            "keywords": ["vijaypur"],
+            "top": false,
+            "hindiName": null
+        },
+        {
+            "name": "Wara Seoni",
+            "keywords": ["waraseoni"],
+            "top": false,
+            "hindiName": "Wara सिवनी"
+        }
+    ],
+    "Maharashtra": [
+        {
+            "name": "[[]]",
+            "keywords": ["[[]]"],
+            "top": false,
+            "hindiName": null
+        },
+        {
+            "name": "Ahmednagar",
+            "keywords": ["ahmednagar"],
+            "top": false,
+            "hindiName": "अहमदनगर"
+        },
+        {
+            "name": "Akola",
+            "keywords": ["akola"],
+            "top": false,
+            "hindiName": "अकोला"
+        },
+        {
+            "name": "Akot",
+            "keywords": ["akot"],
+            "top": false,
+            "hindiName": null
+        },
+        {
+            "name": "Amalner",
+            "keywords": ["amalner"],
+            "top": false,
+            "hindiName": null
+        },
+        {
+            "name": "Ambejogai",
+            "keywords": ["ambejogai"],
+            "top": false,
+            "hindiName": null
+        },
+        {
+            "name": "Amravati",
+            "keywords": ["amravati"],
+            "top": false,
+            "hindiName": "अमरावती"
+        },
+        {
+            "name": "Anjangaon",
+            "keywords": ["anjangaon"],
+            "top": false,
+            "hindiName": null
+        },
+        {
+            "name": "Arvi",
+            "keywords": ["arvi"],
+            "top": false,
+            "hindiName": null
+        },
+        {
+            "name": "Aurangabad",
+            "keywords": ["aurangabad"],
+            "top": false,
+            "hindiName": "औरंगाबाद"
+        },
+        {
+            "name": "Bhiwandi",
+            "keywords": ["bhiwandi"],
+            "top": false,
+            "hindiName": null
+        },
+        {
+            "name": "Dhule",
+            "keywords": ["dhule"],
+            "top": false,
+            "hindiName": "धुले"
+        },
+        {
+            "name": "Kalyan-Dombivali",
+            "keywords": ["kalyan-dombivali", "kalyandombivali"],
+            "top": false,
+            "hindiName": null
+        },
+        {
+            "name": "Ichalkaranji",
+            "keywords": ["ichalkaranji"],
+            "top": false,
+            "hindiName": "इचलकरंजी"
+        },
+        {
+            "name": "Karjat",
+            "keywords": ["karjat"],
+            "top": false,
+            "hindiName": null
+        },
+        {
+            "name": "Latur",
+            "keywords": ["latur"],
+            "top": false,
+            "hindiName": "लातूर"
+        },
+        {
+            "name": "Loha",
+            "keywords": ["loha"],
+            "top": false,
+            "hindiName": "लोहा"
+        },
+        {
+            "name": "Lonar",
+            "keywords": ["lonar"],
+            "top": false,
+            "hindiName": "लोनार"
+        },
+        {
+            "name": "Lonavla",
+            "keywords": ["lonavla"],
+            "top": false,
+            "hindiName": "लोनावला"
+        },
+        {
+            "name": "Mahad",
+            "keywords": ["mahad"],
+            "top": false,
+            "hindiName": "महाड"
+        },
+        {
+            "name": "Malegaon",
+            "keywords": ["malegaon"],
+            "top": false,
+            "hindiName": "मालेगांव"
+        },
+        {
+            "name": "Malkapur",
+            "keywords": ["malkapur"],
+            "top": false,
+            "hindiName": "मल्कापुर"
+        },
+        {
+            "name": "Mangalvedhe",
+            "keywords": ["mangalvedhe"],
+            "top": false,
+            "hindiName": "Mangalvedhe"
+        },
+        {
+            "name": "Mangrulpir",
+            "keywords": ["mangrulpir"],
+            "top": false,
+            "hindiName": "Mangrulpir"
+        },
+        {
+            "name": "Manjlegaon",
+            "keywords": ["manjlegaon"],
+            "top": false,
+            "hindiName": "Manjlegaon"
+        },
+        {
+            "name": "Manmad",
+            "keywords": ["manmad"],
+            "top": false,
+            "hindiName": "मनमाड"
+        },
+        {
+            "name": "Manwath",
+            "keywords": ["manwath"],
+            "top": false,
+            "hindiName": "Manwath"
+        },
+        {
+            "name": "Mehkar",
+            "keywords": ["mehkar"],
+            "top": false,
+            "hindiName": "Mehkar"
+        },
+        {
+            "name": "Mhaswad",
+            "keywords": ["mhaswad"],
+            "top": false,
+            "hindiName": "Mhaswad"
+        },
+        {
+            "name": "Mira-Bhayandar",
+            "keywords": ["mira-bhayandar", "mirabhayandar"],
+            "top": false,
+            "hindiName": null
+        },
+        {
+            "name": "Morshi",
+            "keywords": ["morshi"],
+            "top": false,
+            "hindiName": "Morshi"
+        },
+        {
+            "name": "Mukhed",
+            "keywords": ["mukhed"],
+            "top": false,
+            "hindiName": "Mukhed"
+        },
+        {
+            "name": "Mul",
+            "keywords": ["mul"],
+            "top": false,
+            "hindiName": "एमयूएल"
+        },
+        {
+            "name": "Mumbai",
+            "keywords": ["mumbai"],
+            "top": true,
+            "hindiName": "मुंबई"
+        },
+        {
+            "name": "Murtijapur",
+            "keywords": ["murtijapur"],
+            "top": false,
+            "hindiName": "Murtijapur"
+        },
+        {
+            "name": "Nagpur",
+            "keywords": ["nagpur"],
+            "top": true,
+            "hindiName": "नागपुर"
+        },
+        {
+            "name": "Nasik",
+            "keywords": ["nasik"],
+            "top": false,
+            "hindiName": null
+        },
+        {
+            "name": "Nanded-Waghala",
+            "keywords": ["nanded-waghala", "nandedwaghala"],
+            "top": false,
+            "hindiName": "नांदेड़-Waghala"
+        },
+        {
+            "name": "Nandgaon",
+            "keywords": ["nandgaon"],
+            "top": false,
+            "hindiName": "नंदगाँव"
+        },
+        {
+            "name": "Nandura",
+            "keywords": ["nandura"],
+            "top": false,
+            "hindiName": "Nandura"
+        },
+        {
+            "name": "Nandurbar",
+            "keywords": ["nandurbar"],
+            "top": false,
+            "hindiName": "नंदुरबार"
+        },
+        {
+            "name": "Narkhed",
+            "keywords": ["narkhed"],
+            "top": false,
+            "hindiName": "Narkhed"
+        },
+        {
+            "name": "Nashik",
+            "keywords": ["nashik"],
+            "top": true,
+            "hindiName": "नासिक"
+        },
+        {
+            "name": "Nawapur",
+            "keywords": ["nawapur"],
+            "top": false,
+            "hindiName": "Nawapur"
+        },
+        {
+            "name": "Nilanga",
+            "keywords": ["nilanga"],
+            "top": false,
+            "hindiName": "Nilanga"
+        },
+        {
+            "name": "Osmanabad",
+            "keywords": ["osmanabad"],
+            "top": false,
+            "hindiName": "उस्मानाबाद"
+        },
+        {
+            "name": "Ozar",
+            "keywords": ["ozar"],
+            "top": false,
+            "hindiName": "Ozar"
+        },
+        {
+            "name": "Pachora",
+            "keywords": ["pachora"],
+            "top": false,
+            "hindiName": "पचोरा"
+        },
+        {
+            "name": "Paithan",
+            "keywords": ["paithan"],
+            "top": false,
+            "hindiName": "पैठण"
+        },
+        {
+            "name": "Palghar",
+            "keywords": ["palghar"],
+            "top": false,
+            "hindiName": "Palghar"
+        },
+        {
+            "name": "Pandharkaoda",
+            "keywords": ["pandharkaoda"],
+            "top": false,
+            "hindiName": "Pandharkaoda"
+        },
+        {
+            "name": "Pandharpur",
+            "keywords": ["pandharpur"],
+            "top": false,
+            "hindiName": "पंढरपुर"
+        },
+        {
+            "name": "Panvel",
+            "keywords": ["panvel"],
+            "top": false,
+            "hindiName": "पनवेल"
+        },
+        {
+            "name": "Parbhani",
+            "keywords": ["parbhani"],
+            "top": false,
+            "hindiName": "परभनी"
+        },
+        {
+            "name": "Parli",
+            "keywords": ["parli"],
+            "top": false,
+            "hindiName": "परली"
+        },
+        {
+            "name": "Partur",
+            "keywords": ["partur"],
+            "top": false,
+            "hindiName": "Partur"
+        },
+        {
+            "name": "Pathardi",
+            "keywords": ["pathardi"],
+            "top": false,
+            "hindiName": "Pathardi"
+        },
+        {
+            "name": "Pathri",
+            "keywords": ["pathri"],
+            "top": false,
+            "hindiName": "पथरी"
+        },
+        {
+            "name": "Patur",
+            "keywords": ["patur"],
+            "top": false,
+            "hindiName": "Patur"
+        },
+        {
+            "name": "Pauni",
+            "keywords": ["pauni"],
+            "top": false,
+            "hindiName": "Pauni"
+        },
+        {
+            "name": "Pen",
+            "keywords": ["pen"],
+            "top": false,
+            "hindiName": "कलम"
+        },
+        {
+            "name": "Phaltan",
+            "keywords": ["phaltan"],
+            "top": false,
+            "hindiName": "फलटन"
+        },
+        {
+            "name": "Pulgaon",
+            "keywords": ["pulgaon"],
+            "top": false,
+            "hindiName": "पुलगांव"
+        },
+        {
+            "name": "Pune",
+            "keywords": ["pune"],
+            "top": true,
+            "hindiName": "पुणे"
+        },
+        {
+            "name": "Purna",
+            "keywords": ["purna"],
+            "top": false,
+            "hindiName": "पूर्णा"
+        },
+        {
+            "name": "Pusad",
+            "keywords": ["pusad"],
+            "top": false,
+            "hindiName": "Pusad"
+        },
+        {
+            "name": "Rahuri",
+            "keywords": ["rahuri"],
+            "top": false,
+            "hindiName": "राहुरी"
+        },
+        {
+            "name": "Rajura",
+            "keywords": ["rajura"],
+            "top": false,
+            "hindiName": "Rajura"
+        },
+        {
+            "name": "Ramtek",
+            "keywords": ["ramtek"],
+            "top": false,
+            "hindiName": "रामटेक"
+        },
+        {
+            "name": "Ratnagiri",
+            "keywords": ["ratnagiri"],
+            "top": false,
+            "hindiName": "रत्नागिरि"
+        },
+        {
+            "name": "Raver",
+            "keywords": ["raver"],
+            "top": false,
+            "hindiName": "रावेर"
+        },
+        {
+            "name": "Risod",
+            "keywords": ["risod"],
+            "top": false,
+            "hindiName": "रिसोद"
+        },
+        {
+            "name": "Sailu",
+            "keywords": ["sailu"],
+            "top": false,
+            "hindiName": "Sailu"
+        },
+        {
+            "name": "Sangamner",
+            "keywords": ["sangamner"],
+            "top": false,
+            "hindiName": "संगमनेर"
+        },
+        {
+            "name": "Sangli",
+            "keywords": ["sangli"],
+            "top": false,
+            "hindiName": "सांगली"
+        },
+        {
+            "name": "Sangole",
+            "keywords": ["sangole"],
+            "top": false,
+            "hindiName": "Sangole"
+        },
+        {
+            "name": "Sasvad",
+            "keywords": ["sasvad"],
+            "top": false,
+            "hindiName": "Sasvad"
+        },
+        {
+            "name": "Satana",
+            "keywords": ["satana"],
+            "top": false,
+            "hindiName": "Satana"
+        },
+        {
+            "name": "Satara",
+            "keywords": ["satara"],
+            "top": false,
+            "hindiName": "सतारा"
+        },
+        {
+            "name": "Savner",
+            "keywords": ["savner"],
+            "top": false,
+            "hindiName": "Savner"
+        },
+        {
+            "name": "Sawantwadi",
+            "keywords": ["sawantwadi"],
+            "top": false,
+            "hindiName": "सावंतवाडी"
+        },
+        {
+            "name": "Shahade",
+            "keywords": ["shahade"],
+            "top": false,
+            "hindiName": "Shahade"
+        },
+        {
+            "name": "Shegaon",
+            "keywords": ["shegaon"],
+            "top": false,
+            "hindiName": "शेगाव"
+        },
+        {
+            "name": "Shendurjana",
+            "keywords": ["shendurjana"],
+            "top": false,
+            "hindiName": "Shendurjana"
+        },
+        {
+            "name": "Shirdi",
+            "keywords": ["shirdi"],
+            "top": false,
+            "hindiName": "शिरडी"
+        },
+        {
+            "name": "Shirpur-Warwade",
+            "keywords": ["shirpur-warwade", "shirpurwarwade"],
+            "top": false,
+            "hindiName": "एगी-Warwade"
+        },
+        {
+            "name": "Shirur",
+            "keywords": ["shirur"],
+            "top": false,
+            "hindiName": "शिरुर"
+        },
+        {
+            "name": "Shrigonda",
+            "keywords": ["shrigonda"],
+            "top": false,
+            "hindiName": "श्रीगोंदा"
+        },
+        {
+            "name": "Shrirampur",
+            "keywords": ["shrirampur"],
+            "top": false,
+            "hindiName": "श्रीरामपुर"
+        },
+        {
+            "name": "Sillod",
+            "keywords": ["sillod"],
+            "top": false,
+            "hindiName": "सिल्लोड"
+        },
+        {
+            "name": "Sinnar",
+            "keywords": ["sinnar"],
+            "top": false,
+            "hindiName": "सिन्नर"
+        },
+        {
+            "name": "Solapur",
+            "keywords": ["solapur"],
+            "top": false,
+            "hindiName": "सोलापुर"
+        },
+        {
+            "name": "Soyagaon",
+            "keywords": ["soyagaon"],
+            "top": false,
+            "hindiName": "Soyagaon"
+        },
+        {
+            "name": "Talegaon Dabhade",
+            "keywords": ["talegaondabhade"],
+            "top": false,
+            "hindiName": "Talegaon Dabhade"
+        },
+        {
+            "name": "Talode",
+            "keywords": ["talode"],
+            "top": false,
+            "hindiName": "Talode"
+        },
+        {
+            "name": "Tasgaon",
+            "keywords": ["tasgaon"],
+            "top": false,
+            "hindiName": "tasgaon"
+        },
+        {
+            "name": "Thane",
+            "keywords": ["thane"],
+            "top": true,
+            "hindiName": null
+        },
+        {
+            "name": "Tirora",
+            "keywords": ["tirora"],
+            "top": false,
+            "hindiName": "Tirora"
+        },
+        {
+            "name": "Tuljapur",
+            "keywords": ["tuljapur"],
+            "top": false,
+            "hindiName": "तुलजापुर"
+        },
+        {
+            "name": "Tumsar",
+            "keywords": ["tumsar"],
+            "top": false,
+            "hindiName": "तुमसर"
+        },
+        {
+            "name": "Uchgaon",
+            "keywords": ["uchgaon"],
+            "top": false,
+            "hindiName": "Uchgaon"
+        },
+        {
+            "name": "Udgir",
+            "keywords": ["udgir"],
+            "top": false,
+            "hindiName": "उदगीर"
+        },
+        {
+            "name": "Umarga",
+            "keywords": ["umarga"],
+            "top": false,
+            "hindiName": "Umarga"
+        },
+        {
+            "name": "Umarkhed",
+            "keywords": ["umarkhed"],
+            "top": false,
+            "hindiName": "Umarkhed"
+        },
+        {
+            "name": "Umred",
+            "keywords": ["umred"],
+            "top": false,
+            "hindiName": "Umred"
+        },
+        {
+            "name": "Uran",
+            "keywords": ["uran"],
+            "top": false,
+            "hindiName": "उरान"
+        },
+        {
+            "name": "Uran Islampur",
+            "keywords": ["uranislampur"],
+            "top": false,
+            "hindiName": "उरान इस्लामपुर"
+        },
+        {
+            "name": "Vadgaon Kasba",
+            "keywords": ["vadgaonkasba"],
+            "top": false,
+            "hindiName": "Vadgaon कस्बा"
+        },
+        {
+            "name": "Vaijapur",
+            "keywords": ["vaijapur"],
+            "top": false,
+            "hindiName": "वैजापुर"
+        },
+        {
+            "name": "Vasai-Virar",
+            "keywords": ["vasai-virar", "vasaivirar"],
+            "top": false,
+            "hindiName": null
+        },
+        {
+            "name": "Vita",
+            "keywords": ["vita"],
+            "top": false,
+            "hindiName": "संक्षिप्त आत्मकथा"
+        },
+        {
+            "name": "Wadgaon Road",
+            "keywords": ["wadgaonroad"],
+            "top": false,
+            "hindiName": "वडगांव रोड"
+        },
+        {
+            "name": "Wai",
+            "keywords": ["wai"],
+            "top": false,
+            "hindiName": "वाई"
+        },
+        {
+            "name": "Wani",
+            "keywords": ["wani"],
+            "top": false,
+            "hindiName": "वाणी"
+        },
+        {
+            "name": "Wardha",
+            "keywords": ["wardha"],
+            "top": false,
+            "hindiName": "वर्धा"
+        },
+        {
+            "name": "Warora",
+            "keywords": ["warora"],
+            "top": false,
+            "hindiName": "वरोरा"
+        },
+        {
+            "name": "Warud",
+            "keywords": ["warud"],
+            "top": false,
+            "hindiName": "Warud"
+        },
+        {
+            "name": "Washim",
+            "keywords": ["washim"],
+            "top": false,
+            "hindiName": "वाशिम"
+        },
+        {
+            "name": "Yavatmal",
+            "keywords": ["yavatmal"],
+            "top": false,
+            "hindiName": "यवतमाल"
+        },
+        {
+            "name": "Yawal",
+            "keywords": ["yawal"],
+            "top": false,
+            "hindiName": "यावल"
+        },
+        {
+            "name": "Yevla",
+            "keywords": ["yevla"],
+            "top": false,
+            "hindiName": "Yevla"
+        }
+    ],
+    "Manipur": [
+        {
+            "name": "Imphal",
+            "keywords": ["imphal"],
+            "top": false,
+            "hindiName": "इंफाल"
+        },
+        {
+            "name": "Lilong",
+            "keywords": ["lilong"],
+            "top": false,
+            "hindiName": "लिलोंग"
+        },
+        {
+            "name": "Mayang Imphal",
+            "keywords": ["mayangimphal"],
+            "top": false,
+            "hindiName": "Mayang इंफाल"
+        },
+        {
+            "name": "Thoubal",
+            "keywords": ["thoubal"],
+            "top": false,
+            "hindiName": "थौबल"
+        }
+    ],
+    "Meghalaya": [
+        {
+            "name": "Nongstoin",
+            "keywords": ["nongstoin"],
+            "top": false,
+            "hindiName": "Nongstoin"
+        },
+        {
+            "name": "Shillong",
+            "keywords": ["shillong"],
+            "top": false,
+            "hindiName": "शिलांग"
+        },
+        {
+            "name": "Tura",
+            "keywords": ["tura"],
+            "top": false,
+            "hindiName": "तुरा"
+        }
+    ],
+    "Mizoram": [
+        {
+            "name": "Aizawl",
+            "keywords": ["aizawl"],
+            "top": false,
+            "hindiName": "आइजोल"
+        },
+        {
+            "name": "Lunglei",
+            "keywords": ["lunglei"],
+            "top": false,
+            "hindiName": "लुंगलेई"
+        },
+        {
+            "name": "Saiha",
+            "keywords": ["saiha"],
+            "top": false,
+            "hindiName": "सैहा"
+        }
+    ],
+    "Nagaland": [
+        {
+            "name": "Dimapur",
+            "keywords": ["dimapur"],
+            "top": false,
+            "hindiName": "दीमापुर"
+        },
+        {
+            "name": "Kohima",
+            "keywords": ["kohima"],
+            "top": false,
+            "hindiName": "कोहिमा"
+        },
+        {
+            "name": "Mokokchung",
+            "keywords": ["mokokchung"],
+            "top": false,
+            "hindiName": "मोकोकचुंग"
+        },
+        {
+            "name": "Tuensang",
+            "keywords": ["tuensang"],
+            "top": false,
+            "hindiName": "तुएनसांग"
+        },
+        {
+            "name": "Wokha",
+            "keywords": ["wokha"],
+            "top": false,
+            "hindiName": "वोखा"
+        },
+        {
+            "name": "Zunheboto",
+            "keywords": ["zunheboto"],
+            "top": false,
+            "hindiName": "Zunheboto"
+        }
+    ],
+    "Odisha": [
+        {
+            "name": "Balangir",
+            "keywords": ["balangir"],
+            "top": false,
+            "hindiName": "बलांगीर"
+        },
+        {
+            "name": "Baleshwar Town",
+            "keywords": ["baleshwartown"],
+            "top": false,
+            "hindiName": null
+        },
+        {
+            "name": "Barbil",
+            "keywords": ["barbil"],
+            "top": false,
+            "hindiName": "बारबिल"
+        },
+        {
+            "name": "Bargarh",
+            "keywords": ["bargarh"],
+            "top": false,
+            "hindiName": "बारगढ़"
+        },
+        {
+            "name": "Baripada Town",
+            "keywords": ["baripadatown"],
+            "top": false,
+            "hindiName": null
+        },
+        {
+            "name": "Bhadrak",
+            "keywords": ["bhadrak"],
+            "top": false,
+            "hindiName": "भद्रक"
+        },
+        {
+            "name": "Bhawanipatna",
+            "keywords": ["bhawanipatna"],
+            "top": false,
+            "hindiName": "भवानीपटना"
+        },
+        {
+            "name": "Bhubaneswar",
+            "keywords": ["bhubaneswar"],
+            "top": false,
+            "hindiName": "भुवनेश्वर"
+        },
+        {
+            "name": "Brahmapur",
+            "keywords": ["brahmapur"],
+            "top": false,
+            "hindiName": "ब्रह्मपुर"
+        },
+        {
+            "name": "Byasanagar",
+            "keywords": ["byasanagar"],
+            "top": false,
+            "hindiName": "Byasanagar"
+        },
+        {
+            "name": "Cuttack",
+            "keywords": ["cuttack"],
+            "top": false,
+            "hindiName": "कटक"
+        },
+        {
+            "name": "Dhenkanal",
+            "keywords": ["dhenkanal"],
+            "top": false,
+            "hindiName": "ढेंकनाल"
+        },
+        {
+            "name": "Jatani",
+            "keywords": ["jatani"],
+            "top": false,
+            "hindiName": "Jatani"
+        },
+        {
+            "name": "Jharsuguda",
+            "keywords": ["jharsuguda"],
+            "top": false,
+            "hindiName": "झारसुगुडा"
+        },
+        {
+            "name": "Kendrapara",
+            "keywords": ["kendrapara"],
+            "top": false,
+            "hindiName": "केंद्रपाड़ा"
+        },
+        {
+            "name": "Kendujhar",
+            "keywords": ["kendujhar"],
+            "top": false,
+            "hindiName": "केंदुझार"
+        },
+        {
+            "name": "Malkangiri",
+            "keywords": ["malkangiri"],
+            "top": false,
+            "hindiName": "मल्कानगिरी"
+        },
+        {
+            "name": "Nabarangapur",
+            "keywords": ["nabarangapur"],
+            "top": false,
+            "hindiName": "Nabarangapur"
+        },
+        {
+            "name": "Paradip",
+            "keywords": ["paradip"],
+            "top": false,
+            "hindiName": "पारादीप"
+        },
+        {
+            "name": "Parlakhemundi",
+            "keywords": ["parlakhemundi"],
+            "top": false,
+            "hindiName": "Parlakhemundi"
+        },
+        {
+            "name": "Pattamundai",
+            "keywords": ["pattamundai"],
+            "top": false,
+            "hindiName": "Pattamundai"
+        },
+        {
+            "name": "Phulabani",
+            "keywords": ["phulabani"],
+            "top": false,
+            "hindiName": "Phulabani"
+        },
+        {
+            "name": "Puri",
+            "keywords": ["puri"],
+            "top": false,
+            "hindiName": "पुरी"
+        },
+        {
+            "name": "Rairangpur",
+            "keywords": ["rairangpur"],
+            "top": false,
+            "hindiName": "Rairangpur"
+        },
+        {
+            "name": "Rajagangapur",
+            "keywords": ["rajagangapur"],
+            "top": false,
+            "hindiName": "Rajagangapur"
+        },
+        {
+            "name": "Raurkela",
+            "keywords": ["raurkela"],
+            "top": false,
+            "hindiName": "राउरकेला"
+        },
+        {
+            "name": "Rayagada",
+            "keywords": ["rayagada"],
+            "top": false,
+            "hindiName": "रायगढ़"
+        },
+        {
+            "name": "Sambalpur",
+            "keywords": ["sambalpur"],
+            "top": false,
+            "hindiName": "संबलपुर"
+        },
+        {
+            "name": "Soro",
+            "keywords": ["soro"],
+            "top": false,
+            "hindiName": "सोरो"
+        },
+        {
+            "name": "Sunabeda",
+            "keywords": ["sunabeda"],
+            "top": false,
+            "hindiName": "Sunabeda"
+        },
+        {
+            "name": "Sundargarh",
+            "keywords": ["sundargarh"],
+            "top": false,
+            "hindiName": "सुंदरगढ़"
+        },
+        {
+            "name": "Talcher",
+            "keywords": ["talcher"],
+            "top": false,
+            "hindiName": "तालचेर"
+        },
+        {
+            "name": "Tarbha",
+            "keywords": ["tarbha"],
+            "top": false,
+            "hindiName": null
+        },
+        {
+            "name": "Titlagarh",
+            "keywords": ["titlagarh"],
+            "top": false,
+            "hindiName": "टिटलागढ़"
+        }
+    ],
+    "Puducherry": [
+        {
+            "name": "Karaikal",
+            "keywords": ["karaikal"],
+            "top": false,
+            "hindiName": "कराईकल"
+        },
+        {
+            "name": "Mahe",
+            "keywords": ["mahe"],
+            "top": false,
+            "hindiName": "माहे"
+        },
+        {
+            "name": "Pondicherry",
+            "keywords": ["pondicherry"],
+            "top": false,
+            "hindiName": "पांडिचेरी"
+        },
+        {
+            "name": "Yanam",
+            "keywords": ["yanam"],
+            "top": false,
+            "hindiName": "यानम"
+        }
+    ],
+    "Punjab": [
+        {
+            "name": "Amritsar",
+            "keywords": ["amritsar"],
+            "top": false,
+            "hindiName": "अमृतसर"
+        },
+        {
+            "name": "Barnala",
+            "keywords": ["barnala"],
+            "top": false,
+            "hindiName": "बरनाला"
+        },
+        {
+            "name": "Batala",
+            "keywords": ["batala"],
+            "top": false,
+            "hindiName": "बटाला"
+        },
+        {
+            "name": "Bathinda",
+            "keywords": ["bathinda"],
+            "top": false,
+            "hindiName": "बठिंडा"
+        },
+        {
+            "name": "Dhuri",
+            "keywords": ["dhuri"],
+            "top": false,
+            "hindiName": "धुरी"
+        },
+        {
+            "name": "Faridkot",
+            "keywords": ["faridkot"],
+            "top": false,
+            "hindiName": "फरीदकोट"
+        },
+        {
+            "name": "Fazilka",
+            "keywords": ["fazilka"],
+            "top": false,
+            "hindiName": "फाजिल्का"
+        },
+        {
+            "name": "Firozpur",
+            "keywords": ["firozpur"],
+            "top": false,
+            "hindiName": "फिरोजपुर"
+        },
+        {
+            "name": "Firozpur Cantt.",
+            "keywords": ["firozpurcantt."],
+            "top": false,
+            "hindiName": "फिरोजपुर कैंट।"
+        },
+        {
+            "name": "Gobindgarh",
+            "keywords": ["gobindgarh"],
+            "top": false,
+            "hindiName": "गोबिंदगढ़"
+        },
+        {
+            "name": "Gurdaspur",
+            "keywords": ["gurdaspur"],
+            "top": false,
+            "hindiName": "गुरदासपुर"
+        },
+        {
+            "name": "Hoshiarpur",
+            "keywords": ["hoshiarpur"],
+            "top": false,
+            "hindiName": "होशियारपुर"
+        },
+        {
+            "name": "Jagraon",
+            "keywords": ["jagraon"],
+            "top": false,
+            "hindiName": "जगराओं"
+        },
+        {
+            "name": "Jalandhar Cantt.",
+            "keywords": ["jalandharcantt."],
+            "top": false,
+            "hindiName": "जालंधर कैंट।"
+        },
+        {
+            "name": "Jalandhar",
+            "keywords": ["jalandhar"],
+            "top": false,
+            "hindiName": "जालंधर"
+        },
+        {
+            "name": "Kapurthala",
+            "keywords": ["kapurthala"],
+            "top": false,
+            "hindiName": "कपूरथला"
+        },
+        {
+            "name": "Khanna",
+            "keywords": ["khanna"],
+            "top": false,
+            "hindiName": "खन्ना"
+        },
+        {
+            "name": "Kharar",
+            "keywords": ["kharar"],
+            "top": false,
+            "hindiName": "खरड़"
+        },
+        {
+            "name": "Kot Kapura",
+            "keywords": ["kotkapura"],
+            "top": false,
+            "hindiName": "कोट कपूर"
+        },
+        {
+            "name": "Longowal",
+            "keywords": ["longowal"],
+            "top": false,
+            "hindiName": "लोंगोवाल"
+        },
+        {
+            "name": "Ludhiana",
+            "keywords": ["ludhiana"],
+            "top": false,
+            "hindiName": "लुधियाना"
+        },
+        {
+            "name": "Malerkotla",
+            "keywords": ["malerkotla"],
+            "top": false,
+            "hindiName": "मलेरकोटला"
+        },
+        {
+            "name": "Malout",
+            "keywords": ["malout"],
+            "top": false,
+            "hindiName": "मलोट"
+        },
+        {
+            "name": "Mansa",
+            "keywords": ["mansa"],
+            "top": false,
+            "hindiName": "Mansa"
+        },
+        {
+            "name": "Moga",
+            "keywords": ["moga"],
+            "top": false,
+            "hindiName": "मोगा"
+        },
+        {
+            "name": "Mohali",
+            "keywords": ["mohali"],
+            "top": false,
+            "hindiName": "मोहाली"
+        },
+        {
+            "name": "Morinda, India",
+            "keywords": ["morinda,india"],
+            "top": false,
+            "hindiName": null
+        },
+        {
+            "name": "Mukerian",
+            "keywords": ["mukerian"],
+            "top": false,
+            "hindiName": "मुकेरियां"
+        },
+        {
+            "name": "Muktsar",
+            "keywords": ["muktsar"],
+            "top": false,
+            "hindiName": "मुक्तसर"
+        },
+        {
+            "name": "Nabha",
+            "keywords": ["nabha"],
+            "top": false,
+            "hindiName": "नाभा"
+        },
+        {
+            "name": "Nakodar",
+            "keywords": ["nakodar"],
+            "top": false,
+            "hindiName": "नकोदर"
+        },
+        {
+            "name": "Nangal",
+            "keywords": ["nangal"],
+            "top": false,
+            "hindiName": "नांगल"
+        },
+        {
+            "name": "Nawanshahr",
+            "keywords": ["nawanshahr"],
+            "top": false,
+            "hindiName": "नवांशहर"
+        },
+        {
+            "name": "Pathankot",
+            "keywords": ["pathankot"],
+            "top": false,
+            "hindiName": "पठानकोट"
+        },
+        {
+            "name": "Patiala",
+            "keywords": ["patiala"],
+            "top": false,
+            "hindiName": "पटियाला"
+        },
+        {
+            "name": "Pattran",
+            "keywords": ["pattran"],
+            "top": false,
+            "hindiName": null
+        },
+        {
+            "name": "Patti",
+            "keywords": ["patti"],
+            "top": false,
+            "hindiName": "पट्टी"
+        },
+        {
+            "name": "Phagwara",
+            "keywords": ["phagwara"],
+            "top": false,
+            "hindiName": "फगवाड़ा"
+        },
+        {
+            "name": "Phillaur",
+            "keywords": ["phillaur"],
+            "top": false,
+            "hindiName": "फिल्लौर"
+        },
+        {
+            "name": "Qadian",
+            "keywords": ["qadian"],
+            "top": false,
+            "hindiName": "क़दियन"
+        },
+        {
+            "name": "Raikot",
+            "keywords": ["raikot"],
+            "top": false,
+            "hindiName": "रायकोट"
+        },
+        {
+            "name": "Rajpura",
+            "keywords": ["rajpura"],
+            "top": false,
+            "hindiName": "राजपुरा"
+        },
+        {
+            "name": "Rampura Phul",
+            "keywords": ["rampuraphul"],
+            "top": false,
+            "hindiName": "रामपुरा फूल"
+        },
+        {
+            "name": "Rupnagar",
+            "keywords": ["rupnagar"],
+            "top": false,
+            "hindiName": "रूपनगर"
+        },
+        {
+            "name": "Samana",
+            "keywords": ["samana"],
+            "top": false,
+            "hindiName": "समाना"
+        },
+        {
+            "name": "Sangrur",
+            "keywords": ["sangrur"],
+            "top": false,
+            "hindiName": "Sangrur"
+        },
+        {
+            "name": "Sirhind Fatehgarh Sahib",
+            "keywords": ["sirhindfatehgarhsahib"],
+            "top": false,
+            "hindiName": "सरहिंद फतेहगढ़ साहिब"
+        },
+        {
+            "name": "Sujanpur",
+            "keywords": ["sujanpur"],
+            "top": false,
+            "hindiName": "सुजानपुर"
+        },
+        {
+            "name": "Sunam",
+            "keywords": ["sunam"],
+            "top": false,
+            "hindiName": "सुनाम"
+        },
+        {
+            "name": "Talwara",
+            "keywords": ["talwara"],
+            "top": false,
+            "hindiName": "तलवाड़ा"
+        },
+        {
+            "name": "Tarn Taran",
+            "keywords": ["tarntaran"],
+            "top": false,
+            "hindiName": "तरन तारन"
+        },
+        {
+            "name": "Urmar Tanda",
+            "keywords": ["urmartanda"],
+            "top": false,
+            "hindiName": "Urmar टांडा"
+        },
+        {
+            "name": "Zira",
+            "keywords": ["zira"],
+            "top": false,
+            "hindiName": "ज़ीरा"
+        },
+        {
+            "name": "Zirakpur",
+            "keywords": ["zirakpur"],
+            "top": false,
+            "hindiName": "जीरकपुर"
+        }
+    ],
+    "Rajasthan": [
+        {
+            "name": "Ajmer",
+            "keywords": ["ajmer"],
+            "top": false,
+            "hindiName": "अजमेर"
+        },
+        {
+            "name": "Alwar",
+            "keywords": ["alwar"],
+            "top": false,
+            "hindiName": "अलवर"
+        },
+        {
+            "name": "Bikaner",
+            "keywords": ["bikaner"],
+            "top": false,
+            "hindiName": "बीकानेर"
+        },
+        {
+            "name": "Bharatpur",
+            "keywords": ["bharatpur"],
+            "top": false,
+            "hindiName": null
+        },
+        {
+            "name": "Bhilwara",
+            "keywords": ["bhilwara"],
+            "top": false,
+            "hindiName": null
+        },
+        {
+            "name": "Jaipur",
+            "keywords": ["jaipur"],
+            "top": true,
+            "hindiName": "जयपुर"
+        },
+        {
+            "name": "Jodhpur",
+            "keywords": ["jodhpur"],
+            "top": false,
+            "hindiName": "जोधपुर"
+        },
+        {
+            "name": "Lachhmangarh",
+            "keywords": ["lachhmangarh"],
+            "top": false,
+            "hindiName": "Lachhmangarh"
+        },
+        {
+            "name": "Ladnu",
+            "keywords": ["ladnu"],
+            "top": false,
+            "hindiName": "लाडनूं"
+        },
+        {
+            "name": "Lakheri",
+            "keywords": ["lakheri"],
+            "top": false,
+            "hindiName": "लखेरी"
+        },
+        {
+            "name": "Lalsot",
+            "keywords": ["lalsot"],
+            "top": false,
+            "hindiName": "लालसोट"
+        },
+        {
+            "name": "Losal",
+            "keywords": ["losal"],
+            "top": false,
+            "hindiName": "लोसल"
+        },
+        {
+            "name": "Makrana",
+            "keywords": ["makrana"],
+            "top": false,
+            "hindiName": "मकराना"
+        },
+        {
+            "name": "Malpura",
+            "keywords": ["malpura"],
+            "top": false,
+            "hindiName": "मालपुरा"
+        },
+        {
+            "name": "Mandalgarh",
+            "keywords": ["mandalgarh"],
+            "top": false,
+            "hindiName": "Mandalgarh"
+        },
+        {
+            "name": "Mandawa",
+            "keywords": ["mandawa"],
+            "top": false,
+            "hindiName": "मंडावा"
+        },
+        {
+            "name": "Mangrol",
+            "keywords": ["mangrol"],
+            "top": false,
+            "hindiName": "मंगरोल"
+        },
+        {
+            "name": "Merta City",
+            "keywords": ["mertacity"],
+            "top": false,
+            "hindiName": "मेर्टा सिटी"
+        },
+        {
+            "name": "Mount Abu",
+            "keywords": ["mountabu"],
+            "top": false,
+            "hindiName": "माउंट आबू"
+        },
+        {
+            "name": "Nadbai",
+            "keywords": ["nadbai"],
+            "top": false,
+            "hindiName": "Nadbai"
+        },
+        {
+            "name": "Nagar",
+            "keywords": ["nagar"],
+            "top": false,
+            "hindiName": "नगर"
+        },
+        {
+            "name": "Nagaur",
+            "keywords": ["nagaur"],
+            "top": false,
+            "hindiName": "नागौर"
+        },
+        {
+            "name": "Nasirabad",
+            "keywords": ["nasirabad"],
+            "top": false,
+            "hindiName": "नसीराबाद"
+        },
+        {
+            "name": "Nathdwara",
+            "keywords": ["nathdwara"],
+            "top": false,
+            "hindiName": "नाथद्वारा"
+        },
+        {
+            "name": "Neem-Ka-Thana",
+            "keywords": ["neem-ka-thana", "neemkathana"],
+            "top": false,
+            "hindiName": "नीमकाथाना"
+        },
+        {
+            "name": "Nimbahera",
+            "keywords": ["nimbahera"],
+            "top": false,
+            "hindiName": "निंबाहेङा"
+        },
+        {
+            "name": "Nohar",
+            "keywords": ["nohar"],
+            "top": false,
+            "hindiName": "नोहर"
+        },
+        {
+            "name": "Nokha",
+            "keywords": ["nokha"],
+            "top": false,
+            "hindiName": "नोखा"
+        },
+        {
+            "name": "Pali",
+            "keywords": ["pali"],
+            "top": false,
+            "hindiName": "पाली"
+        },
+        {
+            "name": "Phalodi",
+            "keywords": ["phalodi"],
+            "top": false,
+            "hindiName": "फलौदी"
+        },
+        {
+            "name": "Phulera",
+            "keywords": ["phulera"],
+            "top": false,
+            "hindiName": "फुलेरा"
+        },
+        {
+            "name": "Pilani",
+            "keywords": ["pilani"],
+            "top": false,
+            "hindiName": "पिलानी"
+        },
+        {
+            "name": "Pilibanga",
+            "keywords": ["pilibanga"],
+            "top": false,
+            "hindiName": "Pilibanga"
+        },
+        {
+            "name": "Pindwara",
+            "keywords": ["pindwara"],
+            "top": false,
+            "hindiName": "Pindwara"
+        },
+        {
+            "name": "Pipar City",
+            "keywords": ["piparcity"],
+            "top": false,
+            "hindiName": "Pipar शहर"
+        },
+        {
+            "name": "Prantij",
+            "keywords": ["prantij"],
+            "top": false,
+            "hindiName": "Prantij"
+        },
+        {
+            "name": "Pratapgarh",
+            "keywords": ["pratapgarh"],
+            "top": false,
+            "hindiName": "प्रतापगढ़"
+        },
+        {
+            "name": "Raisinghnagar",
+            "keywords": ["raisinghnagar"],
+            "top": false,
+            "hindiName": "रायसिंह नगर"
+        },
+        {
+            "name": "Rajakhera",
+            "keywords": ["rajakhera"],
+            "top": false,
+            "hindiName": "Rajakhera"
+        },
+        {
+            "name": "Rajaldesar",
+            "keywords": ["rajaldesar"],
+            "top": false,
+            "hindiName": "Rajaldesar"
+        },
+        {
+            "name": "Rajgarh (Alwar)",
+            "keywords": ["rajgarh(alwar)"],
+            "top": false,
+            "hindiName": "राजगढ़ (अलवर)"
+        },
+        {
+            "name": "Rajgarh (Churu)",
+            "keywords": ["rajgarh(churu)"],
+            "top": false,
+            "hindiName": null
+        },
+        {
+            "name": "Rajsamand",
+            "keywords": ["rajsamand"],
+            "top": false,
+            "hindiName": "राजसमंद"
+        },
+        {
+            "name": "Ramganj Mandi",
+            "keywords": ["ramganjmandi"],
+            "top": false,
+            "hindiName": "रामगंज मंडी"
+        },
+        {
+            "name": "Ramngarh",
+            "keywords": ["ramngarh"],
+            "top": false,
+            "hindiName": "Ramngarh"
+        },
+        {
+            "name": "Ratangarh",
+            "keywords": ["ratangarh"],
+            "top": false,
+            "hindiName": "रतनगढ़"
+        },
+        {
+            "name": "Rawatbhata",
+            "keywords": ["rawatbhata"],
+            "top": false,
+            "hindiName": "रावतभाटा"
+        },
+        {
+            "name": "Rawatsar",
+            "keywords": ["rawatsar"],
+            "top": false,
+            "hindiName": "Rawatsar"
+        },
+        {
+            "name": "Reengus",
+            "keywords": ["reengus"],
+            "top": false,
+            "hindiName": "रींगस"
+        },
+        {
+            "name": "Sadri",
+            "keywords": ["sadri"],
+            "top": false,
+            "hindiName": "सादरी"
+        },
+        {
+            "name": "Sadulshahar",
+            "keywords": ["sadulshahar"],
+            "top": false,
+            "hindiName": "Sadulshahar"
+        },
+        {
+            "name": "Sadulpur",
+            "keywords": ["sadulpur"],
+            "top": false,
+            "hindiName": null
+        },
+        {
+            "name": "Sagwara",
+            "keywords": ["sagwara"],
+            "top": false,
+            "hindiName": "Sagwara"
+        },
+        {
+            "name": "Sambhar",
+            "keywords": ["sambhar"],
+            "top": false,
+            "hindiName": "सांभर"
+        },
+        {
+            "name": "Sanchore",
+            "keywords": ["sanchore"],
+            "top": false,
+            "hindiName": "सांचोर"
+        },
+        {
+            "name": "Sangaria",
+            "keywords": ["sangaria"],
+            "top": false,
+            "hindiName": "Sangaria"
+        },
+        {
+            "name": "Sardarshahar",
+            "keywords": ["sardarshahar"],
+            "top": false,
+            "hindiName": "सरदार शहर"
+        },
+        {
+            "name": "Sawai Madhopur",
+            "keywords": ["sawaimadhopur"],
+            "top": false,
+            "hindiName": "सवाई माधोपुर"
+        },
+        {
+            "name": "Shahpura",
+            "keywords": ["shahpura"],
+            "top": false,
+            "hindiName": "शाहपुरा"
+        },
+        {
+            "name": "Sheoganj",
+            "keywords": ["sheoganj"],
+            "top": false,
+            "hindiName": "Sheoganj"
+        },
+        {
+            "name": "Sikar",
+            "keywords": ["sikar"],
+            "top": false,
+            "hindiName": "सीकर"
+        },
+        {
+            "name": "Sirohi",
+            "keywords": ["sirohi"],
+            "top": false,
+            "hindiName": "सिरोही"
+        },
+        {
+            "name": "Sojat",
+            "keywords": ["sojat"],
+            "top": false,
+            "hindiName": "सोजत"
+        },
+        {
+            "name": "Sri Madhopur",
+            "keywords": ["srimadhopur"],
+            "top": false,
+            "hindiName": "श्री माधोपुर"
+        },
+        {
+            "name": "Sujangarh",
+            "keywords": ["sujangarh"],
+            "top": false,
+            "hindiName": "सुजानगढ़"
+        },
+        {
+            "name": "Sumerpur",
+            "keywords": ["sumerpur"],
+            "top": false,
+            "hindiName": "सुमेरपुर"
+        },
+        {
+            "name": "Suratgarh",
+            "keywords": ["suratgarh"],
+            "top": false,
+            "hindiName": "सूरतगढ़"
+        },
+        {
+            "name": "Taranagar",
+            "keywords": ["taranagar"],
+            "top": false,
+            "hindiName": "तारानगर"
+        },
+        {
+            "name": "Todabhim",
+            "keywords": ["todabhim"],
+            "top": false,
+            "hindiName": "Todabhim"
+        },
+        {
+            "name": "Todaraisingh",
+            "keywords": ["todaraisingh"],
+            "top": false,
+            "hindiName": "टोडारायसिंह"
+        },
+        {
+            "name": "Tonk",
+            "keywords": ["tonk"],
+            "top": false,
+            "hindiName": "टोंक"
+        },
+        {
+            "name": "Udaipur",
+            "keywords": ["udaipur"],
+            "top": false,
+            "hindiName": "उदयपुर"
+        },
+        {
+            "name": "Udaipurwati",
+            "keywords": ["udaipurwati"],
+            "top": false,
+            "hindiName": "उदयपुरवाटी"
+        },
+        {
+            "name": "Vijainagar, Ajmer",
+            "keywords": ["vijainagar,ajmer"],
+            "top": false,
+            "hindiName": null
+        }
+    ],
+    "Tamil Nadu": [
+        {
+            "name": "Arakkonam",
+            "keywords": ["arakkonam"],
+            "top": false,
+            "hindiName": "अराकोणम"
+        },
+        {
+            "name": "Aruppukkottai",
+            "keywords": ["aruppukkottai"],
+            "top": false,
+            "hindiName": "Aruppukkottai"
+        },
+        {
+            "name": "Chennai",
+            "keywords": ["chennai"],
+            "top": true,
+            "hindiName": "चेन्नई"
+        },
+        {
+            "name": "Coimbatore",
+            "keywords": ["coimbatore"],
+            "top": true,
+            "hindiName": "कोयंबटूर"
+        },
+        {
+            "name": "Erode",
+            "keywords": ["erode"],
+            "top": false,
+            "hindiName": "खत्म"
+        },
+        {
+            "name": "Gobichettipalayam",
+            "keywords": ["gobichettipalayam"],
+            "top": false,
+            "hindiName": null
+        },
+        {
+            "name": "Kancheepuram",
+            "keywords": ["kancheepuram"],
+            "top": false,
+            "hindiName": null
+        },
+        {
+            "name": "Karur",
+            "keywords": ["karur"],
+            "top": false,
+            "hindiName": "करूर"
+        },
+        {
+            "name": "Lalgudi",
+            "keywords": ["lalgudi"],
+            "top": false,
+            "hindiName": "लालगुडी"
+        },
+        {
+            "name": "Madurai",
+            "keywords": ["madurai"],
+            "top": false,
+            "hindiName": "मदुरै"
+        },
+        {
+            "name": "Manachanallur",
+            "keywords": ["manachanallur"],
+            "top": false,
+            "hindiName": null
+        },
+        {
+            "name": "Nagapattinam",
+            "keywords": ["nagapattinam"],
+            "top": false,
+            "hindiName": "नागपट्टिनम"
+        },
+        {
+            "name": "Nagercoil",
+            "keywords": ["nagercoil"],
+            "top": false,
+            "hindiName": "नागरकोइल"
+        },
+        {
+            "name": "Namagiripettai",
+            "keywords": ["namagiripettai"],
+            "top": false,
+            "hindiName": "Namagiripettai"
+        },
+        {
+            "name": "Namakkal",
+            "keywords": ["namakkal"],
+            "top": false,
+            "hindiName": "नमक्कल"
+        },
+        {
+            "name": "Nandivaram-Guduvancheri",
+            "keywords": ["nandivaram-guduvancheri", "nandivaramguduvancheri"],
+            "top": false,
+            "hindiName": "Nandivaram-Guduvancheri"
+        },
+        {
+            "name": "Nanjikottai",
+            "keywords": ["nanjikottai"],
+            "top": false,
+            "hindiName": "Nanjikottai"
+        },
+        {
+            "name": "Natham",
+            "keywords": ["natham"],
+            "top": false,
+            "hindiName": "Natham"
+        },
+        {
+            "name": "Nellikuppam",
+            "keywords": ["nellikuppam"],
+            "top": false,
+            "hindiName": "Nellikuppam"
+        },
+        {
+            "name": "Neyveli (TS)",
+            "keywords": ["neyveli(ts)"],
+            "top": false,
+            "hindiName": null
+        },
+        {
+            "name": "O' Valley",
+            "keywords": ["o'valley"],
+            "top": false,
+            "hindiName": null
+        },
+        {
+            "name": "Oddanchatram",
+            "keywords": ["oddanchatram"],
+            "top": false,
+            "hindiName": "Oddanchatram"
+        },
+        {
+            "name": "P.N.Patti",
+            "keywords": ["p.n.patti"],
+            "top": false,
+            "hindiName": "P.N.Patti"
+        },
+        {
+            "name": "Pacode",
+            "keywords": ["pacode"],
+            "top": false,
+            "hindiName": "Pacode"
+        },
+        {
+            "name": "Padmanabhapuram",
+            "keywords": ["padmanabhapuram"],
+            "top": false,
+            "hindiName": "पद्मनाभपुरम"
+        },
+        {
+            "name": "Palani",
+            "keywords": ["palani"],
+            "top": false,
+            "hindiName": "पलानी"
+        },
+        {
+            "name": "Palladam",
+            "keywords": ["palladam"],
+            "top": false,
+            "hindiName": "पल्लादम"
+        },
+        {
+            "name": "Pallapatti",
+            "keywords": ["pallapatti"],
+            "top": false,
+            "hindiName": "Pallapatti"
+        },
+        {
+            "name": "Pallikonda",
+            "keywords": ["pallikonda"],
+            "top": false,
+            "hindiName": "Pallikonda"
+        },
+        {
+            "name": "Panagudi",
+            "keywords": ["panagudi"],
+            "top": false,
+            "hindiName": "Panagudi"
+        },
+        {
+            "name": "Panruti",
+            "keywords": ["panruti"],
+            "top": false,
+            "hindiName": "Panruti"
+        },
+        {
+            "name": "Paramakudi",
+            "keywords": ["paramakudi"],
+            "top": false,
+            "hindiName": "परमाकुदी"
+        },
+        {
+            "name": "Parangipettai",
+            "keywords": ["parangipettai"],
+            "top": false,
+            "hindiName": "Parangipettai"
+        },
+        {
+            "name": "Pattukkottai",
+            "keywords": ["pattukkottai"],
+            "top": false,
+            "hindiName": "पत्तुकोत्तई"
+        },
+        {
+            "name": "Perambalur",
+            "keywords": ["perambalur"],
+            "top": false,
+            "hindiName": "पेरम्बलुर"
+        },
+        {
+            "name": "Peravurani",
+            "keywords": ["peravurani"],
+            "top": false,
+            "hindiName": "Peravurani"
+        },
+        {
+            "name": "Periyakulam",
+            "keywords": ["periyakulam"],
+            "top": false,
+            "hindiName": "पेरियाकुलम"
+        },
+        {
+            "name": "Periyasemur",
+            "keywords": ["periyasemur"],
+            "top": false,
+            "hindiName": "Periyasemur"
+        },
+        {
+            "name": "Pernampattu",
+            "keywords": ["pernampattu"],
+            "top": false,
+            "hindiName": "Pernampattu"
+        },
+        {
+            "name": "Pollachi",
+            "keywords": ["pollachi"],
+            "top": false,
+            "hindiName": "पोलाची"
+        },
+        {
+            "name": "Polur",
+            "keywords": ["polur"],
+            "top": false,
+            "hindiName": "Polur"
+        },
+        {
+            "name": "Ponneri",
+            "keywords": ["ponneri"],
+            "top": false,
+            "hindiName": "Ponneri"
+        },
+        {
+            "name": "Pudukkottai",
+            "keywords": ["pudukkottai"],
+            "top": false,
+            "hindiName": "पुदुक्कोट्टई"
+        },
+        {
+            "name": "Pudupattinam",
+            "keywords": ["pudupattinam"],
+            "top": false,
+            "hindiName": "Pudupattinam"
+        },
+        {
+            "name": "Puliyankudi",
+            "keywords": ["puliyankudi"],
+            "top": false,
+            "hindiName": "Puliyankudi"
+        },
+        {
+            "name": "Punjaipugalur",
+            "keywords": ["punjaipugalur"],
+            "top": false,
+            "hindiName": "Punjaipugalur"
+        },
+        {
+            "name": "Ranipet",
+            "keywords": ["ranipet"],
+            "top": false,
+            "hindiName": null
+        },
+        {
+            "name": "Rajapalayam",
+            "keywords": ["rajapalayam"],
+            "top": false,
+            "hindiName": "राजपालयम"
+        },
+        {
+            "name": "Ramanathapuram",
+            "keywords": ["ramanathapuram"],
+            "top": false,
+            "hindiName": "रामनाथपुरम"
+        },
+        {
+            "name": "Rameshwaram",
+            "keywords": ["rameshwaram"],
+            "top": false,
+            "hindiName": "रामेश्वरम"
+        },
+        {
+            "name": "Rasipuram",
+            "keywords": ["rasipuram"],
+            "top": false,
+            "hindiName": "Rasipuram"
+        },
+        {
+            "name": "Salem",
+            "keywords": ["salem"],
+            "top": false,
+            "hindiName": "सलेम"
+        },
+        {
+            "name": "Sankarankoil",
+            "keywords": ["sankarankoil"],
+            "top": false,
+            "hindiName": "संकरनकोइल"
+        },
+        {
+            "name": "Sankari",
+            "keywords": ["sankari"],
+            "top": false,
+            "hindiName": "Sankari"
+        },
+        {
+            "name": "Sathyamangalam",
+            "keywords": ["sathyamangalam"],
+            "top": false,
+            "hindiName": "सत्यमंगलम"
+        },
+        {
+            "name": "Sattur",
+            "keywords": ["sattur"],
+            "top": false,
+            "hindiName": "सत्तूर"
+        },
+        {
+            "name": "Shenkottai",
+            "keywords": ["shenkottai"],
+            "top": false,
+            "hindiName": "Shenkottai"
+        },
+        {
+            "name": "Sholavandan",
+            "keywords": ["sholavandan"],
+            "top": false,
+            "hindiName": "शोलावंदन"
+        },
+        {
+            "name": "Sholingur",
+            "keywords": ["sholingur"],
+            "top": false,
+            "hindiName": "Sholingur"
+        },
+        {
+            "name": "Sirkali",
+            "keywords": ["sirkali"],
+            "top": false,
+            "hindiName": "Sirkali"
+        },
+        {
+            "name": "Sivaganga",
+            "keywords": ["sivaganga"],
+            "top": false,
+            "hindiName": "शिवगंगा"
+        },
+        {
+            "name": "Sivagiri",
+            "keywords": ["sivagiri"],
+            "top": false,
+            "hindiName": "शिवगिरी"
+        },
+        {
+            "name": "Sivakasi",
+            "keywords": ["sivakasi"],
+            "top": false,
+            "hindiName": "शिवकाशी"
+        },
+        {
+            "name": "Srivilliputhur",
+            "keywords": ["srivilliputhur"],
+            "top": false,
+            "hindiName": "श्रीविल्लीपुतुर"
+        },
+        {
+            "name": "Surandai",
+            "keywords": ["surandai"],
+            "top": false,
+            "hindiName": "Surandai"
+        },
+        {
+            "name": "Suriyampalayam",
+            "keywords": ["suriyampalayam"],
+            "top": false,
+            "hindiName": "Suriyampalayam"
+        },
+        {
+            "name": "Tenkasi",
+            "keywords": ["tenkasi"],
+            "top": false,
+            "hindiName": "तेनकासी"
+        },
+        {
+            "name": "Thammampatti",
+            "keywords": ["thammampatti"],
+            "top": false,
+            "hindiName": "Thammampatti"
+        },
+        {
+            "name": "Thanjavur",
+            "keywords": ["thanjavur"],
+            "top": false,
+            "hindiName": "तंजावुर"
+        },
+        {
+            "name": "Tharamangalam",
+            "keywords": ["tharamangalam"],
+            "top": false,
+            "hindiName": "Tharamangalam"
+        },
+        {
+            "name": "Tharangambadi",
+            "keywords": ["tharangambadi"],
+            "top": false,
+            "hindiName": "Tharangambadi"
+        },
+        {
+            "name": "Theni Allinagaram",
+            "keywords": ["theniallinagaram"],
+            "top": false,
+            "hindiName": "थेनी Allinagaram"
+        },
+        {
+            "name": "Thirumangalam",
+            "keywords": ["thirumangalam"],
+            "top": false,
+            "hindiName": "तिरूमंगलम"
+        },
+        {
+            "name": "Thirupuvanam",
+            "keywords": ["thirupuvanam"],
+            "top": false,
+            "hindiName": "Thirupuvanam"
+        },
+        {
+            "name": "Thiruthuraipoondi",
+            "keywords": ["thiruthuraipoondi"],
+            "top": false,
+            "hindiName": "Thiruthuraipoondi"
+        },
+        {
+            "name": "Thiruvallur",
+            "keywords": ["thiruvallur"],
+            "top": false,
+            "hindiName": "तिरुवल्लुर"
+        },
+        {
+            "name": "Thiruvarur",
+            "keywords": ["thiruvarur"],
+            "top": false,
+            "hindiName": "थिरुवरुर"
+        },
+        {
+            "name": "Thuraiyur",
+            "keywords": ["thuraiyur"],
+            "top": false,
+            "hindiName": "Thuraiyur"
+        },
+        {
+            "name": "Tindivanam",
+            "keywords": ["tindivanam"],
+            "top": false,
+            "hindiName": "टिंडीवनम"
+        },
+        {
+            "name": "Tiruchendur",
+            "keywords": ["tiruchendur"],
+            "top": false,
+            "hindiName": "तिरुचेन्डुर"
+        },
+        {
+            "name": "Tiruchengode",
+            "keywords": ["tiruchengode"],
+            "top": false,
+            "hindiName": "तिरुचेंगोडे"
+        },
+        {
+            "name": "Tiruchirappalli",
+            "keywords": ["tiruchirappalli"],
+            "top": false,
+            "hindiName": "तिरुचिरापल्ली"
+        },
+        {
+            "name": "Tirukalukundram",
+            "keywords": ["tirukalukundram"],
+            "top": false,
+            "hindiName": "Tirukalukundram"
+        },
+        {
+            "name": "Tirukkoyilur",
+            "keywords": ["tirukkoyilur"],
+            "top": false,
+            "hindiName": "Tirukkoyilur"
+        },
+        {
+            "name": "Tirunelveli",
+            "keywords": ["tirunelveli"],
+            "top": false,
+            "hindiName": "तिरुनेलवेली"
+        },
+        {
+            "name": "Tirupathur",
+            "keywords": ["tirupathur"],
+            "top": false,
+            "hindiName": "Tirupathur"
+        },
+        {
+            "name": "Tiruppur",
+            "keywords": ["tiruppur"],
+            "top": false,
+            "hindiName": "तिरुपूर"
+        },
+        {
+            "name": "Tiruttani",
+            "keywords": ["tiruttani"],
+            "top": false,
+            "hindiName": "तिरुत्तानी"
+        },
+        {
+            "name": "Tiruvannamalai",
+            "keywords": ["tiruvannamalai"],
+            "top": false,
+            "hindiName": "तिरुवन्नामलाई"
+        },
+        {
+            "name": "Tiruvethipuram",
+            "keywords": ["tiruvethipuram"],
+            "top": false,
+            "hindiName": "Tiruvethipuram"
+        },
+        {
+            "name": "Tittakudi",
+            "keywords": ["tittakudi"],
+            "top": false,
+            "hindiName": "Tittakudi"
+        },
+        {
+            "name": "Udhagamandalam",
+            "keywords": ["udhagamandalam"],
+            "top": false,
+            "hindiName": "Udhagamandalam"
+        },
+        {
+            "name": "Udumalaipettai",
+            "keywords": ["udumalaipettai"],
+            "top": false,
+            "hindiName": "उदुमलाईपट्टी"
+        },
+        {
+            "name": "Unnamalaikadai",
+            "keywords": ["unnamalaikadai"],
+            "top": false,
+            "hindiName": "Unnamalaikadai"
+        },
+        {
+            "name": "Usilampatti",
+            "keywords": ["usilampatti"],
+            "top": false,
+            "hindiName": "Usilampatti"
+        },
+        {
+            "name": "Uthamapalayam",
+            "keywords": ["uthamapalayam"],
+            "top": false,
+            "hindiName": "Uthamapalayam"
+        },
+        {
+            "name": "Uthiramerur",
+            "keywords": ["uthiramerur"],
+            "top": false,
+            "hindiName": "Uthiramerur"
+        },
+        {
+            "name": "Vadakkuvalliyur",
+            "keywords": ["vadakkuvalliyur"],
+            "top": false,
+            "hindiName": "Vadakkuvalliyur"
+        },
+        {
+            "name": "Vadalur",
+            "keywords": ["vadalur"],
+            "top": false,
+            "hindiName": "Vadalur"
+        },
+        {
+            "name": "Vadipatti",
+            "keywords": ["vadipatti"],
+            "top": false,
+            "hindiName": "Vadipatti"
+        },
+        {
+            "name": "Valparai",
+            "keywords": ["valparai"],
+            "top": false,
+            "hindiName": "वालपराई"
+        },
+        {
+            "name": "Vandavasi",
+            "keywords": ["vandavasi"],
+            "top": false,
+            "hindiName": "Vandavasi"
+        },
+        {
+            "name": "Vaniyambadi",
+            "keywords": ["vaniyambadi"],
+            "top": false,
+            "hindiName": "वानियमबाडी"
+        },
+        {
+            "name": "Vedaranyam",
+            "keywords": ["vedaranyam"],
+            "top": false,
+            "hindiName": "Vedaranyam"
+        },
+        {
+            "name": "Vellakoil",
+            "keywords": ["vellakoil"],
+            "top": false,
+            "hindiName": "Vellakoil"
+        },
+        {
+            "name": "Vellore",
+            "keywords": ["vellore"],
+            "top": false,
+            "hindiName": "वेल्लोर"
+        },
+        {
+            "name": "Vikramasingapuram",
+            "keywords": ["vikramasingapuram"],
+            "top": false,
+            "hindiName": "Vikramasingapuram"
+        },
+        {
+            "name": "Viluppuram",
+            "keywords": ["viluppuram"],
+            "top": false,
+            "hindiName": "विलुप्पुरम"
+        },
+        {
+            "name": "Virudhachalam",
+            "keywords": ["virudhachalam"],
+            "top": false,
+            "hindiName": "Virudhachalam"
+        },
+        {
+            "name": "Virudhunagar",
+            "keywords": ["virudhunagar"],
+            "top": false,
+            "hindiName": "विरुधुनगर"
+        },
+        {
+            "name": "Viswanatham",
+            "keywords": ["viswanatham"],
+            "top": false,
+            "hindiName": "Viswanatham"
+        }
+    ],
+    "Telangana": [
+        {
+            "name": "Adilabad",
+            "keywords": ["adilabad"],
+            "top": false,
+            "hindiName": "आदिलाबाद"
+        },
+        {
+            "name": "Bellampalle",
+            "keywords": ["bellampalle"],
+            "top": false,
+            "hindiName": "Bellampalle"
+        },
+        {
+            "name": "Bhadrachalam",
+            "keywords": ["bhadrachalam"],
+            "top": false,
+            "hindiName": "भद्राचलम"
+        },
+        {
+            "name": "Bhainsa",
+            "keywords": ["bhainsa"],
+            "top": false,
+            "hindiName": "Bhainsa"
+        },
+        {
+            "name": "Bhongir",
+            "keywords": ["bhongir"],
+            "top": false,
+            "hindiName": "भोंगीर"
+        },
+        {
+            "name": "Bodhan",
+            "keywords": ["bodhan"],
+            "top": false,
+            "hindiName": "बोधन"
+        },
+        {
+            "name": "Farooqnagar",
+            "keywords": ["farooqnagar"],
+            "top": false,
+            "hindiName": "शादनगर"
+        },
+        {
+            "name": "Gadwal",
+            "keywords": ["gadwal"],
+            "top": false,
+            "hindiName": "गडवाल"
+        },
+        {
+            "name": "Hyderabad",
+            "keywords": ["hyderabad"],
+            "top": true,
+            "hindiName": "हैदराबाद"
+        },
+        {
+            "name": "Jagtial",
+            "keywords": ["jagtial"],
+            "top": false,
+            "hindiName": "Jagtial"
+        },
+        {
+            "name": "Jangaon",
+            "keywords": ["jangaon"],
+            "top": false,
+            "hindiName": "जनगांव"
+        },
+        {
+            "name": "Kagaznagar",
+            "keywords": ["kagaznagar"],
+            "top": false,
+            "hindiName": "Kagaznagar"
+        },
+        {
+            "name": "Kamareddy",
+            "keywords": ["kamareddy"],
+            "top": false,
+            "hindiName": "Kamareddy"
+        },
+        {
+            "name": "Karimnagar",
+            "keywords": ["karimnagar"],
+            "top": false,
+            "hindiName": "करीमनगर"
+        },
+        {
+            "name": "Khammam",
+            "keywords": ["khammam"],
+            "top": false,
+            "hindiName": "खम्मम"
+        },
+        {
+            "name": "Koratla",
+            "keywords": ["koratla"],
+            "top": false,
+            "hindiName": "कोराटला"
+        },
+        {
+            "name": "Kothagudem",
+            "keywords": ["kothagudem"],
+            "top": false,
+            "hindiName": "कोठागुडम"
+        },
+        {
+            "name": "Kyathampalle",
+            "keywords": ["kyathampalle"],
+            "top": false,
+            "hindiName": "Kyathampalle"
+        },
+        {
+            "name": "Mahbubnagar",
+            "keywords": ["mahbubnagar"],
+            "top": false,
+            "hindiName": "महबूबनगर"
+        },
+        {
+            "name": "Mancherial",
+            "keywords": ["mancherial"],
+            "top": false,
+            "hindiName": "Mancherial"
+        },
+        {
+            "name": "Mandamarri",
+            "keywords": ["mandamarri"],
+            "top": false,
+            "hindiName": "Mandamarri"
+        },
+        {
+            "name": "Manuguru",
+            "keywords": ["manuguru"],
+            "top": false,
+            "hindiName": "मनुगुरु"
+        },
+        {
+            "name": "Medak",
+            "keywords": ["medak"],
+            "top": false,
+            "hindiName": "मेडक"
+        },
+        {
+            "name": "Miryalaguda",
+            "keywords": ["miryalaguda"],
+            "top": false,
+            "hindiName": "मिर्यालागुदा"
+        },
+        {
+            "name": "Nagarkurnool",
+            "keywords": ["nagarkurnool"],
+            "top": false,
+            "hindiName": "नगरकुरनूल"
+        },
+        {
+            "name": "Narayanpet",
+            "keywords": ["narayanpet"],
+            "top": false,
+            "hindiName": "नारायणपेट"
+        },
+        {
+            "name": "Nirmal",
+            "keywords": ["nirmal"],
+            "top": false,
+            "hindiName": "निर्मल"
+        },
+        {
+            "name": "Nizamabad",
+            "keywords": ["nizamabad"],
+            "top": false,
+            "hindiName": "निजामाबाद"
+        },
+        {
+            "name": "Palwancha",
+            "keywords": ["palwancha"],
+            "top": false,
+            "hindiName": "Palwancha"
+        },
+        {
+            "name": "Ramagundam",
+            "keywords": ["ramagundam"],
+            "top": false,
+            "hindiName": "रामगुंडम"
+        },
+        {
+            "name": "Sadasivpet",
+            "keywords": ["sadasivpet"],
+            "top": false,
+            "hindiName": "Sadasivpet"
+        },
+        {
+            "name": "Sangareddy",
+            "keywords": ["sangareddy"],
+            "top": false,
+            "hindiName": "संगारेड्डी"
+        },
+        {
+            "name": "Siddipet",
+            "keywords": ["siddipet"],
+            "top": false,
+            "hindiName": "सिद्दीपेट"
+        },
+        {
+            "name": "Sircilla",
+            "keywords": ["sircilla"],
+            "top": false,
+            "hindiName": "sircilla"
+        },
+        {
+            "name": "Suryapet",
+            "keywords": ["suryapet"],
+            "top": false,
+            "hindiName": "सूर्यापेट"
+        },
+        {
+            "name": "Tandur",
+            "keywords": ["tandur"],
+            "top": false,
+            "hindiName": "Tandur"
+        },
+        {
+            "name": "Vikarabad",
+            "keywords": ["vikarabad"],
+            "top": false,
+            "hindiName": null
+        },
+        {
+            "name": "Wanaparthy",
+            "keywords": ["wanaparthy"],
+            "top": false,
+            "hindiName": "Wanaparthy"
+        },
+        {
+            "name": "Warangal",
+            "keywords": ["warangal"],
+            "top": false,
+            "hindiName": "वारंगल"
+        },
+        {
+            "name": "Yellandu",
+            "keywords": ["yellandu"],
+            "top": false,
+            "hindiName": "Yellandu"
+        }
+    ],
+    "Tripura": [
+        {
+            "name": "Agartala",
+            "keywords": ["agartala"],
+            "top": false,
+            "hindiName": "अगरतला"
+        },
+        {
+            "name": "Belonia",
+            "keywords": ["belonia"],
+            "top": false,
+            "hindiName": null
+        },
+        {
+            "name": "Dharmanagar",
+            "keywords": ["dharmanagar"],
+            "top": false,
+            "hindiName": "धर्मनगर"
+        },
+        {
+            "name": "Kailasahar",
+            "keywords": ["kailasahar"],
+            "top": false,
+            "hindiName": "Kailasahar"
+        },
+        {
+            "name": "Khowai",
+            "keywords": ["khowai"],
+            "top": false,
+            "hindiName": "खोवाई"
+        },
+        {
+            "name": "Pratapgarh",
+            "keywords": ["pratapgarh"],
+            "top": false,
+            "hindiName": "प्रतापगढ़"
+        },
+        {
+            "name": "Udaipur",
+            "keywords": ["udaipur"],
+            "top": false,
+            "hindiName": "उदयपुर"
+        }
+    ],
+    "Uttar Pradesh": [
+        {
+            "name": "Achhnera",
+            "keywords": ["achhnera"],
+            "top": false,
+            "hindiName": "अछनेरा"
+        },
+        {
+            "name": "Agra",
+            "keywords": ["agra"],
+            "top": true,
+            "hindiName": "आगरा"
+        },
+        {
+            "name": "Aligarh",
+            "keywords": ["aligarh"],
+            "top": false,
+            "hindiName": "अलीगढ़"
+        },
+        {
+            "name": "Allahabad",
+            "keywords": ["allahabad"],
+            "top": true,
+            "hindiName": "इलाहाबाद"
+        },
+        {
+            "name": "Amroha",
+            "keywords": ["amroha"],
+            "top": false,
+            "hindiName": "अमरोहा"
+        },
+        {
+            "name": "Azamgarh",
+            "keywords": ["azamgarh"],
+            "top": false,
+            "hindiName": "आजमगढ़"
+        },
+        {
+            "name": "Bahraich",
+            "keywords": ["bahraich"],
+            "top": false,
+            "hindiName": "बहराइच"
+        },
+        {
+            "name": "Chandausi",
+            "keywords": ["chandausi"],
+            "top": false,
+            "hindiName": "चंदौसी"
+        },
+        {
+            "name": "Etawah",
+            "keywords": ["etawah"],
+            "top": false,
+            "hindiName": "इटावा"
+        },
+        {
+            "name": "Firozabad",
+            "keywords": ["firozabad"],
+            "top": false,
+            "hindiName": null
+        },
+        {
+            "name": "Fatehpur Sikri",
+            "keywords": ["fatehpursikri"],
+            "top": false,
+            "hindiName": null
+        },
+        {
+            "name": "Ghaziabad",
+            "keywords": ["ghaziabad"],
+            "top": true,
+            "hindiName": null
+        },
+        {
+            "name": "Gorakhpur",
+            "keywords": ["gorakhpur"],
+            "top": true,
+            "hindiName": null
+        },
+        {
+            "name": "Hapur",
+            "keywords": ["hapur"],
+            "top": false,
+            "hindiName": null
+        },
+        {
+            "name": "Hardoi ",
+            "keywords": ["hardoi"],
+            "top": false,
+            "hindiName": null
+        },
+        {
+            "name": "Jhansi",
+            "keywords": ["jhansi"],
+            "top": false,
+            "hindiName": "झांसी"
+        },
+        {
+            "name": "Kalpi",
+            "keywords": ["kalpi"],
+            "top": false,
+            "hindiName": "कालपी"
+        },
+        {
+            "name": "Kanpur",
+            "keywords": ["kanpur"],
+            "top": true,
+            "hindiName": "कानपुर"
+        },
+        {
+            "name": "Khair",
+            "keywords": ["khair"],
+            "top": false,
+            "hindiName": null
+        },
+        {
+            "name": "Laharpur",
+            "keywords": ["laharpur"],
+            "top": false,
+            "hindiName": "लहरपुर"
+        },
+        {
+            "name": "Lakhimpur",
+            "keywords": ["lakhimpur"],
+            "top": false,
+            "hindiName": "लखीमपुर"
+        },
+        {
+            "name": "Lal Gopalganj Nindaura",
+            "keywords": ["lalgopalganjnindaura"],
+            "top": false,
+            "hindiName": "लाल गोपालगंज Nindaura"
+        },
+        {
+            "name": "Lalitpur",
+            "keywords": ["lalitpur"],
+            "top": false,
+            "hindiName": "Lalitpur"
+        },
+        {
+            "name": "Lalganj",
+            "keywords": ["lalganj"],
+            "top": false,
+            "hindiName": "लालगंज"
+        },
+        {
+            "name": "Lar",
+            "keywords": ["lar"],
+            "top": false,
+            "hindiName": "Lar"
+        },
+        {
+            "name": "Loni",
+            "keywords": ["loni"],
+            "top": false,
+            "hindiName": "लोनी"
+        },
+        {
+            "name": "Lucknow",
+            "keywords": ["lucknow"],
+            "top": true,
+            "hindiName": "लखनऊ"
+        },
+        {
+            "name": "Mathura",
+            "keywords": ["mathura"],
+            "top": false,
+            "hindiName": "मथुरा"
+        },
+        {
+            "name": "Meerut",
+            "keywords": ["meerut"],
+            "top": false,
+            "hindiName": "मेरठ"
+        },
+        {
+            "name": "Modinagar",
+            "keywords": ["modinagar"],
+            "top": false,
+            "hindiName": "मोदीनगर"
+        },
+        {
+            "name": "Moradabad",
+            "keywords": ["moradabad"],
+            "top": false,
+            "hindiName": null
+        },
+        {
+            "name": "Nagina",
+            "keywords": ["nagina"],
+            "top": false,
+            "hindiName": "नगीना"
+        },
+        {
+            "name": "Najibabad",
+            "keywords": ["najibabad"],
+            "top": false,
+            "hindiName": "नजीबाबाद"
+        },
+        {
+            "name": "Nakur",
+            "keywords": ["nakur"],
+            "top": false,
+            "hindiName": "Nakur"
+        },
+        {
+            "name": "Nanpara",
+            "keywords": ["nanpara"],
+            "top": false,
+            "hindiName": "नानपारा"
+        },
+        {
+            "name": "Naraura",
+            "keywords": ["naraura"],
+            "top": false,
+            "hindiName": "नरौरा"
+        },
+        {
+            "name": "Naugawan Sadat",
+            "keywords": ["naugawansadat"],
+            "top": false,
+            "hindiName": "Naugawan सादात"
+        },
+        {
+            "name": "Nautanwa",
+            "keywords": ["nautanwa"],
+            "top": false,
+            "hindiName": "नौतनवा"
+        },
+        {
+            "name": "Nawabganj",
+            "keywords": ["nawabganj"],
+            "top": false,
+            "hindiName": "नवाबगंज"
+        },
+        {
+            "name": "Nehtaur",
+            "keywords": ["nehtaur"],
+            "top": false,
+            "hindiName": "Nehtaur"
+        },
+        {
+            "name": "Niwai",
+            "keywords": ["niwai"],
+            "top": false,
+            "hindiName": "निवाई"
+        },
+        {
+            "name": "Noida",
+            "keywords": ["noida"],
+            "top": true,
+            "hindiName": null
+        },
+        {
+            "name": "Noorpur",
+            "keywords": ["noorpur"],
+            "top": false,
+            "hindiName": "Noorpur"
+        },
+        {
+            "name": "Obra",
+            "keywords": ["obra"],
+            "top": false,
+            "hindiName": "obra"
+        },
+        {
+            "name": "Orai",
+            "keywords": ["orai"],
+            "top": false,
+            "hindiName": "उरई"
+        },
+        {
+            "name": "Padrauna",
+            "keywords": ["padrauna"],
+            "top": false,
+            "hindiName": "पडरौना"
+        },
+        {
+            "name": "Palia Kalan",
+            "keywords": ["paliakalan"],
+            "top": false,
+            "hindiName": "पलिया कलान"
+        },
+        {
+            "name": "Parasi",
+            "keywords": ["parasi"],
+            "top": false,
+            "hindiName": "Parasi"
+        },
+        {
+            "name": "Phulpur",
+            "keywords": ["phulpur"],
+            "top": false,
+            "hindiName": "फूलपुर"
+        },
+        {
+            "name": "Pihani",
+            "keywords": ["pihani"],
+            "top": false,
+            "hindiName": "Pihani"
+        },
+        {
+            "name": "Pilibhit",
+            "keywords": ["pilibhit"],
+            "top": false,
+            "hindiName": "पीलीभीत"
+        },
+        {
+            "name": "Pilkhuwa",
+            "keywords": ["pilkhuwa"],
+            "top": false,
+            "hindiName": "Pilkhuwa"
+        },
+        {
+            "name": "Powayan",
+            "keywords": ["powayan"],
+            "top": false,
+            "hindiName": "Powayan"
+        },
+        {
+            "name": "Pukhrayan",
+            "keywords": ["pukhrayan"],
+            "top": false,
+            "hindiName": "पुखरायाँ"
+        },
+        {
+            "name": "Puranpur",
+            "keywords": ["puranpur"],
+            "top": false,
+            "hindiName": "Puranpur"
+        },
+        {
+            "name": "Purquazi",
+            "keywords": ["purquazi"],
+            "top": false,
+            "hindiName": "Purquazi"
+        },
+        {
+            "name": "Purwa",
+            "keywords": ["purwa"],
+            "top": false,
+            "hindiName": "पूर्वा"
+        },
+        {
+            "name": "Rae Bareli",
+            "keywords": ["raebareli"],
+            "top": false,
+            "hindiName": "रायबरेली"
+        },
+        {
+            "name": "Rampur",
+            "keywords": ["rampur"],
+            "top": false,
+            "hindiName": "रामपुर"
+        },
+        {
+            "name": "Rampur Maniharan",
+            "keywords": ["rampurmaniharan"],
+            "top": false,
+            "hindiName": "रामपुर Maniharan"
+        },
+        {
+            "name": "Rasra",
+            "keywords": ["rasra"],
+            "top": false,
+            "hindiName": "Rasra"
+        },
+        {
+            "name": "Rath",
+            "keywords": ["rath"],
+            "top": false,
+            "hindiName": "अधिक तत्पर"
+        },
+        {
+            "name": "Renukoot",
+            "keywords": ["renukoot"],
+            "top": false,
+            "hindiName": "रेणुकूट"
+        },
+        {
+            "name": "Reoti",
+            "keywords": ["reoti"],
+            "top": false,
+            "hindiName": "रेवती"
+        },
+        {
+            "name": "Robertsganj",
+            "keywords": ["robertsganj"],
+            "top": false,
+            "hindiName": "रोबेर्त्स्गंज"
+        },
+        {
+            "name": "Rudauli",
+            "keywords": ["rudauli"],
+            "top": false,
+            "hindiName": "रुदौली"
+        },
+        {
+            "name": "Rudrapur",
+            "keywords": ["rudrapur"],
+            "top": false,
+            "hindiName": "रुद्रपुर"
+        },
+        {
+            "name": "Sadabad",
+            "keywords": ["sadabad"],
+            "top": false,
+            "hindiName": "Sadabad"
+        },
+        {
+            "name": "Safipur",
+            "keywords": ["safipur"],
+            "top": false,
+            "hindiName": "Safipur"
+        },
+        {
+            "name": "Saharanpur",
+            "keywords": ["saharanpur"],
+            "top": false,
+            "hindiName": "सहारनपुर"
+        },
+        {
+            "name": "Sahaspur",
+            "keywords": ["sahaspur"],
+            "top": false,
+            "hindiName": "सहसपुर"
+        },
+        {
+            "name": "Sahaswan",
+            "keywords": ["sahaswan"],
+            "top": false,
+            "hindiName": "Sahaswan"
+        },
+        {
+            "name": "Sahawar",
+            "keywords": ["sahawar"],
+            "top": false,
+            "hindiName": "सहावर"
+        },
+        {
+            "name": "Sahjanwa",
+            "keywords": ["sahjanwa"],
+            "top": false,
+            "hindiName": "Sahjanwa"
+        },
+        {
+            "name": "Saidpur",
+            "keywords": ["saidpur"],
+            "top": false,
+            "hindiName": null
+        },
+        {
+            "name": "Sambhal",
+            "keywords": ["sambhal"],
+            "top": false,
+            "hindiName": "संभल"
+        },
+        {
+            "name": "Samdhan",
+            "keywords": ["samdhan"],
+            "top": false,
+            "hindiName": "Samdhan"
+        },
+        {
+            "name": "Samthar",
+            "keywords": ["samthar"],
+            "top": false,
+            "hindiName": "समथर"
+        },
+        {
+            "name": "Sandi",
+            "keywords": ["sandi"],
+            "top": false,
+            "hindiName": "Sandi"
+        },
+        {
+            "name": "Sandila",
+            "keywords": ["sandila"],
+            "top": false,
+            "hindiName": "संडीला"
+        },
+        {
+            "name": "Sardhana",
+            "keywords": ["sardhana"],
+            "top": false,
+            "hindiName": "सरधना"
+        },
+        {
+            "name": "Seohara",
+            "keywords": ["seohara"],
+            "top": false,
+            "hindiName": "Seohara"
+        },
+        {
+            "name": "Shahabad, Hardoi",
+            "keywords": ["shahabad,hardoi"],
+            "top": false,
+            "hindiName": null
+        },
+        {
+            "name": "Shahabad, Rampur",
+            "keywords": ["shahabad,rampur"],
+            "top": false,
+            "hindiName": null
+        },
+        {
+            "name": "Shahganj",
+            "keywords": ["shahganj"],
+            "top": false,
+            "hindiName": "शाहगंज"
+        },
+        {
+            "name": "Shahjahanpur",
+            "keywords": ["shahjahanpur"],
+            "top": false,
+            "hindiName": "शाहजहांपुर"
+        },
+        {
+            "name": "Shamli",
+            "keywords": ["shamli"],
+            "top": false,
+            "hindiName": "शामली"
+        },
+        {
+            "name": "Shamsabad, Agra",
+            "keywords": ["shamsabad,agra"],
+            "top": false,
+            "hindiName": null
+        },
+        {
+            "name": "Shamsabad, Farrukhabad",
+            "keywords": ["shamsabad,farrukhabad"],
+            "top": false,
+            "hindiName": null
+        },
+        {
+            "name": "Sherkot",
+            "keywords": ["sherkot"],
+            "top": false,
+            "hindiName": "शेरकोट"
+        },
+        {
+            "name": "Shikarpur, Bulandshahr",
+            "keywords": ["shikarpur,bulandshahr"],
+            "top": false,
+            "hindiName": null
+        },
+        {
+            "name": "Shikohabad",
+            "keywords": ["shikohabad"],
+            "top": false,
+            "hindiName": "शिकोहाबाद"
+        },
+        {
+            "name": "Shishgarh",
+            "keywords": ["shishgarh"],
+            "top": false,
+            "hindiName": "Shishgarh"
+        },
+        {
+            "name": "Siana",
+            "keywords": ["siana"],
+            "top": false,
+            "hindiName": "Siana"
+        },
+        {
+            "name": "Sikanderpur",
+            "keywords": ["sikanderpur"],
+            "top": false,
+            "hindiName": "सिकंदरपुर"
+        },
+        {
+            "name": "Sikandra Rao",
+            "keywords": ["sikandrarao"],
+            "top": false,
+            "hindiName": "सिकंदरा राव"
+        },
+        {
+            "name": "Sikandrabad",
+            "keywords": ["sikandrabad"],
+            "top": false,
+            "hindiName": "सिकंदराबाद"
+        },
+        {
+            "name": "Sirsaganj",
+            "keywords": ["sirsaganj"],
+            "top": false,
+            "hindiName": "Sirsaganj"
+        },
+        {
+            "name": "Sirsi",
+            "keywords": ["sirsi"],
+            "top": false,
+            "hindiName": "सिरसी"
+        },
+        {
+            "name": "Sitapur",
+            "keywords": ["sitapur"],
+            "top": false,
+            "hindiName": "सीतापुर"
+        },
+        {
+            "name": "Soron",
+            "keywords": ["soron"],
+            "top": false,
+            "hindiName": "Soron"
+        },
+        {
+            "name": "Suar",
+            "keywords": ["suar"],
+            "top": false,
+            "hindiName": "Suar"
+        },
+        {
+            "name": "Sultanpur",
+            "keywords": ["sultanpur"],
+            "top": false,
+            "hindiName": "सुल्तानपुर"
+        },
+        {
+            "name": "Sumerpur",
+            "keywords": ["sumerpur"],
+            "top": false,
+            "hindiName": "सुमेरपुर"
+        },
+        {
+            "name": "Tanda",
+            "keywords": ["tanda"],
+            "top": false,
+            "hindiName": "टांडा"
+        },
+        {
+            "name": "Thakurdwara",
+            "keywords": ["thakurdwara"],
+            "top": false,
+            "hindiName": "ठाकुरद्वारा"
+        },
+        {
+            "name": "Thana Bhawan",
+            "keywords": ["thanabhawan"],
+            "top": false,
+            "hindiName": "थाना भवन"
+        },
+        {
+            "name": "Tilhar",
+            "keywords": ["tilhar"],
+            "top": false,
+            "hindiName": "तिलहर"
+        },
+        {
+            "name": "Tirwaganj",
+            "keywords": ["tirwaganj"],
+            "top": false,
+            "hindiName": "Tirwaganj"
+        },
+        {
+            "name": "Tulsipur",
+            "keywords": ["tulsipur"],
+            "top": false,
+            "hindiName": "तुलसीपुर"
+        },
+        {
+            "name": "Tundla",
+            "keywords": ["tundla"],
+            "top": false,
+            "hindiName": "टुंडला"
+        },
+        {
+            "name": "Ujhani",
+            "keywords": ["ujhani"],
+            "top": false,
+            "hindiName": "उझानी"
+        },
+        {
+            "name": "Unnao",
+            "keywords": ["unnao"],
+            "top": false,
+            "hindiName": "उन्नाव"
+        },
+        {
+            "name": "Utraula",
+            "keywords": ["utraula"],
+            "top": false,
+            "hindiName": "उतरौला"
+        },
+        {
+            "name": "Varanasi",
+            "keywords": ["varanasi"],
+            "top": true,
+            "hindiName": "वाराणसी"
+        },
+        {
+            "name": "Vrindavan",
+            "keywords": ["vrindavan"],
+            "top": false,
+            "hindiName": "वृंदावन"
+        },
+        {
+            "name": "Warhapur",
+            "keywords": ["warhapur"],
+            "top": false,
+            "hindiName": "Warhapur"
+        },
+        {
+            "name": "Zaidpur",
+            "keywords": ["zaidpur"],
+            "top": false,
+            "hindiName": "Zaidpur"
+        },
+        {
+            "name": "Zamania",
+            "keywords": ["zamania"],
+            "top": false,
+            "hindiName": "Zamania"
+        }
+    ],
+    "Uttarakhand": [
+        {
+            "name": "Bageshwar",
+            "keywords": ["bageshwar"],
+            "top": false,
+            "hindiName": null
+        },
+        {
+            "name": "Dehradun",
+            "keywords": ["dehradun"],
+            "top": true,
+            "hindiName": "देहरादून"
+        },
+        {
+            "name": "Haldwani-cum-Kathgodam",
+            "keywords": ["haldwani-cum-kathgodam", "haldwanicumkathgodam"],
+            "top": false,
+            "hindiName": null
+        },
+        {
+            "name": "Hardwar",
+            "keywords": ["hardwar"],
+            "top": false,
+            "hindiName": null
+        },
+        {
+            "name": "Kashipur",
+            "keywords": ["kashipur"],
+            "top": false,
+            "hindiName": "काशीपुर"
+        },
+        {
+            "name": "Manglaur",
+            "keywords": ["manglaur"],
+            "top": false,
+            "hindiName": "मंगलौर"
+        },
+        {
+            "name": "Mussoorie",
+            "keywords": ["mussoorie"],
+            "top": false,
+            "hindiName": "मसूरी"
+        },
+        {
+            "name": "Nagla",
+            "keywords": ["nagla"],
+            "top": false,
+            "hindiName": "नगला"
+        },
+        {
+            "name": "Nainital",
+            "keywords": ["nainital"],
+            "top": false,
+            "hindiName": "नैनीताल"
+        },
+        {
+            "name": "Pauri",
+            "keywords": ["pauri"],
+            "top": false,
+            "hindiName": "पौड़ी"
+        },
+        {
+            "name": "Pithoragarh",
+            "keywords": ["pithoragarh"],
+            "top": false,
+            "hindiName": "पिथोरागढ़"
+        },
+        {
+            "name": "Ramnagar",
+            "keywords": ["ramnagar"],
+            "top": false,
+            "hindiName": "रामनगर"
+        },
+        {
+            "name": "Rishikesh",
+            "keywords": ["rishikesh"],
+            "top": false,
+            "hindiName": "ऋषिकेश"
+        },
+        {
+            "name": "Roorkee",
+            "keywords": ["roorkee"],
+            "top": false,
+            "hindiName": "रुड़की"
+        },
+        {
+            "name": "Rudrapur",
+            "keywords": ["rudrapur"],
+            "top": false,
+            "hindiName": "रुद्रपुर"
+        },
+        {
+            "name": "Sitarganj",
+            "keywords": ["sitarganj"],
+            "top": false,
+            "hindiName": "सितारगंज"
+        },
+        {
+            "name": "Srinagar",
+            "keywords": ["srinagar"],
+            "top": false,
+            "hindiName": "श्रीनगर"
+        },
+        {
+            "name": "Tehri",
+            "keywords": ["tehri"],
+            "top": false,
+            "hindiName": "टिहरी"
+        }
+    ],
+    "West Bengal": [
+        {
+            "name": "Adra",
+            "keywords": ["adra"],
+            "top": false,
+            "hindiName": "आद्रा"
+        },
+        {
+            "name": "Alipurduar",
+            "keywords": ["alipurduar"],
+            "top": false,
+            "hindiName": "अलीपुरद्वार"
+        },
+        {
+            "name": "Arambagh",
+            "keywords": ["arambagh"],
+            "top": false,
+            "hindiName": "आरामबाग"
+        },
+        {
+            "name": "Asansol",
+            "keywords": ["asansol"],
+            "top": false,
+            "hindiName": "आसनसोल"
+        },
+        {
+            "name": "Baharampur",
+            "keywords": ["baharampur"],
+            "top": false,
+            "hindiName": "बरहाम्पुर"
+        },
+        {
+            "name": "Balurghat",
+            "keywords": ["balurghat"],
+            "top": false,
+            "hindiName": "बेलूरघाट"
+        },
+        {
+            "name": "Bankura",
+            "keywords": ["bankura"],
+            "top": false,
+            "hindiName": "बांकुड़ा"
+        },
+        {
+            "name": "Darjiling",
+            "keywords": ["darjiling"],
+            "top": false,
+            "hindiName": null
+        },
+        {
+            "name": "English Bazar",
+            "keywords": ["englishbazar"],
+            "top": false,
+            "hindiName": null
+        },
+        {
+            "name": "Gangarampur",
+            "keywords": ["gangarampur"],
+            "top": false,
+            "hindiName": null
+        },
+        {
+            "name": "Habra",
+            "keywords": ["habra"],
+            "top": false,
+            "hindiName": null
+        },
+        {
+            "name": "Hugli-Chinsurah",
+            "keywords": ["hugli-chinsurah", "huglichinsurah"],
+            "top": false,
+            "hindiName": null
+        },
+        {
+            "name": "Jalpaiguri",
+            "keywords": ["jalpaiguri"],
+            "top": false,
+            "hindiName": null
+        },
+        {
+            "name": "Jhargram",
+            "keywords": ["jhargram"],
+            "top": false,
+            "hindiName": "झारग्राम"
+        },
+        {
+            "name": "Kalimpong",
+            "keywords": ["kalimpong"],
+            "top": false,
+            "hindiName": null
+        },
+        {
+            "name": "Kharagpur",
+            "keywords": ["kharagpur"],
+            "top": false,
+            "hindiName": "खड़गपुर"
+        },
+        {
+            "name": "Kolkata",
+            "keywords": ["kolkata"],
+            "top": true,
+            "hindiName": "कोलकाता"
+        },
+        {
+            "name": "Mainaguri",
+            "keywords": ["mainaguri"],
+            "top": false,
+            "hindiName": "Mainaguri"
+        },
+        {
+            "name": "Malda",
+            "keywords": ["malda"],
+            "top": false,
+            "hindiName": null
+        },
+        {
+            "name": "Mathabhanga",
+            "keywords": ["mathabhanga"],
+            "top": false,
+            "hindiName": "Mathabhanga"
+        },
+        {
+            "name": "Medinipur",
+            "keywords": ["medinipur"],
+            "top": false,
+            "hindiName": "मेदिनीपुर"
+        },
+        {
+            "name": "Memari",
+            "keywords": ["memari"],
+            "top": false,
+            "hindiName": "Memari"
+        },
+        {
+            "name": "Monoharpur",
+            "keywords": ["monoharpur"],
+            "top": false,
+            "hindiName": "Monoharpur"
+        },
+        {
+            "name": "Murshidabad",
+            "keywords": ["murshidabad"],
+            "top": false,
+            "hindiName": "मुर्शिदाबाद"
+        },
+        {
+            "name": "Nabadwip",
+            "keywords": ["nabadwip"],
+            "top": false,
+            "hindiName": "नवद्वीप"
+        },
+        {
+            "name": "Naihati",
+            "keywords": ["naihati"],
+            "top": false,
+            "hindiName": "नैहाटी"
+        },
+        {
+            "name": "Panchla",
+            "keywords": ["panchla"],
+            "top": false,
+            "hindiName": "पंचला"
+        },
+        {
+            "name": "Pandua",
+            "keywords": ["pandua"],
+            "top": false,
+            "hindiName": "Pandua"
+        },
+        {
+            "name": "Paschim Punropara",
+            "keywords": ["paschimpunropara"],
+            "top": false,
+            "hindiName": "पश्चिम Punropara"
+        },
+        {
+            "name": "Purulia",
+            "keywords": ["purulia"],
+            "top": false,
+            "hindiName": "पुरुलिया"
+        },
+        {
+            "name": "Raghunathpur",
+            "keywords": ["raghunathpur"],
+            "top": false,
+            "hindiName": "रघुनाथपुर"
+        },
+        {
+            "name": "Raghunathganj",
+            "keywords": ["raghunathganj"],
+            "top": false,
+            "hindiName": null
+        },
+        {
+            "name": "Raiganj",
+            "keywords": ["raiganj"],
+            "top": false,
+            "hindiName": "रायगंज"
+        },
+        {
+            "name": "Rampurhat",
+            "keywords": ["rampurhat"],
+            "top": false,
+            "hindiName": "रामपुरहाट"
+        },
+        {
+            "name": "Ranaghat",
+            "keywords": ["ranaghat"],
+            "top": false,
+            "hindiName": "रानाघाट"
+        },
+        {
+            "name": "Sainthia",
+            "keywords": ["sainthia"],
+            "top": false,
+            "hindiName": "सैंथिया"
+        },
+        {
+            "name": "Santipur",
+            "keywords": ["santipur"],
+            "top": false,
+            "hindiName": "शांतिपुर"
+        },
+        {
+            "name": "Siliguri",
+            "keywords": ["siliguri"],
+            "top": false,
+            "hindiName": "सिलीगुड़ी"
+        },
+        {
+            "name": "Sonamukhi",
+            "keywords": ["sonamukhi"],
+            "top": false,
+            "hindiName": "सोनामुखी"
+        },
+        {
+            "name": "Srirampore",
+            "keywords": ["srirampore"],
+            "top": false,
+            "hindiName": "Srirampore"
+        },
+        {
+            "name": "Suri",
+            "keywords": ["suri"],
+            "top": false,
+            "hindiName": "सूरी"
+        },
+        {
+            "name": "Taki",
+            "keywords": ["taki"],
+            "top": false,
+            "hindiName": "टाकी"
+        },
+        {
+            "name": "Tamluk",
+            "keywords": ["tamluk"],
+            "top": false,
+            "hindiName": "तामलुक"
+        },
+        {
+            "name": "Tarakeswar",
+            "keywords": ["tarakeswar"],
+            "top": false,
+            "hindiName": "तारकेश्वर"
+        }
+    ]
+}

@@ -1,4 +1,5 @@
-const cities = require("./data/allCities.json");
+//const cities = require("./data/allCities.json");
+const allCities = require("./data/newAllCities.json");
 const resourceTypes = require("./data/resources.json");
 
 const categoriesObj = {
@@ -44,19 +45,35 @@ const findResourceType = (text) => {
 };
 
 const findLocation = (text) => {
-    const location = new Set();
+    let location = new Set();
 
-    for (let state in cities) {
-        const _cities = find(text, cities[state]);
-
-        if (_cities.length > 0) {
-            _cities.forEach((city) => {
-                location.add({ state, city });
-            });
+    for (const state in newAllCities) {
+        for (const city of newAllCities[state]) {
+            for (const keyword of city.keywords) {
+                if (text.search(keyword) != -1) {
+                    location.add({ state: state, city: city.name });
+                }
+            }
         }
     }
+
     return Array.from(location) || [];
 };
+
+// const findLocation = (text) => {
+//     const location = new Set();
+
+//     for (let state in allCities) {
+//         const _cities = find(text, allCities[state]);
+
+//         if (_cities.length > 0) {
+//             _cities.forEach((city) => {
+//                 location.add({ state, city });
+//             });
+//         }
+//     }
+//     return Array.from(location) || [];
+// };
 
 const phoneRegex =
     /(?!([0]?[1-9]|[1|2][0-9]|[3][0|1])[./-]([0]?[1-9]|[1][0-2])[./-]([0-9]{4}|[0-9]{2}))(\+?\d[\d -]{8,12}\d)/g;
@@ -73,9 +90,8 @@ const parsePhoneNumbers = (text) =>
     ] || [];
 
 const parseTweet = (raw_text) => {
-
     const text = normalize(raw_text);
-    
+
     const resourceTypes = findResourceType(text);
     const categories = resourceTypes.map((r) => categoriesObj[r]).flat() || [];
     const resource_types = resourceTypes || [];
@@ -129,6 +145,6 @@ module.exports = {
     categoriesObj,
     parseTweet,
     parseContacts,
-    cities,
-    parsePhoneNumbers
+    allCities,
+    parsePhoneNumbers,
 };

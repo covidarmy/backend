@@ -8,8 +8,7 @@ const citiesRaw = require("fs")
     .split("\n")
     .map((row) => row.split(","));
 
-const cities = require("../data/allCities.json");
-const topCities = require("../data/topCities.json");
+const allCities = require("../data/newAllCities.json");
 const resources = require("../data/resources.json");
 
 const router = express.Router();
@@ -40,14 +39,12 @@ const router = express.Router();
 router.get("/cities", async (req, res) => {
     let resCities = [];
 
-    for (let state in cities) {
-        for (cityName in cities[state]) {
+    for (const state in allCities) {
+        for (const city of allCities[state]) {
             let cityObj = {};
-            cityObj.name = cityName;
-            cityObj.top = cityName in topCities;
-            for ([en, hi] of citiesRaw) {
-                if (en == cityName) cityObj.hindiName = hi.slice(0, -2);
-            }
+            cityObj.name = city.name;
+            cityObj.top = city.top;
+            cityObj.hindiName = city.hindiName;
             resCities.push(cityObj);
         }
     }
@@ -84,16 +81,34 @@ router.get("/checkCity", async (req, res) => {
             return res.status(400).send({ error: "City not provided." });
         }
 
-        city = city.toLowerCase();
+        reqCity = city.toLowerCase();
 
-        for (const [en, hi] of citiesRaw) {
-            if (city == en.toLowerCase() || city == hi) {
-                const totalContacts = await Contact.countDocuments({
-                    city: en,
-                });
-                return res.send({ found: true, name: en, totalContacts });
+        for (const state in allCities) {
+            for (const city of allCities[state]) {
+                if (
+                    reqCity == city.name.toLowerCase() ||
+                    reqCity == city.hindiName
+                ) {
+                    const totalContacts = await Contact.countDocuments({
+                        city: city.name,
+                    });
+                    return res.send({
+                        found: true,
+                        name: city.name,
+                        totalContacts,
+                    });
+                }
             }
         }
+
+        // for (const [en, hi] of citiesRaw) {
+        //     if (city == en.toLowerCase() || city == hi) {
+        //         const totalContacts = await Contact.countDocuments({
+        //             city: en,
+        //         });
+        //         return res.send({ found: true, name: en, totalContacts });
+        //     }
+        // }
         return res.send({ found: false });
     } catch (error) {
         res.status(500).send({ error: error.message });
