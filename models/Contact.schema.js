@@ -3,9 +3,11 @@ const mongoose = require("mongoose");
 const resourceTypesJSON = require("../data/resources.json");
 const resourceTypes = Object.keys(resourceTypesJSON);
 
-const citiesJSON = require("../data/allCities.json");
-const states = Object.keys(citiesJSON);
-const cities = Object.values(citiesJSON).map(Object.keys).flat();
+const allCities = require("../data/newAllCities.json");
+const states = Object.keys(allCities);
+const cities = Object.values(allCities).flatMap((city) => {
+    return city.map((city) => city.name);
+});
 
 const schema = new mongoose.Schema(
     {

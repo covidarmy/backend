@@ -1,6 +1,6 @@
 const Tweet = require("../models/Tweet.schema");
 
-const cities = require("../data/allCities.json");
+const allCities = require("../data/newAllCities.json");
 const resources = require("../data/resources.json");
 
 // var redis = require("redis");
@@ -76,15 +76,22 @@ exports.findAll = async (req, res) => {
         const query = {};
 
         if (location) {
-            for (let state in cities) {
-                stateCities = cities[state];
-                for (cityName in stateCities) {
-                    keywords = stateCities[cityName];
-                    if (keywords.includes(location)) {
-                        query.$or = [{ city: cityName }, { state: cityName }];
+            for (const state in allCities) {
+                for (const city of allCities[state]) {
+                    if (city.keywords.includes(location)) {
+                        query.$or = [{ city: city.name }, { state: city.name }];
                     }
                 }
             }
+            // for (let state in allCities) {
+            //     stateCities = allCities[state];
+            //     for (cityName in stateCities) {
+            //         keywords = stateCities[cityName];
+            //         if (keywords.includes(location)) {
+            //             query.$or = [{ city: cityName }, { state: cityName }];
+            //         }
+            //     }
+            // }
             if (!query.$or) {
                 return res.status(404).send({
                     error: `No tweets found for location: ${location}`,

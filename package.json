@@ -17,8 +17,10 @@
   },
   "homepage": "https://github.com/cato-tv/covid.army-backend#readme",
   "dependencies": {
+    "analytics": "^0.7.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
+    "mixpanel": "^0.13.0",
     "mongoose": "^5.12.7",
     "morgan": "^1.10.0",
     "node-cron": "^3.0.0",
