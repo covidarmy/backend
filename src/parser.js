@@ -1,8 +1,7 @@
 //const cities = require("./data/allCities.json");
-const allCities = require("./data/newAllCities.json");
-const resourceTypes = require("./data/resources.json");
-
-const categoriesObj = require("./data/categories.json");
+const allCities = require("../data/newAllCities.json");
+const resourceTypes = require("../data/resources.json");
+const categoriesObj = require("../data/categories.json");
 
 const normalize = (text) => {
     return text
