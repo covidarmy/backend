@@ -5,6 +5,7 @@ const helmet = require("helmet");
 const swaggerJsDoc = require("swagger-jsdoc");
 const swaggerUi = require("swagger-ui-express");
 const mongoose = require("mongoose");
+const authRoutes = require('./routes/auth')
 
 //Get Mongo connection URI from env var
 const DB_URL = process.env.MONGO_URI;
@@ -59,6 +60,7 @@ const app = async (express) => {
 
   //Express Routes
   express.use("/api", apiRoutes);
+  express.use("/api", authRoutes);
   express.use("/api", meta);
   express.use("/", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
