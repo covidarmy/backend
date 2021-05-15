@@ -1,7 +1,9 @@
 const cron = require("node-cron");
+const cors = require("cors");
+const morgan = require("morgan");
+const helmet = require("helmet");
 const swaggerJsDoc = require("swagger-jsdoc");
 const swaggerUi = require("swagger-ui-express");
-const morgan = require("morgan");
 const mongoose = require("mongoose");
 
 //Get Mongo connection URI from env var
@@ -52,13 +54,8 @@ const app = async (express) => {
 
   //Express options
   express.use(morgan(process.env.NODE_ENV == "production" ? "common" : "dev"));
-  //   express.use(express.json());
-
-  //CORS
-  express.use((req, res, next) => {
-    res.setHeader("Access-Control-Allow-Origin", "*");
-    next();
-  });
+  express.use(cors());
+  express.use(helmet());
 
   //Express Routes
   express.use("/api", apiRoutes);
