@@ -223,18 +223,8 @@ router.get("/contacts/:location/:resource", contactController.findAll);
  *         responses:
  *             200:
  *                 description: A generic response object.
- *                 schema:
- *                     type: object
- *                     properties:
- *                         ok:
- *                         type: boolean
  *             500:
  *                 description: An error object.
- *                 schema:
- *                 type: object
- *                 properties:
- *                     error:
- *                     type: string
  */
 router.post("/contacts/feedback", contactController.postFeedback);
 
@@ -269,8 +259,8 @@ router.post("/contacts/feedback", contactController.postFeedback);
  *                      price
  *                      source_link
  *                      created_by
- *                      
- *  
+ *
+ *
  *
  *         responses:
  *             200:
@@ -288,7 +278,6 @@ router.post("/contacts/feedback", contactController.postFeedback);
  *                     error:
  *                     type: string
  */
- router.post("/contacts/", contactController.postContact);
-
+router.post("/contacts/", contactController.postContact);
 
 module.exports = router;

@@ -1,13 +1,14 @@
 const fs = require("fs");
 const express = require("express");
 
+const Contact = require("../models/Contact.schema");
+
 const citiesRaw = require("fs")
     .readFileSync("./data/cities.csv", "utf8")
     .split("\n")
     .map((row) => row.split(","));
 
-const cities = require("../data/allCities.json");
-const topCities = require("../data/topCities.json");
+const allCities = require("../data/newAllCities.json");
 const resources = require("../data/resources.json");
 
 const router = express.Router();
@@ -38,14 +39,12 @@ const router = express.Router();
 router.get("/cities", async (req, res) => {
     let resCities = [];
 
-    for (let state in cities) {
-        for (cityName in cities[state]) {
+    for (const state in allCities) {
+        for (const city of allCities[state]) {
             let cityObj = {};
-            cityObj.name = cityName;
-            cityObj.top = cityName in topCities;
-            for ([en, hi] of citiesRaw) {
-                if (en == cityName) cityObj.hindiName = hi.slice(0, -2);
-            }
+            cityObj.name = city.name;
+            cityObj.top = city.top;
+            cityObj.hindiName = city.hindiName;
             resCities.push(cityObj);
         }
     }
@@ -56,8 +55,8 @@ router.get("/cities", async (req, res) => {
  * @swagger
  * /api/resources:
  *     get:
- *     description: Get a list of resources
- *     responses:
+ *         description: Get a list of resources
+ *         responses:
  *         '200':
  *             description: An array of all available resources
  */
@@ -69,26 +68,57 @@ router.get("/resources", async (req, res) => {
  * @swagger
  * /api/checkCity:
  *     get:
- *     description: Check if city name is valid
- *     responses:
- *         '200':
- *             description: A response object with `found` boolean field and name locale code
+ *         description: Check if city name is valid
+ *         parameters:
+ *             - in: query
+ *               name: city
+ *               type: string
+ *               description: name of city to verify
+ *         responses:
+ *             '200':
+ *                 description: A response object with `found` boolean field, name of the city and number of contacts associated with the found city
+ *
  */
-router.get("/checkCity", (req, res) => {
-    let { city } = req.query;
+router.get("/checkCity", async (req, res) => {
+    try {
+        let { city } = req.query;
 
-    if (!city) {
-        return res.status(400).send({ error: "City not provided." });
-    }
-
-    city = city.toLowerCase();
-
-    for (const [en, hi] of citiesRaw) {
-        if (city == en.toLowerCase() || city == hi) {
-            return res.send({ found: true, name: en });
+        if (!city) {
+            return res.status(400).send({ error: "City not provided." });
         }
+
+        reqCity = city.toLowerCase();
+
+        for (const state in allCities) {
+            for (const city of allCities[state]) {
+                if (
+                    reqCity == city.name.toLowerCase() ||
+                    reqCity == city.hindiName
+                ) {
+                    const totalContacts = await Contact.countDocuments({
+                        city: city.name,
+                    });
+                    return res.send({
+                        found: true,
+                        name: city.name,
+                        totalContacts,
+                    });
+                }
+            }
+        }
+
+        // for (const [en, hi] of citiesRaw) {
+        //     if (city == en.toLowerCase() || city == hi) {
+        //         const totalContacts = await Contact.countDocuments({
+        //             city: en,
+        //         });
+        //         return res.send({ found: true, name: en, totalContacts });
+        //     }
+        // }
+        return res.send({ found: false });
+    } catch (error) {
+        res.status(500).send({ error: error.message });
     }
-    return res.send({ found: false });
 });
 
 module.exports = router;

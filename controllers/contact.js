@@ -1,10 +1,14 @@
 const Contact = require("../models/Contact.schema");
 
-const cities = require("../data/allCities.json");
+const allCities = require("../data/newAllCities.json");
 const resources = require("../data/resources.json");
 
 const { rank } = require("../ranking_system/rank");
-const { validateCooldown } = require("../utils/validateCooldown");
+const { isCooldownValid } = require("../utils/isCooldownValid");
+
+//for analytics
+// const Mixpanel = require('mixpanel');
+// var analytics = Mixpanel.init(process.env.ANALYTICS_KEY);
 
 // Retrive all Contacts
 exports.findAll = async (req, res) => {
@@ -12,20 +16,23 @@ exports.findAll = async (req, res) => {
         let { limit = 20, offset = 0, session_id } = req.query;
         let { location, resource } = req.params;
 
+        // analytics.track("Conatcts endpoint hit",{
+        //     limit:limit,
+        //     offset:offset,
+        //     location:location,
+        //     resource:resource
+        // })
+
         limit = Number(limit);
         offset = Number(offset);
 
         const query = {};
 
         if (location) {
-            for (let state in cities) {
-                const stateCities = cities[state];
-
-                for (cityName in stateCities) {
-                    const keywords = stateCities[cityName];
-
-                    if (keywords.includes(location)) {
-                        query.$or = [{ city: cityName }, { state: cityName }];
+            for (const state in allCities) {
+                for (const city of allCities[state]) {
+                    if (city.keywords.includes(location)) {
+                        query.$or = [{ city: city.name }, { state: city.name }];
                     }
                 }
             }
@@ -75,7 +82,7 @@ exports.findAll = async (req, res) => {
                         offset++;
                         continue;
                     } else {
-                        if (!validateCooldown(doc.status, doc.updatedAt)) {
+                        if (!isCooldownValid(doc.status, doc.updatedAt)) {
                             doc.status = "ACTIVE";
                             await doc.save();
 
@@ -113,6 +120,11 @@ exports.postFeedback = async (req, res) => {
     try {
         const { contact_no, feedback_value } = req.body;
 
+        // analytics.track("Contact feedback endpoint hit",{
+        //     contact_no:contact_no,
+        //     feedback_value:feedback_value
+        // })
+
         // if (Object.values(Votes).indexOf(feedback_value) == -1) {
         //     return res.status(400).send({ error: "Invalid feedback value" });
         // }
@@ -132,8 +144,17 @@ exports.postFeedback = async (req, res) => {
             contact.feedback.shift();
         }
 
+        //Check and update thec contact status if required before updating the document
+        if (contact.status != "ACTIVE" || "BLACKLIST") {
+            if (!isCooldownValid(contact.status, contact.updatedAt)) {
+                contact.status = "ACTIVE";
+                await contact.save();
+            }
+        }
+
         contact.feedback.push(feedback_value);
-        await Contact.findOneAndUpdate({ contact_no }, contact);
+        contact.verification_status = String(feedback_value);
+        await contact.save();
 
         await rank(contact);
 

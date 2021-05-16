@@ -1,4 +1,4 @@
-exports.validateCooldown = async (status, updatedAt) => {
+exports.isCooldownValid = async (status, updatedAt) => {
     let timeDiff = new Date() - updatedAt;
 
     switch (status) {

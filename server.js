@@ -18,7 +18,7 @@ const DB_URL = process.env.MONGO_URI;
 mongoose
     .connect(DB_URL, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => {
-        fetchAndSaveTweets();
+        if (process.env.NODE_ENV === "production") fetchAndSaveTweets();
         console.log("✅ Databse Connected!");
     });
 
@@ -75,7 +75,7 @@ if (process.env.NODE_ENV === "production") {
         await fetchAndSaveTweets();
         console.log("Done Fetching Tweets!");
     });
-    
+
     //Schedule task to run every hr.
     cron.schedule("*/60 * * * *", async () => {
         console.log("Deleting fraud Tweets...");

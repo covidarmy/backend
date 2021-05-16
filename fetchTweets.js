@@ -3,12 +3,17 @@ const Contact = require("./models/Contact.schema");
 const Meta = require("./models/Meta.schema");
 const Fraud = require("./models/Fraud.schema");
 
+//const analytics = require("./analytics")
+// const Mixpanel = require('mixpanel');
+// var analytics = Mixpanel.init(process.env.ANALYTICS_KEY);
+
 const fetch = require("node-fetch");
 const {
     parseTweet,
     parseContacts,
     resourceTypes,
-    categories,
+    categoriesObj,
+    parsePhoneNumbers,
 } = require("./parser");
 
 const MAX_RESULTS = 100;
@@ -16,7 +21,7 @@ const MAX_RESULTS = 100;
 const resourceQueries = {
     Bed: "(bed OR beds)",
     "Home ICU": "(home icu OR home icus)",
-    "ICU Bed": "(icu OR ventilator OR ventilators)",
+    "ICU Bed": "(icu OR OR icu bed OR icu beds)",
     "Oxygen Bed": "(oxygen bed OR oxygen beds)",
     Remdesivir: "(remdesivir OR remdesvir)",
     Favipiravir: "(Favipiravir OR FabiFlu)",
@@ -55,7 +60,7 @@ const fetchSearchResults = async (newestID, resource) => {
 const buildTweetObject = (tweet) => {
     const data = parseTweet(tweet.full_text || tweet.text);
 
-    return {
+    const obj = {
         category: data.categories[0],
         resource_type: data.resource_types[0],
 
@@ -66,31 +71,34 @@ const buildTweetObject = (tweet) => {
         phone: data.phone_numbers,
         email: data.emails,
 
-        verification_status: data.verification_status,
-        last_verified_on: data.verified_at,
+        verification_status: data.verification_status || null,
+        last_verified_on: data.verified_at || null,
 
         created_by: tweet.user.name,
         created_on: new Date(tweet.created_at).getTime(),
 
-        manual_parsing_required: data.locations.length > 1 || data.resource_types.length > 1 || data.phone_numbers.length > 1,
-        
-        tweet_object: {
-            tweet_id: tweet.id_str,
-            tweet_url: `https://twitter.com/${tweet.user.screen_name}/status/${tweet.id_str}`,
-            author_id: tweet.user.id_str,
-            text: tweet.full_text,
-            likes: tweet.favorite_count,
-            retweets: tweet.retweet_count,
-            author_followers: tweet.user.followers_count,
-        },
+        manual_parsing_required:
+            data.locations.length > 1 ||
+            data.resource_types.length > 1 ||
+            data.phone_numbers.length > 1,
+
+        tweet_id: tweet.id_str,
+        tweet_url: `https://twitter.com/${tweet.user.screen_name}/status/${tweet.id_str}`,
+        author_id: tweet.user.id_str,
+        text: tweet.full_text,
+        likes: tweet.favorite_count,
+        retweets: tweet.retweet_count,
+        author_followers: tweet.user.followers_count,
     };
+
+    //console.log("Final Tweet", obj);
+
+    return obj;
 };
 
 const buildContactObjects = (tweet) => {
-    if(tweet.manual_parsing_required){
-        return [];
-    }
-    const data = parseContacts(tweet.tweet_object.text);
+    //console.log(Object.keys(tweet))
+    const data = parseContacts(tweet.text);
 
     return data.map((data) => ({
         contact_no: data.phone,
@@ -112,7 +120,7 @@ const buildContactObjects = (tweet) => {
         quantity_available: null,
         price: null,
 
-        source_link: tweet.tweet_object.tweet_url,
+        source_link: tweet.tweet_url,
         created_by: tweet.created_by,
         created_on: new Date(tweet.created_on).getTime(),
 
@@ -131,6 +139,10 @@ const fetchTweets = async () => {
 
     const resources = Object.keys(resourceTypes);
 
+    let total_no_of_tweets_fetched = 0;
+    let total_no_of_discarded_tweets = 0;
+    let total_no_of_fraud_tweets = 0;
+
     const tweetsPromises = resources.map(async (resource) => {
         const apiRes = await fetchSearchResults(newestID, resource);
 
@@ -143,8 +155,11 @@ const fetchTweets = async () => {
         }
 
         const validTweets = [];
+        var discardedTweets = [];
 
         for (let status of apiRes.statuses) {
+            total_no_of_tweets_fetched++;
+            
             const followers = status.user.followers_count;
             const accountAge =
                 Date.now() - new Date(status.created_at).getTime();
@@ -155,36 +170,81 @@ const fetchTweets = async () => {
 
             if (isValid) {
                 validTweets.push(status);
+                //console.log("Tweet added queue");
             } else {
-                console.log("Tweet discarded:");
+                total_no_of_discarded_tweets++;
+                discardedTweets.push(status);
+                //console.log("Tweet discarded:");
                 // console.log(status);
             }
         }
 
         const finalTweets = [];
+        var fraudCount = 0;
+
+        // console.log("\nResource: ", resource);
+        // console.log("Discarded Tweets: ", discardedTweets.length);
+        // console.log("Valid Tweets Length", validTweets.length);
+
+        // analytics.track("resource-wise tweet fetch summary", {
+        //     resource:resource,
+        //     discarded_tweet_count:discardedTweets.length,
+        //     valid_tweets_count:validTweets.length
+        // });
 
         for (let tweetRaw of validTweets) {
+            //console.log("Raw Tweet", tweetRaw);
             const tweet = buildTweetObject(tweetRaw);
 
-            //check for fraud numbers in fraud database
-            if (!isFraud(tweet.phone)) {
+            //console.log("Tweet Object", tweet);
+            //console.log("buildTweetObject return value is not null", tweet.phone);
+
+            //Check for fraud numbers in fraud database
+            let fraudFlag = await isFraud(tweet.phone); //isFraud is async, need an await, otherwise fraudFlag can be evaluated as true and number can be falsely considered false
+            if (fraudFlag) {
+
+                fraudCount +=1;
+                total_no_of_fraud_tweets++;
+                //analytics.track("Fraud Number Detected",{number:tweet.phone})
+                
+                console.log("Fraud number. Skipping...");
+            } else {
                 if (!tweet.resource_type) {
                     tweet.resource_type = resource;
-                    tweet.category = categories[resource][0] || null;
+                    tweet.category = categoriesObj[resource][0] || null;
                 }
-
+                // console.log("Not a fraud number, adding to finalTweets");
                 finalTweets.push(tweet);
-            } else {
-                console.log("Fraud number. Skipping...");
             }
         }
+        // console.log("Fraud Tweets found:", fraudCount);
+        // console.log("Final Tweets length:", finalTweets.length);
 
+        // analytics.track("Tweet fraud filter Summary",{
+        //     fraud_tweets_found: fraudCount,
+        //     final_tweets_length: finalTweets.length
+        // });
         return finalTweets;
     });
 
     const tweets = (await Promise.all(tweetsPromises)).flat();
-
+    
     await Meta.updateOne({}, { sinceId: String(max_id) });
+    
+    console.log("\n### Tweet fetch cycle summary ###");
+    console.log("Tweets fetched from API:",total_no_of_tweets_fetched);
+    console.log("Tweets discarded by filters:",total_no_of_discarded_tweets);
+    console.log("Tweets discarded by fraud detection:",total_no_of_fraud_tweets);
+    console.log("Total number of tweets to be written in DB:",tweets.length);
+    console.log();
+
+    // analytics.track("fetch tweet cycle summary",{
+    //     total_no_of_tweets_fetched : total_no_of_tweets_fetched,
+    //     total_no_of_discarded_tweets : total_no_of_discarded_tweets,
+    //     total_no_of_fraud_tweets : total_no_of_fraud_tweets,
+    //     tweets_to_be_written_in_db : tweets.length
+    // });
+
     return tweets;
 };
 
@@ -196,13 +256,10 @@ const saveTweets = async (tweets) => {
 
         if (tweet.phone.length > 0) {
             query = {
-                $or: [
-                    { "tweet_object.text": tweet.tweet_object.text },
-                    { phone: { $all: tweet.phone } },
-                ],
+                $or: [{ text: tweet.text }, { phone: { $all: tweet.phone } }],
             };
         } else {
-            query = { "tweet_object.text": tweet.tweet_object.text };
+            query = { text: tweet.text };
         }
 
         promises.push(Tweet.findOneAndUpdate(query, tweet, { upsert: true }));
@@ -217,6 +274,7 @@ const saveTweets = async (tweets) => {
     }
     await Promise.all(promises);
     console.log(`Saved ${promises.length} tweets to DB`);
+    // analytics.track("tweets object saved to db",{qty:promises.length})
 };
 
 const buildContacts = (tweets) => {
@@ -229,8 +287,8 @@ const buildContacts = (tweets) => {
 
         const contacts_ = buildContactObjects(tweet);
 
-        // console.log("Contacts:\n", contacts_);
-        // console.log("\n\n\n\n");
+        //  console.log("Contacts:\n", contacts_);
+        //  console.log("\n\n\n\n");
 
         contacts = contacts.concat(contacts_);
     }
@@ -261,25 +319,46 @@ const saveContacts = async (contacts) => {
     await Promise.all(promises);
 
     console.log(`Saved ${promises.length} contacts to DB`);
+    // analytics.track("contacts object saved to db",{qty:promises.length})
 };
 
 const fetchAndSaveTweets = async () => {
     const tweets = await fetchTweets();
-    const contacts = buildContacts(tweets);
 
+        
+    const contacts = buildContacts(tweets);
+    console.log("Total number of contacts built in routine fetch cycle:",contacts.length);
+    
+    // analytics.track("routine fetch cycle contacts built",{
+    //     no_of_tweets_fetched:tweets.length,
+    //     no_of_contacts_built:contacts.length
+    // });
+    
     await Promise.all([saveTweets(tweets), saveContacts(contacts)]);
 };
 
-async function isFraud(num) {
-    let strnum = String(num);
-    let numIsFraud = await fraud.findOne({ phone_no: strnum }).count();
+//Array of phone numbers is being passed here not just a single phone number
+async function isFraud(phone_no_array) {
+    //let strnum = String(num);
 
-    if (numIsFraud) {
-        console.log("Fraud");
-        return 1;
+    //TODO: Currently only strict matching strings, so +91519 will not match with 519 or +176 will not mach with 176. Need to implement fuzzy matching.
+
+    //const phone_no_array_cleaned = phone_no_array.map((phone_no) => parsePhoneNumbers(phone_no));
+    //console.log("Cleaned phone_array: ", phone_no_array_cleaned);
+
+    //Finds at least one document that has a phone_no which matches at least one of the values in phone_no_array
+    var numIsFraud = await Fraud.findOne({
+        phone_no: { $in: phone_no_array },
+    }).count();
+    // console.log("Numbers tested are: ", phone_no_array);
+    // console.log("numIsFraud: ", numIsFraud );
+
+    if (numIsFraud != 0) {
+        //numIsFraud
+        return true;
     } else {
-        console.log("Not Fraud");
-        return 0;
+        //not a fraud
+        return false;
     }
 }
 
