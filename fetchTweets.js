@@ -4,8 +4,8 @@ const Meta = require("./models/Meta.schema");
 const Fraud = require("./models/Fraud.schema");
 
 //const analytics = require("./analytics")
-const Mixpanel = require('mixpanel');
-var analytics = Mixpanel.init(process.env.ANALYTICS_KEY);
+// const Mixpanel = require('mixpanel');
+// var analytics = Mixpanel.init(process.env.ANALYTICS_KEY);
 
 const fetch = require("node-fetch");
 const {
@@ -238,12 +238,12 @@ const fetchTweets = async () => {
     console.log("Total number of tweets to be written in DB:",tweets.length);
     console.log();
 
-    analytics.track("fetch tweet cycle summary",{
-        total_no_of_tweets_fetched : total_no_of_tweets_fetched,
-        total_no_of_discarded_tweets : total_no_of_discarded_tweets,
-        total_no_of_fraud_tweets : total_no_of_fraud_tweets,
-        tweets_to_be_written_in_db : tweets.length
-    });
+    // analytics.track("fetch tweet cycle summary",{
+    //     total_no_of_tweets_fetched : total_no_of_tweets_fetched,
+    //     total_no_of_discarded_tweets : total_no_of_discarded_tweets,
+    //     total_no_of_fraud_tweets : total_no_of_fraud_tweets,
+    //     tweets_to_be_written_in_db : tweets.length
+    // });
 
     return tweets;
 };
@@ -274,7 +274,7 @@ const saveTweets = async (tweets) => {
     }
     await Promise.all(promises);
     console.log(`Saved ${promises.length} tweets to DB`);
-    analytics.track("tweets object saved to db",{qty:promises.length})
+    // analytics.track("tweets object saved to db",{qty:promises.length})
 };
 
 const buildContacts = (tweets) => {
@@ -319,7 +319,7 @@ const saveContacts = async (contacts) => {
     await Promise.all(promises);
 
     console.log(`Saved ${promises.length} contacts to DB`);
-    analytics.track("contacts object saved to db",{qty:promises.length})
+    // analytics.track("contacts object saved to db",{qty:promises.length})
 };
 
 const fetchAndSaveTweets = async () => {
@@ -329,10 +329,10 @@ const fetchAndSaveTweets = async () => {
     const contacts = buildContacts(tweets);
     console.log("Total number of contacts built in routine fetch cycle:",contacts.length);
     
-    analytics.track("routine fetch cycle contacts built",{
-        no_of_tweets_fetched:tweets.length,
-        no_of_contacts_built:contacts.length
-    });
+    // analytics.track("routine fetch cycle contacts built",{
+    //     no_of_tweets_fetched:tweets.length,
+    //     no_of_contacts_built:contacts.length
+    // });
     
     await Promise.all([saveTweets(tweets), saveContacts(contacts)]);
 };

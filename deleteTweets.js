@@ -5,8 +5,8 @@ const Contact = require("./models/Contact.schema");
 const fraud = require("./models/Fraud.schema");
 
 //const analytics = require("./analytics");
-const Mixpanel = require('mixpanel');
-var analytics = Mixpanel.init(process.env.ANALYTICS_KEY);
+// const Mixpanel = require('mixpanel');
+// var analytics = Mixpanel.init(process.env.ANALYTICS_KEY);
 
 const deleteTweets = async () => {};
 

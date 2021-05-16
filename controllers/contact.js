@@ -7,8 +7,8 @@ const { rank } = require("../ranking_system/rank");
 const { isCooldownValid } = require("../utils/isCooldownValid");
 
 //for analytics
-const Mixpanel = require('mixpanel');
-var analytics = Mixpanel.init(process.env.ANALYTICS_KEY);
+// const Mixpanel = require('mixpanel');
+// var analytics = Mixpanel.init(process.env.ANALYTICS_KEY);
 
 // Retrive all Contacts
 exports.findAll = async (req, res) => {
@@ -16,12 +16,12 @@ exports.findAll = async (req, res) => {
         let { limit = 20, offset = 0, session_id } = req.query;
         let { location, resource } = req.params;
 
-        analytics.track("Conatcts endpoint hit",{
-            limit:limit,
-            offset:offset,
-            location:location,
-            resource:resource
-        })
+        // analytics.track("Conatcts endpoint hit",{
+        //     limit:limit,
+        //     offset:offset,
+        //     location:location,
+        //     resource:resource
+        // })
 
         limit = Number(limit);
         offset = Number(offset);
@@ -119,11 +119,11 @@ const votes = ["HELPFUL", "BUSY", "NOANSWER", "NOSTOCK", "INVALID"];
 exports.postFeedback = async (req, res) => {
     try {
         const { contact_no, feedback_value } = req.body;
-        
-        analytics.track("Contact feedback endpoint hit",{
-            contact_no:contact_no,
-            feedback_value:feedback_value
-        })
+
+        // analytics.track("Contact feedback endpoint hit",{
+        //     contact_no:contact_no,
+        //     feedback_value:feedback_value
+        // })
 
         // if (Object.values(Votes).indexOf(feedback_value) == -1) {
         //     return res.status(400).send({ error: "Invalid feedback value" });
