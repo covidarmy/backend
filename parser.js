@@ -65,7 +65,7 @@ const phoneRegex =
 const emailRegex =
     /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/g;
 
-    
+
 const parsePhoneNumbers = (text) => {
     return [
         ...new Set(
@@ -77,7 +77,13 @@ const parsePhoneNumbers = (text) => {
                     || []
                     )
                 .map(phone => phone.replace(/\s+|-/g, ""))
-                .map(phone => phone.substring(phone.length - 10))
+                .map(phone =>
+                    phone.length == 10 ?
+                        phone :
+                        phone.length > 10 && phone[0] == "0" ?
+                            phone.substring(0, 11) :
+                            phone.substring(phone.length - 10)
+                    )
             )
     ].filter(_=>_);
 };
