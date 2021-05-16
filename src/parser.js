@@ -31,8 +31,8 @@ const findResourceType = (text) => {
 const findLocation = (text) => {
   let location = new Set();
 
-  for (const state in newAllCities) {
-    for (const city of newAllCities[state]) {
+  for (const state in allCities) {
+    for (const city of allCities[state]) {
       for (const keyword of city.keywords) {
         if (text.search(keyword) != -1) {
           location.add({ state: state, city: city.name });
