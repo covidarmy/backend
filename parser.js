@@ -77,11 +77,7 @@ const parsePhoneNumbers = (text) => {
                     || []
                     )
                 .map(phone => phone.replace(/\s+|-/g, ""))
-                .map(phone => 
-                    phone[0] == "0" || phone.length < 0 ? 
-                        phone : 
-                        phone.substring(phone.length - 10)
-                    )
+                .map(phone => phone.substring(phone.length - 10))
             )
     ].filter(_=>_);
 };
