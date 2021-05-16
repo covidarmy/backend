@@ -55,8 +55,8 @@ router.get("/cities", async (req, res) => {
  * @swagger
  * /api/resources:
  *     get:
- *     description: Get a list of resources
- *     responses:
+ *         description: Get a list of resources
+ *         responses:
  *         '200':
  *             description: An array of all available resources
  */
@@ -68,10 +68,16 @@ router.get("/resources", async (req, res) => {
  * @swagger
  * /api/checkCity:
  *     get:
- *     description: Check if city name is valid
- *     responses:
- *         '200':
- *             description: A response object with `found` boolean field, name locale code and number of contacts associated with the found city
+ *         description: Check if city name is valid
+ *         parameters:
+ *             - in: query
+ *               name: city
+ *               type: string
+ *               description: name of city to verify
+ *         responses:
+ *             '200':
+ *                 description: A response object with `found` boolean field, name of the city and number of contacts associated with the found city
+ *
  */
 router.get("/checkCity", async (req, res) => {
     try {
