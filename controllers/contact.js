@@ -2,9 +2,15 @@ const Contact = require("../models/Contact.schema");
 
 const allCities = require("../data/newAllCities.json");
 const resources = require("../data/resources.json");
+const categoriesObj = require("./data/categories.json");
 
 const { rank } = require("../ranking_system/rank");
 const { isCooldownValid } = require("../utils/isCooldownValid");
+const {
+    findLocation,
+    findResourceType,
+    parsePhoneNumbers,
+} = require("../parser");
 
 //for analytics
 // const Mixpanel = require('mixpanel');
@@ -167,12 +173,39 @@ exports.postFeedback = async (req, res) => {
 
 exports.postContact = async (req, res) => {
     try {
-        const data = req.body;
-        data.created_on=new Date().getTime();
-        var new_contact = new Contact(data);
-        await new_contact.save()
-        
-        res.send({ ok: true });
+        const {
+            city: reqCity,
+            phone_no: reqPhoneNo,
+            resource_type: reqResourceType,
+        } = req.body;
+
+        if (!(reqCity || reqPhoneNo || reqResourceType)) {
+            res.status(401).send({ error: "Invalid request" });
+        }
+
+        const contact_no = parsePhoneNumbers(reqPhoneNo)[0] || reqPhoneNo;
+
+        const location = findLocation(reqCity);
+        const city = location[0].city || reqCity;
+        const state = location[0].state || reqCity;
+
+        const resource_type = findResourceType(text) || reqResourceType;
+        const category = categoriesObj[resource_type] || reqResourceType;
+
+        const title = String(resource_type + " in " + city);
+
+        const contactObj = {
+            contact_no,
+            city,
+            state,
+            resource_type,
+            category,
+            title,
+        };
+
+        await new Contact(contactObj).save();
+
+        res.status(201).send({ ok: true });
     } catch (error) {
         console.error(error);
         res.status(500).send({ error: error.message });
