@@ -230,7 +230,7 @@ const fetchTweets = async () => {
     const tweets = (await Promise.all(tweetsPromises)).flat();
     
     // have a 10 minutes overlapping interval for the next tweets to be fetched
-    await Meta.updateOne({}, { sinceId: String( max_id - (1000*60*10 << 22)) });
+    await Meta.updateOne({}, { sinceId: String(BigInt(max_id) - (BigInt(1000*60*10) << BigInt(22)) ) });
     
     console.log("\n### Tweet fetch cycle summary ###");
     console.log("Tweets fetched from API:",total_no_of_tweets_fetched);
