@@ -229,7 +229,8 @@ const fetchTweets = async () => {
 
     const tweets = (await Promise.all(tweetsPromises)).flat();
     
-    await Meta.updateOne({}, { sinceId: String(max_id) });
+    // have a 10 minutes overlapping interval for the next tweets to be fetched
+    await Meta.updateOne({}, { sinceId: String(BigInt(max_id) - (BigInt(1000*60*10) << BigInt(22)) ) });
     
     console.log("\n### Tweet fetch cycle summary ###");
     console.log("Tweets fetched from API:",total_no_of_tweets_fetched);
@@ -324,7 +325,6 @@ const saveContacts = async (contacts) => {
 
 const fetchAndSaveTweets = async () => {
     const tweets = await fetchTweets();
-
         
     const contacts = buildContacts(tweets);
     console.log("Total number of contacts built in routine fetch cycle:",contacts.length);
