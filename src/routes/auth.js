@@ -1,5 +1,7 @@
 const { Router } = require("express");
 const { auth } = require("firebase-admin");
+
+const contactController = require("../controllers/contact");
 /**
  * @type {Router}
  */
@@ -31,10 +33,10 @@ router
   .route("/volunteer/leads")
   .get(protectedHandler, async (req, res) => {
     if (req.user) {
+      //add controller to retirve contacts that need volunteer attention
     } else {
     }
   })
-  .post(protectedHandler, async (req, res) => {});
+  .post(protectedHandler, contactController.postContact);
 
-
-module.exports = router
+module.exports = router;
