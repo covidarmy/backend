@@ -87,19 +87,29 @@ router.get("/checkCity", async (req, res) => {
       return res.status(400).send({ error: "City not provided." });
     }
 
-    reqCity = city.toLowerCase();
+    let reqCity = city.toLowerCase();
+
+    let resObj = {};
 
     for (const state in allCities) {
       for (const city of allCities[state]) {
         if (reqCity == city.name.toLowerCase() || reqCity == city.hindiName) {
-          const totalContacts = await Contact.countDocuments({
-            city: city.name,
-          });
-          return res.send({
-            found: true,
-            name: city.name,
-            totalContacts,
-          });
+          resObj.found = true;
+          resObj.name = city.name;
+          resObj.totalContacts = Number(
+            await Contact.countDocuments({
+              city: city.name,
+            })
+          );
+
+          for (const resource in resources) {
+            resObj[resource] = await Contact.countDocuments({
+              resource_type: resource,
+              city: city.name,
+            });
+          }
+
+          return res.send(resObj);
         }
       }
     }
