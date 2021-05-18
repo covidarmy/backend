@@ -4,6 +4,7 @@ const router = express.Router();
 const auth = require("../middleware/auth");
 
 const contactController = require("../controllers/contact");
+const fraudController = require("../controllers/fraud");
 
 /**
  * @swagger
@@ -56,5 +57,21 @@ const contactController = require("../controllers/contact");
  *                     type: string
  */
 router.post("/contacts/", auth, contactController.postContact);
+
+/**
+ * @swagger
+ * /volunteer/fraud:
+ *     post:
+ *         summary: Add a new Fraud number
+ *         description: Add a new Fraud number
+ *         responses:
+ *             200:
+ *                 description: Genric Success Response
+ *             400:
+ *                 description: Inavlid Request
+ *             500:
+ *                 description: Internal Server Error
+ */
+router.post("/fraud", auth, fraudController.postFraud);
 
 module.exports = router;
