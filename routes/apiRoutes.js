@@ -14,7 +14,7 @@ const router = express.Router();
  *                 description: A successful response
  */
 router.get("/", async (req, res) => {
-    res.send("This is the API endpoint");
+  res.send("This is the API endpoint");
 });
 
 /**
