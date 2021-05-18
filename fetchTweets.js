@@ -329,7 +329,7 @@ async function isFraud(phone_no_array) {
   //Finds at least one document that has a phone_no which matches at least one of the values in phone_no_array
   var numIsFraud = await Fraud.findOne({
     phone_no: { $in: phone_no_array },
-  }).estimatedDocumentCount();
+  }).countDocuments();
 
   if (numIsFraud != 0) {
     //numIsFraud

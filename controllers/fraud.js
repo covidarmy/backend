@@ -12,7 +12,7 @@ exports.checkFraud = async (req, res) => {
   try {
     const { phone_no } = req.params;
 
-    docCount = Fraud.find({ phone_no: phone_no }).estimatedDocumentCount();
+    docCount = Fraud.find({ phone_no: phone_no }).countDocuments();
 
     if (docCount != 0) {
       //is fraud

@@ -120,4 +120,32 @@ router.get("/checkCity", async (req, res) => {
   }
 });
 
+//Works but is incredibly slow, optmize before deploying...
+router.get("/emptyCityLeads/:state", async (req, res) => {
+  const { state } = req.params;
+  let res = [];
+  let queries = [];
+
+  //Builds queries for all city + resource comobos for all cities in the provided state
+  for (const city of alLCities[state]) {
+    for (const resource in resources) {
+      queries.push({ city: city.name, resource_type: resource });
+    }
+  }
+
+  //Run db queries
+  for (const query of queries) {
+    //checks if atleast one document exists with the given city+resource
+    //this approach is preferred because `countDocuments` is too slow and `estimatedDocumentCount` is wildly inaccurate
+    const doc = await Contact.findOne(query);
+    if (!doc) {
+      res.push({ city: query.city, resource: query.resource_type });
+      console.log("no docs found");
+    } else {
+      console.log("found docs");
+    }
+  }
+  return res;
+});
+
 module.exports = router;
