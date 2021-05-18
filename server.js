@@ -45,6 +45,7 @@ const swaggerDocs = swaggerJsDoc(swaggerOptions);
 
 //Import Routes
 const apiRoutes = require("./routes/apiRoutes");
+const volunteerRoutes = require("./routes/volunteerRoutes");
 const meta = require("./routes/meta");
 
 //Import the fetchTweets script
@@ -65,6 +66,7 @@ app.use((req, res, next) => {
 
 //Express Routes
 app.use("/api", apiRoutes);
+app.use("/volunteer", volunteerRoutes);
 app.use("/api", meta);
 app.use("/", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 

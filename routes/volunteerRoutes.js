@@ -7,7 +7,7 @@ const contactController = require("../controllers/contact");
 
 /**
  * @swagger
- * /api/contacts/:
+ * /volunteer/contacts/:
  *     post:
  *         summary: Submit a contact
  *         description: Submit a contact entry
