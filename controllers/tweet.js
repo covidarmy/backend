@@ -3,6 +3,9 @@ const Tweet = require("../models/Tweet.schema");
 const allCities = require("../data/newAllCities.json");
 const resources = require("../data/resources.json");
 
+//for analytics
+const {apiHit} = require("../analytics");
+
 // var redis = require("redis");
 // var redis_client = redis.createClient();
 
@@ -67,6 +70,7 @@ const resources = require("../data/resources.json");
 // //Retrive all Tweets
 exports.findAll = async (req, res) => {
     try {
+        apiHit("Tweets endpoint");
         let { limit = 20, offset = 0, contact_number } = req.query;
         let { location, resource } = req.params;
 

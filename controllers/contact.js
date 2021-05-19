@@ -7,12 +7,13 @@ const { rank } = require("../ranking_system/rank");
 const { isCooldownValid } = require("../utils/isCooldownValid");
 
 //for analytics
-// const Mixpanel = require('mixpanel');
-// var analytics = Mixpanel.init(process.env.ANALYTICS_KEY);
+const {apiHit} = require("../analytics");
+
 
 // Retrive all Contacts
 exports.findAll = async (req, res) => {
     try {
+        apiHit("contacts endpoint");
         let { limit = 20, offset = 0, session_id } = req.query;
         let { location, resource } = req.params;
 
@@ -118,6 +119,7 @@ const votes = ["HELPFUL", "BUSY", "NOANSWER", "NOSTOCK", "INVALID"];
 
 exports.postFeedback = async (req, res) => {
     try {
+        apiHit("contacts feedback endpoint");
         const { contact_no, feedback_value } = req.body;
 
         // analytics.track("Contact feedback endpoint hit",{
