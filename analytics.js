@@ -12,10 +12,10 @@ var mysql = require('mysql');
 
 // connect to the db
 dbConnectionInfo = {
-    host: "us-cdbr-east-03.cleardb.com",
-    user: "b260297a3fc883",
-    password: "2f686a00",
-    database: "heroku_dd41f5d2804303d",
+    host: process.env.ANAL_HOST,
+    user: process.env.ANAL_USER,
+    password: process.env.ANAL_PASS,
+    database: process.env.ANAL_DB,
     connectionLimit: 5, //mysql connection pool length
 
 };
