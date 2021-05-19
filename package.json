@@ -4,7 +4,8 @@
   "description": "A real time consolidated list of resources on COVID",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "cross-env NODE_ENV=production node server.js",
+    "dev": "nodemon"
   },
   "repository": {
     "type": "git",
@@ -18,8 +19,12 @@
   "homepage": "https://github.com/cato-tv/covid.army-backend#readme",
   "dependencies": {
     "analytics": "^0.7.5",
+    "cors": "^2.8.5",
+    "cross-env": "^7.0.3",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
+    "firebase-admin": "^9.8.0",
+    "helmet": "^4.6.0",
     "mixpanel": "^0.13.0",
     "mongoose": "^5.12.7",
     "morgan": "^1.10.0",
@@ -27,6 +32,11 @@
     "node-fetch": "^2.6.1",
     "redis": "^3.1.2",
     "swagger-jsdoc": "^6.0.0",
-    "swagger-ui-express": "^4.1.6"
+    "swagger-ui-express": "^4.1.6",
+    "uuid": "^8.3.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7",
+    "prettier": "^2.3.0"
   }
 }

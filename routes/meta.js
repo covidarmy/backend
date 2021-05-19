@@ -3,11 +3,6 @@ const express = require("express");
 
 const Contact = require("../models/Contact.schema");
 
-const citiesRaw = require("fs")
-  .readFileSync("./data/cities.csv", "utf8")
-  .split("\n")
-  .map((row) => row.split(","));
-
 const allCities = require("../data/newAllCities.json");
 const resources = require("../data/resources.json");
 
