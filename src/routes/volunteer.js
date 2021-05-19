@@ -1,12 +1,10 @@
 const express = require("express");
-const router = express.Router();
-
 const auth = require("../middleware/auth");
-
 const contactController = require("../controllers/contact");
 const fraudController = require("../controllers/fraud");
-const { admin } = require("../lib/firebase-admin");
 const { APP_DOMAIN } = require("../constants");
+const { admin } = require("../lib/firebase-admin");
+const router = express.Router();
 
 /**
  * @swagger
@@ -90,7 +88,7 @@ router.post("/login", async (req, res) => {
       handleCodeInApp: true,
     });
   } else {
-    res.status(400).send({ message: "Email not found in request body." });
+    res.status(422).send({ message: "Email not found in request body." });
   }
 });
 

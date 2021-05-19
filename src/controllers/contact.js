@@ -3,7 +3,7 @@ const allCities = require("../../data/newAllCities.json");
 const resources = require("../../data/resources.json");
 const categoriesObj = require("../../data/categories.json");
 const { rank } = require("../lib/rank");
-const { isCooldownValid } = require("../utils/isCooldownValid");
+const { isCooldownValid } = require("../lib/isCooldownValid");
 const { findResourceType, findLocation } = require("../lib/parser");
 
 //for analytics

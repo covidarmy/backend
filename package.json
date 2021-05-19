@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "start": "cross-env NODE_ENV=production node server.js",
-    "dev": "cross-env NODE_ENV=development nodemon -w src --exec node ./src",
+    "dev": "cross-env NODE_ENV=development nodemon -w src -w .env --exec node ./src",
     "format": "prettier --write ./src/**/*.{js,jsx,ts,tsx}"
   },
   "repository": {
@@ -31,6 +31,7 @@
     "morgan": "^1.10.0",
     "node-cron": "^3.0.0",
     "node-fetch": "^2.6.1",
+    "node-telegram-bot-api": "^0.53.0",
     "redis": "^3.1.2",
     "swagger-jsdoc": "^6.0.0",
     "swagger-ui-express": "^4.1.6",
