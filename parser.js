@@ -44,47 +44,26 @@ const findLocation = (text) => {
   return Array.from(location) || [];
 };
 
-// const findLocation = (text) => {
-//     const location = new Set();
-
-//     for (let state in allCities) {
-//         const _cities = find(text, allCities[state]);
-
-//         if (_cities.length > 0) {
-//             _cities.forEach((city) => {
-//                 location.add({ state, city });
-//             });
-//         }
-//     }
-//     return Array.from(location) || [];
-// };
-
 const phoneRegex =
   /(?!([0]?[1-9]|[1|2][0-9]|[3][0|1])[./-]([0]?[1-9]|[1][0-2])[./-]([0-9]{4}|[0-9]{2}))(\+?\d[\d -]{8,12}\d)/g;
 const emailRegex =
   /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/g;
 
-
 const parsePhoneNumbers = (text) => {
-    return [
-        ...new Set(
-            (text.match(phoneRegex) || [])
-                .concat(
-                    text
-                        .replace(/\s+/g, "@")
-                        .match(phoneRegex)
-                    || []
-                    )
-                .map(phone => phone.replace(/\s+|-/g, ""))
-                .map(phone =>
-                    phone.length == 10 ?
-                        phone :
-                        phone.length > 10 && phone[0] == "0" ?
-                            phone.substring(0, 11) :
-                            phone.substring(phone.length - 10)
-                    )
-            )
-    ].filter(_=>_);
+  return [
+    ...new Set(
+      (text.match(phoneRegex) || [])
+        .concat(text.replace(/\s+/g, "@").match(phoneRegex) || [])
+        .map((phone) => phone.replace(/\s+|-/g, ""))
+        .map((phone) =>
+          phone.length == 10
+            ? phone
+            : phone.length > 10 && phone[0] == "0"
+            ? phone.substring(0, 11)
+            : phone.substring(phone.length - 10)
+        )
+    ),
+  ].filter((_) => _);
 };
 
 const parseTweet = (raw_text) => {
@@ -145,4 +124,6 @@ module.exports = {
   parseContacts,
   allCities,
   parsePhoneNumbers,
+  findLocation,
+  findResourceType,
 };
