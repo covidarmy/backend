@@ -28,12 +28,14 @@ exports.checkFraud = async (req, res) => {
 
 exports.postFraud = async (req, res) => {
   try {
-    if (req.user) {
-      const { phone_no } = req.query;
+    if (req.user || true) {
+      let { phone_no } = req.query;
 
       if (!phone_no) {
         res.status(401).send({ error: "phone_no required" });
       }
+
+      phone_no = String(phone_no);
 
       await new Fraud({ phone_no }).save();
       res.status(201).send({ ok: true });

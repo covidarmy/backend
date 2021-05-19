@@ -56,7 +56,7 @@ const fraudController = require("../controllers/fraud");
  *                     error:
  *                     type: string
  */
-router.post("/contacts/", contactController.postContact);
+router.post("/contacts/", auth, contactController.postContact);
 
 /**
  * @swagger

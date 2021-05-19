@@ -161,7 +161,7 @@ exports.postFeedback = async (req, res) => {
 
 exports.postContact = async (req, res) => {
   try {
-    if (req.user || true) {
+    if (req.user) {
       const {
         city: reqCity,
         phone_no: reqPhoneNo,
