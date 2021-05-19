@@ -50,8 +50,22 @@ function apiHit(api){
     //console.log("🚀 ~ file: analytics.js ~ line 21 ~ apiHit ~ res", res)
 }
 
+//api hit
+function analyticsFetchSummary(total_fetched, total_discarded, total_fraud, total_write){
+    let query = 
+    "INSERT INTO `fetch_summary` (`total_fetched`,`total_discarded`,`total_fraud`,`total_write`) VALUES("
+    +total_fetched
+    +","+total_discarded
+    +","+total_fraud
+    +","+total_write
+    + ");";
+
+    let res = dbconnection.query(query)
+    
+}
 
 
 module.exports={
-    apiHit
+    apiHit,
+    analyticsFetchSummary
 }

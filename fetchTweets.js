@@ -7,6 +7,8 @@ const Fraud = require("./models/Fraud.schema");
 // const Mixpanel = require('mixpanel');
 // var analytics = Mixpanel.init(process.env.ANALYTICS_KEY);
 
+const {analyticsFetchSummary} =require("./analytics")
+
 const fetch = require("node-fetch");
 const {
     parseTweet,
@@ -239,12 +241,11 @@ const fetchTweets = async () => {
     console.log("Total number of tweets to be written in DB:",tweets.length);
     console.log();
 
-    // analytics.track("fetch tweet cycle summary",{
-    //     total_no_of_tweets_fetched : total_no_of_tweets_fetched,
-    //     total_no_of_discarded_tweets : total_no_of_discarded_tweets,
-    //     total_no_of_fraud_tweets : total_no_of_fraud_tweets,
-    //     tweets_to_be_written_in_db : tweets.length
-    // });
+    analyticsFetchSummary(
+        total_no_of_tweets_fetched,
+        total_no_of_discarded_tweets,
+        total_no_of_fraud_tweets,
+        tweets.length);
 
     return tweets;
 };
