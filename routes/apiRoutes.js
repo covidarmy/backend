@@ -1,6 +1,7 @@
 const express = require("express");
 const tweetController = require("../controllers/tweet");
 const contactController = require("../controllers/contact");
+const fraudController = require("../controllers/fraud");
 const router = express.Router();
 
 /**
@@ -14,7 +15,7 @@ const router = express.Router();
  *                 description: A successful response
  */
 router.get("/", async (req, res) => {
-    res.send("This is the API endpoint");
+  res.send("This is the API endpoint");
 });
 
 /**
@@ -227,5 +228,42 @@ router.get("/contacts/:location/:resource", contactController.findAll);
  *                 description: An error object.
  */
 router.post("/contacts/feedback", contactController.postFeedback);
+
+/**
+ * @swagger
+ * /api/fraud:
+ *     get:
+ *         summary: Retrieve a list of all fraud numbers in our database
+ *         description: Retrieve a list of all fraud numbers in our database
+ *         parameters:
+ *             - in: query
+ *               name: limit
+ *               type: integer
+ *               description: max number of fraud numbers to return
+ *             - in: query
+ *               name: offset
+ *               type: integer
+ *               description: number of documents to offset the results by
+ *         responses:
+ *             200:
+ *                 description: An array of all fraud numbers
+ */
+router.get("/fraud", fraudController.findAll);
+
+/**
+ * @swagger
+ * /api/fraud/{phone_no}:
+ *     get:
+ *         summary: Check if a given number is fraud or not
+ *         description: Check if a given number is fraud or not
+ *         parameters:
+ *             - in: path
+ *               name: phone_no
+ *               type: string
+ *         responses:
+ *             200:
+ *                 description: A fraud boolean
+ */
+router.get("/fraud/:phone_no", fraudController.checkFraud);
 
 module.exports = router;
