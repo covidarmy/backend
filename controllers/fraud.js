@@ -2,7 +2,12 @@ const Fraud = require("../models/Fraud.schema");
 
 exports.findAll = async (req, res) => {
   try {
-    res.send(await Fraud.find({}));
+    let { limit = 20, offset = 0 } = req.query;
+
+    limit = Number(limit);
+    offset = Number(offset);
+
+    res.send(await Fraud.find({}, null, { limit: limit, skip: offset }));
   } catch (error) {
     res.status(500).send({ error: error.message });
   }
@@ -10,9 +15,11 @@ exports.findAll = async (req, res) => {
 
 exports.checkFraud = async (req, res) => {
   try {
-    const { phone_no } = req.params;
+    let { phone_no } = req.params;
 
-    docCount = Fraud.find({ phone_no: phone_no }).countDocuments();
+    phone_no = String(phone_no);
+
+    docCount = await Fraud.findOne({ phone_no: phone_no }).countDocuments();
 
     if (docCount != 0) {
       //is fraud

@@ -235,6 +235,15 @@ router.post("/contacts/feedback", contactController.postFeedback);
  *     get:
  *         summary: Retrieve a list of all fraud numbers in our database
  *         description: Retrieve a list of all fraud numbers in our database
+ *         parameters:
+ *             - in: query
+ *               name: limit
+ *               type: integer
+ *               description: max number of fraud numbers to return
+ *             - in: query
+ *               name: offset
+ *               type: integer
+ *               description: number of documents to offset the results by
  *         responses:
  *             200:
  *                 description: An array of all fraud numbers
