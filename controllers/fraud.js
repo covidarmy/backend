@@ -1,4 +1,4 @@
-const Fraud = require("./models/Fraud.schema");
+const Fraud = require("../models/Fraud.schema");
 
 exports.findAll = async (req, res) => {
   try {
