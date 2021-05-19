@@ -44,6 +44,9 @@ const schema = new mongoose.Schema(
     review_comment: { type: String }, //comment from volunteers that review the resource
 
     feedback: [{ type: String }],
+
+    // Volunteer Dashboard
+    userId: { type: [String], default: [] },
   },
   { timestamps: true }
 );
