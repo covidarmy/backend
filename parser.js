@@ -44,7 +44,6 @@ const findLocation = (text) => {
   return Array.from(location) || [];
 };
 
-
 const phoneRegex =
   /(?!([0]?[1-9]|[1|2][0-9]|[3][0|1])[./-]([0]?[1-9]|[1][0-2])[./-]([0-9]{4}|[0-9]{2}))(\+?\d[\d -]{8,12}\d)/g;
 const emailRegex =
@@ -125,4 +124,6 @@ module.exports = {
   parseContacts,
   allCities,
   parsePhoneNumbers,
+  findLocation,
+  findResourceType,
 };

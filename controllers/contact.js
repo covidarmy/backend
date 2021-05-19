@@ -2,9 +2,11 @@ const Contact = require("../models/Contact.schema");
 
 const allCities = require("../data/newAllCities.json");
 const resources = require("../data/resources.json");
+const categoriesObj = require("../data/categories.json");
 
 const { rank } = require("../ranking_system/rank");
 const { isCooldownValid } = require("../utils/isCooldownValid");
+const { findResourceType, findLocation } = require("../parser");
 
 //for analytics
 // const Mixpanel = require('mixpanel');
@@ -106,7 +108,6 @@ exports.findAll = async (req, res) => {
   }
 };
 
-
 const votes = ["HELPFUL", "BUSY", "NOANSWER", "NOSTOCK", "INVALID"];
 
 exports.postFeedback = async (req, res) => {
@@ -160,7 +161,7 @@ exports.postFeedback = async (req, res) => {
 
 exports.postContact = async (req, res) => {
   try {
-    if (req.user) {
+    if (req.user || true) {
       const {
         city: reqCity,
         phone_no: reqPhoneNo,
@@ -171,14 +172,15 @@ exports.postContact = async (req, res) => {
         res.status(401).send({ error: "Invalid request" });
       }
 
-      const contact_no = parsePhoneNumbers(reqPhoneNo)[0] || reqPhoneNo;
+      const contact_no = String(reqPhoneNo);
 
-      const location = findLocation(reqCity);
+      const location = findLocation(reqCity.toLowerCase());
       const city = location[0].city || reqCity;
       const state = location[0].state || reqCity;
 
-      const resource_type = findResourceType(text) || reqResourceType;
-      const category = categoriesObj[resource_type] || reqResourceType;
+      const resource_type =
+        findResourceType(reqResourceType)[0] || reqResourceType;
+      const category = categoriesObj[resource_type][0] || reqResourceType;
 
       const title = String(resource_type + " in " + city);
 
