@@ -35,7 +35,7 @@ exports.checkFraud = async (req, res) => {
 
 exports.postFraud = async (req, res) => {
   try {
-    if (req.user || true) {
+    if (req.user) {
       let { phone_no } = req.query;
 
       if (!phone_no) {
