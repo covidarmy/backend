@@ -1,4 +1,4 @@
-const { auth } = require("../firebase-admin");
+const { auth } = require("../lib/firebase-admin");
 
 /**
  * @type {import("express").Handler}

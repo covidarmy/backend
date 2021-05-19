@@ -1,8 +1,8 @@
 require("dotenv").config();
-const Tweet = require("./models/Tweet.schema");
-const Contact = require("./models/Contact.schema");
+const Tweet = require("../models/Tweet.schema");
+const Contact = require("../models/Contact.schema");
 
-const fraud = require("./models/Fraud.schema");
+const fraud = require("../models/Fraud.schema");
 
 //const analytics = require("./analytics");
 // const Mixpanel = require('mixpanel');

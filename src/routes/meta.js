@@ -1,10 +1,7 @@
 const express = require("express");
-
 const Contact = require("../models/Contact.schema");
-
-const allCities = require("../data/newAllCities.json");
-const resources = require("../data/resources.json");
-
+const allCities = require("../../data/newAllCities.json");
+const resources = require("../../data/resources.json");
 const router = express.Router();
 
 /**

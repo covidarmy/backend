@@ -1,9 +1,9 @@
 const mongoose = require("mongoose");
 
-const resourceTypesJSON = require("../data/resources.json");
+const resourceTypesJSON = require("../../data/resources.json");
 const resourceTypes = Object.keys(resourceTypesJSON);
 
-const allCities = require("../data/newAllCities.json");
+const allCities = require("../../data/newAllCities.json");
 const states = Object.keys(allCities);
 const cities = Object.values(allCities).flatMap((city) => {
   return city.map((city) => city.name);

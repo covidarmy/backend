@@ -1,12 +1,10 @@
 const Contact = require("../models/Contact.schema");
-
-const allCities = require("../data/newAllCities.json");
-const resources = require("../data/resources.json");
-const categoriesObj = require("../data/categories.json");
-
-const { rank } = require("../ranking_system/rank");
+const allCities = require("../../data/newAllCities.json");
+const resources = require("../../data/resources.json");
+const categoriesObj = require("../../data/categories.json");
+const { rank } = require("../lib/rank");
 const { isCooldownValid } = require("../utils/isCooldownValid");
-const { findResourceType, findLocation } = require("../parser");
+const { findResourceType, findLocation } = require("../lib/parser");
 
 //for analytics
 // const Mixpanel = require('mixpanel');

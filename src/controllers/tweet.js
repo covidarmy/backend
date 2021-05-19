@@ -1,7 +1,6 @@
 const Tweet = require("../models/Tweet.schema");
-
-const allCities = require("../data/newAllCities.json");
-const resources = require("../data/resources.json");
+const allCities = require("../../data/newAllCities.json");
+const resources = require("../../data/resources.json");
 
 //Retrive all Tweets
 exports.findAll = async (req, res) => {

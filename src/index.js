@@ -1,18 +1,16 @@
 require("dotenv").config();
-
-//dependencies
 const cron = require("node-cron");
 const express = require("express");
-const app = express();
-
+const mongoose = require("mongoose");
 const swaggerJsDoc = require("swagger-jsdoc");
 const swaggerUi = require("swagger-ui-express");
-
-const morgan = require("morgan");
-const mongoose = require("mongoose");
+const { deleteFraud } = require("./lib/deleteTweets");
+const { fetchAndSaveTweets } = require("./lib/fetchTweets");
 
 //Get Mongo connection URI from env var
 const DB_URL = process.env.MONGO_URI;
+
+const app = express();
 
 //Connect mongoose
 mongoose
@@ -22,7 +20,6 @@ mongoose
     console.log("✅ Databse Connected!");
   });
 
-// Swagger config
 const swaggerOptions = {
   swaggerDefinition: {
     info: {
@@ -39,60 +36,31 @@ const swaggerOptions = {
   // ['.routes/*.js']
   apis: ["routes/apiRoutes.js", "routes/meta.js"],
 };
-
-//setup Swagger for auto documentation
 const swaggerDocs = swaggerJsDoc(swaggerOptions);
 
-//Import Routes
-const apiRoutes = require("./routes/apiRoutes");
-const volunteerRoutes = require("./routes/volunteerRoutes");
-const meta = require("./routes/meta");
-
-//Import the fetchTweets script
-const { fetchAndSaveTweets } = require("./fetchTweets");
-
-//Import the deleteTweets script
-const { deleteTweets, deleteFraud } = require("./deleteTweets");
-
-//Express options
-app.use(morgan(process.env.NODE_ENV == "production" ? "common" : "dev"));
+app.use(
+  require("morgan")(process.env.NODE_ENV == "production" ? "common" : "dev")
+);
+app.use(require("cors")());
 app.use(express.json());
 
-//CORS
-app.use((req, res, next) => {
-  res.setHeader("Access-Control-Allow-Origin", "*");
-  next();
-});
-
-//Express Routes
-app.use("/api", apiRoutes);
-app.use("/volunteer", volunteerRoutes);
-app.use("/api", meta);
 app.use("/", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
+app.use("/api", require("./routes/apiRoutes"));
+app.use("/volunteer", require("./routes/volunteer"));
 
 if (process.env.NODE_ENV === "production") {
-  //Schedule task to run every minute.
   cron.schedule("*/1 * * * *", async () => {
     console.log("Fetching Tweets...");
     await fetchAndSaveTweets();
     console.log("Done Fetching Tweets!");
   });
 
-  //Schedule task to run every hr.
   cron.schedule("*/60 * * * *", async () => {
     console.log("Deleting fraud Tweets...");
     await deleteFraud();
     console.log("Done deleting fraud Tweets!");
   });
 }
-
-//TODO
-//Schedule task to run every n minutes.
-// cron.schedule("*/5 * * * *", async () => {
-//   console.log("CLEANING UP DD...");
-//   await deleteTweets();
-//   console.log("Done Cleaning!");
-// });
 
 //Start Expres Server
 const PORT = process.env.PORT || 4000;

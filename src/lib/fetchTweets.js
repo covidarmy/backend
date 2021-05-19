@@ -1,7 +1,7 @@
-const Tweet = require("./models/Tweet.schema");
-const Contact = require("./models/Contact.schema");
-const Meta = require("./models/Meta.schema");
-const Fraud = require("./models/Fraud.schema");
+const Tweet = require("../models/Tweet.schema");
+const Contact = require("../models/Contact.schema");
+const Meta = require("../models/Meta.schema");
+const Fraud = require("../models/Fraud.schema");
 
 //const analytics = require("./analytics")
 // const Mixpanel = require('mixpanel');

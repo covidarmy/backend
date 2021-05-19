@@ -5,7 +5,7 @@ const auth = require("../middleware/auth");
 
 const contactController = require("../controllers/contact");
 const fraudController = require("../controllers/fraud");
-const { admin } = require("../firebase-admin");
+const { admin } = require("../lib/firebase-admin");
 const { APP_DOMAIN } = require("../constants");
 
 /**
