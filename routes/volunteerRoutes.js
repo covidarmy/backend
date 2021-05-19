@@ -5,6 +5,8 @@ const auth = require("../middleware/auth");
 
 const contactController = require("../controllers/contact");
 const fraudController = require("../controllers/fraud");
+const { admin } = require("../firebase-admin");
+const { APP_DOMAIN } = require("../constants");
 
 /**
  * @swagger
@@ -73,5 +75,23 @@ router.post("/contacts/", auth, contactController.postContact);
  *                 description: Internal Server Error
  */
 router.post("/fraud", auth, fraudController.postFraud);
+
+/**
+ * @swagger
+ * /volunteer/login
+ *     post:
+ *         summary: Login via email link
+ */
+router.post("/login", async (req, res) => {
+  const email = req.body?.email;
+  if (typeof email === "string") {
+    await admin.auth().generateSignInWithEmailLink(email, {
+      url: APP_DOMAIN + "/dashboard",
+      handleCodeInApp: true,
+    });
+  } else {
+    res.status(400).send({ message: "Email not found in request body." });
+  }
+});
 
 module.exports = router;

@@ -1,4 +1,4 @@
-const { auth } = require("firebase-admin");
+const { auth } = require("../firebase-admin");
 
 /**
  * @type {import("express").Handler}
@@ -9,7 +9,7 @@ module.exports = async (req, res, next) => {
     return res.status(400).json({ message: "You did not specify idToken." });
   } else {
     try {
-      const user = await auth().verifyIdToken(token);
+      const user = await auth.verifyIdToken(token);
       if (user) {
         req.user = user;
         next();
