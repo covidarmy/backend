@@ -3,8 +3,10 @@ const cron = require("node-cron");
 const mongoose = require("mongoose");
 const swaggerJsDoc = require("swagger-jsdoc");
 const swaggerUi = require("swagger-ui-express");
+
 const { deleteFraud } = require("./lib/deleteTweets");
 const { fetchAndSaveTweets } = require("./lib/fetchTweets");
+const { checkCities } = require("./lib/checkCities");
 
 /**
  * @param {Express} app
@@ -52,6 +54,7 @@ const initializeApp = async (app) => {
   app.use("/api", require("./routes/apiRoutes"));
   app.use("/volunteer", require("./routes/volunteer"));
 
+  //Schedulers
   if (process.env.NODE_ENV === "production") {
     cron.schedule("*/1 * * * *", async () => {
       console.log("Fetching Tweets...");
@@ -63,6 +66,12 @@ const initializeApp = async (app) => {
       console.log("Deleting fraud Tweets...");
       await deleteFraud();
       console.log("Done deleting fraud Tweets!");
+    });
+
+    cron.schedule("*/60 * * * *", async () => {
+      console.log("Writing city metadata...");
+      await checkCities();
+      console.log("Done writing vity metadata!");
     });
   }
 };
