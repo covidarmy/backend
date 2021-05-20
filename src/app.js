@@ -7,7 +7,7 @@ const { deleteFraud } = require("./lib/deleteTweets");
 const { fetchAndSaveTweets } = require("./lib/fetchTweets");
 
 /**
- * @param {Express} app
+ * @param {import("express").Express} app
  */
 const initializeApp = async (app) => {
   const DB_URL = process.env.MONGO_URI;
@@ -48,9 +48,11 @@ const initializeApp = async (app) => {
   app.use(require("cors")());
   app.use(express.json());
 
-  app.use("/", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
-  app.use("/api", require("./routes/apiRoutes"));
+  app.get("/", async (req, res) => res.status(200).send("Health: OK."));
+  app.use("/api", require("./routes/api"));
+  app.use("/api", require("./routes/meta"));
   app.use("/volunteer", require("./routes/volunteer"));
+  app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
   if (process.env.NODE_ENV === "production") {
     cron.schedule("*/1 * * * *", async () => {
