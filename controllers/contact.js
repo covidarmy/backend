@@ -192,6 +192,7 @@ exports.postContact = async (req, res) => {
         resource_type,
         category,
         title,
+        userId: req.user.uid,
       };
 
       await new Contact(contactObj).save();
