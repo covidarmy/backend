@@ -25,7 +25,7 @@ router.post("/login", async (req, res) => {
 });
 
 router.get("/contacts", auth, async (req, res) => {
-  return await Contact.find({ userId: req.user.uid }).exec();
+  res.send(await Contact.find({ userId: req.user.uid }));
 });
 
 router.post("/contacts", auth, contactController.postContact);
