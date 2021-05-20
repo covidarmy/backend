@@ -16,10 +16,13 @@ const checkCities = async () => {
     cityObj.totalContacts = Number(
       await Contact.countDocuments({ city: query.city })
     );
-    cityObj["resourceCount"][query.resource] = await Contact.countDocuments({
-      resource_type: query.resource,
-      city: query.city,
-    });
+    cityObj.resourceCount = {};
+    cityObj.resourceCount[query.resource] = Number(
+      await Contact.countDocuments({
+        resource_type: query.resource,
+        city: query.city,
+      })
+    );
 
     await new City(cityObj).save();
   }
