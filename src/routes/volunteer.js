@@ -1,12 +1,16 @@
 const express = require("express");
+const router = express.Router();
+
 const auth = require("../middleware/auth");
-const fraudController = require("../controllers/fraud");
+
 const { APP_DOMAIN } = require("../constants");
 const { admin } = require("../lib/firebase-admin");
-const router = express.Router();
+
 const Contact = require("../models/Contact.schema");
-const s = require("superstruct");
 const Volunteer = require("../models/Volunteer.schema");
+
+const fraudController = require("../controllers/fraud");
+const contactController = require("../controllers/contact");
 
 router.post("/login", async (req, res) => {
   const email = req.body?.email;
@@ -20,19 +24,11 @@ router.post("/login", async (req, res) => {
   }
 });
 
-router
-  .route("/contacts")
-  .get(auth, async (req, res) => {
-    return await Contact.find({ userId: req.user.uid }).exec();
-  })
-  .post(auth, async (req, res) => {
-    const schema = s.object({
-      contact_no: s.string(),
-      city: s.string(),
-      state: s.string(),
-    });
-    s.assert(schema, req.body);
-  });
+router.get("/contacts", auth, async (req, res) => {
+  return await Contact.find({ userId: req.user.uid }).exec();
+});
+
+router.post("/contacts", auth, contactController.postContact);
 
 router.post("/fraud", auth, fraudController.postFraud);
 
