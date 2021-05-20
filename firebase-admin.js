@@ -1,4 +1,4 @@
-import * as admin from "firebase-admin";
+const admin = require("firebase-admin");
 
 if (!admin.apps.length) {
   admin.initializeApp({
@@ -12,4 +12,4 @@ if (!admin.apps.length) {
 
 const auth = admin.auth();
 
-export { admin, auth };
+module.exports = { admin, auth };
