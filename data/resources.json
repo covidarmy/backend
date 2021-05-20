@@ -5,6 +5,7 @@
   "Bed": ["bed"],
   "Remdesivir": ["remdesivir", "remdesvir"],
   "Favipiravir": ["favipiravir", "fabiFlu"],
+  "Amphotericin": ["amphotericin", "amphotericinb"],
   "Tocilizumab": ["tocilizumab", "toclizumab"],
   "Plasma": ["plasma"],
   "Food": ["food", "meal", "tiffin"],

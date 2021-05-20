@@ -4,6 +4,7 @@
   "ICU Bed": ["hospital"],
   "Oxygen Bed": ["hospital"],
   "Remdesivir": ["medicine"],
+  "Amphotericin": ["medicine"],
   "Favipiravir": ["medicine"],
   "Tocilizumab": ["medicine"],
   "Plasma": [],
