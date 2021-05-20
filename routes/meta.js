@@ -100,6 +100,11 @@ router.get("/checkCity", async (req, res) => {
             resObj[resource] = await Contact.countDocuments({
               resource_type: resource,
               city: city.name,
+              $or: [
+                { status: "ACTIVE" },
+                { status: "S_COOLDOWN" },
+                { status: null },
+              ],
             });
           }
 
