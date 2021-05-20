@@ -6,6 +6,7 @@ const auth = require("../middleware/auth");
 const { APP_DOMAIN } = require("../constants");
 const { admin } = require("../firebase-admin");
 
+const Contact = require("../models/Contact.schema");
 const Volunteer = require("../models/Volunteer.schema");
 
 const contactController = require("../controllers/contact");
