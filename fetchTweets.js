@@ -23,6 +23,7 @@ const resourceQueries = {
   "ICU Bed": "(icu OR OR icu bed OR icu beds)",
   "Oxygen Bed": "(oxygen bed OR oxygen beds)",
   Remdesivir: "(remdesivir OR remdesvir)",
+  Amphotericin: "(amphotericin OR amphotericin b)",
   Favipiravir: "(Favipiravir OR FabiFlu)",
   Tocilizumab: "(tocilizumab OR toclizumab)",
   Plasma: "(plasma)",
