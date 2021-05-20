@@ -175,12 +175,13 @@ exports.postContact = async (req, res) => {
       const contact_no = String(reqPhoneNo);
 
       const location = findLocation(reqCity.toLowerCase());
-      const city = location[0].city || reqCity;
-      const state = location[0].state || reqCity;
+      const city = location[0].city || res.status(401).send("Invalid City");
+      const state = location[0].state || city;
 
       const resource_type =
-        findResourceType(reqResourceType)[0] || reqResourceType;
-      const category = categoriesObj[resource_type][0] || reqResourceType;
+        findResourceType(reqResourceType)[0] ||
+        res.status(401).send("Invalid Resource type");
+      const category = categoriesObj[resource_type][0] || resource_type;
 
       const title = String(resource_type + " in " + city);
 
