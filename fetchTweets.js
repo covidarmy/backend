@@ -190,7 +190,6 @@ const fetchTweets = async () => {
       //Check for fraud numbers in fraud database
       let fraudFlag = await isFraud(tweet.phone); //isFraud is async, need an await, otherwise fraudFlag can be evaluated as true and number can be falsely considered false
       if (fraudFlag) {
-        fraudCount += 1;
         total_no_of_fraud_tweets++;
         //analytics.track("Fraud Number Detected",{number:tweet.phone})
 
