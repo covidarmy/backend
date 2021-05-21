@@ -6,7 +6,12 @@ const categoriesObj = require("../data/categories.json");
 
 const { rank } = require("../ranking_system/rank");
 const { isCooldownValid } = require("../utils/isCooldownValid");
-const { findResourceType, findLocation } = require("../parser");
+const {
+  findResourceType,
+  findLocation,
+  parsePhoneNumbers,
+  normalize,
+} = require("../parser");
 
 //for analytics
 // const Mixpanel = require('mixpanel');
@@ -172,7 +177,9 @@ exports.postContact = async (req, res) => {
         res.status(401).send({ error: "Invalid request" });
       }
 
-      const contact_no = String(reqPhoneNo);
+      const contact_no =
+        parsePhoneNumbers(normalize(reqPhoneNo))[0] ||
+        res.status(401).send({ error: "Invalid Phone Number" });
 
       const location = findLocation(reqCity.toLowerCase());
       const city = location[0].city || res.status(401).send("Invalid City");

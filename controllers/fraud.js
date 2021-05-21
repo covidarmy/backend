@@ -1,5 +1,7 @@
 const Fraud = require("../models/Fraud.schema");
 
+const { parsePhoneNumbers, normalize } = require("../parser");
+
 exports.findAll = async (req, res) => {
   try {
     let { limit = 20, offset = 0 } = req.query;
@@ -42,11 +44,9 @@ exports.postFraud = async (req, res) => {
         res.status(401).send({ error: "phone_no required" });
       }
 
-      phone_no = String(phone_no);
-
-      if (phone_no.length < 10 || phone_no.length > 10) {
+      const phone_no =
+        parsePhoneNumbers(normalize(String(phone_no)))[0] ||
         res.status(401).send({ error: "invalid phone_no" });
-      }
 
       const stashDoc = await Fraud.findOne({ Title: "Fraud" });
 
