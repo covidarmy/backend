@@ -178,15 +178,15 @@ exports.postContact = async (req, res) => {
       }
 
       const contact_no =
-        parsePhoneNumbers(normalize(reqPhoneNo))[0] ||
+        parsePhoneNumbers(normalize(String(reqPhoneNo)))[0] ||
         res.status(401).send({ error: "Invalid Phone Number" });
 
-      const location = findLocation(reqCity.toLowerCase());
+      const location = findLocation(String(reqCity).toLowerCase());
       const city = location[0].city || res.status(401).send("Invalid City");
       const state = location[0].state || city;
 
       const resource_type =
-        findResourceType(reqResourceType)[0] ||
+        findResourceType(String(reqResourceType))[0] ||
         res.status(401).send("Invalid Resource type");
       const category = categoriesObj[resource_type][0] || resource_type;
 
