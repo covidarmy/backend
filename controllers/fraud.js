@@ -44,7 +44,7 @@ exports.postFraud = async (req, res) => {
         res.status(401).send({ error: "phone_no required" });
       }
 
-      const phone_no =
+      phone_no =
         parsePhoneNumbers(normalize(String(phone_no)))[0] ||
         res.status(401).send({ error: "invalid phone_no" });
 
