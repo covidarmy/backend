@@ -44,7 +44,14 @@ exports.postFraud = async (req, res) => {
 
       phone_no = String(phone_no);
 
-      await new Fraud({ phone_no }).save();
+      const stashDoc = await Fraud.findOne({ Title: "Fraud" });
+
+      if (stashDoc.Stash.includes(phone_no)) {
+        await new Fraud({ phone_no }).save();
+      } else {
+        stashDoc.Stash.push(phone_no);
+        await stashDoc.save();
+      }
       res.status(201).send({ ok: true });
     } else {
       res.status(400).send({ message: "Unable to verify user." });
