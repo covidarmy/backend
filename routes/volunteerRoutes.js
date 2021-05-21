@@ -32,12 +32,12 @@ router.post("/login", async (req, res) => {
 });
 
 router.post("/auth", async (req, res) => {
-  const token = req.headers.authorization;
-  if (!token) {
+  const token = req.headers?.authorization;
+  if (typeof token !== "string") {
     return res.status(400).json({ message: "You did not specify idToken." });
   } else {
     try {
-      const decodedToken = admin.verifyIdToken(token);
+      const decodedToken = await admin.verifyIdToken(token);
       if (!decodedToken) {
         res.status(400).send({ message: "Unable to verify user." });
       }
@@ -45,11 +45,13 @@ router.post("/auth", async (req, res) => {
       const user = await Volunteer.findOne({ uid: decodedToken.uid });
       //user doesnt already exist in the db
       if (!user) {
-        res
-          .status(201)
-          .send(await new Volunteer({ uid: decodedToken.uid }).save());
+        await new Volunteer({
+          uid: decodedToken.uid,
+          email: decodedToken.email,
+        }).save();
+        res.status(204).send();
       } else {
-        res.status(200).send(user);
+        res.status(204).send(user);
       }
     } catch (error) {
       res.status(500).send({ error: error.message });
