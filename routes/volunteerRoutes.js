@@ -12,13 +12,88 @@ const Volunteer = require("../models/Volunteer.schema");
 const contactController = require("../controllers/contact");
 const fraudController = require("../controllers/fraud");
 
+/**
+ * @swagger
+ * /volunteer/contacts/:
+ *     get:
+ *         summary: Get a list of contacts added by the current user
+ *         description: Get a list of contacts added by the current user
+ *         parameters:
+ *             - in: header
+ *               name: authorization
+ *               type: string
+ *               description: Firebase auth token
+ *         responses:
+ *             200:
+ *                 description: A list of contacts added by the current user
+ */
 router.get("/contacts", auth, async (req, res) => {
   res.send(await Contact.find({ userId: req.user.uid }));
 });
+
+/**
+ * @swagger
+ * /volunteer/contacts/:
+ *     post:
+ *         summary: Add a new Contact to the database
+ *         description: Add a new Contact to the database
+ *         parameters:
+ *             - in: header
+ *               name: authorization
+ *               type: string
+ *               description: Firebase auth token
+ *             - in: body
+ *               name: city
+ *               type: string
+ *               description: Name of the city your contact is based in
+ *             - in: body
+ *               name: phone_no
+ *               type: string
+ *               description: Phone number of the contact
+ *             - in: body
+ *               name: resource_type
+ *               type: string
+ *               description: |
+ *                   Type of resource the contact is providing:
+ *                   Only resoures from `/api/resources` are valid
+ *         responses:
+ *             201:
+ *                 description: Generic success response
+ */
 router.post("/contacts", auth, contactController.postContact);
 
+/**
+ * @swagger
+ * /volunteer/fraud/:
+ *     post:
+ *         summary: Add a number as fraudulent in our database
+ *         description: Add a number as fraudulent in our database
+ *         parameters:
+ *             - in: header
+ *               name: authorization
+ *               type: string
+ *               description: Firebase auth token
+ *             - in: query
+ *               name: phone_no
+ *               type: string
+ *         responses:
+ *             201:
+ *                 description: A generic success response
+ */
 router.post("/fraud", auth, fraudController.postFraud);
 
+/**
+ * @swagger
+ * /volunteer/login/:
+ *     post:
+ *         summary: Firebase login endpoint
+ *         description: Firebase login endpoint
+ *         parameters:
+ *             - in: header
+ *               name: authorization
+ *               type: string
+ *               description: Firebase auth token
+ */
 router.post("/login", async (req, res) => {
   const email = req.body?.email;
   if (typeof email === "string") {
@@ -31,6 +106,25 @@ router.post("/login", async (req, res) => {
   }
 });
 
+/**
+ * @swagger
+ * /volunteer/auth/:
+ *     post:
+ *         summary: Check if a user exists, if not create it
+ *         description: Check if a user exists, if not create it
+ *         parameters:
+ *             - in: header
+ *               name: authorization
+ *               type: string
+ *               description: Firebase auth token
+ *         responses:
+ *             500:
+ *                 description: Internal Server Error
+ *             400:
+ *                 description: Invalid token
+ *             204:
+ *                 description: user found or created
+ */
 router.post("/auth", async (req, res) => {
   const token = req.headers?.authorization;
   if (typeof token !== "string") {

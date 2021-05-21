@@ -44,10 +44,18 @@ exports.postFraud = async (req, res) => {
 
       phone_no = String(phone_no);
 
+      if (phone_no.length < 10 || phone_no.length > 10) {
+        res.status(401).send({ error: "invalid phone_no" });
+      }
+
       const stashDoc = await Fraud.findOne({ Title: "Fraud" });
 
       if (stashDoc.Stash.includes(phone_no)) {
-        await new Fraud({ phone_no }).save();
+        await Fraud.findOneAndUpdate(
+          { phone_no: phone_no },
+          { phone_no: phone_no },
+          { upsert: true }
+        );
       } else {
         stashDoc.Stash.push(phone_no);
         await stashDoc.save();
