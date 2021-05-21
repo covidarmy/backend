@@ -6,7 +6,12 @@ const categoriesObj = require("../data/categories.json");
 
 const { rank } = require("../ranking_system/rank");
 const { isCooldownValid } = require("../utils/isCooldownValid");
-const { findResourceType, findLocation } = require("../parser");
+const {
+  findResourceType,
+  findLocation,
+  parsePhoneNumbers,
+  normalize,
+} = require("../parser");
 
 //for analytics
 // const Mixpanel = require('mixpanel');
@@ -172,15 +177,18 @@ exports.postContact = async (req, res) => {
         res.status(401).send({ error: "Invalid request" });
       }
 
-      const contact_no = String(reqPhoneNo);
+      const contact_no =
+        parsePhoneNumbers(normalize(String(reqPhoneNo)))[0] ||
+        res.status(401).send({ error: "Invalid Phone Number" });
 
-      const location = findLocation(reqCity.toLowerCase());
-      const city = location[0].city || reqCity;
-      const state = location[0].state || reqCity;
+      const location = findLocation(String(reqCity).toLowerCase());
+      const city = location[0].city || res.status(401).send("Invalid City");
+      const state = location[0].state || city;
 
       const resource_type =
-        findResourceType(reqResourceType)[0] || reqResourceType;
-      const category = categoriesObj[resource_type][0] || reqResourceType;
+        findResourceType(String(reqResourceType))[0] ||
+        res.status(401).send("Invalid Resource type");
+      const category = categoriesObj[resource_type][0] || resource_type;
 
       const title = String(resource_type + " in " + city);
 
@@ -191,6 +199,7 @@ exports.postContact = async (req, res) => {
         resource_type,
         category,
         title,
+        userId: req.user.uid,
       };
 
       await new Contact(contactObj).save();

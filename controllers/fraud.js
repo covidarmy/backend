@@ -1,5 +1,7 @@
 const Fraud = require("../models/Fraud.schema");
 
+const { parsePhoneNumbers, normalize } = require("../parser");
+
 exports.findAll = async (req, res) => {
   try {
     let { limit = 20, offset = 0 } = req.query;
@@ -42,9 +44,22 @@ exports.postFraud = async (req, res) => {
         res.status(401).send({ error: "phone_no required" });
       }
 
-      phone_no = String(phone_no);
+      const phone_no =
+        parsePhoneNumbers(normalize(String(phone_no)))[0] ||
+        res.status(401).send({ error: "invalid phone_no" });
 
-      await new Fraud({ phone_no }).save();
+      const stashDoc = await Fraud.findOne({ Title: "Fraud" });
+
+      if (stashDoc.Stash.includes(phone_no)) {
+        await Fraud.findOneAndUpdate(
+          { phone_no: phone_no },
+          { phone_no: phone_no },
+          { upsert: true }
+        );
+      } else {
+        stashDoc.Stash.push(phone_no);
+        await stashDoc.save();
+      }
       res.status(201).send({ ok: true });
     } else {
       res.status(400).send({ message: "Unable to verify user." });
