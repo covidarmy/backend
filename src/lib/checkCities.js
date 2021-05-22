@@ -7,38 +7,38 @@ const Contact = require("../models/Contact.schema");
 const City = require("../models/City.schema");
 
 const checkCities = async () => {
-  let queries = buildQueries();
-
-  for (const query of queries) {
-    let cityObj = {};
-    cityObj.city = query.city;
-    cityObj.state = findLocation(String(query.city).toLowerCase())[0].state;
-    cityObj.totalContacts = Number(
-      await Contact.countDocuments({ city: query.city })
-    );
-    cityObj.resourceCount = {};
-    cityObj.resourceCount[query.resource] = Number(
-      await Contact.countDocuments({
-        resource_type: query.resource,
-        city: query.city,
-      })
-    );
-
-    await new City(cityObj).save();
-  }
-};
-
-const buildQueries = () => {
-  let queries = [];
-
   for (const state in allCities) {
     for (const city of allCities[state]) {
+      console.time(city.name);
+      let cityObj = {
+        city: city.name,
+        state:
+          findLocation(normalize(String(city.name)))[0]?.state || city.name,
+        resourceCount: {},
+      };
+
       for (const resource in resources) {
-        queries.push({ city: city.name, resource_type: resource });
+        cityObj.resourceCount[resource] = Number(
+          await Contact.countDocuments({
+            resource_type: resource,
+            city: city.name,
+          })
+        );
       }
+      cityObj.totalContacts = Object.values(cityObj.resourceCount).reduce(
+        (acc, val) => acc + val
+      );
+      await City.findOneAndUpdate(
+        {
+          city: city.name,
+          totalContacts: cityObj.totalContacts,
+        },
+        cityObj,
+        { upsert: true }
+      );
+      console.timeEnd(city.name);
     }
   }
-  return queries;
 };
 
 module.exports = { checkCities };

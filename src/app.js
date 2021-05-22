@@ -69,9 +69,12 @@ const initializeApp = async (app) => {
     });
 
     cron.schedule("*/60 * * * *", async () => {
-      console.log("Writing city metadata...");
+      console.log("\n======Check Cities Cronjob======\n");
+      console.time("checkCities");
       await checkCities();
-      console.log("Done writing vity metadata!");
+      console.log("----------");
+      console.timeEnd("checkCities");
+      console.log("\n======DONE Check Cities Cronjob======\n");
     });
   }
 };
