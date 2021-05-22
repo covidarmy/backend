@@ -31,7 +31,6 @@ const checkCities = async () => {
       await City.findOneAndUpdate(
         {
           city: city.name,
-          totalContacts: cityObj.totalContacts,
         },
         cityObj,
         { upsert: true }
