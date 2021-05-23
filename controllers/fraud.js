@@ -68,3 +68,16 @@ exports.postFraud = async (req, res) => {
     res.status(500).send({ error: error.message });
   }
 };
+
+//TODO: Implement Fraud delete controller
+exports.deleteFraud = async (req, res) => {
+  try {
+    if (req.user) {
+      const { fraud_id } = req.query;
+    } else {
+      res.status(400).send({ error: "Unable to verify user" });
+    }
+  } catch (error) {
+    res.status(500).send({ error: error.message });
+  }
+};

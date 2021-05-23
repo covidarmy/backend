@@ -62,6 +62,20 @@ router.get("/contacts", auth, async (req, res) => {
  */
 router.post("/contacts", auth, contactController.postContact);
 
+router.put("/contacts", auth, contactController.putContact);
+
+router.delete("/contacts", auth, (req, res) => {
+  try {
+    if (!req.query.contact_id) {
+      res.status(400).send({ error: "Invalid contact_id" });
+    }
+    await Contact.deleteOne({ id: String(req.query.contact_id) });
+    res.sendStatus(204);
+  } catch (error) {
+    res.status(500).send({ error: error.message });
+  }
+});
+
 /**
  * @swagger
  * /volunteer/fraud/:
@@ -81,6 +95,9 @@ router.post("/contacts", auth, contactController.postContact);
  *                 description: A generic success response
  */
 router.post("/fraud", auth, fraudController.postFraud);
+
+//TODO: Implement Fraud delete controller
+router.delete("/fraud", auth, fraudController.deleteFraud);
 
 /**
  * @swagger
