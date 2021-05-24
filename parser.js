@@ -118,8 +118,8 @@ const parseContacts = (raw_text) => {
 };
 
 module.exports = {
-  resourceTypes,
-  categoriesObj,
+  normalize,
+  find,
   parseTweet,
   parseContacts,
   allCities,

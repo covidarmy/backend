@@ -8,6 +8,7 @@ const { admin } = require("../firebase-admin");
 
 const Contact = require("../models/Contact.schema");
 const Volunteer = require("../models/Volunteer.schema");
+const Fraud = require("../models/Fraud.schema");
 
 const contactController = require("../controllers/contact");
 const fraudController = require("../controllers/fraud");
@@ -64,7 +65,7 @@ router.post("/contacts", auth, contactController.postContact);
 
 router.put("/contacts", auth, contactController.putContact);
 
-router.delete("/contacts", auth, (req, res) => {
+router.delete("/contacts", auth, async (req, res) => {
   try {
     if (!req.query.contact_id) {
       res.status(400).send({ error: "Invalid contact_id" });
@@ -76,6 +77,23 @@ router.delete("/contacts", auth, (req, res) => {
   }
 });
 
+router.get("/fraud", auth, async (req, res) => {
+  try {
+    if (req.user) {
+      const userUid = req.user.uid;
+      let foundDocs = await Fraud.find({ reportedBy: userUid });
+
+      res.status(200).send(foundDocs);
+    } else if (req.vol_phone_no) {
+      const volPhoneNumber = req.vol_phone_no;
+      let foundDocs = await Fraud.find({ reportedBy: volPhoneNumber });
+
+      res.status(200).send(foundDocs);
+    }
+  } catch (error) {
+    res.status(500).send({ error: error.message });
+  }
+});
 /**
  * @swagger
  * /volunteer/fraud/:
