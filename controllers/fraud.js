@@ -19,7 +19,9 @@ exports.checkFraud = async (req, res) => {
   try {
     let { phone_no } = req.params;
 
-    phone_no = String(phone_no);
+    phone_no =
+      parsePhoneNumbers(normalize(String(phone_no)))[0] ||
+      res.status(401).send({ error: "invalid phone_no" });
 
     docCount = await Fraud.findOne({ phone_no: phone_no }).countDocuments();
 
