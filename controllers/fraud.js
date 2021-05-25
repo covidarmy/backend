@@ -29,14 +29,14 @@ exports.checkFraud = async (req, res) => {
     if (isNaN(phone_no)) {
       let parsedPhoneNo = parseDevanagariDigits(phone_no);
       if (parsedPhoneNo.length == 0) {
-        res.status(401).send({ error: "invalid phone_no" });
+        res.status(400).send({ error: "invalid phone_no" });
       }
       phone_no = parsedPhoneNo;
     }
 
     phone_no =
       parsePhoneNumbers(phone_no)[0] ||
-      res.status(401).send({ error: "invalid phone_no" });
+      res.status(400).send({ error: "invalid phone_no" });
 
     docCount = await Fraud.findOne({ phone_no: phone_no }).countDocuments();
 
@@ -65,14 +65,14 @@ exports.postFraud = async (req, res) => {
     if (isNaN(phone_no)) {
       let parsedPhoneNo = parseDevanagariDigits(phone_no);
       if (parsedPhoneNo.length == 0) {
-        res.status(401).send({ error: "invalid phone_no" });
+        res.status(400).send({ error: "invalid phone_no" });
       }
       phone_no = parsedPhoneNo;
     }
 
     phone_no =
       parsePhoneNumbers(phone_no)[0] ||
-      res.status(401).send({ error: "invalid phone_no" });
+      res.status(400).send({ error: "invalid phone_no" });
 
     if (req.user) {
       const user = req.user;

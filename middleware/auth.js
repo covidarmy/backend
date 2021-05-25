@@ -23,7 +23,7 @@ module.exports = async (req, res, next) => {
         }
       }
     } else {
-      return res.status(400).send({ errr: "Invalid cBotAuthToken" });
+      return res.status(401).send({ errr: "Invalid cBotAuthToken" });
     }
   } else {
     try {
@@ -32,7 +32,7 @@ module.exports = async (req, res, next) => {
         req.user = user;
         next();
       } else {
-        res.status(400).send({ message: "Unable to verify user." });
+        res.status(401).send({ message: "Unable to verify user." });
       }
     } catch {
       res.status(500).send({ message: "Unable to verify user." });

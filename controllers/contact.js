@@ -174,20 +174,20 @@ exports.postContact = async (req, res) => {
       } = req.body;
 
       if (!(reqCity || reqPhoneNo || reqResourceType)) {
-        res.status(401).send({ error: "Invalid request" });
+        res.status(400).send({ error: "Invalid request" });
       }
 
       const contact_no =
         parsePhoneNumbers(normalize(String(reqPhoneNo)))[0] ||
-        res.status(401).send({ error: "Invalid Phone Number" });
+        res.status(400).send({ error: "Invalid Phone Number" });
 
       const location = findLocation(String(reqCity).toLowerCase());
-      const city = location[0].city || res.status(401).send("Invalid City");
+      const city = location[0].city || res.status(400).send("Invalid City");
       const state = location[0].state || city;
 
       const resource_type =
         findResourceType(String(reqResourceType))[0] ||
-        res.status(401).send("Invalid Resource type");
+        res.status(400).send("Invalid Resource type");
       const category = categoriesObj[resource_type][0] || resource_type;
 
       const title = String(resource_type + " in " + city);
@@ -226,20 +226,20 @@ exports.putContact = async () => {
       } = req.body;
 
       if (!(reqCity || reqPhoneNo || reqResourceType)) {
-        res.status(401).send({ error: "Invalid request" });
+        res.status(400).send({ error: "Invalid request" });
       }
 
       const contact_no =
         parsePhoneNumbers(normalize(String(reqPhoneNo)))[0] ||
-        res.status(401).send({ error: "Invalid Phone Number" });
+        res.status(400).send({ error: "Invalid Phone Number" });
 
       const location = findLocation(String(reqCity).toLowerCase());
-      const city = location[0].city || res.status(401).send("Invalid City");
+      const city = location[0].city || res.status(400).send("Invalid City");
       const state = location[0].state || city;
 
       const resource_type =
         findResourceType(String(reqResourceType))[0] ||
-        res.status(401).send("Invalid Resource type");
+        res.status(400).send("Invalid Resource type");
       const category = categoriesObj[resource_type][0] || resource_type;
 
       const title = String(resource_type + " in " + city);
