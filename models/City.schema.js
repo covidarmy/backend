@@ -12,7 +12,7 @@ const schema = new mongoose.Schema(
     state: { type: String, required: true, enum: states },
     totalContacts: { type: Number, required: true, default: 0 },
 
-    resourceCount: { type: Mixed },
+    resourceCount: { type: mongoose.Mixed },
   },
   { timestamps: true }
 );
