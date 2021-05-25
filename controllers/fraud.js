@@ -1,6 +1,7 @@
 const Fraud = require("../models/Fraud.schema");
 
 const { parsePhoneNumbers, normalize } = require("../parser");
+const { parseDevanagariDigits } = require("../utils/parseDevanagari");
 
 exports.findAll = async (req, res) => {
   try {
@@ -19,8 +20,22 @@ exports.checkFraud = async (req, res) => {
   try {
     let { phone_no } = req.params;
 
+    if (!phone_no) {
+      res.status(400).send({ error: "phone_no not provided" });
+    }
+
+    phone_no = normalize(String(phone_no));
+
+    if (isNaN(phone_no)) {
+      let parsedPhoneNo = parseDevanagariDigits(phone_no);
+      if (parsedPhoneNo.length == 0) {
+        res.status(401).send({ error: "invalid phone_no" });
+      }
+      phone_no = parsedPhoneNo;
+    }
+
     phone_no =
-      parsePhoneNumbers(normalize(String(phone_no)))[0] ||
+      parsePhoneNumbers(phone_no)[0] ||
       res.status(401).send({ error: "invalid phone_no" });
 
     docCount = await Fraud.findOne({ phone_no: phone_no }).countDocuments();
@@ -40,12 +55,24 @@ exports.checkFraud = async (req, res) => {
 exports.postFraud = async (req, res) => {
   try {
     let { phone_no } = req.query;
+
     if (!phone_no) {
-      res.status(401).send({ error: "Invalid phone_no" });
+      res.status(400).send({ error: "phone_no not provided" });
     }
+
+    phone_no = normalize(String(phone_no));
+
+    if (isNaN(phone_no)) {
+      let parsedPhoneNo = parseDevanagariDigits(phone_no);
+      if (parsedPhoneNo.length == 0) {
+        res.status(401).send({ error: "invalid phone_no" });
+      }
+      phone_no = parsedPhoneNo;
+    }
+
     phone_no =
-      parsePhoneNumbers(normalize(String(phone_no)))[0] ||
-      res.status(401).send({ error: "Invalid phone_no" });
+      parsePhoneNumbers(phone_no)[0] ||
+      res.status(401).send({ error: "invalid phone_no" });
 
     if (req.user) {
       const user = req.user;
