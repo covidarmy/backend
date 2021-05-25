@@ -3,6 +3,7 @@ const Contact = require("../models/Contact.schema");
 const allCities = require("../data/newAllCities.json");
 const resources = require("../data/resources.json");
 const categoriesObj = require("../data/categories.json");
+const stateHelplines = require("../data/stateHelplines.json");
 
 const { rank } = require("../ranking_system/rank");
 const { isCooldownValid } = require("../utils/isCooldownValid");
@@ -39,7 +40,7 @@ exports.findAll = async (req, res) => {
       for (const state in allCities) {
         for (const city of allCities[state]) {
           if (city.keywords.includes(location)) {
-            query.$or = [{ city: city.name }, { state: city.name }];
+            query.$or = [{ city: city.name }, { state: state }];
           }
         }
       }
@@ -65,6 +66,13 @@ exports.findAll = async (req, res) => {
           error: `No contacts found for resource: ${resource}`,
         });
       }
+    }
+
+    if (query.resource_type === "Helpline") {
+      res.send({
+        state: query.$or[1].state,
+        helplines: stateHelplines[query.$or[1].state],
+      });
     }
 
     // do something with session_id here

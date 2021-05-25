@@ -32,7 +32,6 @@ const resourceQueries = {
   "Oxygen Cylinder": "(cylinder OR cylinders OR oxygen or O2)",
   "Oxygen Concentrator": "(concentrator OR concentrators OR bipap)",
   "Covid Test": "covid test",
-  Helpline: "(helpline OR war room OR warroom)",
 };
 
 const fetchSearchResults = async (newestID, resource) => {
