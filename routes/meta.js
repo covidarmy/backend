@@ -76,13 +76,11 @@ router.get("/resources", async (req, res) => {
  */
 router.get("/checkCity", async (req, res) => {
   try {
-    let { city } = req.query;
-
-    if (!city) {
+    if (!req.query.city) {
       return res.status(400).send({ error: "City not provided." });
     }
 
-    let reqCity = String(city).toLowerCase();
+    let reqCity = String(req.query.city).toLowerCase();
 
     const city = await City.findOne({ city: reqCity });
 
