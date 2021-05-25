@@ -69,10 +69,12 @@ exports.findAll = async (req, res) => {
     }
 
     if (query.resource_type === "Helpline") {
-      res.send({
-        state: query.$or[1].state,
-        helplines: stateHelplines[query.$or[1].state],
-      });
+      res.send([
+        {
+          state: query.$or[1].state,
+          contact_no: stateHelplines[query.$or[1].state],
+        },
+      ]);
     }
 
     // do something with session_id here
