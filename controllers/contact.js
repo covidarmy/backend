@@ -1,4 +1,5 @@
 const Contact = require("../models/Contact.schema");
+const City = require("../models/City.schema");
 
 const allCities = require("../data/newAllCities.json");
 const resources = require("../data/resources.json");
@@ -67,6 +68,10 @@ exports.findAll = async (req, res) => {
         });
       }
     }
+
+    const cityDoc = await City.findOne({ city: query.$or[0].city });
+    cityDoc.totalRequests = cityDoc.totalRequests + 1;
+    await cityDoc.save();
 
     if (query.resource_type === "Helpline") {
       res.send([
