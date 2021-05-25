@@ -1,6 +1,5 @@
 const express = require("express");
 
-const Contact = require("../models/Contact.schema");
 const City = require("../models/City.schema");
 
 const allCities = require("../data/newAllCities.json");
@@ -82,13 +81,17 @@ router.get("/checkCity", async (req, res) => {
 
     let reqCity = String(req.query.city).toLowerCase();
 
-    const city = await City.findOne({ city: reqCity });
-
-    if (city) {
-      return res.send(city);
-    } else {
-      return res.send({ found: false });
+    for (const state in allCities) {
+      for (const city of allCities[state]) {
+        if (reqCity == city.name.toLowerCase() || reqCity == city.hindiName) {
+          const cityDoc = await City.findOne({ city: city.name });
+          if (cityDoc) {
+            return res.send(cityDoc);
+          }
+        }
+      }
     }
+    return res.send({ found: false });
   } catch (error) {
     res.status(500).send({ error: error.message });
   }
@@ -111,19 +114,27 @@ router.get("/checkCity", async (req, res) => {
  */
 router.get("/emptyCities/:state", async (req, res) => {
   try {
-    const state = req.params?.state;
+    let reqState = req.params?.state;
 
-    if (!state) {
+    if (!reqState) {
       return res.status(400).send({ error: "State not provided." });
     }
 
-    const cities = City.find({ state: state, totalContacts: { $lt: 10 } });
+    reqState = String(reqState).toLowerCase();
 
-    if (cities.length > 0) {
-      res.send(cities);
-    } else {
-      res.status(400).send({ error: `No cities found for state: ${state}` });
+    for (const state in allCities) {
+      if (reqState.toLowerCase() == state.toLowerCase()) {
+        const cities = await City.find({
+          state: state,
+          totalContacts: { $lt: 10 },
+        });
+
+        if (cities.length > 0) {
+          res.send(cities);
+        }
+      }
     }
+    res.status(400).send({ error: `No cities found for state: ${state}` });
   } catch (error) {
     res.status(500).send({ errro: error.message });
   }
