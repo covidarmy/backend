@@ -180,6 +180,10 @@ router.get("/contacts/:location", contactController.findAll);
  *               type: string
  *               description: The name of the resource to query.
  *             - in: query
+ *               name: includeState
+ *               type: boolean
+ *               description: When set to true, results contain contacts from the entire state instead of just the city specified
+ *             - in: query
  *               name: limit
  *               type: integer
  *               description: max number of contacts to return

@@ -22,7 +22,7 @@ const {
 // Retrive all Contacts
 exports.findAll = async (req, res) => {
   try {
-    let { limit = 20, offset = 0, session_id } = req.query;
+    let { limit = 20, offset = 0, session_id, includeState } = req.query;
     let { location, resource } = req.params;
 
     // analytics.track("Conatcts endpoint hit",{
@@ -36,12 +36,20 @@ exports.findAll = async (req, res) => {
     offset = Number(offset);
 
     const query = {};
+    let reqState;
+    let reqCity;
 
     if (location) {
       for (const state in allCities) {
         for (const city of allCities[state]) {
           if (city.keywords.includes(location)) {
-            query.$or = [{ city: city.name }, { state: state }];
+            reqCity = city.name;
+            reqState = state;
+            if (includeState) {
+              query.$or = [{ city: city.name }, { state: state }];
+            } else {
+              query.$or = [{ city: city.name }, { state: city.name }];
+            }
           }
         }
       }
@@ -69,15 +77,15 @@ exports.findAll = async (req, res) => {
       }
     }
 
-    const cityDoc = await City.findOne({ city: query.$or[0].city });
+    const cityDoc = await City.findOne({ city: reqCity });
     cityDoc.totalRequests = cityDoc.totalRequests + 1;
     await cityDoc.save();
 
     if (query.resource_type === "Helpline") {
       res.send([
         {
-          state: query.$or[1].state,
-          contact_no: stateHelplines[query.$or[1].state],
+          state: reqState,
+          contact_no: stateHelplines[reqState],
         },
       ]);
     }
