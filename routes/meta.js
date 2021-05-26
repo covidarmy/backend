@@ -83,7 +83,7 @@ router.get("/checkCity", async (req, res) => {
 
     for (const state in allCities) {
       for (const city of allCities[state]) {
-        if (reqCity == city.name.toLowerCase() || reqCity == city.hindiName) {
+        if (city.keywords.includes(reqCity) || reqCity == city.hindiName) {
           const cityDoc = await City.findOne({ city: city.name });
           if (cityDoc) {
             return res.send(cityDoc);
