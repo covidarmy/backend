@@ -1261,6 +1261,12 @@
       "hindiName": "मर्मागाओ"
     },
     {
+      "name": "Goa",
+      "keywords": ["goa"],
+      "top": false,
+      "hindiName": "गोवा"
+    },
+    {
       "name": "Panaji",
       "keywords": ["panaji"],
       "top": false,
