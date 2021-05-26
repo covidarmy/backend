@@ -85,12 +85,9 @@ if (process.env.NODE_ENV === "production") {
     console.log("Done deleting fraud Tweets!");
   });
 
-  cron.schedule("*/30 * * * *", async () => {
+  cron.schedule("*/60 * * * *", async () => {
     console.log("\n======Check Cities Cronjob======\n");
-    console.time("checkCitiesCronjob");
     await checkCities();
-    console.log("----------");
-    console.timeEnd("checkCitiesCronjob");
     console.log("\n======DONE Check Cities Cronjob======\n");
   });
 }
