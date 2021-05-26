@@ -6,8 +6,9 @@ const { parsePhoneNumbers, normalize } = require("../parser");
  */
 module.exports = async (req, res, next) => {
   const token = req.headers.authorization;
-  if (req.headers.cBotAuth) {
-    if (req.headers.cBotAuth == process.env.BOT_AUTH_TOKEN) {
+  const cBotAuth = req.query.cBotAuth;
+  if (cBotAuth) {
+    if (cBotAuth == process.env.BOT_AUTH_TOKEN) {
       if (req.query.vol_phone_no) {
         let parsedPhoneNo = parsePhoneNumbers(
           normalize(String(req.query.vol_phone_no))

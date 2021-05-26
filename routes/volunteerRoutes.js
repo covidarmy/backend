@@ -140,7 +140,7 @@ router.delete("/contacts", auth, async (req, res) => {
  *               name: authorization
  *               type: string
  *               description: Firebase auth token
- *             - in: header
+ *             - in: query
  *               name: cBotAuth
  *               type: string
  *               description: cBot Auth Token
@@ -181,7 +181,7 @@ router.get("/fraud", auth, async (req, res) => {
  *               name: authorization
  *               type: string
  *               description: Firebase auth token
- *             - in: header
+ *             - in: query
  *               name: cBotAuth
  *               type: string
  *               description: cBot Auth Token
@@ -209,7 +209,7 @@ router.post("/fraud", auth, fraudController.postFraud);
  *               name: authorization
  *               type: string
  *               description: Firebase auth token
- *             - in: header
+ *             - in: query
  *               name: cBotAuth
  *               type: string
  *               description: cBot Auth Token
