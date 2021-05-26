@@ -22,17 +22,16 @@ const resourceQueries = {
   "Home ICU": "(home icu OR home icus)",
   "ICU Bed": "(icu OR OR icu bed OR icu beds)",
   "Oxygen Bed": "(oxygen bed OR oxygen beds)",
-  Remdesivir: "(remdesivir OR remdesvir)",
+  /*Remdesivir: "(remdesivir OR remdesvir)",*/
   Amphotericin: "(amphotericin OR amphotericin b)",
   Favipiravir: "(Favipiravir OR FabiFlu)",
   Tocilizumab: "(tocilizumab OR toclizumab)",
-  Plasma: "(plasma)",
+  /*Plasma: "(plasma)",*/
   Food: "(food OR meal OR meals OR tiffin)",
   Ambulance: "ambulance",
   "Oxygen Cylinder": "(cylinder OR cylinders OR oxygen or O2)",
   "Oxygen Concentrator": "(concentrator OR concentrators OR bipap)",
   "Covid Test": "covid test",
-  Helpline: "(helpline OR war room OR warroom)",
 };
 
 const fetchSearchResults = async (newestID, resource) => {
@@ -224,7 +223,7 @@ const fetchTweets = async () => {
   console.log("Tweets fetched from API:", total_no_of_tweets_fetched);
   console.log("Tweets discarded by filters:", total_no_of_discarded_tweets);
   console.log("Tweets discarded by fraud detection:", total_no_of_fraud_tweets);
-  console.log("Total number of tweets to be written in DB:", tweets.length);
+  console.log("Total number of tweets TO BE written in DB:", tweets.length);
   console.log();
 
   // analytics.track("fetch tweet cycle summary",{
@@ -239,7 +238,9 @@ const fetchTweets = async () => {
 
 const saveTweets = async (tweets) => {
   let promises = [];
-
+  let nMatch = 0,
+    nMod = 0,
+    nInsert = 0;
   for (let tweet of tweets) {
     let query;
 
@@ -251,25 +252,42 @@ const saveTweets = async (tweets) => {
       query = { text: tweet.text };
     }
 
-    promises.push(Tweet.findOneAndUpdate(query, tweet, { upsert: true }));
+    promises.push(Tweet.updateOne(query, tweet, { upsert: true }));
+    //console.log("🚀 ~ file: fetchTweets.js ~ line 260 ~ saveTweets ~ tweet", tweet)
 
     // Send requests to the database in batches of 20
     // Directly using await instead of this makes the function 20 times slower
 
     if (promises.length == 20) {
-      await Promise.all(promises);
+      await Promise.all(promises).then((result) => {
+        result.map(({ n, nModified }) => {
+          nMatch += n;
+          nMod += nModified;
+          n == 0 ? nInsert++ : (nInsert += 0);
+          return { n, nModified };
+        });
+      });
       promises = [];
     }
   }
-  await Promise.all(promises);
-  console.log(`Saved ${promises.length} tweets to DB`);
+  await Promise.all(promises).then((result) => {
+    result.map(({ n, nModified }) => {
+      nMatch += n;
+      nMod += nModified;
+      n == 0 ? nInsert++ : (nInsert += 0);
+      return { n, nModified };
+    });
+  });
+
+  console.log(`${nMatch} tweets matched update filter`);
+  console.log(`${nMod} tweets updated`);
+  console.log(`Inserted ${nInsert} new tweets to DB`);
+
   // analytics.track("tweets object saved to db",{qty:promises.length})
 };
 
 const buildContacts = (tweets) => {
   let contacts = [];
-
-  console.log("Building contacts from tweets...");
 
   for (const tweet of tweets) {
     const contacts_ = buildContactObjects(tweet);
@@ -281,10 +299,12 @@ const buildContacts = (tweets) => {
 
 const saveContacts = async (contacts) => {
   let promises = [];
-
+  let nMatch = 0,
+    nMod = 0,
+    nInsert = 0;
   for (const contact of contacts) {
     promises.push(
-      Contact.findOneAndUpdate({ contact_no: contact.contact_no }, contact, {
+      Contact.updateOne({ contact_no: contact.contact_no }, contact, {
         upsert: true,
       })
     );
@@ -293,13 +313,29 @@ const saveContacts = async (contacts) => {
     // Directly using await instead of this makes the function 20 times slower
 
     if (promises.length == 20) {
-      await Promise.all(promises);
+      await Promise.all(promises).then((result) => {
+        result.map(({ n, nModified }) => {
+          nMatch += n;
+          nMod += nModified;
+          n == 0 ? nInsert++ : (nInsert += 0);
+          return { n, nModified };
+        });
+      });
       promises = [];
     }
   }
-  await Promise.all(promises);
-
-  console.log(`Saved ${promises.length} contacts to DB`);
+  await Promise.all(promises).then((result) => {
+    result.map(({ n, nModified }) => {
+      nMatch += n;
+      nMod += nModified;
+      n == 0 ? nInsert++ : (nInsert += 0);
+      return { n, nModified };
+    });
+  });
+  console.log(`${nMatch} contacts matched update filter`);
+  console.log(`${nMod} contacts updated`);
+  console.log(`Inserted ${nInsert} new contacts to DB`);
+  //console.log(`Saved ${promises.length} contacts to DB`);
   // analytics.track("contacts object saved to db",{qty:promises.length})
 };
 
@@ -307,10 +343,7 @@ const fetchAndSaveTweets = async () => {
   const tweets = await fetchTweets();
 
   const contacts = buildContacts(tweets);
-  console.log(
-    "Total number of contacts built in routine fetch cycle:",
-    contacts.length
-  );
+  console.log("Total number of contacts built:", contacts.length);
 
   // analytics.track("routine fetch cycle contacts built",{
   //     no_of_tweets_fetched:tweets.length,

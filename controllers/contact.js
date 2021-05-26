@@ -1,8 +1,10 @@
 const Contact = require("../models/Contact.schema");
+const City = require("../models/City.schema");
 
 const allCities = require("../data/newAllCities.json");
 const resources = require("../data/resources.json");
 const categoriesObj = require("../data/categories.json");
+const stateHelplines = require("../data/stateHelplines.json");
 
 const { rank } = require("../ranking_system/rank");
 const { isCooldownValid } = require("../utils/isCooldownValid");
@@ -20,7 +22,7 @@ const {
 // Retrive all Contacts
 exports.findAll = async (req, res) => {
   try {
-    let { limit = 20, offset = 0, session_id } = req.query;
+    let { limit = 20, offset = 0, session_id, includeState } = req.query;
     let { location, resource } = req.params;
 
     // analytics.track("Conatcts endpoint hit",{
@@ -34,12 +36,20 @@ exports.findAll = async (req, res) => {
     offset = Number(offset);
 
     const query = {};
+    let reqState;
+    let reqCity;
 
     if (location) {
       for (const state in allCities) {
         for (const city of allCities[state]) {
           if (city.keywords.includes(location)) {
-            query.$or = [{ city: city.name }, { state: city.name }];
+            reqCity = city.name;
+            reqState = state;
+            if (includeState) {
+              query.$or = [{ city: city.name }, { state: state }];
+            } else {
+              query.$or = [{ city: city.name }, { state: city.name }];
+            }
           }
         }
       }
@@ -65,6 +75,19 @@ exports.findAll = async (req, res) => {
           error: `No contacts found for resource: ${resource}`,
         });
       }
+    }
+
+    const cityDoc = await City.findOne({ city: reqCity });
+    cityDoc.totalRequests = cityDoc.totalRequests + 1;
+    await cityDoc.save();
+
+    if (query.resource_type === "Helpline") {
+      res.send([
+        {
+          state: reqState,
+          contact_no: stateHelplines[reqState],
+        },
+      ]);
     }
 
     // do something with session_id here
@@ -174,20 +197,20 @@ exports.postContact = async (req, res) => {
       } = req.body;
 
       if (!(reqCity || reqPhoneNo || reqResourceType)) {
-        res.status(401).send({ error: "Invalid request" });
+        res.status(400).send({ error: "Invalid request" });
       }
 
       const contact_no =
         parsePhoneNumbers(normalize(String(reqPhoneNo)))[0] ||
-        res.status(401).send({ error: "Invalid Phone Number" });
+        res.status(400).send({ error: "Invalid Phone Number" });
 
       const location = findLocation(String(reqCity).toLowerCase());
-      const city = location[0].city || res.status(401).send("Invalid City");
+      const city = location[0].city || res.status(400).send("Invalid City");
       const state = location[0].state || city;
 
       const resource_type =
         findResourceType(String(reqResourceType))[0] ||
-        res.status(401).send("Invalid Resource type");
+        res.status(400).send("Invalid Resource type");
       const category = categoriesObj[resource_type][0] || resource_type;
 
       const title = String(resource_type + " in " + city);
@@ -210,6 +233,56 @@ exports.postContact = async (req, res) => {
     }
   } catch (error) {
     console.error(error);
+    res.status(500).send({ error: error.message });
+  }
+};
+
+exports.putContact = async () => {
+  try {
+    if (req.user) {
+      const { contact_id } = req.query;
+
+      const {
+        city: reqCity,
+        phone_no: reqPhoneNo,
+        resource_type: reqResourceType,
+      } = req.body;
+
+      if (!(reqCity || reqPhoneNo || reqResourceType)) {
+        res.status(400).send({ error: "Invalid request" });
+      }
+
+      const contact_no =
+        parsePhoneNumbers(normalize(String(reqPhoneNo)))[0] ||
+        res.status(400).send({ error: "Invalid Phone Number" });
+
+      const location = findLocation(String(reqCity).toLowerCase());
+      const city = location[0].city || res.status(400).send("Invalid City");
+      const state = location[0].state || city;
+
+      const resource_type =
+        findResourceType(String(reqResourceType))[0] ||
+        res.status(400).send("Invalid Resource type");
+      const category = categoriesObj[resource_type][0] || resource_type;
+
+      const title = String(resource_type + " in " + city);
+
+      const contactObj = {
+        contact_no,
+        city,
+        state,
+        resource_type,
+        category,
+        title,
+        userId: req.user.uid,
+      };
+
+      await Contact.findOneAndUpdate({ id: String(contact_id) }, contactObj);
+      res.sendStatus(204);
+    } else {
+      res.status(400).send({ error: "Unable to verify user." });
+    }
+  } catch (error) {
     res.status(500).send({ error: error.message });
   }
 };

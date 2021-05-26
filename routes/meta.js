@@ -1,6 +1,6 @@
 const express = require("express");
 
-const Contact = require("../models/Contact.schema");
+const City = require("../models/City.schema");
 
 const allCities = require("../data/newAllCities.json");
 const resources = require("../data/resources.json");
@@ -70,81 +70,74 @@ router.get("/resources", async (req, res) => {
  *               description: name of city to verify
  *         responses:
  *             '200':
- *                 description: A response object with `found` boolean field, name of the city and number of contacts associated with the found city
+ *                 description: A response object the name of the city and number of contacts associated with the found city
  *
  */
 router.get("/checkCity", async (req, res) => {
   try {
-    let { city } = req.query;
-
-    if (!city) {
+    if (!req.query.city) {
       return res.status(400).send({ error: "City not provided." });
     }
 
-    let reqCity = city.toLowerCase();
-
-    let resObj = {};
+    let reqCity = String(req.query.city).toLowerCase();
 
     for (const state in allCities) {
       for (const city of allCities[state]) {
         if (reqCity == city.name.toLowerCase() || reqCity == city.hindiName) {
-          resObj.found = true;
-          resObj.name = city.name;
-          resObj.totalContacts = Number(
-            await Contact.countDocuments({
-              city: city.name,
-            })
-          );
-
-          for (const resource in resources) {
-            resObj[resource] = await Contact.countDocuments({
-              resource_type: resource,
-              city: city.name,
-              $or: [
-                { status: "ACTIVE" },
-                { status: "S_COOLDOWN" },
-                { status: null },
-              ],
-            });
+          const cityDoc = await City.findOne({ city: city.name });
+          if (cityDoc) {
+            return res.send(cityDoc);
           }
-
-          return res.send(resObj);
         }
       }
     }
-
     return res.send({ found: false });
   } catch (error) {
     res.status(500).send({ error: error.message });
   }
 });
 
-//Works but is incredibly slow, optmize before deploying...
-router.get("/emptyCityLeads/:state", async (req, res) => {
-  const { state } = req.params;
-  let responseArr = [];
-  let queries = [];
+/**
+ * @swagger
+ * /api/emptyCities/{state}:
+ *     get:
+ *         description: Get a list of cities with low totalContacts
+ *         parameters:
+ *             - in: path
+ *               name: state
+ *               type: string
+ *               description: state to get cities in
+ *         responses:
+ *             '200':
+ *                 description: An array of citiy objects with the the total number of leads and number of leads for each resource type
+ *
+ */
+router.get("/emptyCities/:state", async (req, res) => {
+  try {
+    let reqState = req.params?.state;
 
-  //Builds queries for all city + resource comobos for all cities in the provided state
-  for (const city of allCities[state]) {
-    for (const resource in resources) {
-      queries.push({ city: city.name, resource_type: resource });
+    if (!reqState) {
+      return res.status(400).send({ error: "State not provided." });
     }
-  }
 
-  //Run db queries
-  for (const query of queries) {
-    //checks if atleast one document exists with the given city+resource
-    //this approach is preferred because `countDocuments` is too slow and `estimatedDocumentCount` is wildly inaccurate
-    const doc = await Contact.findOne(query);
-    if (!doc) {
-      responseArr.push({ city: query.city, resource: query.resource_type });
-      console.log("no docs found");
-    } else {
-      console.log("found docs");
+    reqState = String(reqState).toLowerCase();
+
+    for (const state in allCities) {
+      if (reqState.toLowerCase() == state.toLowerCase()) {
+        const cities = await City.find({
+          state: state,
+          totalContacts: { $lt: 10 },
+        });
+
+        if (cities.length > 0) {
+          res.send(cities);
+        }
+      }
     }
+    res.status(400).send({ error: `No cities found for state: ${state}` });
+  } catch (error) {
+    res.status(500).send({ errro: error.message });
   }
-  return responseArr;
 });
 
 module.exports = router;

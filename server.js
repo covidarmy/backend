@@ -48,11 +48,10 @@ const apiRoutes = require("./routes/apiRoutes");
 const volunteerRoutes = require("./routes/volunteerRoutes");
 const meta = require("./routes/meta");
 
-//Import the fetchTweets script
+//Import scripts
 const { fetchAndSaveTweets } = require("./fetchTweets");
-
-//Import the deleteTweets script
-const { deleteTweets, deleteFraud } = require("./deleteTweets");
+const { deleteFraud } = require("./deleteTweets");
+const { checkCities } = require("./checkCities");
 
 //Express options
 app.use(morgan(process.env.NODE_ENV == "production" ? "common" : "dev"));
@@ -70,6 +69,7 @@ app.use("/volunteer", volunteerRoutes);
 app.use("/api", meta);
 app.use("/", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
+//Schedulers
 if (process.env.NODE_ENV === "production") {
   //Schedule task to run every minute.
   cron.schedule("*/1 * * * *", async () => {
@@ -84,15 +84,16 @@ if (process.env.NODE_ENV === "production") {
     await deleteFraud();
     console.log("Done deleting fraud Tweets!");
   });
-}
 
-//TODO
-//Schedule task to run every n minutes.
-// cron.schedule("*/5 * * * *", async () => {
-//   console.log("CLEANING UP DD...");
-//   await deleteTweets();
-//   console.log("Done Cleaning!");
-// });
+  cron.schedule("*/30 * * * *", async () => {
+    console.log("\n======Check Cities Cronjob======\n");
+    console.time("checkCities");
+    await checkCities();
+    console.log("----------");
+    console.timeEnd("checkCities");
+    console.log("\n======DONE Check Cities Cronjob======\n");
+  });
+}
 
 //Start Expres Server
 const PORT = process.env.PORT || 4000;

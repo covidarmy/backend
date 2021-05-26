@@ -8,6 +8,7 @@ const { admin } = require("../firebase-admin");
 
 const Contact = require("../models/Contact.schema");
 const Volunteer = require("../models/Volunteer.schema");
+const Fraud = require("../models/Fraud.schema");
 
 const contactController = require("../controllers/contact");
 const fraudController = require("../controllers/fraud");
@@ -64,6 +65,113 @@ router.post("/contacts", auth, contactController.postContact);
 
 /**
  * @swagger
+ * /volunteer/contacts/:
+ *     put:
+ *         summary: Update a contact in the database
+ *         description: Update a contact in the database
+ *         parameters:
+ *             - in: header
+ *               name: authorization
+ *               type: string
+ *               description: Firebase auth token
+ *             - in: query
+ *               name: contact_id
+ *               type: string
+ *               description: ID of the contact to update
+ *             - in: body
+ *               name: city
+ *               type: string
+ *               description: Name of the city your contact is based in
+ *             - in: body
+ *               name: phone_no
+ *               type: string
+ *               description: Phone number of the contact
+ *             - in: body
+ *               name: resource_type
+ *               type: string
+ *               description: |
+ *                   Type of resource the contact is providing:
+ *                   Only resoures from `/api/resources` are valid
+ *         responses:
+ *             204:
+ *                 description: Generic success response
+ */
+router.put("/contacts", auth, contactController.putContact);
+
+/**
+ * @swagger
+ * /volunteer/contacts/:
+ *     delete:
+ *         summary: Delete a contact from the database
+ *         description: Delete a contact from the database
+ *         parameters:
+ *             - in: header
+ *               name: authorization
+ *               type: string
+ *               description: Firebase auth token
+ *             - in: query
+ *               name: contact_id
+ *               type: string
+ *               description: ID of the contact to delete
+ *         responses:
+ *             204:
+ *                 description: Generic success response
+ */
+router.delete("/contacts", auth, async (req, res) => {
+  try {
+    if (!req.query.contact_id) {
+      res.status(400).send({ error: "Invalid contact_id" });
+    }
+    await Contact.deleteOne({ id: String(req.query.contact_id) });
+    res.sendStatus(204);
+  } catch (error) {
+    res.status(500).send({ error: error.message });
+  }
+});
+
+/**
+ * @swagger
+ * /volunteer/fraud/:
+ *     get:
+ *         summary: Get all contacts submitted as a fraud by a volunteer
+ *         description: Get all contacts submitted as a fraud by a volunteer
+ *         parameters:
+ *             - in: header
+ *               name: authorization
+ *               type: string
+ *               description: Firebase auth token
+ *             - in: header
+ *               name: cBotAuth
+ *               type: string
+ *               description: cBot Auth Token
+ *             - in: query
+ *               name: vol_phone_no
+ *               type: string
+ *               description: Volunteer Phone No
+ *         responses:
+ *             200:
+ *                 description: An array of all fraud numbers reported by that volunteer
+ */
+router.get("/fraud", auth, async (req, res) => {
+  try {
+    if (req.user) {
+      const userUid = req.user.uid;
+      let foundDocs = await Fraud.find({ reportedBy: userUid });
+
+      res.status(200).send(foundDocs);
+    } else if (req.vol_phone_no) {
+      const volPhoneNumber = req.vol_phone_no;
+      let foundDocs = await Fraud.find({ reportedBy: volPhoneNumber });
+
+      res.status(200).send(foundDocs);
+    }
+  } catch (error) {
+    res.status(500).send({ error: error.message });
+  }
+});
+
+/**
+ * @swagger
  * /volunteer/fraud/:
  *     post:
  *         summary: Add a number as fraudulent in our database
@@ -73,6 +181,14 @@ router.post("/contacts", auth, contactController.postContact);
  *               name: authorization
  *               type: string
  *               description: Firebase auth token
+ *             - in: header
+ *               name: cBotAuth
+ *               type: string
+ *               description: cBot Auth Token
+ *             - in: query
+ *               name: vol_phone_no
+ *               type: string
+ *               description: Volunteer Phone No
  *             - in: query
  *               name: phone_no
  *               type: string
@@ -81,6 +197,35 @@ router.post("/contacts", auth, contactController.postContact);
  *                 description: A generic success response
  */
 router.post("/fraud", auth, fraudController.postFraud);
+
+/**
+ * @swagger
+ * /volunteer/fraud/:
+ *     delete:
+ *         summary: Remove a number as fraudulent in our database
+ *         description: Remove a number as fraudulent in our database
+ *         parameters:
+ *             - in: header
+ *               name: authorization
+ *               type: string
+ *               description: Firebase auth token
+ *             - in: header
+ *               name: cBotAuth
+ *               type: string
+ *               description: cBot Auth Token
+ *             - in: query
+ *               name: vol_phone_no
+ *               type: string
+ *               description: Volunteer Phone No
+ *             - in: query
+ *               name: fraud_id
+ *               type: string
+ *               description: Id of the fraud entity to delete
+ *         responses:
+ *             201:
+ *                 description: A generic success response
+ */
+router.delete("/fraud", auth, fraudController.deleteFraud);
 
 /**
  * @swagger
