@@ -71,24 +71,25 @@ app.use("/", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
 //Schedulers
 if (process.env.NODE_ENV === "production") {
-  //Schedule task to run every minute.
+  //Check Cities every hr
+  cron.schedule("*/60 * * * *", async () => {
+    console.log("\n======Check Cities Cronjob======\n");
+    await checkCities();
+    console.log("\n======DONE Check Cities Cronjob======\n");
+  });
+
+  //Fetch new tweets every minute.
   cron.schedule("*/1 * * * *", async () => {
     console.log("Fetching Tweets...");
     await fetchAndSaveTweets();
     console.log("Done Fetching Tweets!");
   });
 
-  //Schedule task to run every hr.
+  //Delete fraud tweets every hr.
   cron.schedule("*/60 * * * *", async () => {
     console.log("Deleting fraud Tweets...");
     await deleteFraud();
     console.log("Done deleting fraud Tweets!");
-  });
-
-  cron.schedule("*/60 * * * *", async () => {
-    console.log("\n======Check Cities Cronjob======\n");
-    await checkCities();
-    console.log("\n======DONE Check Cities Cronjob======\n");
   });
 }
 
