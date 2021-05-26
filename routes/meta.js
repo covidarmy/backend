@@ -86,7 +86,16 @@ router.get("/checkCity", async (req, res) => {
         if (city.keywords.includes(reqCity) || reqCity == city.hindiName) {
           const cityDoc = await City.findOne({ city: city.name });
           if (cityDoc) {
-            return res.send({ found: true, cityDoc });
+            let resObj = {
+              found: true,
+              name: cityDoc.city,
+              totalContacts: cityDoc.totalContacts,
+            };
+
+            Object.keys(cityDoc.resourceCount).map((res) => {
+              resObj[res] = cityDoc.resourceCount[res];
+            });
+            return res.send(resObj);
           }
         }
       }
