@@ -87,10 +87,10 @@ if (process.env.NODE_ENV === "production") {
 
   cron.schedule("*/30 * * * *", async () => {
     console.log("\n======Check Cities Cronjob======\n");
-    console.time("checkCities");
+    console.time("checkCitiesCronjob");
     await checkCities();
     console.log("----------");
-    console.timeEnd("checkCities");
+    console.timeEnd("checkCitiesCronjob");
     console.log("\n======DONE Check Cities Cronjob======\n");
   });
 }
