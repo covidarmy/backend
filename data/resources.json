@@ -10,6 +10,5 @@
   "Ambulance": ["ambulance"],
   "Oxygen Cylinder": ["cylinder", "oxygen", "o2", "oxygencylinder"],
   "Oxygen Concentrator": ["concentrator", "oxygenconcentrator"],
-  "Covid Test": ["covidtest"],
-  "Helpline": ["helpline", "warroom"]
+  "Covid Test": ["covidtest"]
 }

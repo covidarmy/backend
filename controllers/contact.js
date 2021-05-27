@@ -61,6 +61,16 @@ exports.findAll = async (req, res) => {
       }
     }
 
+    if (resource === "helpline" || resource === "warroom") {
+      res.send([
+        {
+          state: reqState,
+          city: reqCity,
+          contact_no: stateHelplines[reqState],
+        },
+      ]);
+    }
+
     if (resource) {
       for (let res in resources) {
         const keywords = resources[res];
@@ -88,15 +98,6 @@ exports.findAll = async (req, res) => {
       cityDoc.resourceCount[query.resource_type].totalRequests + 1;
 
     await cityDoc.save();
-
-    if (query.resource_type === "Helpline") {
-      res.send([
-        {
-          state: reqState,
-          contact_no: stateHelplines[reqState],
-        },
-      ]);
-    }
 
     // do something with session_id here
 
