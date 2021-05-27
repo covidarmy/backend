@@ -138,12 +138,16 @@ router.get("/emptyCities/:state", async (req, res) => {
           totalContacts: { $lt: 10 },
         });
 
-        if (cities.length > 0) {
+        if (cities.length == 0) {
+          return res
+            .status(404)
+            .send({ error: `No Empty cities found for state: ${state}` });
+        } else {
           res.send(cities);
         }
       }
     }
-    res.status(400).send({ error: `No cities found for state: ${state}` });
+    res.status(400).send({ error: "Invalid State" });
   } catch (error) {
     res.status(500).send({ error: error.message });
   }
