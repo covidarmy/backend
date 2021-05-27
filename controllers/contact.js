@@ -97,6 +97,8 @@ exports.findAll = async (req, res) => {
     cityDoc.resourceCount[query.resource_type].totalRequests =
       cityDoc.resourceCount[query.resource_type].totalRequests + 1;
 
+    cityDoc.markModified(`resourceCount.${query.resource_type}.totalRequests`);
+
     await cityDoc.save();
 
     // do something with session_id here
