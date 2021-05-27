@@ -89,7 +89,10 @@ exports.postFraud = async (req, res) => {
         if (fraud.source === "script") {
           fraud.source = "volunteer";
         }
-        fraud.reportedBy.push(user.uid);
+
+        if (!fraud.reportedBy.includes(user.uid)) {
+          fraud.reportedBy.push(user.uid);
+        }
 
         if (!fraud.verified) {
           if (fraud.reportedBy.length > 2) {
@@ -112,10 +115,12 @@ exports.postFraud = async (req, res) => {
           reportedBy: [volPhoneNumber],
         }).save();
       } else {
-        if (fraud.source === "script") {
+        if (!fraud.source || fraud.source === "script") {
           fraud.source = "volunteer";
         }
-        fraud.reportedBy.push(volPhoneNumber);
+        if (!fraud.reportedBy.includes(volPhoneNumber)) {
+          fraud.reportedBy.push(volPhoneNumber);
+        }
 
         if (!fraud.verified) {
           if (fraud.reportedBy.length > 2) {
