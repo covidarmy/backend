@@ -43,20 +43,29 @@ router.get("/contacts", auth, async (req, res) => {
  *               name: authorization
  *               type: string
  *               description: Firebase auth token
+ *               required: true
  *             - in: body
  *               name: city
  *               type: string
  *               description: Name of the city your contact is based in
+ *               required: true
  *             - in: body
  *               name: phone_no
  *               type: string
  *               description: Phone number of the contact
+ *               required: true
  *             - in: body
  *               name: resource_type
  *               type: string
  *               description: |
  *                   Type of resource the contact is providing:
  *                   Only resoures from `/api/resources` are valid
+ *               required: true
+ *             - in: body
+ *               name: title
+ *               type: string
+ *               description: Title of the contact
+ *               required: false
  *         responses:
  *             201:
  *                 description: Generic success response

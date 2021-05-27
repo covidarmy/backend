@@ -202,6 +202,7 @@ exports.postContact = async (req, res) => {
         city: reqCity,
         phone_no: reqPhoneNo,
         resource_type: reqResourceType,
+        title: reqTitle,
       } = req.body;
 
       if (!(reqCity || reqPhoneNo || reqResourceType)) {
@@ -221,7 +222,9 @@ exports.postContact = async (req, res) => {
         res.status(400).send("Invalid Resource type");
       const category = categoriesObj[resource_type][0] || resource_type;
 
-      const title = String(resource_type + " in " + city);
+      const title = reqTitle
+        ? String(reqTitle)
+        : String(resource_type + " in " + city);
 
       const contactObj = {
         contact_no,
