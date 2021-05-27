@@ -22,8 +22,10 @@ const {
 // Retrive all Contacts
 exports.findAll = async (req, res) => {
   try {
-    let { limit = 20, offset = 0, session_id, includeState } = req.query;
+    let { limit = 20, offset = 0 } = req.query;
     let { location, resource } = req.params;
+
+    let includeState = false;
 
     // analytics.track("Conatcts endpoint hit",{
     //     limit:limit,
@@ -35,6 +37,9 @@ exports.findAll = async (req, res) => {
     limit = Number(limit);
     offset = Number(offset);
 
+    location = String(location).toLowerCase();
+    resource = String(resource).toLowerCase();
+
     const query = {};
     let reqState;
     let reqCity;
@@ -45,11 +50,7 @@ exports.findAll = async (req, res) => {
           if (city.keywords.includes(location)) {
             reqCity = city.name;
             reqState = state;
-            if (includeState) {
-              query.$or = [{ city: city.name }, { state: state }];
-            } else {
-              query.$or = [{ city: city.name }, { state: city.name }];
-            }
+            query.$or = [{ city: city.name }, { state: city.name }];
           }
         }
       }
@@ -101,8 +102,6 @@ exports.findAll = async (req, res) => {
 
     await cityDoc.save();
 
-    // do something with session_id here
-
     let resContact;
     let foundValidDoc = false;
 
@@ -136,12 +135,17 @@ exports.findAll = async (req, res) => {
           }
         }
       } else {
-        foundValidDoc = true;
-        break;
+        if (includeState) {
+          foundValidDoc = true;
+          break;
+        } else {
+          includeState = true;
+          query.$or[1].state = reqState;
+        }
       }
     }
 
-    res.send(resContact);
+    res.send({ includeState, data: resContact });
   } catch (error) {
     res.send({ error: error.message });
   }
