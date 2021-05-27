@@ -22,7 +22,7 @@ const checkCities = async () => {
           count: Number(
             await Contact.countDocuments({
               resource_type: resource,
-              city: city.name,
+              city: city.name,  
               $or: [
                 { status: "ACTIVE" },
                 { status: "S_COOLDOWN" },

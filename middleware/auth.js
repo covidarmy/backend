@@ -18,11 +18,11 @@ module.exports = async (req, res, next) => {
           req.vol_phone_no = parsedPhoneNo[0];
           next();
         } else {
-          return res.status(400).send({ errr: "Invalid vol_phone_no" });
+          return res.status(400).send({ error: "Invalid vol_phone_no" });
         }
       }
     } else {
-      return res.status(401).send({ errr: "Invalid cBotAuthToken" });
+      return res.status(401).send({ error: "Invalid cBotAuthToken" });
     }
   } else if (token) {
     try {

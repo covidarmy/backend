@@ -145,7 +145,7 @@ router.get("/emptyCities/:state", async (req, res) => {
     }
     res.status(400).send({ error: `No cities found for state: ${state}` });
   } catch (error) {
-    res.status(500).send({ errro: error.message });
+    res.status(500).send({ error: error.message });
   }
 });
 
