@@ -79,6 +79,14 @@ exports.findAll = async (req, res) => {
 
     const cityDoc = await City.findOne({ city: reqCity });
     cityDoc.totalRequests = cityDoc.totalRequests + 1;
+
+    if (!cityDoc.resourceCount[query.resource_type].totalRequests) {
+      cityDoc.resourceCount[query.resource_type].totalRequests = 0;
+    }
+
+    cityDoc.resourceCount[query.resource_type].totalRequests =
+      cityDoc.resourceCount[query.resource_type].totalRequests + 1;
+
     await cityDoc.save();
 
     if (query.resource_type === "Helpline") {

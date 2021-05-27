@@ -93,7 +93,7 @@ router.get("/checkCity", async (req, res) => {
             };
 
             Object.keys(cityDoc.resourceCount).map((res) => {
-              resObj[res] = cityDoc.resourceCount[res];
+              resObj[res] = cityDoc.resourceCount[res].count;
             });
             return res.send(resObj);
           }

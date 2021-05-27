@@ -18,22 +18,28 @@ const checkCities = async () => {
       };
 
       for (const resource in resources) {
-        cityObj.resourceCount[resource] = Number(
-          await Contact.countDocuments({
-            resource_type: resource,
-            city: city.name,
-            $or: [
-              { status: "ACTIVE" },
-              { status: "S_COOLDOWN" },
-              { status: null },
-            ],
-          })
-        );
+        cityObj.resourceCount[resource] = {
+          count: Number(
+            await Contact.countDocuments({
+              resource_type: resource,
+              city: city.name,
+              $or: [
+                { status: "ACTIVE" },
+                { status: "S_COOLDOWN" },
+                { status: null },
+              ],
+            })
+          ),
+        };
       }
-      cityObj.totalContacts = Object.values(cityObj.resourceCount).reduce(
-        (acc, val) => acc + val
-      );
-      await City.findOneAndUpdate(
+      cityObj.totalContacts = Object.values(cityObj.resourceCount)
+        .map((resObj) => {
+          return resObj.count;
+        })
+        .reduce((acc, val) => {
+          return acc + val;
+        });
+      await City.updateOne(
         {
           city: city.name,
         },
