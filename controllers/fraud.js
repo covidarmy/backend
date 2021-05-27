@@ -86,7 +86,7 @@ exports.postFraud = async (req, res) => {
           reportedBy: [user.uid],
         }).save();
       } else {
-        if (fraud.source === "script") {
+        if (!fraud.source || fraud.source === "script") {
           fraud.source = "volunteer";
         }
 
