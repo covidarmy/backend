@@ -70,6 +70,11 @@ router.get("/contacts", auth, async (req, res) => {
  *               type: string
  *               description: Title of the contact
  *               required: false
+ *             - in: body
+ *               name: message
+ *               type: string
+ *               description: Short remark from the provider
+ *               required: false
  *         responses:
  *             201:
  *                 description: Generic success response
@@ -105,6 +110,16 @@ router.post("/contacts", auth, contactController.postContact);
  *               description: |
  *                   Type of resource the contact is providing:
  *                   Only resoures from `/api/resources` are valid
+ *             - in: body
+ *               name: title
+ *               type: string
+ *               description: Title of the contact
+ *               required: false
+ *             - in: body
+ *               name: message
+ *               type: string
+ *               description: Short remark from the provider
+ *               required: false
  *         responses:
  *             204:
  *                 description: Generic success response

@@ -337,6 +337,7 @@ exports.postContact = async (req, res) => {
         phone_no: reqPhoneNo,
         resource_type: reqResourceType,
         title: reqTitle,
+        message: reqMessage,
       } = req.body;
 
       if (!(reqCity || reqPhoneNo || reqResourceType)) {
@@ -360,6 +361,8 @@ exports.postContact = async (req, res) => {
         ? String(reqTitle)
         : String(resource_type + " in " + city);
 
+      const message = reqMessage ? reqMessage : null;
+
       const contactObj = {
         contact_no,
         city,
@@ -367,12 +370,11 @@ exports.postContact = async (req, res) => {
         resource_type,
         category,
         title,
+        message,
         userId: req.user.uid,
       };
 
-      await new Contact(contactObj).save();
-
-      res.status(201).send({ ok: true });
+      res.status(201).send(await new Contact(contactObj).save());
     } else {
       res.status(400).send({ message: "Unable to verify user." });
     }
@@ -391,6 +393,8 @@ exports.putContact = async () => {
         city: reqCity,
         phone_no: reqPhoneNo,
         resource_type: reqResourceType,
+        title: reqTitle,
+        message: reqMessage,
       } = req.body;
 
       if (!(reqCity || reqPhoneNo || reqResourceType)) {
@@ -410,7 +414,11 @@ exports.putContact = async () => {
         res.status(400).send("Invalid Resource type");
       const category = categoriesObj[resource_type][0] || resource_type;
 
-      const title = String(resource_type + " in " + city);
+      const title = reqTitle
+        ? String(reqTitle)
+        : String(resource_type + " in " + city);
+
+      const message = reqMessage ? reqMessage : null;
 
       const contactObj = {
         contact_no,
@@ -419,10 +427,11 @@ exports.putContact = async () => {
         resource_type,
         category,
         title,
+        message,
         userId: req.user.uid,
       };
 
-      await Contact.findOneAndUpdate({ id: String(contact_id) }, contactObj);
+      await Contact.updateOne({ id: String(contact_id) }, contactObj);
       res.sendStatus(204);
     } else {
       res.status(400).send({ error: "Unable to verify user." });
