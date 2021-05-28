@@ -153,4 +153,22 @@ router.get("/emptyCities/:state", async (req, res) => {
   }
 });
 
+router.get("/emptyStates", async (req, res) => {
+  try {
+    const cities = await City.find(
+      {
+        totalContacts: { $lt: 10 },
+      },
+      "state"
+    );
+
+    const states = new Set();
+    cities.map((city) => states.add(city.state));
+
+    res.send(Array.from(states));
+  } catch (error) {
+    res.status(500).send({ error: error.message });
+  }
+});
+
 module.exports = router;
