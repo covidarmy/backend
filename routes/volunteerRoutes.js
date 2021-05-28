@@ -301,9 +301,10 @@ router.post("/auth", async (req, res) => {
           uid: decodedToken.uid,
           email: decodedToken.email,
         }).save();
-        res.status(204).send(newVol);
+        res.status(201).send(newVol);
       } else {
-        res.status(204).send(user);
+        res.status(200).send({ user });
+        console.log(user);
       }
     } catch (error) {
       res.status(500).send({ error: error.message });
