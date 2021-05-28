@@ -285,7 +285,7 @@ router.post("/auth", async (req, res) => {
     return res.status(400).json({ message: "You did not specify idToken." });
   } else {
     try {
-      const decodedToken = await admin.verifyIdToken(token);
+      const decodedToken = await admin.auth().verifyIdToken(token);
       if (!decodedToken) {
         res.status(400).send({ message: "Unable to verify user." });
       }
