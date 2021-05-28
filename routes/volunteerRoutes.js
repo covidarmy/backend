@@ -29,7 +29,11 @@ const fraudController = require("../controllers/fraud");
  *                 description: A list of contacts added by the current user
  */
 router.get("/contacts", auth, async (req, res) => {
-  res.send(await Contact.find({ userId: req.user.uid }));
+  try {
+    res.send(await Contact.find({ userId: req.user.uid }));
+  } catch (error) {
+    res.status(500).send({ error: error.message });
+  }
 });
 
 /**
@@ -293,11 +297,11 @@ router.post("/auth", async (req, res) => {
       const user = await Volunteer.findOne({ uid: decodedToken.uid });
       //user doesnt already exist in the db
       if (!user) {
-        await new Volunteer({
+        let newVol = await new Volunteer({
           uid: decodedToken.uid,
           email: decodedToken.email,
         }).save();
-        res.status(204).send();
+        res.status(204).send(newVol);
       } else {
         res.status(204).send(user);
       }
