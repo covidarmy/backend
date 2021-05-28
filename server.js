@@ -85,7 +85,7 @@ if (process.env.NODE_ENV === "production") {
   });
 
   //Check Cities every hr
-  cron.schedule("*/60* * * *", async () => {
+  cron.schedule("*/60 * * * *", async () => {
     console.log("\n======Check Cities Cronjob======\n");
     console.time("checkCities");
     checkCities().then(() => {
