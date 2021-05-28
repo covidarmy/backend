@@ -1,4 +1,4 @@
-const { auth } = require("../firebase-admin");
+const { admin } = require("../firebase-admin");
 const { parsePhoneNumbers, normalize } = require("../parser");
 
 /**
@@ -26,15 +26,15 @@ module.exports = async (req, res, next) => {
     }
   } else if (token) {
     try {
-      const user = await auth().verifyIdToken(token);
+      const user = await admin.auth().verifyIdToken(String(token));
       if (user) {
         req.user = user;
         next();
       } else {
         res.status(401).send({ error: "Unable to verify user." });
       }
-    } catch {
-      res.status(500).send({ error: "Unable to verify user." });
+    } catch (error) {
+      res.status(500).send({ error: error.message });
     }
   } else {
     res.status(401).send({ error: "Unable to verify user." });
