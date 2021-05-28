@@ -344,15 +344,15 @@ exports.postContact = async (req, res) => {
       }
 
       const contact_no =
-        parsePhoneNumbers(normalize(String(reqPhoneNo)))[0] ||
+        parsePhoneNumbers(normalize(String(reqPhoneNo).toLowerCase()))[0] ||
         res.status(400).send({ error: "Invalid Phone Number" });
 
-      const location = findLocation(String(reqCity).toLowerCase());
+      const location = findLocation(normalize(String(reqCity).toLowerCase()));
       const city = location[0].city || res.status(400).send("Invalid City");
       const state = location[0].state || city;
 
       const resource_type =
-        findResourceType(String(reqResourceType))[0] ||
+        findResourceType(normalize(String(reqResourceType).toLowerCase()))[0] ||
         res.status(400).send("Invalid Resource type");
       const category = categoriesObj[resource_type][0] || resource_type;
 
@@ -398,15 +398,15 @@ exports.putContact = async () => {
       }
 
       const contact_no =
-        parsePhoneNumbers(normalize(String(reqPhoneNo)))[0] ||
+        parsePhoneNumbers(normalize(String(reqPhoneNo).toLowerCase()))[0] ||
         res.status(400).send({ error: "Invalid Phone Number" });
 
-      const location = findLocation(String(reqCity).toLowerCase());
+      const location = findLocation(normalize(String(reqCity).toLowerCase()));
       const city = location[0].city || res.status(400).send("Invalid City");
       const state = location[0].state || city;
 
       const resource_type =
-        findResourceType(String(reqResourceType))[0] ||
+        findResourceType(normalize(String(reqResourceType).toLowerCase()))[0] ||
         res.status(400).send("Invalid Resource type");
       const category = categoriesObj[resource_type][0] || resource_type;
 

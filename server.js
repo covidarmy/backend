@@ -74,25 +74,34 @@ app.use("/", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
 //Schedulers
 if (process.env.NODE_ENV === "production") {
-  //Check Cities every hr
-  cron.schedule("*/60 * * * *", async () => {
-    console.log("\n======Check Cities Cronjob======\n");
-    await checkCities();
-    console.log("\n======DONE Check Cities Cronjob======\n");
-  });
-
   //Fetch new tweets every minute.
   cron.schedule("*/1 * * * *", async () => {
     console.log("Fetching Tweets...");
-    await fetchAndSaveTweets();
-    console.log("Done Fetching Tweets!");
+    console.time("fetchTweets");
+    fetchAndSaveTweets().then(() => {
+      console.timeEnd("fetchTweets");
+      console.log("Done Fetching Tweets!");
+    });
+  });
+
+  //Check Cities every hr
+  cron.schedule("*/5 * * * *", async () => {
+    console.log("\n======Check Cities Cronjob======\n");
+    console.time("checkCities");
+    checkCities().then(() => {
+      console.timeEnd("checkCities");
+      console.log("\n======DONE Check Cities Cronjob======\n");
+    });
   });
 
   //Delete fraud tweets every hr.
-  cron.schedule("*/60 * * * *", async () => {
+  cron.schedule("*/5 * * * *", async () => {
     console.log("Deleting fraud Tweets...");
-    await deleteFraud();
-    console.log("Done deleting fraud Tweets!");
+    console.time("deleteFraud");
+    deleteFraud().then(() => {
+      console.timeEnd("deleteFraud");
+      console.log("Done deleting fraud Tweets!");
+    });
   });
 }
 
