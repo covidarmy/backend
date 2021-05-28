@@ -22,6 +22,133 @@ const {
 // Retrive all Contacts
 exports.findAll = async (req, res) => {
   try {
+    let { limit = 20, offset = 0, session_id, includeState } = req.query;
+    let { location, resource } = req.params;
+
+    // analytics.track("Conatcts endpoint hit",{
+    //     limit:limit,
+    //     offset:offset,
+    //     location:location,
+    //     resource:resource
+    // })
+
+    limit = Number(limit);
+    offset = Number(offset);
+
+    const query = {};
+    let reqState;
+    let reqCity;
+
+    if (location) {
+      for (const state in allCities) {
+        for (const city of allCities[state]) {
+          if (city.keywords.includes(location)) {
+            reqCity = city.name;
+            reqState = state;
+            if (includeState) {
+              query.$or = [{ city: city.name }, { state: state }];
+            } else {
+              query.$or = [{ city: city.name }, { state: city.name }];
+            }
+          }
+        }
+      }
+
+      if (!query.$or) {
+        return res.status(404).send({
+          error: `No contacts found for location: ${location}`,
+        });
+      }
+    }
+
+    if (resource === "helpline" || resource === "warroom") {
+      res.send([
+        {
+          state: reqState,
+          city: reqCity,
+          contact_no: stateHelplines[reqState],
+        },
+      ]);
+    }
+
+    if (resource) {
+      for (let res in resources) {
+        const keywords = resources[res];
+
+        if (keywords.includes(resource)) {
+          query.resource_type = res;
+        }
+      }
+
+      if (!query.resource_type) {
+        return res.status(404).send({
+          error: `No contacts found for resource: ${resource}`,
+        });
+      }
+    }
+
+    const cityDoc = await City.findOne({ city: reqCity });
+    cityDoc.totalRequests = cityDoc.totalRequests + 1;
+
+    if (!cityDoc.resourceCount[query.resource_type].totalRequests) {
+      cityDoc.resourceCount[query.resource_type].totalRequests = 0;
+    }
+
+    cityDoc.resourceCount[query.resource_type].totalRequests =
+      cityDoc.resourceCount[query.resource_type].totalRequests + 1;
+
+    cityDoc.markModified(`resourceCount.${query.resource_type}.totalRequests`);
+
+    await cityDoc.save();
+
+    // do something with session_id here
+
+    let resContact;
+    let foundValidDoc = false;
+
+    while (!foundValidDoc) {
+      resContact = await Contact.find(query, null, {
+        limit: limit,
+        skip: offset,
+        sort: { created_on: -1 },
+      });
+
+      //Check doc status
+      if (resContact.length > 0) {
+        for (const doc of resContact) {
+          if (doc.status == "ACTIVE") {
+            foundValidDoc = true;
+            break;
+          } else if (doc.status == "BLACKLIST") {
+            offset++;
+            continue;
+          } else {
+            if (!isCooldownValid(doc.status, doc.updatedAt)) {
+              doc.status = "ACTIVE";
+              await doc.save();
+
+              foundValidDoc = true;
+              break;
+            } else {
+              offset++;
+              continue;
+            }
+          }
+        }
+      } else {
+        foundValidDoc = true;
+        break;
+      }
+    }
+
+    res.send(resContact);
+  } catch (error) {
+    res.send({ error: error.message });
+  }
+};
+
+exports.findAllNew = async (req, res) => {
+  try {
     let { limit = 20, offset = 0 } = req.query;
     let { location, resource } = req.params;
 
