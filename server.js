@@ -3,6 +3,7 @@ require("dotenv").config();
 //dependencies
 const cron = require("node-cron");
 const express = require("express");
+const cors = require("cors");
 const app = express();
 
 const swaggerJsDoc = require("swagger-jsdoc");
@@ -58,10 +59,12 @@ app.use(morgan(process.env.NODE_ENV == "production" ? "common" : "dev"));
 app.use(express.json());
 
 //CORS
-app.use((req, res, next) => {
-  res.setHeader("Access-Control-Allow-Origin", "*");
-  next();
-});
+app.options("/volunteer/*", cors());
+app.use(cors());
+// app.use((req, res, next) => {
+//   res.setHeader("Access-Control-Allow-Origin", "*");
+//   next();
+// });
 
 //Express Routes
 app.use("/api", apiRoutes);

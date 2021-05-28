@@ -31,10 +31,12 @@ module.exports = async (req, res, next) => {
         req.user = user;
         next();
       } else {
-        res.status(401).send({ message: "Unable to verify user." });
+        res.status(401).send({ error: "Unable to verify user." });
       }
     } catch {
-      res.status(500).send({ message: "Unable to verify user." });
+      res.status(500).send({ error: "Unable to verify user." });
     }
+  } else {
+    res.status(401).send({ error: "Unable to verify user." });
   }
 };
