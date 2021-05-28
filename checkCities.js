@@ -1,7 +1,7 @@
 const resources = require("./data/resources.json");
-const allCities = require("./data/resources.json");
+const allCities = require("./data/newAllCities.json");
 
-const { findLocation } = require("./parser");
+const { findLocation, normalize } = require("./parser");
 
 const Contact = require("./models/Contact.schema");
 const City = require("./models/City.schema");
@@ -22,7 +22,7 @@ const checkCities = async () => {
           count: Number(
             await Contact.countDocuments({
               resource_type: resource,
-              city: city.name,  
+              city: city.name,
               $or: [
                 { status: "ACTIVE" },
                 { status: "S_COOLDOWN" },
