@@ -153,6 +153,16 @@ router.get("/emptyCities/:state", async (req, res) => {
   }
 });
 
+/**
+ * @swagger
+ * /api/emptyStates:
+ *     get:
+ *         description: Get a list of states with at least one empty city
+ *         responses:
+ *             '200':
+ *                 description: An array of states with at least one empty city
+ *
+ */
 router.get("/emptyStates", async (req, res) => {
   try {
     const cities = await City.find(
