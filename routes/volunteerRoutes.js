@@ -6,6 +6,8 @@ const auth = require("../middleware/auth");
 const { APP_DOMAIN } = require("../constants");
 const { admin } = require("../firebase-admin");
 
+const { findLocation, normalize } = require("../parser");
+
 const Contact = require("../models/Contact.schema");
 const Volunteer = require("../models/Volunteer.schema");
 const Fraud = require("../models/Fraud.schema");
@@ -323,6 +325,59 @@ router.post("/auth", async (req, res) => {
     } catch (error) {
       res.status(500).send({ error: error.message });
     }
+  }
+});
+
+/**
+ * @swagger
+ * /volunteer/defaultState/:
+ *     put:
+ *         summary: Add or update the defaultState for a volunteer
+ *         description: Add or update the defaultState for a volunteer
+ *         parameters:
+ *             - in: header
+ *               name: authorization
+ *               type: string
+ *               description: Firebase auth token
+ *             - in: query
+ *               name: state
+ *               type: string
+ *               description: State name
+ *         responses:
+ *             500:
+ *                 description: Internal Server Error
+ *             400:
+ *                 description: Invalid token
+ *             204:
+ *                 description: Volunteer updated
+ */
+router.put("/defaultState", auth, (req, res) => {
+  try {
+    if (req.user) {
+      const userUid = req.user.uid;
+      let state = req.query?.state;
+
+      state = findLocation(normalize(String(state).toLowerCase()))[0].state;
+
+      if (!state) {
+        res.status(400).send("Invalid State");
+      }
+
+      const vol = await Volunteer.findOne({ uid: userUid });
+
+      if (!vol) {
+        res.status(400).send({
+          error:
+            "Volunteer does not exist, You may need to hit the `/auth` endpoint to create the Volunteer document first",
+        });
+      }
+      vol.defaultState = state;
+      res.send(await vol.save());
+    } else {
+      res.status(400).send({ error: "Unable to verify user" });
+    }
+  } catch (error) {
+    res.status(500).send({ error: error.message });
   }
 });
 

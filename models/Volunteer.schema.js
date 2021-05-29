@@ -4,6 +4,7 @@ const schema = new mongoose.Schema(
   {
     uid: String,
     email: String,
+    defaultState: String,
   },
   { timestamps: true }
 );
