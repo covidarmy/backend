@@ -351,7 +351,7 @@ router.post("/auth", async (req, res) => {
  *             204:
  *                 description: Volunteer updated
  */
-router.put("/defaultState", auth, (req, res) => {
+router.put("/defaultState", auth, async (req, res) => {
   try {
     if (req.user) {
       const userUid = req.user.uid;
