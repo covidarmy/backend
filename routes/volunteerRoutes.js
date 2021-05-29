@@ -332,7 +332,7 @@ router.post("/auth", async (req, res) => {
 /**
  * @swagger
  * /volunteer/defaultState/:
- *     post:
+ *     put:
  *         summary: Add or update the defaultState for a volunteer
  *         description: Add or update the defaultState for a volunteer
  *         parameters:
@@ -352,7 +352,7 @@ router.post("/auth", async (req, res) => {
  *             204:
  *                 description: Volunteer updated
  */
-router.post("/defaultState", auth, (req, res) => {
+router.put("/defaultState", auth, (req, res) => {
   try {
     if (req.user) {
       const userUid = req.user.uid;
