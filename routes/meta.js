@@ -4,6 +4,7 @@ const City = require("../models/City.schema");
 
 const allCities = require("../data/newAllCities.json");
 const resources = require("../data/resources.json");
+const stateHelplines = require("../data/stateHelplines.json");
 
 const router = express.Router();
 
@@ -89,6 +90,8 @@ router.get("/checkCity", async (req, res) => {
             let resObj = {
               found: true,
               name: cityDoc.city,
+              state: cityDoc.state,
+              helpline_no: stateHelplines[cityDoc.state],
               totalContacts: cityDoc.totalContacts,
             };
 
