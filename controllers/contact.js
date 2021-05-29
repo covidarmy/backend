@@ -6,7 +6,8 @@ const resources = require("../data/resources.json");
 const categoriesObj = require("../data/categories.json");
 const stateHelplines = require("../data/stateHelplines.json");
 
-const { rank } = require("../ranking_system/rank");
+//un-comment after ranking system is done
+// const { rank } = require("../ranking_system/rank");
 const { isCooldownValid } = require("../utils/isCooldownValid");
 const {
   findResourceType,

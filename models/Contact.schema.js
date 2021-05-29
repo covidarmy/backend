@@ -17,6 +17,8 @@ const schema = new mongoose.Schema(
       default: "ACTIVE",
     },
 
+    score: { type: String },
+
     contact_no: { type: String, unqiue: true, required: true }, //contact number, this is different from _id,
     email: { type: String },
     title: { type: String, required: true },
