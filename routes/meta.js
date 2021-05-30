@@ -176,7 +176,11 @@ router.get("/emptyStates", async (req, res) => {
     );
 
     const states = new Set();
-    cities.map((city) => states.add(city.state));
+    cities.map((city) => {
+      if (Object.keys(allCities).includes(city.state)) {
+        states.add(city.state);
+      }
+    });
 
     res.send(Array.from(states));
   } catch (error) {

@@ -22,7 +22,6 @@ const schema = new mongoose.Schema(
     contact_no: { type: String, unqiue: true, required: true }, //contact number, this is different from _id,
     email: { type: String },
     title: { type: String, required: true },
-    message: { type: String, default: null },
     category: { type: String }, // auto calculated based on mapping see https://www.notion.so/catoverse/New-Database-Schema-b3c392d452ba47b0a5ec0e05804edd90
     resource_type: { type: String, enum: resourceTypes, required: true },
     address: { type: String },
