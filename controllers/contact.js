@@ -101,47 +101,33 @@ exports.findAll = async (req, res) => {
 
     await cityDoc.save();
 
-    // do something with session_id here
+    let docLimit = limit;
+    if (limit < 20) {
+      docLimit = 20;
+    }
 
-    let resContact;
-    let foundValidDoc = false;
+    let foundValidDocs = false;
+    let resContacts;
+    let rankedContacts;
 
-    while (!foundValidDoc) {
-      resContact = await Contact.find(query, null, {
-        limit: limit,
+    while (!foundValidDocs) {
+      resContacts = await Contact.find(query, null, {
+        limit: docLimit,
         skip: offset,
-        sort: { created_on: -1 },
+        sort: { updatedAt: -1 },
       });
 
-      //Check doc status
-      if (resContact.length > 0) {
-        for (const doc of resContact) {
-          if (doc.status == "ACTIVE") {
-            foundValidDoc = true;
-            break;
-          } else if (doc.status == "BLACKLIST") {
-            offset++;
-            continue;
-          } else {
-            if (!isCooldownValid(doc.status, doc.updatedAt)) {
-              doc.status = "ACTIVE";
-              await doc.save();
-
-              foundValidDoc = true;
-              break;
-            } else {
-              offset++;
-              continue;
-            }
-          }
-        }
+      if (resContacts.length > 0) {
+        rankedContacts = (await rank(resContacts)).splice(0, limit);
+        foundValidDocs = true;
+        break;
       } else {
-        foundValidDoc = true;
+        offset++;
         break;
       }
     }
 
-    res.send(resContact);
+    res.send(rankedContacts);
   } catch (error) {
     res.send({ error: error.message });
   }
@@ -229,41 +215,28 @@ exports.findAllNew = async (req, res) => {
 
     await cityDoc.save();
 
-    let resContact;
-    let foundValidDoc = false;
+    let docLimit = limit;
+    if (limit < 20) {
+      docLimit = 20;
+    }
 
-    while (!foundValidDoc) {
-      resContact = await Contact.find(query, null, {
-        limit: limit,
+    let foundValidDocs = false;
+    let resContacts;
+
+    while (!foundValidDocs) {
+      resContacts = await Contact.find(query, null, {
+        limit: docLimit,
         skip: offset,
-        sort: { created_on: -1 },
+        sort: { updatedAt: -1 },
       });
 
-      //Check doc status
-      if (resContact.length > 0) {
-        for (const doc of resContact) {
-          if (doc.status == "ACTIVE") {
-            foundValidDoc = true;
-            break;
-          } else if (doc.status == "BLACKLIST") {
-            offset++;
-            continue;
-          } else {
-            if (!isCooldownValid(doc.status, doc.updatedAt)) {
-              doc.status = "ACTIVE";
-              await doc.save();
-
-              foundValidDoc = true;
-              break;
-            } else {
-              offset++;
-              continue;
-            }
-          }
-        }
+      if (resContacts.length > 0) {
+        rankedContacts = (await rank(resContacts)).splice(0, limit);
+        foundValidDocs = true;
+        break;
       } else {
         if (includeState) {
-          foundValidDoc = true;
+          foundValidDocs = true;
           break;
         } else {
           includeState = true;
@@ -272,15 +245,14 @@ exports.findAllNew = async (req, res) => {
       }
     }
 
-    res.send({ includeState, data: resContact });
+    res.send({ includeState, data: rankedContacts });
   } catch (error) {
     res.send({ error: error.message });
   }
 };
 
-const votes = ["HELPFUL", "BUSY", "NOANSWER", "NOSTOCK", "INVALID"];
-
 exports.postFeedback = async (req, res) => {
+  const votes = ["HELPFUL", "BUSY", "NOANSWER", "NOSTOCK", "INVALID"];
   try {
     const { contact_no, feedback_value } = req.body;
 
@@ -308,19 +280,9 @@ exports.postFeedback = async (req, res) => {
       contact.feedback.shift();
     }
 
-    //Check and update thec contact status if required before updating the document
-    if (contact.status != "ACTIVE" || "BLACKLIST") {
-      if (!isCooldownValid(contact.status, contact.updatedAt)) {
-        contact.status = "ACTIVE";
-        await contact.save();
-      }
-    }
-
     contact.feedback.push(feedback_value);
     contact.verification_status = String(feedback_value);
     await contact.save();
-
-    await rank(contact);
 
     res.send({ ok: true });
   } catch (error) {
@@ -337,7 +299,8 @@ exports.postContact = async (req, res) => {
         phone_no: reqPhoneNo,
         resource_type: reqResourceType,
         title: reqTitle,
-        message: reqMessage,
+        description: reqDescription,
+        isVerified: reqVerified,
       } = req.body;
 
       if (!(reqCity || reqPhoneNo || reqResourceType)) {
@@ -361,7 +324,9 @@ exports.postContact = async (req, res) => {
         ? String(reqTitle)
         : String(resource_type + " in " + city);
 
-      const message = reqMessage ? reqMessage : null;
+      const description = reqDescription ? reqDescription : null;
+
+      const verification_status = reqVerified ? "verified" : null;
 
       const contactObj = {
         contact_no,
@@ -370,7 +335,8 @@ exports.postContact = async (req, res) => {
         resource_type,
         category,
         title,
-        message,
+        description,
+        verification_status,
         userId: req.user.uid,
       };
 
@@ -394,7 +360,8 @@ exports.putContact = async () => {
         phone_no: reqPhoneNo,
         resource_type: reqResourceType,
         title: reqTitle,
-        message: reqMessage,
+        description: reqDescription,
+        isVerified: reqVerified,
       } = req.body;
 
       if (!(reqCity || reqPhoneNo || reqResourceType)) {
@@ -418,7 +385,9 @@ exports.putContact = async () => {
         ? String(reqTitle)
         : String(resource_type + " in " + city);
 
-      const message = reqMessage ? reqMessage : null;
+      const description = reqDescription ? reqDescription : null;
+
+      const verification_status = reqVerified ? "verified" : null;
 
       const contactObj = {
         contact_no,
@@ -427,7 +396,8 @@ exports.putContact = async () => {
         resource_type,
         category,
         title,
-        message,
+        description,
+        verification_status,
         userId: req.user.uid,
       };
 

@@ -73,10 +73,16 @@ router.get("/contacts", auth, async (req, res) => {
  *               description: Title of the contact
  *               required: false
  *             - in: body
- *               name: message
+ *               name: description
  *               type: string
  *               description: Short remark from the provider
  *               required: false
+ *             - in: body
+ *               name: isVerified
+ *               type: boolean
+ *               description: Represents whether or not a contact has been verified by the volunteer
+ *               required: false
+ *               default: false
  *         responses:
  *             201:
  *                 description: Generic success response
@@ -118,10 +124,16 @@ router.post("/contacts", auth, contactController.postContact);
  *               description: Title of the contact
  *               required: false
  *             - in: body
- *               name: message
+ *               name: description
  *               type: string
  *               description: Short remark from the provider
  *               required: false
+ *             - in: body
+ *               name: isVerified
+ *               type: boolean
+ *               description: Represents whether or not a contact has been verified by the volunteer
+ *               required: false
+ *               default: false
  *         responses:
  *             204:
  *                 description: Generic success response
@@ -158,8 +170,10 @@ router.delete("/contacts", auth, async (req, res) => {
 
     if (result.deletedCount > 0) {
       res.sendStatus(204);
+    } else if (result.n < 1) {
+      res.status(400).send({ error: "Invalid contact_id", result });
     } else {
-      res.status(500).send({ error: "Couldn't delete contact", result });
+      res.status(500).send({ error: "Error Deleting Contact", result });
     }
   } catch (error) {
     res.status(500).send({ error: error.message });
