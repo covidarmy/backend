@@ -88,18 +88,23 @@ exports.findAll = async (req, res) => {
     }
 
     const cityDoc = await City.findOne({ city: reqCity });
-    cityDoc.totalRequests = cityDoc.totalRequests + 1;
 
-    if (!cityDoc.resourceCount[query.resource_type].totalRequests) {
-      cityDoc.resourceCount[query.resource_type].totalRequests = 0;
+    if (cityDoc) {
+      cityDoc.totalRequests = cityDoc.totalRequests + 1;
+
+      if (!cityDoc.resourceCount[query.resource_type].totalRequests) {
+        cityDoc.resourceCount[query.resource_type].totalRequests = 0;
+      }
+
+      cityDoc.resourceCount[query.resource_type].totalRequests =
+        cityDoc.resourceCount[query.resource_type].totalRequests + 1;
+
+      cityDoc.markModified(
+        `resourceCount.${query.resource_type}.totalRequests`
+      );
+
+      await cityDoc.save();
     }
-
-    cityDoc.resourceCount[query.resource_type].totalRequests =
-      cityDoc.resourceCount[query.resource_type].totalRequests + 1;
-
-    cityDoc.markModified(`resourceCount.${query.resource_type}.totalRequests`);
-
-    await cityDoc.save();
 
     let docLimit = limit;
     if (limit < 20) {
@@ -129,7 +134,7 @@ exports.findAll = async (req, res) => {
 
     res.send(rankedContacts);
   } catch (error) {
-    res.send({ error: error.message });
+    res.status(500).send({ error: error.message });
   }
 };
 
@@ -202,18 +207,23 @@ exports.findAllNew = async (req, res) => {
     }
 
     const cityDoc = await City.findOne({ city: reqCity });
-    cityDoc.totalRequests = cityDoc.totalRequests + 1;
 
-    if (!cityDoc.resourceCount[query.resource_type].totalRequests) {
-      cityDoc.resourceCount[query.resource_type].totalRequests = 0;
+    if (cityDoc) {
+      cityDoc.totalRequests = cityDoc.totalRequests + 1;
+
+      if (!cityDoc.resourceCount[query.resource_type].totalRequests) {
+        cityDoc.resourceCount[query.resource_type].totalRequests = 0;
+      }
+
+      cityDoc.resourceCount[query.resource_type].totalRequests =
+        cityDoc.resourceCount[query.resource_type].totalRequests + 1;
+
+      cityDoc.markModified(
+        `resourceCount.${query.resource_type}.totalRequests`
+      );
+
+      await cityDoc.save();
     }
-
-    cityDoc.resourceCount[query.resource_type].totalRequests =
-      cityDoc.resourceCount[query.resource_type].totalRequests + 1;
-
-    cityDoc.markModified(`resourceCount.${query.resource_type}.totalRequests`);
-
-    await cityDoc.save();
 
     let docLimit = limit;
     if (limit < 20) {
@@ -222,6 +232,7 @@ exports.findAllNew = async (req, res) => {
 
     let foundValidDocs = false;
     let resContacts;
+    let rankedContacts = [];
 
     while (!foundValidDocs) {
       resContacts = await Contact.find(query, null, {
@@ -231,7 +242,7 @@ exports.findAllNew = async (req, res) => {
       });
 
       if (resContacts.length > 0) {
-        rankedContacts = (await rank(resContacts)).splice(0, limit);
+        rankedContacts = (await rank(resContacts)).splice(offset, limit);
         foundValidDocs = true;
         break;
       } else {
@@ -247,7 +258,7 @@ exports.findAllNew = async (req, res) => {
 
     res.send({ includeState, data: rankedContacts });
   } catch (error) {
-    res.send({ error: error.message });
+    res.status(500).send({ error: error.message });
   }
 };
 
