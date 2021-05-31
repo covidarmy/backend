@@ -134,7 +134,7 @@ exports.findAll = async (req, res) => {
 
     res.send(rankedContacts);
   } catch (error) {
-    res.send({ error: error.message });
+    res.status(500).send({ error: error.message });
   }
 };
 
@@ -258,7 +258,7 @@ exports.findAllNew = async (req, res) => {
 
     res.send({ includeState, data: rankedContacts });
   } catch (error) {
-    res.send({ error: error.message });
+    res.status(500).send({ error: error.message });
   }
 };
 
