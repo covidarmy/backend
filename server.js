@@ -54,6 +54,9 @@ const { fetchAndSaveTweets } = require("./fetchTweets");
 const { deleteFraud } = require("./deleteTweets");
 const { checkCities } = require("./checkCities");
 
+//Telegram Bot
+const telegram = require("./telegram");
+
 //Express options
 app.use(morgan(process.env.NODE_ENV == "production" ? "common" : "dev"));
 app.use(express.json());
@@ -104,6 +107,9 @@ if (process.env.NODE_ENV === "production") {
     });
   });
 }
+
+//Telegram Bot
+telegram();
 
 //Start Expres Server
 const PORT = process.env.PORT || 4000;
