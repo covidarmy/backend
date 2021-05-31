@@ -38,11 +38,12 @@ const rank = async (contacts) => {
       const feedback =
         contact.feedback.length > 3
           ? contact.feedback
-              .slice(Math.max(arr.length - 3, 0))
+              .slice(Math.max(contact.feedback.length - 3, 0))
               .map((val) => weights[val])
           : contact.feedback.map((val) => weights[val]);
 
-      contact.score = feedback.reduce((acc, val) => acc + val) / arr.length;
+      contact.score =
+        feedback.reduce((acc, val) => acc + val) / contact.feedback.length;
     }
 
     scoredContacts.push(contact);
