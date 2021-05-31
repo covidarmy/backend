@@ -1,75 +1,72 @@
-const Votes = Object.freeze({
-  HELPFUL: "HELPFUL",
-  BUSY: "BUSY",
-  NOANSWER: "NOANSWER",
-  NOSTOCK: "NOSTOCK",
-  INVALID: "INVALID",
-});
+const rank = async (contacts) => {
+  const weights = {
+    HELPFUL: 2,
+    NOSTOCK: 1,
+    BUSY: 0,
+    NOANSWER: -1,
+    INVALID: -2,
+  };
 
-const Statuses = Object.freeze({
-  ACTIVE: "ACTIVE",
-  S_COOLDOWN: "S_COOLDOWN", //45 mins
-  M_COOLDOWN: "M_COOLDOWN", // 4 hours
-  L_COOLDOWN: "L_COOLDOWN", // 1 days
-  BLACKLIST: "BLACKLIST",
-});
+  const scoredContacts = [];
 
-const checkRecentOccurrences = (arr, numEl, value) => {
-  //Get the last n number of elements from array
-  arr = arr.slice(Math.max(arr.length - numEl, 0));
-  //Check if they all are equal to the specified value
-  return arr.every((val) => value.includes(val));
-};
+  for (let contact of contacts) {
+    //===Volunteer Scoring ===
+    //Volunteer added and verified = yes gives a default score of 3
+    //Volunteer added but not verified = 1
 
-const rank = async (contact) => {
-  const { feedback } = contact;
+    if (
+      contact.userId &&
+      contact.userId.length === 0 &&
+      contact.feedback &&
+      contact.feedback.length === 0
+    ) {
+      contact.score = 0;
+    }
 
-  if (
-    checkRecentOccurrences(feedback, 5, [Votes.HELPFUL]) &&
-    feedback.length >= 5
-  ) {
-    contact.status = Statuses.S_COOLDOWN;
-    contact = await contact.save();
-    return contact;
+    if (contact.userId.length > 0) {
+      if (
+        contact.verification_status &&
+        contact.verification_status.toLowerCase() === "verified"
+      ) {
+        contact.score = 3;
+      } else {
+        contact.score = 1;
+      }
+    }
+    if (contact.feedback.length > 0) {
+      // Compute an average of all the votes based on weight mapping
+      const feedback =
+        contact.feedback.length > 3
+          ? contact.feedback
+              .slice(Math.max(arr.length - 3, 0))
+              .map((val) => weights[val])
+          : contact.feedback.map((val) => weights[val]);
+
+      contact.score = feedback.reduce((acc, val) => acc + val) / arr.length;
+    }
+
+    scoredContacts.push(contact);
+  }
+  //Purging
+
+  //Remove contacts that have a value less than -1 but minimum of 2 votes in the array
+  const deleteContacts = scoredContacts.filter(
+    (contact) => contact.score <= -1 && contact.feedback.length > 2
+  );
+  for (contact of deleteContacts) {
+    await contact.remove();
   }
 
-  if (
-    checkRecentOccurrences(feedback, 5, [Votes.NOANSWER, Votes.BUSY]) &&
-    feedback.length >= 5
-  ) {
-    contact.status = Statuses.M_COOLDOWN;
-    contact = await contact.save();
-    return contact;
+  //save updated contacts to db
+  const finalContacts = scoredContacts.filter((contact) => contact.score >= 0);
+  for (contact of finalContacts) {
+    await contact.save();
   }
 
-  if (
-    checkRecentOccurrences(feedback, 3, [Votes.NOSTOCK]) &&
-    feedback.length >= 3
-  ) {
-    contact.status = Statuses.M_COOLDOWN;
-    contact = await contact.save();
-    return contact;
-  }
-
-  if (
-    checkRecentOccurrences(feedback, 2, [Votes.NOSTOCK]) &&
-    feedback.length >= 2
-  ) {
-    contact.status = Statuses.S_COOLDOWN;
-    contact = await contact.save();
-    return contact;
-  }
-
-  if (
-    checkRecentOccurrences(feedback, 5, [Votes.INVALID]) &&
-    feedback.length >= 5
-  ) {
-    contact.status = Statuses.BLACKLIST;
-    contact = await contact.save();
-    return contact;
-  }
-
-  return;
+  //Return an array in the Highest of the scored in the most recent order
+  return finalContacts
+    .sort((a, b) => b.createdAt - a.createdAt)
+    .sort((a, b) => b.score - a.score);
 };
 
 module.exports = { rank };
