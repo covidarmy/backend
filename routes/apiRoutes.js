@@ -128,7 +128,7 @@ router.get("/tweets/:location/:resource", tweetController.findAll);
  *                 description: A list of n number of resource objects.
  *
  */
-router.get("/contacts", contactController.findAllNew);
+router.get("/contacts", contactController.findAll);
 
 /**
  * @swagger
@@ -154,7 +154,7 @@ router.get("/contacts", contactController.findAllNew);
  *                 description: A list of n number of resource objects.
  *
  */
-router.get("/contacts/:location", contactController.findAllNew);
+router.get("/contacts/:location", contactController.findAll);
 
 /**
  * @swagger
@@ -184,7 +184,7 @@ router.get("/contacts/:location", contactController.findAllNew);
  *                 description: A list of n number of resource objects
  *
  */
-router.get("/contacts/:location/:resource", contactController.findAllNew);
+router.get("/contacts/:location/:resource", contactController.findAll);
 
 /**
  * @swagger
