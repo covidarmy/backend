@@ -1,4 +1,5 @@
 const { admin } = require("../firebase-admin");
+const ApprovedEmail = require("../models/ApprovedEmail.schema");
 const { parsePhoneNumbers, normalize } = require("../parser");
 
 /**
@@ -28,8 +29,15 @@ module.exports = async (req, res, next) => {
     try {
       const user = await admin.auth().verifyIdToken(String(token));
       if (user) {
-        req.user = user;
-        next();
+        const isApproved =
+          typeof (await ApprovedEmail.findOne({ email: user.email })) !==
+          "undefined";
+        if (isApproved) {
+          req.user = user;
+          next();
+        } else {
+          res.status(401).send({ error: "Valid, but un-approved user." });
+        }
       } else {
         res.status(401).send({ error: "Unable to verify user." });
       }
