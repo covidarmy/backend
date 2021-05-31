@@ -232,6 +232,7 @@ exports.findAllNew = async (req, res) => {
 
     let foundValidDocs = false;
     let resContacts;
+    let rankedContacts = [];
 
     while (!foundValidDocs) {
       resContacts = await Contact.find(query, null, {
@@ -241,7 +242,7 @@ exports.findAllNew = async (req, res) => {
       });
 
       if (resContacts.length > 0) {
-        rankedContacts = (await rank(resContacts)).splice(0, limit);
+        rankedContacts = (await rank(resContacts)).splice(offset, limit);
         foundValidDocs = true;
         break;
       } else {
