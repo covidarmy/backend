@@ -18,14 +18,6 @@ module.exports = async () => {
     return;
   }
 
-  let approvedChats = [];
-  try {
-    approvedChats = JSON.parse(process.env.TELEGRAM_CHATS);
-  } catch (err) {
-    console.log(err);
-    return;
-  }
-
   const bot = new TelegramBot(token, { polling: { interval: 500 } });
 
   bot.onText(/id/, async (msg, match) => {
@@ -36,15 +28,14 @@ module.exports = async () => {
   });
 
   bot.onText(/\/approve (.+)/, async (msg, match) => {
-    if (admins.includes(msg.from.id) && approvedChats.includes(msg.chat.id)) {
+    if (admins.includes(msg.from.id)) {
       const email = match[1];
       if (EMAIL_REGEX.test(email)) {
-        const isApproved =
-          typeof (await ApprovedEmail.findOne({ email })) !== "undefined";
-        if (isApproved) {
+        const approvedEmail = await ApprovedEmail.findOne({ email });
+        if (approvedEmail) {
           bot.sendMessage(msg.chat.id, "Already approved: " + email);
         } else {
-          await ApprovedEmail.findOneAndUpdate({ email }, { email });
+          await ApprovedEmail.updateOne({ email }, { email }, { upsert: true });
           bot.sendMessage(msg.chat.id, "Approved email: " + email);
         }
       } else {
@@ -60,7 +51,7 @@ module.exports = async () => {
   });
 
   bot.onText(/\/approve/, (msg, match) => {
-    if (admins.includes(msg.from.id) && approvedChats.includes(msg.chat.id)) {
+    if (admins.includes(msg.from.id)) {
       if (msg.text.replace(/\/approve /g, "").length === 0) {
         bot.sendMessage(
           msg.chat.id,

@@ -29,9 +29,7 @@ module.exports = async (req, res, next) => {
     try {
       const user = await admin.auth().verifyIdToken(String(token));
       if (user) {
-        const isApproved =
-          typeof (await ApprovedEmail.findOne({ email: user.email })) !==
-          "undefined";
+        const isApproved = await ApprovedEmail.findOne({ email: user.email });
         if (isApproved) {
           req.user = user;
           next();
