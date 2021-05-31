@@ -14,6 +14,10 @@ const rank = async (contacts) => {
     //Volunteer added and verified = yes gives a default score of 3
     //Volunteer added but not verified = 1
 
+    if (!contact.score) {
+      contact.score = 0;
+    }
+
     if (
       contact.userId &&
       contact.userId.length === 0 &&
@@ -28,9 +32,9 @@ const rank = async (contacts) => {
         contact.verification_status &&
         contact.verification_status.toLowerCase() === "verified"
       ) {
-        contact.score = 3;
+        contact.score += 3;
       } else {
-        contact.score = 1;
+        contact.score += 1;
       }
     }
     if (contact.feedback.length > 0) {
@@ -38,11 +42,12 @@ const rank = async (contacts) => {
       const feedback =
         contact.feedback.length > 3
           ? contact.feedback
-              .slice(Math.max(arr.length - 3, 0))
+              .slice(Math.max(contact.feedback.length - 3, 0))
               .map((val) => weights[val])
           : contact.feedback.map((val) => weights[val]);
 
-      contact.score = feedback.reduce((acc, val) => acc + val) / arr.length;
+      contact.score +=
+        feedback.reduce((acc, val) => acc + val) / contact.feedback.length;
     }
 
     scoredContacts.push(contact);

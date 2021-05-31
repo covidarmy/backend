@@ -88,18 +88,23 @@ exports.findAll = async (req, res) => {
     }
 
     const cityDoc = await City.findOne({ city: reqCity });
-    cityDoc.totalRequests = cityDoc.totalRequests + 1;
 
-    if (!cityDoc.resourceCount[query.resource_type].totalRequests) {
-      cityDoc.resourceCount[query.resource_type].totalRequests = 0;
+    if (cityDoc) {
+      cityDoc.totalRequests = cityDoc.totalRequests + 1;
+
+      if (!cityDoc.resourceCount[query.resource_type].totalRequests) {
+        cityDoc.resourceCount[query.resource_type].totalRequests = 0;
+      }
+
+      cityDoc.resourceCount[query.resource_type].totalRequests =
+        cityDoc.resourceCount[query.resource_type].totalRequests + 1;
+
+      cityDoc.markModified(
+        `resourceCount.${query.resource_type}.totalRequests`
+      );
+
+      await cityDoc.save();
     }
-
-    cityDoc.resourceCount[query.resource_type].totalRequests =
-      cityDoc.resourceCount[query.resource_type].totalRequests + 1;
-
-    cityDoc.markModified(`resourceCount.${query.resource_type}.totalRequests`);
-
-    await cityDoc.save();
 
     let docLimit = limit;
     if (limit < 20) {
@@ -202,18 +207,23 @@ exports.findAllNew = async (req, res) => {
     }
 
     const cityDoc = await City.findOne({ city: reqCity });
-    cityDoc.totalRequests = cityDoc.totalRequests + 1;
 
-    if (!cityDoc.resourceCount[query.resource_type].totalRequests) {
-      cityDoc.resourceCount[query.resource_type].totalRequests = 0;
+    if (cityDoc) {
+      cityDoc.totalRequests = cityDoc.totalRequests + 1;
+
+      if (!cityDoc.resourceCount[query.resource_type].totalRequests) {
+        cityDoc.resourceCount[query.resource_type].totalRequests = 0;
+      }
+
+      cityDoc.resourceCount[query.resource_type].totalRequests =
+        cityDoc.resourceCount[query.resource_type].totalRequests + 1;
+
+      cityDoc.markModified(
+        `resourceCount.${query.resource_type}.totalRequests`
+      );
+
+      await cityDoc.save();
     }
-
-    cityDoc.resourceCount[query.resource_type].totalRequests =
-      cityDoc.resourceCount[query.resource_type].totalRequests + 1;
-
-    cityDoc.markModified(`resourceCount.${query.resource_type}.totalRequests`);
-
-    await cityDoc.save();
 
     let docLimit = limit;
     if (limit < 20) {
