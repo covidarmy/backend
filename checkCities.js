@@ -1,7 +1,7 @@
 const resources = require("./data/resources.json");
 const allCities = require("./data/newAllCities.json");
 
-const { findLocation, normalize } = require("./parser");
+const { normalize } = require("./parser");
 
 const Contact = require("./models/Contact.schema");
 const City = require("./models/City.schema");
@@ -10,10 +10,21 @@ const checkCities = async () => {
   for (const state in allCities) {
     for (const city of allCities[state]) {
       console.time(city.name);
+
+      let foundState;
+      for (const state in allCities) {
+        for (const city of allCities[state]) {
+          for (const keyword of city.keywords) {
+            if (normalize(keyword) === normalize(city.name)) {
+              foundState = state;
+            }
+          }
+        }
+      }
+
       let cityObj = {
         city: city.name,
-        state:
-          findLocation(normalize(String(city.name)))[0]?.state || city.name,
+        state: foundState || null,
         resourceCount: {},
       };
 
