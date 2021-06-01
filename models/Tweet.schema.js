@@ -21,6 +21,7 @@ const schema = new mongoose.Schema(
     likes: Number,
     retweets: Number,
     author_followers: Number,
+    tweetAst: String,
   },
   { timestamps: true }
 );

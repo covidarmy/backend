@@ -90,7 +90,7 @@ const buildTweetObject = async (tweet) => {
     likes: tweet.favorite_count,
     retweets: tweet.retweet_count,
     author_followers: tweet.user.followers_count,
-    tweetAst: await fetchTweetAst(tweet.id_str),
+    tweetAst: JSON.stringify(await fetchTweetAst(tweet.id_str)),
   };
 
   return obj;
