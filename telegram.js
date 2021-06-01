@@ -30,21 +30,28 @@ module.exports = async () => {
     );
   });
 
-  bot.onText(/\/approve (.+)/, async (msg, match) => {
+  bot.onText(/\/approve (.+)(?:,\s*|$)/, async (msg, match) => {
     if (admins.includes(msg.from.id)) {
-      const email = match[1];
-      if (EMAIL_REGEX.test(email)) {
-        const approvedEmail = await ApprovedEmail.findOne({ email });
-        if (approvedEmail) {
-          bot.sendMessage(msg.chat.id, "Already approved: " + email);
+      const emails = match[1].split(",");
+      for (let email of emails) {
+        email = email.trim();
+        if (EMAIL_REGEX.test(email)) {
+          const approvedEmail = await ApprovedEmail.findOne({ email });
+          if (approvedEmail) {
+            bot.sendMessage(msg.chat.id, "Already approved: " + email);
+          } else {
+            await ApprovedEmail.updateOne(
+              { email },
+              { email },
+              { upsert: true }
+            );
+            bot.sendMessage(msg.chat.id, "Approved email: " + email);
+          }
         } else {
-          await ApprovedEmail.updateOne({ email }, { email }, { upsert: true });
-          bot.sendMessage(msg.chat.id, "Approved email: " + email);
+          bot.sendMessage(msg.chat.id, "Invalid email.", {
+            reply_to_message_id: msg.message_id,
+          });
         }
-      } else {
-        bot.sendMessage(msg.chat.id, "Invalid email.", {
-          reply_to_message_id: msg.message_id,
-        });
       }
     } else {
       bot.sendMessage(msg.chat.id, "You are not an admin.", {
