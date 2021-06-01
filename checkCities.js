@@ -2,7 +2,7 @@ const resources = require("./data/resources.json");
 const allCities = require("./data/newAllCities.json");
 
 const { normalize } = require("./parser");
-const findState = require("./findState");
+const findState = require("./utils/findState");
 
 const Contact = require("./models/Contact.schema");
 const City = require("./models/City.schema");
