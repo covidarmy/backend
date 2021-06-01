@@ -3,6 +3,8 @@ const Contact = require("./models/Contact.schema");
 const Meta = require("./models/Meta.schema");
 const Fraud = require("./models/Fraud.schema");
 
+const { fetchTweetAst } = require("static-tweets");
+
 //const analytics = require("./analytics")
 // const Mixpanel = require('mixpanel');
 // var analytics = Mixpanel.init(process.env.ANALYTICS_KEY);
@@ -56,7 +58,7 @@ const fetchSearchResults = async (newestID, resource) => {
   }
 };
 
-const buildTweetObject = (tweet) => {
+const buildTweetObject = async (tweet) => {
   const data = parseTweet(tweet.full_text || tweet.text);
 
   const obj = {
@@ -88,6 +90,7 @@ const buildTweetObject = (tweet) => {
     likes: tweet.favorite_count,
     retweets: tweet.retweet_count,
     author_followers: tweet.user.followers_count,
+    tweetAst: await fetchTweetAst(tweet.id_str),
   };
 
   return obj;
@@ -182,7 +185,9 @@ const fetchTweets = async () => {
 
     for (let tweetRaw of validTweets) {
       //console.log("Raw Tweet", tweetRaw);
-      const tweet = buildTweetObject(tweetRaw);
+      const tweet = await buildTweetObject(tweetRaw);
+
+      // console.log("Tweet AST:", JSON.stringify(tweet.tweetAst));
 
       //console.log("Tweet Object", tweet);
       //console.log("buildTweetObject return value is not null", tweet.phone);
