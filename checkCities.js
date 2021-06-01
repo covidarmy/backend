@@ -12,8 +12,7 @@ const checkCities = async () => {
       console.time(city.name);
       let cityObj = {
         city: city.name,
-        state:
-          findLocation(normalize(String(city.name)))[0]?.state || city.name,
+        state: findLocation(normalize(String(city.name)))[0]?.state || null,
         resourceCount: {},
       };
 
