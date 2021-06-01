@@ -106,10 +106,12 @@ if (process.env.NODE_ENV === "production") {
       console.log("Done deleting fraud Tweets!");
     });
   });
-}
 
-//Telegram Bot
-telegram();
+  //Telegram Bot
+  telegram()
+    .then(() => console.log("Telegram Bot Active! 🤖"))
+    .catch((err) => console.log("Telegram Bot Error:", err));
+}
 
 //Start Expres Server
 const PORT = process.env.PORT || 4000;

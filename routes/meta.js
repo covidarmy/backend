@@ -13,6 +13,12 @@ const router = express.Router();
  * /api/cities:
  *     get:
  *         description: get a complete list of all available cities
+ *         parameters:
+ *             - in: query
+ *               name: top
+ *               type: boolean
+ *               default: false
+ *               description: only respond with top cities when set to true
  *         responses:
  *             '200':
  *                 description: An array of city objects containing the Hindi and English name and a top boolean indicator
@@ -37,9 +43,19 @@ router.get("/cities", async (req, res) => {
   for (const state in allCities) {
     for (const city of allCities[state]) {
       let cityObj = {};
-      cityObj.name = city.name;
-      cityObj.top = city.top;
-      cityObj.hindiName = city.hindiName;
+      if (!req.query.top) {
+        cityObj.name = city.name;
+        cityObj.top = city.top;
+        cityObj.hindiName = city.hindiName;
+      } else {
+        if (city.top) {
+          cityObj.name = city.name;
+          cityObj.top = city.top;
+          cityObj.hindiName = city.hindiName;
+        } else {
+          continue;
+        }
+      }
       resCities.push(cityObj);
     }
   }
