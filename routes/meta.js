@@ -103,6 +103,10 @@ router.get("/checkCity", async (req, res) => {
         if (city.keywords.includes(reqCity) || reqCity == city.hindiName) {
           const cityDoc = await City.findOne({ city: city.name });
           if (cityDoc) {
+            //Update Cities totalRequests
+            cityDoc.totalRequests = cityDoc.totalRequests + 1;
+            await cityDoc.save();
+
             let resObj = {
               found: true,
               name: cityDoc.city,
@@ -154,7 +158,6 @@ router.get("/emptyCities/:state", async (req, res) => {
       if (reqState.toLowerCase() == state.toLowerCase()) {
         const cities = await City.find({
           state: state,
-          totalContacts: { $lt: 10 },
         });
 
         if (cities.length == 0) {
