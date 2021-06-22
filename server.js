@@ -77,8 +77,8 @@ app.use("/", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
 //Schedulers
 if (process.env.NODE_ENV === "production") {
-  //Fetch new tweets every minute.
-  cron.schedule("*/1 * * * *", async () => {
+  //Fetch new tweets every 5 minutes.
+  cron.schedule("*/5 * * * *", async () => {
     console.log("Fetching Tweets...");
     console.time("fetchTweets");
     fetchAndSaveTweets().then(() => {
