@@ -1,6 +1,7 @@
 {
   "name": "covid-army-backend",
   "version": "1.0.0",
+  "engines": {"node": "14.18.1"},
   "description": "A real time consolidated list of resources on COVID",
   "main": "server.js",
   "scripts": {
